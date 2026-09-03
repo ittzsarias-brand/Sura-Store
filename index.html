@@ -8,7 +8,7 @@
 
     <meta
         name="description"
-        content="Welcome to SuraStore — discover our products and prices."
+        content="Welcome to SuraStore. Discover our products."
     >
 
     <style>
@@ -29,12 +29,442 @@
             min-height: 100vh;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
+        /* Header */
 
         header {
             width: 100%;
             padding: 20px 40px;
             background: #111116;
-            border-bottom: 1px
+            border-bottom: 1px solid #25252d;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Hero */
+
+        .hero {
+            min-height: 420px;
+            padding: 80px 30px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 64px);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: #a8a8b3;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Products */
+
+        .products-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 50px 40px;
+        }
+
+        .products-section h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fill,
+                minmax(220px, 1fr)
+            );
+            gap: 25px;
+        }
+
+        /* Product */
+
+        .product {
+            background: #15151c;
+            border: 1px solid #282832;
+            border-radius: 12px;
+            overflow: hidden;
+
+            transition: transform 0.2s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-4px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            background: #20202a;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #777783;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            color: #9999a5;
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .price {
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        /* Loading */
+
+        .loading {
+            color: #9999a5;
+            padding: 30px 0;
+        }
+
+        /* Error */
+
+        .error {
+            color: #ff7777;
+            padding: 30px 0;
+            line-height: 1.6;
+        }
+
+        /* Empty */
+
+        .empty {
+            color: #9999a5;
+            padding: 30px 0;
+        }
+
+        /* Footer */
+
+        footer {
+            margin-top: 80px;
+            padding: 30px 20px;
+            text-align: center;
+
+            border-top: 1px solid #25252d;
+            color: #777783;
+            font-size: 14px;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 18px 20px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            nav {
+                gap: 14px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .hero {
+                min-height: 380px;
+                padding: 60px 20px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .products-section {
+                padding: 40px 20px;
+            }
+
+            .products-section h2 {
+                font-size: 28px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 210px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+
+        <a href="#home" class="logo">
+            SuraStore
+        </a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Main -->
+
+    <main>
+
+        <!-- Hero -->
+
+        <section class="hero" id="home">
+
+            <h1>
+                Welcome to SuraStore
+            </h1>
+
+            <p>
+                Discover our products and find what you're looking for.
+            </p>
+
+        </section>
+
+
+        <!-- Products -->
+
+        <section
+            class="products-section"
+            id="products"
+        >
+
+            <h2>
+                Products
+            </h2>
+
+            <div
+                class="products"
+                id="products-container"
+            >
+
+                <p class="loading">
+                    Loading products...
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        © 2026 SuraStore. All rights reserved.
+
+    </footer>
+
+
+    <!-- Firebase + Product Loading -->
+
+    <script type="module">
+
+        import {
+            db
+        } from "./firebase.js";
+
+        import {
+            collection,
+            getDocs,
+            query,
+            where
+        } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+        const productsContainer =
+            document.getElementById("products-container");
+
+
+        async function loadProducts() {
+
+            try {
+
+                const productsQuery = query(
+                    collection(db, "products"),
+                    where("published", "==", true)
+                );
+
+
+                const snapshot =
+                    await getDocs(productsQuery);
+
+
+                productsContainer.innerHTML = "";
+
+
+                if (snapshot.empty) {
+
+                    productsContainer.innerHTML = `
+                        <p class="empty">
+                            No products available yet.
+                        </p>
+                    `;
+
+                    return;
+                }
+
+
+                snapshot.forEach((documentSnapshot) => {
+
+                    const product =
+                        documentSnapshot.data();
+
+
+                    const productElement =
+                        document.createElement("article");
+
+
+                    productElement.className =
+                        "product";
+
+
+                    let imageHTML =
+                        `<span>Product Image</span>`;
+
+
+                    if (product.image) {
+
+                        imageHTML = `
+                            <img
+                                src="${product.image}"
+                                alt="${product.name || "Product"}"
+                            >
+                        `;
+
+                    }
+
+
+                    const price =
+                        Number(product.price || 0);
+
+
+                    productElement.innerHTML = `
+
+                        <div class="product-image">
+                            ${imageHTML}
+                        </div>
+
+                        <div class="product-info">
+
+                            <h3>
+                                ${product.name || "Unnamed Product"}
+                            </h3>
+
+                            <p>
+                                ${product.description || ""}
+                            </p>
+
+                            <div class="price">
+                                $${price.toFixed(2)}
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    productsContainer.appendChild(
+                        productElement
+                    );
+
+                });
+
+            } catch (error) {
+
+                console.error(
+                    "Error loading products:",
+                    error
+                );
+
+
+                productsContainer.innerHTML = `
+                    <p class="error">
+                        Unable to load products.
+                        Please try again later.
+                    </p>
+                `;
+
+            }
+
+        }
+
+
+        loadProducts();
+
+    </script>
+
+</body>
+</html>
