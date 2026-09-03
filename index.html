@@ -12,12 +12,12 @@
 
     <meta
         name="description"
-        content="سورا ستۆر - فرۆشگای ئۆنلاین"
+        content="سورا ستۆر — فرۆشگای ئۆنلاین بۆ بەرهەمە هەڵبژێردراوەکان"
     >
 
     <meta
         name="theme-color"
-        content="#08090d"
+        content="#090a0f"
     >
 
     <title>سورا ستۆر | SuraStore</title>
@@ -38,9 +38,7 @@
                 format("truetype");
 
             font-weight: 700;
-
             font-style: normal;
-
             font-display: swap;
         }
 
@@ -65,24 +63,29 @@
 
             min-height: 100vh;
 
+            background:
+                #090a0f;
+
+            color:
+                #ffffff;
+
             font-family:
                 "Speda",
                 Tahoma,
                 Arial,
                 sans-serif;
 
-            background: #08090d;
-
-            color: #ffffff;
-
             direction: rtl;
 
             line-height: 1.8;
+
+            overflow-x: hidden;
         }
 
 
         button,
         input {
+
             font-family:
                 "Speda",
                 Tahoma,
@@ -102,51 +105,136 @@
         }
 
 
+        img {
+            max-width: 100%;
+        }
+
+
         /* =====================================================
            VARIABLES
         ===================================================== */
 
         :root {
 
-            --background: #08090d;
+            --bg:
+                #090a0f;
 
-            --surface: #101219;
+            --bg-soft:
+                #0d0f15;
 
-            --surface-light: #151821;
+            --surface:
+                #11131a;
+
+            --surface-2:
+                #151821;
+
+            --surface-3:
+                #1a1d26;
 
             --border:
-                rgba(255, 255, 255, 0.09);
+                rgba(255,255,255,0.08);
 
-            --border-hover:
-                rgba(255, 255, 255, 0.17);
+            --border-strong:
+                rgba(255,255,255,0.14);
 
-            --text: #ffffff;
+            --text:
+                #ffffff;
 
-            --muted: #9298a7;
+            --muted:
+                #858b9a;
 
-            --accent: #ffffff;
+            --muted-light:
+                #a8adba;
 
-            --accent-text: #08090d;
+            --white:
+                #ffffff;
 
-            --radius: 18px;
+            --black:
+                #090a0f;
 
-            --max-width: 1280px;
+            --success:
+                #76d99a;
+
+            --danger:
+                #ff7777;
+
+            --radius:
+                18px;
+
+            --max-width:
+                1320px;
         }
 
 
         /* =====================================================
-           CONTAINER
+           GLOBAL
         ===================================================== */
+
+        ::selection {
+
+            background:
+                #ffffff;
+
+            color:
+                #090a0f;
+        }
+
 
         .container {
 
             width:
                 min(
-                    calc(100% - 40px),
+                    calc(100% - 48px),
                     var(--max-width)
                 );
 
-            margin-inline: auto;
+            margin-inline:
+                auto;
+        }
+
+
+        .section {
+
+            padding:
+                110px 0;
+        }
+
+
+        /* =====================================================
+           ANNOUNCEMENT
+        ===================================================== */
+
+        .announcement {
+
+            min-height:
+                38px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                #ffffff;
+
+            color:
+                #090a0f;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+            text-align:
+                center;
+
+            padding:
+                6px 20px;
         }
 
 
@@ -154,168 +242,307 @@
            HEADER
         ===================================================== */
 
-        .site-header {
+        .header {
 
-            position: sticky;
+            position:
+                sticky;
 
-            top: 0;
+            top:
+                0;
 
-            z-index: 1000;
-
-            width: 100%;
-
-            background:
-                rgba(8, 9, 13, 0.84);
-
-            backdrop-filter:
-                blur(20px);
-
-            -webkit-backdrop-filter:
-                blur(20px);
+            z-index:
+                1000;
 
             border-bottom:
                 1px solid var(--border);
+
+            background:
+                rgba(9,10,15,0.84);
+
+            backdrop-filter:
+                blur(22px);
+
+            -webkit-backdrop-filter:
+                blur(22px);
         }
 
 
         .header-inner {
 
-            min-height: 76px;
+            height:
+                78px;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
-            gap: 30px;
+            gap:
+                30px;
         }
 
 
         /* =====================================================
-           LOGO
+           BRAND
         ===================================================== */
 
-        .logo {
+        .brand {
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            gap: 11px;
+            gap:
+                12px;
 
-            font-size: 23px;
-
-            font-weight: 700;
-
-            white-space: nowrap;
+            flex-shrink:
+                0;
         }
 
 
-        .logo-mark {
+        .brand-icon {
 
-            width: 39px;
+            width:
+                42px;
 
-            height: 39px;
+            height:
+                42px;
 
-            display: grid;
+            display:
+                grid;
 
-            place-items: center;
+            place-items:
+                center;
 
-            border-radius: 12px;
+            border-radius:
+                12px;
 
-            background: #ffffff;
+            background:
+                #ffffff;
 
-            color: #08090d;
+            color:
+                #090a0f;
 
-            font-size: 20px;
+            font-size:
+                21px;
 
-            font-weight: 700;
+            font-weight:
+                700;
+        }
+
+
+        .brand-text {
+
+            font-size:
+                21px;
+
+            font-weight:
+                700;
+
+            white-space:
+                nowrap;
         }
 
 
         /* =====================================================
-           NAVIGATION
+           NAV
         ===================================================== */
 
-        .main-nav {
+        .nav {
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            gap: 34px;
+            gap:
+                34px;
         }
 
 
-        .main-nav a {
+        .nav a {
 
-            color: #aeb2bf;
+            position:
+                relative;
 
-            font-size: 15px;
+            color:
+                var(--muted-light);
 
-            font-weight: 700;
+            font-size:
+                14px;
+
+            font-weight:
+                700;
 
             transition:
-                color 0.2s ease;
+                color .2s ease;
         }
 
 
-        .main-nav a:hover {
+        .nav a::after {
 
-            color: #ffffff;
+            content:
+                "";
+
+            position:
+                absolute;
+
+            right:
+                0;
+
+            bottom:
+                -9px;
+
+            width:
+                0;
+
+            height:
+                2px;
+
+            border-radius:
+                999px;
+
+            background:
+                #ffffff;
+
+            transition:
+                width .2s ease;
         }
 
+
+        .nav a:hover {
+
+            color:
+                #ffffff;
+        }
+
+
+        .nav a:hover::after {
+
+            width:
+                100%;
+        }
+
+
+        /* =====================================================
+           HEADER ACTIONS
+        ===================================================== */
 
         .header-actions {
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            gap: 10px;
+            gap:
+                9px;
         }
 
 
-        .header-button {
+        .icon-button {
 
-            width: 42px;
+            position:
+                relative;
 
-            height: 42px;
+            width:
+                42px;
 
-            display: grid;
+            height:
+                42px;
 
-            place-items: center;
+            display:
+                grid;
+
+            place-items:
+                center;
 
             border:
                 1px solid var(--border);
 
-            border-radius: 12px;
+            border-radius:
+                12px;
 
             background:
-                rgba(255, 255, 255, 0.035);
+                rgba(255,255,255,0.035);
 
-            color: #ffffff;
+            color:
+                #ffffff;
 
-            font-size: 20px;
+            font-size:
+                19px;
 
             transition:
-                background 0.2s ease,
-                transform 0.2s ease,
-                border-color 0.2s ease;
+                background .2s ease,
+                border-color .2s ease,
+                transform .2s ease;
         }
 
 
-        .header-button:hover {
+        .icon-button:hover {
 
             background:
-                rgba(255, 255, 255, 0.09);
+                rgba(255,255,255,0.09);
 
             border-color:
-                var(--border-hover);
+                var(--border-strong);
 
             transform:
-                translateY(-2px);
+                translateY(-1px);
+        }
+
+
+        .cart-count {
+
+            position:
+                absolute;
+
+            top:
+                -4px;
+
+            left:
+                -4px;
+
+            min-width:
+                18px;
+
+            height:
+                18px;
+
+            padding:
+                0 4px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            border-radius:
+                999px;
+
+            background:
+                #ffffff;
+
+            color:
+                #090a0f;
+
+            font-size:
+                10px;
+
+            line-height:
+                1;
+
+            font-weight:
+                700;
         }
 
 
@@ -325,29 +552,45 @@
 
         .hero {
 
-            position: relative;
+            position:
+                relative;
 
-            overflow: hidden;
+            min-height:
+                650px;
 
-            padding:
-                125px 0
-                115px;
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            overflow:
+                hidden;
+
+            border-bottom:
+                1px solid var(--border);
         }
 
 
         .hero::before {
 
-            content: "";
+            content:
+                "";
 
-            position: absolute;
+            position:
+                absolute;
 
-            width: 700px;
+            width:
+                800px;
 
-            height: 700px;
+            height:
+                800px;
 
-            top: -360px;
+            top:
+                -440px;
 
-            right: 50%;
+            right:
+                50%;
 
             transform:
                 translateX(50%);
@@ -355,230 +598,297 @@
             background:
                 radial-gradient(
                     circle,
-                    rgba(255, 255, 255, 0.085),
+                    rgba(255,255,255,0.09),
                     transparent 68%
                 );
 
-            pointer-events: none;
+            pointer-events:
+                none;
         }
 
 
         .hero::after {
 
-            content: "";
+            content:
+                "";
 
-            position: absolute;
+            position:
+                absolute;
 
-            width: 300px;
+            width:
+                500px;
 
-            height: 300px;
+            height:
+                500px;
 
-            bottom: -180px;
+            bottom:
+                -360px;
 
-            left: 5%;
+            left:
+                -150px;
 
             background:
                 radial-gradient(
                     circle,
-                    rgba(255, 255, 255, 0.035),
-                    transparent 70%
+                    rgba(255,255,255,0.04),
+                    transparent 68%
                 );
 
-            pointer-events: none;
+            pointer-events:
+                none;
+        }
+
+
+        .hero-grid {
+
+            position:
+                relative;
+
+            z-index:
+                1;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1.15fr
+                .85fr;
+
+            align-items:
+                center;
+
+            gap:
+                70px;
         }
 
 
         .hero-content {
 
-            position: relative;
-
-            z-index: 1;
-
-            max-width: 880px;
-
-            margin-inline: auto;
-
-            text-align: center;
+            max-width:
+                720px;
         }
 
 
-        .hero-badge {
+        .hero-label {
 
-            display: inline-flex;
+            display:
+                inline-flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            gap: 9px;
+            gap:
+                9px;
 
             padding:
-                5px 16px;
+                6px 15px;
 
             border:
                 1px solid var(--border);
 
-            border-radius: 999px;
+            border-radius:
+                999px;
 
             background:
-                rgba(255, 255, 255, 0.035);
+                rgba(255,255,255,0.035);
 
-            color: #b9bdc9;
+            color:
+                #b8bdc9;
 
-            font-size: 13px;
+            font-size:
+                12px;
 
-            font-weight: 700;
+            font-weight:
+                700;
 
-            margin-bottom: 28px;
+            margin-bottom:
+                24px;
         }
 
 
-        .hero-badge-dot {
+        .hero-label-dot {
 
-            width: 7px;
+            width:
+                7px;
 
-            height: 7px;
+            height:
+                7px;
 
-            border-radius: 50%;
+            border-radius:
+                50%;
 
-            background: #ffffff;
+            background:
+                #ffffff;
         }
 
 
         .hero h1 {
 
+            max-width:
+                760px;
+
             font-size:
                 clamp(
-                    45px,
-                    7vw,
-                    84px
+                    48px,
+                    6vw,
+                    78px
                 );
 
-            line-height: 1.35;
+            line-height:
+                1.3;
 
-            font-weight: 700;
+            letter-spacing:
+                -1.5px;
 
-            letter-spacing: -1px;
+            font-weight:
+                700;
 
-            margin-bottom: 22px;
+            margin-bottom:
+                22px;
         }
 
 
         .hero h1 span {
 
-            color: #747a89;
+            color:
+                #6e7483;
         }
 
 
         .hero-description {
 
-            max-width: 680px;
-
-            margin-inline: auto;
-
-            color: var(--muted);
-
-            font-size: 18px;
-
-            line-height: 2.1;
-
-            font-weight: 700;
-        }
-
-
-        .hero-actions {
-
-            display: flex;
-
-            justify-content: center;
-
-            gap: 12px;
-
-            margin-top: 35px;
-        }
-
-
-        /* =====================================================
-           BUTTONS
-        ===================================================== */
-
-        .primary-button {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            min-height: 51px;
-
-            padding:
-                0 27px;
-
-            border: 0;
-
-            border-radius: 12px;
-
-            background:
-                var(--accent);
+            max-width:
+                650px;
 
             color:
-                var(--accent-text);
+                var(--muted);
 
-            font-size: 14px;
+            font-size:
+                17px;
 
-            font-weight: 700;
+            line-height:
+                2.1;
 
-            transition:
-                transform 0.2s ease,
-                opacity 0.2s ease;
+            font-weight:
+                700;
+
+            margin-bottom:
+                31px;
         }
 
 
-        .primary-button:hover {
+        .hero-buttons {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                11px;
+
+            flex-wrap:
+                wrap;
+        }
+
+
+        .button-primary {
+
+            min-height:
+                50px;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                0 25px;
+
+            border:
+                1px solid #ffffff;
+
+            border-radius:
+                12px;
+
+            background:
+                #ffffff;
+
+            color:
+                #090a0f;
+
+            font-size:
+                14px;
+
+            font-weight:
+                700;
+
+            transition:
+                transform .2s ease,
+                opacity .2s ease;
+        }
+
+
+        .button-primary:hover {
 
             transform:
                 translateY(-2px);
 
-            opacity: 0.88;
+            opacity:
+                .9;
         }
 
 
-        .secondary-button {
+        .button-secondary {
 
-            display: inline-flex;
+            min-height:
+                50px;
 
-            align-items: center;
+            display:
+                inline-flex;
 
-            justify-content: center;
+            align-items:
+                center;
 
-            min-height: 51px;
+            justify-content:
+                center;
 
             padding:
-                0 27px;
+                0 25px;
 
             border:
                 1px solid var(--border);
 
-            border-radius: 12px;
+            border-radius:
+                12px;
 
             background:
-                rgba(255, 255, 255, 0.035);
+                rgba(255,255,255,0.035);
 
-            color: #ffffff;
+            color:
+                #ffffff;
 
-            font-size: 14px;
+            font-size:
+                14px;
 
-            font-weight: 700;
+            font-weight:
+                700;
 
             transition:
-                background 0.2s ease,
-                transform 0.2s ease;
+                background .2s ease,
+                transform .2s ease;
         }
 
 
-        .secondary-button:hover {
+        .button-secondary:hover {
 
             background:
-                rgba(255, 255, 255, 0.08);
+                rgba(255,255,255,0.08);
 
             transform:
                 translateY(-2px);
@@ -586,106 +896,417 @@
 
 
         /* =====================================================
-           TRUST BAR
+           HERO VISUAL
         ===================================================== */
 
-        .trust-bar {
+        .hero-visual {
 
-            border-top:
-                1px solid var(--border);
+            position:
+                relative;
 
-            border-bottom:
-                1px solid var(--border);
+            min-height:
+                440px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+        }
+
+
+        .hero-orbit {
+
+            position:
+                absolute;
+
+            width:
+                380px;
+
+            height:
+                380px;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+
+            border-radius:
+                50%;
+        }
+
+
+        .hero-orbit::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            inset:
+                35px;
+
+            border:
+                1px solid rgba(255,255,255,0.05);
+
+            border-radius:
+                50%;
+        }
+
+
+        .hero-card {
+
+            position:
+                relative;
+
+            width:
+                min(100%, 340px);
+
+            aspect-ratio:
+                0.78;
+
+            padding:
+                18px;
+
+            border:
+                1px solid var(--border-strong);
+
+            border-radius:
+                24px;
 
             background:
-                rgba(255, 255, 255, 0.018);
+                linear-gradient(
+                    145deg,
+                    #191c25,
+                    #0e1016
+                );
+
+            box-shadow:
+                0 35px 90px
+                rgba(0,0,0,0.45);
+
+            transform:
+                rotate(-4deg);
         }
 
 
-        .trust-inner {
+        .hero-card-inner {
 
-            min-height: 82px;
+            width:
+                100%;
 
-            display: grid;
+            height:
+                100%;
 
-            grid-template-columns:
-                repeat(3, 1fr);
+            display:
+                flex;
 
-            gap: 20px;
+            flex-direction:
+                column;
+
+            justify-content:
+                space-between;
+
+            padding:
+                25px;
+
+            border:
+                1px solid rgba(255,255,255,0.06);
+
+            border-radius:
+                18px;
+
+            background:
+                rgba(255,255,255,0.025);
         }
 
 
-        .trust-item {
+        .hero-card-top {
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: center;
-
-            gap: 10px;
-
-            color: #9ca1ae;
-
-            font-size: 13px;
-
-            font-weight: 700;
+            justify-content:
+                space-between;
         }
 
 
-        .trust-icon {
+        .hero-card-brand {
 
-            color: #ffffff;
+            font-size:
+                16px;
 
-            font-size: 17px;
+            font-weight:
+                700;
+        }
+
+
+        .hero-card-badge {
+
+            padding:
+                5px 10px;
+
+            border-radius:
+                999px;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            color:
+                #aeb4c2;
+
+            font-size:
+                10px;
+        }
+
+
+        .hero-card-center {
+
+            text-align:
+                center;
+        }
+
+
+        .hero-card-symbol {
+
+            width:
+                115px;
+
+            height:
+                115px;
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+
+            border-radius:
+                32px;
+
+            background:
+                rgba(255,255,255,0.05);
+
+            font-size:
+                54px;
+
+            font-weight:
+                700;
+        }
+
+
+        .hero-card-center h3 {
+
+            margin-top:
+                24px;
+
+            font-size:
+                24px;
+        }
+
+
+        .hero-card-center p {
+
+            margin-top:
+                3px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+        }
+
+
+        .hero-card-bottom {
+
+            display:
+                flex;
+
+            align-items:
+                end;
+
+            justify-content:
+                space-between;
+        }
+
+
+        .hero-card-price {
+
+            font-size:
+                24px;
+
+            font-weight:
+                700;
+        }
+
+
+        .hero-card-small {
+
+            color:
+                #777d8b;
+
+            font-size:
+                11px;
         }
 
 
         /* =====================================================
-           PRODUCTS
+           FEATURES
         ===================================================== */
 
-        .products-section {
+        .features {
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+
+        .features-grid {
+
+            min-height:
+                96px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+        }
+
+
+        .feature {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                12px;
 
             padding:
-                105px 0
-                115px;
+                15px;
+
+            border-left:
+                1px solid var(--border);
+
+            color:
+                var(--muted-light);
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
         }
 
 
-        .section-heading {
+        .feature:last-child {
 
-            display: flex;
-
-            align-items: end;
-
-            justify-content: space-between;
-
-            gap: 30px;
-
-            margin-bottom: 36px;
+            border-left:
+                0;
         }
 
 
-        .section-heading h2 {
+        .feature-icon {
 
-            font-size: 38px;
+            width:
+                35px;
 
-            letter-spacing: -0.5px;
+            height:
+                35px;
 
-            line-height: 1.5;
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                10px;
+
+            color:
+                #ffffff;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            font-size:
+                15px;
         }
 
 
-        .section-heading p {
+        /* =====================================================
+           SECTION HEADER
+        ===================================================== */
 
-            margin-top: 4px;
+        .section-header {
 
-            color: var(--muted);
+            display:
+                flex;
 
-            font-size: 14px;
+            align-items:
+                end;
 
-            font-weight: 700;
+            justify-content:
+                space-between;
+
+            gap:
+                30px;
+
+            margin-bottom:
+                34px;
+        }
+
+
+        .section-title {
+
+            font-size:
+                35px;
+
+            line-height:
+                1.5;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                -0.5px;
+        }
+
+
+        .section-subtitle {
+
+            margin-top:
+                2px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
         }
 
 
@@ -693,117 +1314,124 @@
            SEARCH
         ===================================================== */
 
-        .search-wrapper {
+        .search {
 
-            position: relative;
+            position:
+                relative;
 
             width:
-                min(
-                    100%,
-                    320px
-                );
+                min(100%, 330px);
+        }
+
+
+        .search input {
+
+            width:
+                100%;
+
+            height:
+                48px;
+
+            padding:
+                0 45px
+                0 16px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                12px;
+
+            outline:
+                none;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            color:
+                #ffffff;
+
+            direction:
+                rtl;
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+            transition:
+                border-color .2s ease,
+                background .2s ease;
+        }
+
+
+        .search input::placeholder {
+
+            color:
+                #696f7d;
+        }
+
+
+        .search input:focus {
+
+            border-color:
+                var(--border-strong);
+
+            background:
+                rgba(255,255,255,0.06);
         }
 
 
         .search-icon {
 
-            position: absolute;
+            position:
+                absolute;
 
-            right: 15px;
+            right:
+                15px;
 
-            top: 50%;
+            top:
+                50%;
 
             transform:
                 translateY(-50%);
 
-            color: #737987;
+            color:
+                #777d8a;
 
-            pointer-events: none;
+            font-size:
+                18px;
 
-            font-size: 19px;
-        }
-
-
-        .search-input {
-
-            width: 100%;
-
-            height: 49px;
-
-            padding:
-                0 44px
-                0 15px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 12px;
-
-            outline: none;
-
-            background:
-                rgba(255, 255, 255, 0.035);
-
-            color: #ffffff;
-
-            direction: rtl;
-
-            font-size: 14px;
-
-            font-weight: 700;
-
-            transition:
-                border-color 0.2s ease,
-                background 0.2s ease;
-        }
-
-
-        .search-input::placeholder {
-
-            color: #6f7481;
-        }
-
-
-        .search-input:focus {
-
-            border-color:
-                rgba(255, 255, 255, 0.2);
-
-            background:
-                rgba(255, 255, 255, 0.055);
+            pointer-events:
+                none;
         }
 
 
         /* =====================================================
-           PRODUCT GRID
+           PRODUCTS
         ===================================================== */
 
         .products {
 
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(
                     auto-fill,
-                    minmax(250px, 1fr)
+                    minmax(255px,1fr)
                 );
 
-            gap: 22px;
+            gap:
+                20px;
         }
 
 
-        /* =====================================================
-           PRODUCT CARD
-        ===================================================== */
-
         .product {
 
-            position: relative;
-
-            overflow: hidden;
-
-            background:
-                var(--surface);
+            overflow:
+                hidden;
 
             border:
                 1px solid var(--border);
@@ -811,10 +1439,13 @@
             border-radius:
                 var(--radius);
 
+            background:
+                var(--surface);
+
             transition:
-                transform 0.25s ease,
-                border-color 0.25s ease,
-                box-shadow 0.25s ease;
+                transform .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
         }
 
 
@@ -824,32 +1455,29 @@
                 translateY(-6px);
 
             border-color:
-                var(--border-hover);
+                var(--border-strong);
 
             box-shadow:
-                0 22px 55px
-                rgba(0, 0, 0, 0.28);
+                0 25px 60px
+                rgba(0,0,0,0.3);
         }
 
 
-        /* =====================================================
-           PRODUCT IMAGE
-        ===================================================== */
-
         .product-image {
 
-            position: relative;
+            position:
+                relative;
 
-            width: 100%;
+            aspect-ratio:
+                1 / 1;
 
-            aspect-ratio: 1 / 1;
-
-            overflow: hidden;
+            overflow:
+                hidden;
 
             background:
                 linear-gradient(
                     145deg,
-                    #181b24,
+                    #191c25,
                     #0e1016
                 );
         }
@@ -857,16 +1485,20 @@
 
         .product-image img {
 
-            width: 100%;
+            width:
+                100%;
 
-            height: 100%;
+            height:
+                100%;
 
-            display: block;
+            object-fit:
+                cover;
 
-            object-fit: cover;
+            display:
+                block;
 
             transition:
-                transform 0.5s ease;
+                transform .55s ease;
         }
 
 
@@ -874,127 +1506,152 @@
         .product-image img {
 
             transform:
-                scale(1.045);
+                scale(1.05);
         }
 
 
-        .image-placeholder {
+        .product-placeholder {
 
-            width: 100%;
+            width:
+                100%;
 
-            height: 100%;
+            height:
+                100%;
 
-            display: grid;
+            display:
+                grid;
 
-            place-items: center;
+            place-items:
+                center;
 
-            color: #656b79;
+            color:
+                #606674;
 
-            font-size: 13px;
+            font-size:
+                13px;
 
-            font-weight: 700;
+            font-weight:
+                700;
         }
 
 
-        /* =====================================================
-           PRODUCT INFO
-        ===================================================== */
+        .product-content {
 
-        .product-info {
-
-            padding: 21px;
+            padding:
+                20px;
         }
 
 
         .product-name {
 
-            font-size: 18px;
+            font-size:
+                18px;
 
-            font-weight: 700;
+            font-weight:
+                700;
 
-            margin-bottom: 7px;
+            margin-bottom:
+                5px;
         }
 
 
         .product-description {
 
-            min-height: 50px;
+            min-height:
+                48px;
 
-            color: var(--muted);
+            color:
+                var(--muted);
 
-            font-size: 13px;
+            font-size:
+                12px;
 
-            line-height: 1.9;
+            line-height:
+                1.9;
 
-            margin-bottom: 17px;
+            margin-bottom:
+                17px;
 
             display:
                 -webkit-box;
 
-            -webkit-line-clamp: 2;
-
             -webkit-box-orient:
                 vertical;
 
-            overflow: hidden;
+            -webkit-line-clamp:
+                2;
+
+            overflow:
+                hidden;
         }
 
 
-        .product-bottom {
+        .product-footer {
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
-            gap: 15px;
+            gap:
+                12px;
         }
 
 
-        .product-price {
+        .price {
 
-            font-size: 19px;
+            font-size:
+                19px;
 
-            font-weight: 700;
+            font-weight:
+                700;
         }
 
 
-        .product-button {
+        .view-button {
 
-            min-height: 39px;
+            min-height:
+                39px;
 
             padding:
-                0 16px;
+                0 15px;
 
             border:
                 1px solid var(--border);
 
-            border-radius: 9px;
+            border-radius:
+                10px;
 
             background:
-                rgba(255, 255, 255, 0.05);
+                rgba(255,255,255,0.05);
 
-            color: #ffffff;
+            color:
+                #ffffff;
 
-            font-size: 12px;
+            font-size:
+                12px;
 
-            font-weight: 700;
+            font-weight:
+                700;
 
             transition:
-                background 0.2s ease;
+                background .2s ease;
         }
 
 
-        .product-button:hover {
+        .view-button:hover {
 
             background:
-                rgba(255, 255, 255, 0.11);
+                rgba(255,255,255,0.11);
         }
 
 
         /* =====================================================
-           STATES
+           PRODUCT STATE
         ===================================================== */
 
         .state {
@@ -1002,17 +1659,23 @@
             grid-column:
                 1 / -1;
 
-            min-height: 260px;
+            min-height:
+                270px;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: center;
+            justify-content:
+                center;
 
-            flex-direction: column;
+            flex-direction:
+                column;
 
-            text-align: center;
+            text-align:
+                center;
 
             border:
                 1px solid var(--border);
@@ -1021,61 +1684,78 @@
                 var(--radius);
 
             background:
-                rgba(255, 255, 255, 0.018);
+                rgba(255,255,255,0.018);
         }
 
 
         .state-icon {
 
-            width: 52px;
+            width:
+                55px;
 
-            height: 52px;
+            height:
+                55px;
 
-            display: grid;
+            display:
+                grid;
 
-            place-items: center;
+            place-items:
+                center;
 
-            border-radius: 14px;
+            margin-bottom:
+                15px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                15px;
 
             background:
-                rgba(255, 255, 255, 0.05);
+                rgba(255,255,255,0.04);
 
-            color: #ffffff;
+            color:
+                #ffffff;
 
-            margin-bottom: 15px;
-
-            font-size: 18px;
+            font-size:
+                18px;
         }
 
 
         .state h3 {
 
-            font-size: 18px;
+            font-size:
+                18px;
 
-            margin-bottom: 5px;
+            margin-bottom:
+                4px;
         }
 
 
         .state p {
 
-            color: var(--muted);
+            color:
+                var(--muted);
 
-            font-size: 13px;
+            font-size:
+                12px;
 
-            font-weight: 700;
+            font-weight:
+                700;
         }
 
 
         .error-state {
 
             border-color:
-                rgba(255, 100, 100, 0.15);
+                rgba(255,100,100,0.18);
         }
 
 
         .error-state .state-icon {
 
-            color: #ff8d8d;
+            color:
+                var(--danger);
         }
 
 
@@ -1083,97 +1763,109 @@
            CTA
         ===================================================== */
 
-        .cta-section {
-
-            padding-bottom:
-                105px;
-        }
-
-
         .cta {
 
-            position: relative;
+            position:
+                relative;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
             padding:
-                72px 40px;
+                75px 40px;
 
             border:
                 1px solid var(--border);
 
-            border-radius: 24px;
+            border-radius:
+                25px;
 
-            text-align: center;
+            text-align:
+                center;
 
             background:
                 linear-gradient(
                     145deg,
                     #151821,
-                    #0e1016
+                    #0c0e13
                 );
         }
 
 
-        .cta::after {
+        .cta::before {
 
-            content: "";
+            content:
+                "";
 
-            position: absolute;
+            position:
+                absolute;
 
-            width: 400px;
+            width:
+                500px;
 
-            height: 400px;
+            height:
+                500px;
 
-            top: -240px;
+            top:
+                -350px;
 
-            left: -100px;
+            right:
+                -100px;
 
-            border-radius: 50%;
+            border-radius:
+                50%;
 
             background:
                 radial-gradient(
                     circle,
-                    rgba(255, 255, 255, 0.07),
+                    rgba(255,255,255,0.08),
                     transparent 68%
                 );
 
-            pointer-events: none;
+            pointer-events:
+                none;
         }
 
 
         .cta-content {
 
-            position: relative;
+            position:
+                relative;
 
-            z-index: 1;
+            z-index:
+                1;
         }
 
 
         .cta h2 {
 
-            font-size: 36px;
+            font-size:
+                36px;
 
-            letter-spacing: -0.5px;
-
-            margin-bottom: 10px;
+            margin-bottom:
+                8px;
         }
 
 
         .cta p {
 
-            max-width: 570px;
+            max-width:
+                580px;
 
             margin:
-                0 auto 25px;
+                0 auto 26px;
 
-            color: var(--muted);
+            color:
+                var(--muted);
 
-            font-size: 14px;
+            font-size:
+                13px;
 
-            font-weight: 700;
+            line-height:
+                2;
 
-            line-height: 2;
+            font-weight:
+                700;
         }
 
 
@@ -1181,7 +1873,7 @@
            FOOTER
         ===================================================== */
 
-        footer {
+        .footer {
 
             border-top:
                 1px solid var(--border);
@@ -1191,35 +1883,429 @@
         }
 
 
-        .footer-inner {
+        .footer-top {
 
-            min-height: 105px;
+            padding:
+                65px 0;
 
-            display: flex;
+            display:
+                grid;
 
-            align-items: center;
+            grid-template-columns:
+                1.5fr
+                1fr
+                1fr;
 
-            justify-content: space-between;
-
-            gap: 25px;
+            gap:
+                60px;
         }
 
 
         .footer-brand {
 
-            font-size: 17px;
-
-            font-weight: 700;
+            max-width:
+                350px;
         }
 
 
-        .footer-copy {
+        .footer-brand h3 {
 
-            color: #656a77;
+            font-size:
+                20px;
 
-            font-size: 12px;
+            margin-bottom:
+                10px;
+        }
 
-            font-weight: 700;
+
+        .footer-brand p {
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
+            line-height:
+                2;
+        }
+
+
+        .footer-column h4 {
+
+            font-size:
+                14px;
+
+            margin-bottom:
+                13px;
+        }
+
+
+        .footer-column a {
+
+            display:
+                block;
+
+            width:
+                fit-content;
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
+            margin-bottom:
+                7px;
+
+            transition:
+                color .2s ease;
+        }
+
+
+        .footer-column a:hover {
+
+            color:
+                #ffffff;
+        }
+
+
+        .footer-bottom {
+
+            min-height:
+                75px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+
+            border-top:
+                1px solid var(--border);
+
+            color:
+                #5f6470;
+
+            font-size:
+                11px;
+        }
+
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
+        .modal {
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            z-index:
+                3000;
+
+            display:
+                none;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                20px;
+
+            background:
+                rgba(0,0,0,0.75);
+
+            backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
+                blur(12px);
+        }
+
+
+        .modal.open {
+
+            display:
+                flex;
+        }
+
+
+        .modal-card {
+
+            position:
+                relative;
+
+            width:
+                min(
+                    100%,
+                    900px
+                );
+
+            max-height:
+                90vh;
+
+            overflow:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr
+                1fr;
+
+            border:
+                1px solid var(--border-strong);
+
+            border-radius:
+                22px;
+
+            background:
+                #101219;
+
+            box-shadow:
+                0 40px 100px
+                rgba(0,0,0,0.5);
+        }
+
+
+        .modal-image {
+
+            min-height:
+                450px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #191c25,
+                    #0e1016
+                );
+        }
+
+
+        .modal-image img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+            display:
+                block;
+        }
+
+
+        .modal-info {
+
+            padding:
+                42px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                center;
+        }
+
+
+        .modal-close {
+
+            position:
+                absolute;
+
+            top:
+                15px;
+
+            left:
+                15px;
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                10px;
+
+            background:
+                rgba(0,0,0,0.45);
+
+            color:
+                #ffffff;
+
+            font-size:
+                18px;
+        }
+
+
+        .modal-info h2 {
+
+            font-size:
+                31px;
+
+            line-height:
+                1.5;
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .modal-description {
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
+            line-height:
+                2;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .modal-price {
+
+            font-size:
+                27px;
+
+            font-weight:
+                700;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .modal-add {
+
+            width:
+                100%;
+
+            min-height:
+                50px;
+
+            border:
+                0;
+
+            border-radius:
+                12px;
+
+            background:
+                #ffffff;
+
+            color:
+                #090a0f;
+
+            font-size:
+                14px;
+
+            font-weight:
+                700;
+        }
+
+
+        /* =====================================================
+           TOAST
+        ===================================================== */
+
+        .toast {
+
+            position:
+                fixed;
+
+            right:
+                25px;
+
+            bottom:
+                25px;
+
+            z-index:
+                5000;
+
+            max-width:
+                330px;
+
+            padding:
+                14px 18px;
+
+            border:
+                1px solid var(--border-strong);
+
+            border-radius:
+                12px;
+
+            background:
+                #151821;
+
+            color:
+                #ffffff;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.35);
+
+            opacity:
+                0;
+
+            transform:
+                translateY(15px);
+
+            pointer-events:
+                none;
+
+            transition:
+                opacity .25s ease,
+                transform .25s ease;
+        }
+
+
+        .toast.show {
+
+            opacity:
+                1;
+
+            transform:
+                translateY(0);
         }
 
 
@@ -1227,7 +2313,73 @@
            MOBILE
         ===================================================== */
 
-        @media (max-width: 800px) {
+        @media (max-width: 1000px) {
+
+            .hero-grid {
+
+                grid-template-columns:
+                    1fr;
+
+                text-align:
+                    center;
+            }
+
+
+            .hero-content {
+
+                max-width:
+                    760px;
+
+                margin-inline:
+                    auto;
+            }
+
+
+            .hero-description {
+
+                margin-inline:
+                    auto;
+            }
+
+
+            .hero-buttons {
+
+                justify-content:
+                    center;
+            }
+
+
+            .hero-visual {
+
+                min-height:
+                    390px;
+            }
+
+
+            .features-grid {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+
+            .feature {
+
+                border-bottom:
+                    1px solid var(--border);
+            }
+
+
+            .footer-top {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
 
             .container {
 
@@ -1239,13 +2391,55 @@
             }
 
 
-            .main-nav {
+            .announcement {
 
-                display: none;
+                font-size:
+                    11px;
+            }
+
+
+            .header-inner {
+
+                height:
+                    68px;
+            }
+
+
+            .nav {
+
+                display:
+                    none;
+            }
+
+
+            .brand-text {
+
+                font-size:
+                    18px;
+            }
+
+
+            .brand-icon {
+
+                width:
+                    37px;
+
+                height:
+                    37px;
+            }
+
+
+            .header-actions .search-header-button {
+
+                display:
+                    none;
             }
 
 
             .hero {
+
+                min-height:
+                    auto;
 
                 padding:
                     90px 0
@@ -1256,37 +2450,52 @@
             .hero h1 {
 
                 font-size:
-                    clamp(
-                        40px,
-                        10vw,
-                        60px
-                    );
+                    43px;
+
+                letter-spacing:
+                    0;
             }
 
 
             .hero-description {
 
-                font-size: 16px;
+                font-size:
+                    15px;
             }
 
 
-            .trust-inner {
+            .hero-visual {
 
-                grid-template-columns: 1fr;
+                min-height:
+                    350px;
+            }
+
+
+            .hero-orbit {
+
+                width:
+                    310px;
+
+                height:
+                    310px;
+            }
+
+
+            .hero-card {
+
+                width:
+                    275px;
+            }
+
+
+            .section {
 
                 padding:
-                    20px 0;
+                    80px 0;
             }
 
 
-            .trust-item {
-
-                justify-content:
-                    flex-start;
-            }
-
-
-            .section-heading {
+            .section-header {
 
                 align-items:
                     stretch;
@@ -1296,9 +2505,17 @@
             }
 
 
-            .search-wrapper {
+            .section-title {
 
-                width: 100%;
+                font-size:
+                    30px;
+            }
+
+
+            .search {
+
+                width:
+                    100%;
             }
 
 
@@ -1307,12 +2524,102 @@
                 grid-template-columns:
                     repeat(
                         2,
-                        minmax(0, 1fr)
+                        minmax(0,1fr)
                     );
+
+                gap:
+                    13px;
             }
 
 
-            .footer-inner {
+            .product-content {
+
+                padding:
+                    15px;
+            }
+
+
+            .product-name {
+
+                font-size:
+                    15px;
+            }
+
+
+            .product-description {
+
+                font-size:
+                    11px;
+
+                min-height:
+                    43px;
+            }
+
+
+            .price {
+
+                font-size:
+                    16px;
+            }
+
+
+            .view-button {
+
+                padding:
+                    0 11px;
+
+                font-size:
+                    10px;
+            }
+
+
+            .modal-card {
+
+                grid-template-columns:
+                    1fr;
+
+                max-height:
+                    92vh;
+            }
+
+
+            .modal-image {
+
+                min-height:
+                    280px;
+
+                max-height:
+                    350px;
+            }
+
+
+            .modal-info {
+
+                padding:
+                    28px;
+            }
+
+
+            .footer-top {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    35px;
+
+                padding:
+                    50px 0;
+            }
+
+
+            .footer-bottom {
+
+                min-height:
+                    auto;
+
+                padding:
+                    22px 0;
 
                 flex-direction:
                     column;
@@ -1320,37 +2627,51 @@
                 justify-content:
                     center;
 
-                padding:
-                    28px 0;
+                text-align:
+                    center;
             }
+
         }
 
 
-        @media (max-width: 520px) {
-
-            .header-inner {
-
-                min-height: 68px;
-            }
-
+        @media (max-width: 430px) {
 
             .header-actions {
 
-                display: none;
+                gap:
+                    5px;
             }
 
 
-            .hero-actions {
+            .icon-button {
+
+                width:
+                    38px;
+
+                height:
+                    38px;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    38px;
+            }
+
+
+            .hero-buttons {
 
                 flex-direction:
                     column;
             }
 
 
-            .primary-button,
-            .secondary-button {
+            .button-primary,
+            .button-secondary {
 
-                width: 100%;
+                width:
+                    100%;
             }
 
 
@@ -1361,25 +2682,19 @@
             }
 
 
-            .products-section {
+            .features-grid {
 
-                padding:
-                    75px 0
-                    80px;
+                grid-template-columns:
+                    1fr;
             }
 
 
-            .cta {
+            .feature {
 
-                padding:
-                    55px 22px;
+                border-left:
+                    0;
             }
 
-
-            .cta h2 {
-
-                font-size: 29px;
-            }
         }
 
     </style>
@@ -1391,35 +2706,43 @@
 
 
     <!-- =====================================================
+         ANNOUNCEMENT
+    ====================================================== -->
+
+    <div class="announcement">
+
+        بە سورا ستۆر، کڕینەکەت بە سادەیی و خێرایی دەست پێ دەکات.
+
+    </div>
+
+
+    <!-- =====================================================
          HEADER
     ====================================================== -->
 
-    <header class="site-header">
+    <header class="header">
 
         <div class="container header-inner">
 
 
             <a
                 href="#home"
-                class="logo"
-                aria-label="سەرەتا"
+                class="brand"
+                aria-label="سورا ستۆر"
             >
 
-                <span class="logo-mark">
+                <span class="brand-icon">
                     S
                 </span>
 
-                <span>
+                <span class="brand-text">
                     سورا ستۆر
                 </span>
 
             </a>
 
 
-            <nav
-                class="main-nav"
-                aria-label="بەشی سەرەکی"
-            >
+            <nav class="nav">
 
                 <a href="#home">
                     سەرەتا
@@ -1429,13 +2752,22 @@
                     بەرهەمەکان
                 </a>
 
+                <a href="#about">
+                    دەربارەی ئێمە
+                </a>
+
+                <a href="#contact">
+                    پەیوەندی
+                </a>
+
             </nav>
 
 
             <div class="header-actions">
 
+
                 <button
-                    class="header-button"
+                    class="icon-button search-header-button"
                     type="button"
                     aria-label="گەڕان"
                     onclick="
@@ -1446,6 +2778,26 @@
                 >
                     ⌕
                 </button>
+
+
+                <button
+                    class="icon-button"
+                    type="button"
+                    aria-label="سەبەتە"
+                    onclick="showCartMessage()"
+                >
+
+                    🛒
+
+                    <span
+                        class="cart-count"
+                        id="cart-count"
+                    >
+                        0
+                    </span>
+
+                </button>
+
 
             </div>
 
@@ -1461,63 +2813,142 @@
     <main id="home">
 
 
-        <!-- HERO -->
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
         <section class="hero">
 
-            <div class="container hero-content">
+
+            <div class="container hero-grid">
 
 
-                <div class="hero-badge">
+                <div class="hero-content">
 
-                    <span
-                        class="hero-badge-dot"
-                    ></span>
 
-                    بەخێربێیت بۆ سورا ستۆر
+                    <div class="hero-label">
+
+                        <span
+                            class="hero-label-dot"
+                        ></span>
+
+                        بەخێربێیت بۆ سورا ستۆر
+
+                    </div>
+
+
+                    <h1>
+
+                        هەموو ئەوەی
+                        <br>
+
+                        <span>
+                            پێویستتە، لێرەیە.
+                        </span>
+
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        کۆمەڵێک بەرهەمی هەڵبژێردراو
+                        بە نرخی ڕوون و ئەزموونێکی
+                        پیشەیی بۆ کڕینی ئۆنلاین.
+
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+
+                        <a
+                            href="#products"
+                            class="button-primary"
+                        >
+                            بینینی بەرهەمەکان
+                        </a>
+
+
+                        <a
+                            href="#about"
+                            class="button-secondary"
+                        >
+                            زیاتر بزانە
+                        </a>
+
+
+                    </div>
 
                 </div>
 
 
-                <h1>
+                <!-- HERO VISUAL -->
 
-                    هەموو ئەوەی پێویستتە
-                    <br>
-
-                    <span>
-                        لێرەیە.
-                    </span>
-
-                </h1>
+                <div
+                    class="hero-visual"
+                    aria-hidden="true"
+                >
 
 
-                <p class="hero-description">
-
-                    بەرهەمە هەڵبژێردراوەکان ببینە،
-                    نرخە ڕوونەکان و ئەزموونێکی
-                    سادە و خۆش لە کڕین لە سورا ستۆر.
-
-                </p>
+                    <div class="hero-orbit"></div>
 
 
-                <div class="hero-actions">
-
-                    <a
-                        href="#products"
-                        class="primary-button"
-                    >
-                        بینینی بەرهەمەکان
-                    </a>
+                    <div class="hero-card">
 
 
-                    <a
-                        href="#products"
-                        class="secondary-button"
-                    >
-                        کۆمەڵە بەرهەمەکان
-                    </a>
+                        <div class="hero-card-inner">
+
+
+                            <div class="hero-card-top">
+
+                                <span class="hero-card-brand">
+                                    سورا ستۆر
+                                </span>
+
+                                <span class="hero-card-badge">
+                                    SURA
+                                </span>
+
+                            </div>
+
+
+                            <div class="hero-card-center">
+
+                                <div class="hero-card-symbol">
+                                    S
+                                </div>
+
+                                <h3>
+                                    کڕینی جیاواز
+                                </h3>
+
+                                <p>
+                                    کوالیتی • سادەیی • متمانە
+                                </p>
+
+                            </div>
+
+
+                            <div class="hero-card-bottom">
+
+                                <span class="hero-card-price">
+                                    SuraStore
+                                </span>
+
+                                <span class="hero-card-small">
+                                    ئۆنلاین
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
 
                 </div>
+
 
             </div>
 
@@ -1525,17 +2956,18 @@
 
 
         <!-- =================================================
-             TRUST
+             FEATURES
         ================================================== -->
 
-        <section class="trust-bar">
-
-            <div class="container trust-inner">
+        <section class="features">
 
 
-                <div class="trust-item">
+            <div class="container features-grid">
 
-                    <span class="trust-icon">
+
+                <div class="feature">
+
+                    <span class="feature-icon">
                         ✓
                     </span>
 
@@ -1544,24 +2976,35 @@
                 </div>
 
 
-                <div class="trust-item">
+                <div class="feature">
 
-                    <span class="trust-icon">
-                        ◇
-                    </span>
-
-                    کڕینی ئاسان
-
-                </div>
-
-
-                <div class="trust-item">
-
-                    <span class="trust-icon">
+                    <span class="feature-icon">
                         $
                     </span>
 
                     نرخی ڕوون
+
+                </div>
+
+
+                <div class="feature">
+
+                    <span class="feature-icon">
+                        ◇
+                    </span>
+
+                    ئەزموونی کڕینی ئاسان
+
+                </div>
+
+
+                <div class="feature">
+
+                    <span class="feature-icon">
+                        ★
+                    </span>
+
+                    خزمەتگوزاریی پیشەیی
 
                 </div>
 
@@ -1576,31 +3019,31 @@
         ================================================== -->
 
         <section
-            class="products-section"
+            class="section"
             id="products"
         >
+
 
             <div class="container">
 
 
-                <div class="section-heading">
+                <div class="section-header">
 
 
                     <div>
 
-                        <h2>
+                        <h2 class="section-title">
                             بەرهەمەکان
                         </h2>
 
-                        <p>
-                            بەرهەمە بەردەستەکانی
-                            سورا ستۆر ببینە.
+                        <p class="section-subtitle">
+                            نوێترین بەرهەمە بەردەستەکانمان
                         </p>
 
                     </div>
 
 
-                    <div class="search-wrapper">
+                    <div class="search">
 
                         <span
                             class="search-icon"
@@ -1612,10 +3055,10 @@
 
                         <input
                             id="search"
-                            class="search-input"
                             type="search"
                             placeholder="گەڕان بەدوای بەرهەمێک..."
                             autocomplete="off"
+                            aria-label="گەڕان بەدوای بەرهەم"
                         >
 
                     </div>
@@ -1628,6 +3071,7 @@
                     class="products"
                     id="products-container"
                 >
+
 
                     <div class="state">
 
@@ -1645,7 +3089,9 @@
 
                     </div>
 
+
                 </div>
+
 
             </div>
 
@@ -1653,42 +3099,51 @@
 
 
         <!-- =================================================
-             CTA
+             ABOUT
         ================================================== -->
 
-        <section class="cta-section">
+        <section
+            class="section"
+            id="about"
+        >
+
 
             <div class="container">
 
 
                 <div class="cta">
 
+
                     <div class="cta-content">
 
 
                         <h2>
-                            بەرهەمی دڵخوازت بدۆزەرەوە
+                            سورا ستۆر بۆ کڕینی باشتر دروست کراوە.
                         </h2>
 
 
                         <p>
-                            کۆمەڵە بەرهەمەکانی
-                            سورا ستۆر بگەڕێ و
-                            بەرهەمی دڵخوازت هەڵبژێرە.
+
+                            ئێمە هەوڵ دەدەین ئەزموونێکی
+                            سادە، خێرا و متمانەپێکراو
+                            بۆ هەموو کڕیارەکانمان دابین بکەین.
+
                         </p>
 
 
                         <a
                             href="#products"
-                            class="primary-button"
+                            class="button-primary"
                         >
-                            گەڕان بەدوای بەرهەمەکان
+                            بەرهەمەکان ببینە
                         </a>
 
 
                     </div>
 
+
                 </div>
+
 
             </div>
 
@@ -1702,31 +3157,174 @@
          FOOTER
     ====================================================== -->
 
-    <footer>
+    <footer
+        class="footer"
+        id="contact"
+    >
 
-        <div class="container footer-inner">
+
+        <div class="container footer-top">
 
 
             <div class="footer-brand">
-                سورا ستۆر
+
+                <h3>
+                    سورا ستۆر
+                </h3>
+
+                <p>
+
+                    فرۆشگایەکی ئۆنلاین بۆ
+                    بەرهەمە هەڵبژێردراوەکان،
+                    بە دیزاینێکی سادە و ئەزموونێکی
+                    پیشەیی.
+
+                </p>
+
             </div>
 
 
-            <div class="footer-copy">
+            <div class="footer-column">
 
-                © ٢٠٢٦ سورا ستۆر.
-                هەموو مافەکان پارێزراون.
+                <h4>
+                    بەستەرەکان
+                </h4>
+
+                <a href="#home">
+                    سەرەتا
+                </a>
+
+                <a href="#products">
+                    بەرهەمەکان
+                </a>
+
+                <a href="#about">
+                    دەربارەی ئێمە
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    پەیوەندی
+                </h4>
+
+                <a href="#contact">
+                    پەیوەندی بە ئێمە
+                </a>
+
+                <a href="#products">
+                    بەرهەمەکان
+                </a>
 
             </div>
 
 
         </div>
 
+
+        <div class="container footer-bottom">
+
+            <span>
+                © ٢٠٢٦ سورا ستۆر
+            </span>
+
+            <span>
+                هەموو مافەکان پارێزراون.
+            </span>
+
+        </div>
+
+
     </footer>
 
 
     <!-- =====================================================
-         FIREBASE / FIRESTORE
+         PRODUCT MODAL
+    ====================================================== -->
+
+    <div
+        class="modal"
+        id="product-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+    >
+
+
+        <div class="modal-card">
+
+
+            <button
+                class="modal-close"
+                type="button"
+                onclick="closeProductModal()"
+                aria-label="داخستن"
+            >
+                ×
+            </button>
+
+
+            <div
+                class="modal-image"
+                id="modal-image"
+            ></div>
+
+
+            <div class="modal-info">
+
+
+                <h2 id="modal-name">
+                    بەرهەم
+                </h2>
+
+
+                <p
+                    class="modal-description"
+                    id="modal-description"
+                >
+                </p>
+
+
+                <div
+                    class="modal-price"
+                    id="modal-price"
+                >
+                    $0.00
+                </div>
+
+
+                <button
+                    class="modal-add"
+                    type="button"
+                    onclick="addCurrentProductToCart()"
+                >
+                    زیادکردن بۆ سەبەتە
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         TOAST
+    ====================================================== -->
+
+    <div
+        class="toast"
+        id="toast"
+    ></div>
+
+
+    <!-- =====================================================
+         FIREBASE
     ====================================================== -->
 
     <script type="module">
@@ -1746,6 +3344,10 @@
         "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
+        /* =================================================
+           ELEMENTS
+        ================================================= */
+
         const productsContainer =
             document.getElementById(
                 "products-container"
@@ -1758,7 +3360,53 @@
             );
 
 
+        const cartCount =
+            document.getElementById(
+                "cart-count"
+            );
+
+
+        const modal =
+            document.getElementById(
+                "product-modal"
+            );
+
+
+        const modalImage =
+            document.getElementById(
+                "modal-image"
+            );
+
+
+        const modalName =
+            document.getElementById(
+                "modal-name"
+            );
+
+
+        const modalDescription =
+            document.getElementById(
+                "modal-description"
+            );
+
+
+        const modalPrice =
+            document.getElementById(
+                "modal-price"
+            );
+
+
+        const toast =
+            document.getElementById(
+                "toast"
+            );
+
+
         let products = [];
+
+        let currentProduct = null;
+
+        let cartItems = 0;
 
 
         /* =================================================
@@ -1767,15 +3415,15 @@
 
         function escapeHTML(value) {
 
-            const div =
+            const element =
                 document.createElement(
                     "div"
                 );
 
-            div.textContent =
+            element.textContent =
                 String(value ?? "");
 
-            return div.innerHTML;
+            return element.innerHTML;
         }
 
 
@@ -1831,30 +3479,25 @@
             } catch (error) {
 
                 console.error(
-                    "SuraStore error:",
+                    "SuraStore Firebase error:",
                     error
                 );
 
 
                 productsContainer.innerHTML = `
 
-                    <div
-                        class="state error-state"
-                    >
+                    <div class="state error-state">
 
                         <div class="state-icon">
                             !
                         </div>
 
-
                         <h3>
-                            بەرهەمەکان بەردەست نین
+                            کێشەیەک ڕوویدا
                         </h3>
 
-
                         <p>
-                            کێشەیەک لە بارکردنی
-                            بەرهەمەکان هەیە.
+                            نەتوانرا بەرهەمەکان بار بکرێن.
                         </p>
 
                     </div>
@@ -1890,14 +3533,12 @@
                             ○
                         </div>
 
-
                         <h3>
                             هیچ بەرهەمێک نەدۆزرایەوە
                         </h3>
 
-
                         <p>
-                            بە زوویی بەرهەمی نوێ زیاد دەکرێت.
+                            هەوڵ بدەرەوە بە وشەیەکی تر.
                         </p>
 
                     </div>
@@ -1943,15 +3584,17 @@
                         );
 
 
-                    const price =
+                    const numericPrice =
                         Number(
                             product.price
                         );
 
 
-                    const formattedPrice =
-                        Number.isFinite(price)
-                            ? price.toFixed(2)
+                    const price =
+                        Number.isFinite(
+                            numericPrice
+                        )
+                            ? numericPrice.toFixed(2)
                             : "0.00";
 
 
@@ -1971,7 +3614,7 @@
                         : `
 
                             <div
-                                class="image-placeholder"
+                                class="product-placeholder"
                             >
                                 وێنە بەردەست نییە
                             </div>
@@ -1981,50 +3624,37 @@
 
                     card.innerHTML = `
 
-                        <div
-                            class="product-image"
-                        >
+                        <div class="product-image">
 
                             ${imageHTML}
 
                         </div>
 
 
-                        <div
-                            class="product-info"
-                        >
+                        <div class="product-content">
 
-                            <h3
-                                class="product-name"
-                            >
+                            <h3 class="product-name">
                                 ${name}
                             </h3>
 
 
-                            <p
-                                class="product-description"
-                            >
+                            <p class="product-description">
                                 ${description}
                             </p>
 
 
-                            <div
-                                class="product-bottom"
-                            >
+                            <div class="product-footer">
 
-                                <span
-                                    class="product-price"
-                                >
-                                    $${formattedPrice}
+                                <span class="price">
+                                    $${price}
                                 </span>
 
 
                                 <button
-                                    class="product-button"
+                                    class="view-button"
                                     type="button"
-                                    data-product-id="${escapeHTML(product.id)}"
                                 >
-                                    بینین
+                                    بینینی بەرهەم
                                 </button>
 
                             </div>
@@ -2034,12 +3664,271 @@
                     `;
 
 
+                    const viewButton =
+                        card.querySelector(
+                            ".view-button"
+                        );
+
+
+                    viewButton.addEventListener(
+                        "click",
+                        () => {
+
+                            openProductModal(
+                                product
+                            );
+
+                        }
+                    );
+
+
                     productsContainer.appendChild(
                         card
                     );
 
                 }
             );
+
+        }
+
+
+        /* =================================================
+           PRODUCT MODAL
+        ================================================= */
+
+        function openProductModal(
+            product
+        ) {
+
+            currentProduct =
+                product;
+
+
+            modalName.textContent =
+                product.name ||
+                "بەرهەم";
+
+
+            modalDescription.textContent =
+                product.description ||
+                "وەسفی بەرهەم بەردەست نییە.";
+
+
+            const price =
+                Number(
+                    product.price
+                );
+
+
+            modalPrice.textContent =
+                Number.isFinite(price)
+                    ? `$${price.toFixed(2)}`
+                    : "$0.00";
+
+
+            modalImage.innerHTML =
+                "";
+
+
+            if (
+                product.image
+            ) {
+
+                const image =
+                    document.createElement(
+                        "img"
+                    );
+
+
+                image.src =
+                    product.image;
+
+
+                image.alt =
+                    product.name ||
+                    "بەرهەم";
+
+
+                modalImage.appendChild(
+                    image
+                );
+
+            } else {
+
+                modalImage.innerHTML = `
+
+                    <div
+                        class="product-placeholder"
+                    >
+                        وێنە بەردەست نییە
+                    </div>
+
+                `;
+
+            }
+
+
+            modal.classList.add(
+                "open"
+            );
+
+
+            modal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
+
+
+        window.closeProductModal =
+            function () {
+
+                modal.classList.remove(
+                    "open"
+                );
+
+
+                modal.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
+
+
+                document.body.style.overflow =
+                    "";
+
+            };
+
+
+        modal.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    event.target === modal
+                ) {
+
+                    closeProductModal();
+
+                }
+
+            }
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeProductModal();
+
+                }
+
+            }
+        );
+
+
+        /* =================================================
+           CART
+        ================================================= */
+
+        window.addCurrentProductToCart =
+            function () {
+
+                if (
+                    !currentProduct
+                ) {
+
+                    return;
+
+                }
+
+
+                cartItems++;
+
+
+                cartCount.textContent =
+                    cartItems;
+
+
+                closeProductModal();
+
+
+                showToast(
+                    "بەرهەمەکە زیادکرا بۆ سەبەتە."
+                );
+
+            };
+
+
+        window.showCartMessage =
+            function () {
+
+                if (
+                    cartItems === 0
+                ) {
+
+                    showToast(
+                        "سەبەتەکەت هێشتا بەتاڵە."
+                    );
+
+                    return;
+
+                }
+
+
+                showToast(
+                    `لە سەبەتەکەتدا ${cartItems} بەرهەم هەیە.`
+                );
+
+            };
+
+
+        /* =================================================
+           TOAST
+        ================================================= */
+
+        let toastTimer;
+
+
+        function showToast(
+            message
+        ) {
+
+            toast.textContent =
+                message;
+
+
+            toast.classList.add(
+                "show"
+            );
+
+
+            clearTimeout(
+                toastTimer
+            );
+
+
+            toastTimer =
+                setTimeout(
+                    () => {
+
+                        toast.classList.remove(
+                            "show"
+                        );
+
+                    },
+                    2800
+                );
 
         }
 
@@ -2059,13 +3948,16 @@
                         .toLowerCase();
 
 
-                if (!searchTerm) {
+                if (
+                    !searchTerm
+                ) {
 
                     renderProducts(
                         products
                     );
 
                     return;
+
                 }
 
 
@@ -2123,6 +4015,7 @@
         loadProducts();
 
     </script>
+
 
 </body>
 
