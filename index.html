@@ -1,4022 +1,3149 @@
 <!DOCTYPE html>
 <html lang="ckb" dir="rtl">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="سورا ستۆر — فرۆشگای ئۆنلاین">
+<meta name="theme-color" content="#08090d">
+<title>سورا ستۆر | Sura Store</title>
+
+<style>
+@font-face{
+    font-family:Speda;
+    src:url("Speda-Bold%202.ttf") format("truetype");
+    font-weight:700;
+    font-display:swap;
+}
+
+:root{
+    --bg:#08090d;
+    --panel:#101218;
+    --panel2:#151821;
+    --line:rgba(255,255,255,.085);
+    --line2:rgba(255,255,255,.15);
+    --text:#fff;
+    --muted:#8f95a3;
+    --soft:#b7bbc5;
+    --max:1380px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(
+            circle at 50% -15%,
+            rgba(255,255,255,.08),
+            transparent 34rem
+        ),
+        var(--bg);
 
-    <meta charset="UTF-8">
+    color:var(--text);
+
+    font-family:
+        Speda,
+        Tahoma,
+        Arial,
+        sans-serif;
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    line-height:1.8;
 
-    <meta
-        name="description"
-        content="سورا ستۆر — فرۆشگای ئۆنلاین بۆ بەرهەمە هەڵبژێردراوەکان"
-    >
+    overflow-x:hidden;
+}
 
-    <meta
-        name="theme-color"
-        content="#090a0f"
-    >
+button,
+input,
+select{
+    font:inherit;
+}
 
-    <title>سورا ستۆر | SuraStore</title>
+button{
+    cursor:pointer;
+}
 
+a{
+    text-decoration:none;
+    color:inherit;
+}
 
-    <style>
+.container{
+    width:min(
+        calc(100% - 40px),
+        var(--max)
+    );
 
-        /* =====================================================
-           FONT
-        ===================================================== */
+    margin:auto;
+}
 
-        @font-face {
 
-            font-family: "Speda";
+/* =========================
+   ANNOUNCEMENT
+========================= */
 
-            src:
-                url("Speda-Bold%202.ttf")
-                format("truetype");
+.announcement{
+    min-height:36px;
 
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
+    padding:6px 15px;
 
-        /* =====================================================
-           RESET
-        ===================================================== */
+    background:#fff;
+    color:#090a0e;
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    font-size:11px;
+}
 
 
-        html {
-            scroll-behavior: smooth;
-        }
+/* =========================
+   HEADER
+========================= */
 
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
 
-        body {
+    border-bottom:1px solid var(--line);
 
-            min-height: 100vh;
+    background:
+        rgba(8,9,13,.82);
 
-            background:
-                #090a0f;
+    backdrop-filter:blur(24px);
+}
 
-            color:
-                #ffffff;
+.header-inner{
+    height:78px;
 
-            font-family:
-                "Speda",
-                Tahoma,
-                Arial,
-                sans-serif;
+    display:flex;
+    align-items:center;
 
-            direction: rtl;
+    gap:30px;
+}
 
-            line-height: 1.8;
+.brand{
+    display:flex;
+    align-items:center;
 
-            overflow-x: hidden;
-        }
+    gap:11px;
 
+    min-width:max-content;
+}
 
-        button,
-        input {
+.brand-logo{
+    width:43px;
+    height:43px;
 
-            font-family:
-                "Speda",
-                Tahoma,
-                Arial,
-                sans-serif;
-        }
+    border-radius:13px;
 
+    background:#fff;
+    color:#08090d;
 
-        button {
-            cursor: pointer;
-        }
+    display:grid;
+    place-items:center;
 
+    font-size:22px;
+}
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+.brand-name{
+    font-size:21px;
+}
 
+.nav{
+    flex:1;
 
-        img {
-            max-width: 100%;
-        }
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
+    gap:32px;
+}
 
-        /* =====================================================
-           VARIABLES
-        ===================================================== */
+.nav a{
+    font-size:13px;
+    color:var(--soft);
 
-        :root {
+    transition:.2s;
+}
 
-            --bg:
-                #090a0f;
+.nav a:hover,
+.nav a.active{
+    color:#fff;
+}
 
-            --bg-soft:
-                #0d0f15;
+.actions{
+    display:flex;
+    gap:8px;
+}
 
-            --surface:
-                #11131a;
+.icon-btn{
+    position:relative;
 
-            --surface-2:
-                #151821;
+    width:43px;
+    height:43px;
 
-            --surface-3:
-                #1a1d26;
+    border:1px solid var(--line);
+    border-radius:12px;
 
-            --border:
-                rgba(255,255,255,0.08);
+    background:rgba(255,255,255,.035);
 
-            --border-strong:
-                rgba(255,255,255,0.14);
+    color:#fff;
 
-            --text:
-                #ffffff;
+    display:grid;
+    place-items:center;
 
-            --muted:
-                #858b9a;
+    transition:.2s;
+}
 
-            --muted-light:
-                #a8adba;
+.icon-btn:hover{
+    background:rgba(255,255,255,.09);
 
-            --white:
-                #ffffff;
+    border-color:var(--line2);
 
-            --black:
-                #090a0f;
+    transform:translateY(-1px);
+}
 
-            --success:
-                #76d99a;
+.badge{
+    position:absolute;
 
-            --danger:
-                #ff7777;
+    top:-5px;
+    left:-5px;
 
-            --radius:
-                18px;
+    min-width:18px;
+    height:18px;
 
-            --max-width:
-                1320px;
-        }
+    padding:0 4px;
 
+    border-radius:20px;
 
-        /* =====================================================
-           GLOBAL
-        ===================================================== */
+    background:#fff;
+    color:#090a0e;
 
-        ::selection {
+    font-size:9px;
 
-            background:
-                #ffffff;
+    display:grid;
+    place-items:center;
+}
 
-            color:
-                #090a0f;
-        }
 
+/* =========================
+   HERO
+========================= */
 
-        .container {
+.hero{
+    padding:72px 0 65px;
 
-            width:
-                min(
-                    calc(100% - 48px),
-                    var(--max-width)
-                );
+    border-bottom:1px solid var(--line);
+}
 
-            margin-inline:
-                auto;
-        }
+.hero-grid{
+    min-height:570px;
 
+    display:grid;
 
-        .section {
+    grid-template-columns:
+        1.05fr
+        .95fr;
 
-            padding:
-                110px 0;
-        }
+    gap:70px;
 
+    align-items:center;
+}
 
-        /* =====================================================
-           ANNOUNCEMENT
-        ===================================================== */
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
 
-        .announcement {
+    gap:8px;
 
-            min-height:
-                38px;
+    padding:5px 13px;
 
-            display:
-                flex;
+    border:1px solid var(--line);
 
-            align-items:
-                center;
+    border-radius:999px;
 
-            justify-content:
-                center;
+    background:rgba(255,255,255,.035);
 
-            background:
-                #ffffff;
+    color:var(--soft);
 
-            color:
-                #090a0f;
+    font-size:11px;
 
-            font-size:
-                12px;
+    margin-bottom:22px;
+}
 
-            font-weight:
-                700;
+.dot{
+    width:7px;
+    height:7px;
 
-            text-align:
-                center;
+    border-radius:50%;
 
-            padding:
-                6px 20px;
-        }
+    background:#fff;
+}
 
+.hero h1{
+    font-size:
+        clamp(
+            48px,
+            6vw,
+            82px
+        );
 
-        /* =====================================================
-           HEADER
-        ===================================================== */
+    line-height:1.3;
 
-        .header {
+    letter-spacing:-1px;
 
-            position:
-                sticky;
+    margin-bottom:18px;
+}
 
-            top:
-                0;
+.hero h1 span{
+    color:#686e7c;
+}
 
-            z-index:
-                1000;
+.hero-copy{
+    max-width:610px;
 
-            border-bottom:
-                1px solid var(--border);
+    color:var(--muted);
 
-            background:
-                rgba(9,10,15,0.84);
+    font-size:16px;
 
-            backdrop-filter:
-                blur(22px);
+    line-height:2.1;
+}
 
-            -webkit-backdrop-filter:
-                blur(22px);
-        }
+.hero-buttons{
+    display:flex;
 
+    gap:10px;
 
-        .header-inner {
+    flex-wrap:wrap;
 
-            height:
-                78px;
+    margin-top:28px;
+}
 
-            display:
-                flex;
+.primary,
+.secondary{
+    min-height:49px;
 
-            align-items:
-                center;
+    padding:0 24px;
 
-            justify-content:
-                space-between;
+    border-radius:11px;
 
-            gap:
-                30px;
-        }
+    display:inline-flex;
 
+    align-items:center;
+    justify-content:center;
 
-        /* =====================================================
-           BRAND
-        ===================================================== */
+    font-size:13px;
 
-        .brand {
+    transition:.2s;
+}
 
-            display:
-                flex;
+.primary{
+    background:#fff;
 
-            align-items:
-                center;
+    color:#090a0e;
 
-            gap:
-                12px;
+    border:1px solid #fff;
+}
 
-            flex-shrink:
-                0;
-        }
+.secondary{
+    background:
+        rgba(255,255,255,.035);
 
+    border:1px solid var(--line);
 
-        .brand-icon {
+    color:#fff;
+}
 
-            width:
-                42px;
+.primary:hover,
+.secondary:hover{
+    transform:translateY(-2px);
+}
 
-            height:
-                42px;
+.hero-stats{
+    display:flex;
 
-            display:
-                grid;
+    gap:30px;
 
-            place-items:
-                center;
+    margin-top:38px;
+}
 
-            border-radius:
-                12px;
+.stat strong{
+    display:block;
 
-            background:
-                #ffffff;
+    font-size:22px;
+}
 
-            color:
-                #090a0f;
+.stat span{
+    display:block;
 
-            font-size:
-                21px;
+    color:#777d8a;
 
-            font-weight:
-                700;
-        }
+    font-size:10px;
+}
 
 
-        .brand-text {
+/* =========================
+   HERO VISUAL
+========================= */
 
-            font-size:
-                21px;
+.visual{
+    position:relative;
 
-            font-weight:
-                700;
+    min-height:520px;
 
-            white-space:
-                nowrap;
-        }
+    display:grid;
 
+    place-items:center;
+}
 
-        /* =====================================================
-           NAV
-        ===================================================== */
+.glow{
+    position:absolute;
 
-        .nav {
+    width:520px;
+    height:520px;
 
-            display:
-                flex;
+    border-radius:50%;
 
-            align-items:
-                center;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.08),
+            transparent 65%
+        );
+}
 
-            gap:
-                34px;
-        }
+.showcase{
+    position:relative;
 
+    width:min(390px,85%);
 
-        .nav a {
+    aspect-ratio:.82;
 
-            position:
-                relative;
+    padding:15px;
 
-            color:
-                var(--muted-light);
+    border:1px solid var(--line2);
 
-            font-size:
-                14px;
+    border-radius:28px;
 
-            font-weight:
-                700;
+    background:
+        linear-gradient(
+            145deg,
+            #1b1e27,
+            #0d0f14
+        );
 
-            transition:
-                color .2s ease;
-        }
+    transform:rotate(-5deg);
 
+    box-shadow:
+        0 35px 90px
+        rgba(0,0,0,.5);
+}
 
-        .nav a::after {
+.showcase-inner{
+    height:100%;
 
-            content:
-                "";
+    border:1px solid var(--line);
 
-            position:
-                absolute;
+    border-radius:20px;
 
-            right:
-                0;
+    padding:24px;
 
-            bottom:
-                -9px;
+    display:flex;
 
-            width:
-                0;
+    flex-direction:column;
 
-            height:
-                2px;
+    justify-content:space-between;
 
-            border-radius:
-                999px;
+    background:
+        linear-gradient(
+            160deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.01)
+        );
+}
 
-            background:
-                #ffffff;
+.showcase-top,
+.showcase-bottom{
+    display:flex;
 
-            transition:
-                width .2s ease;
-        }
+    align-items:center;
 
+    justify-content:space-between;
+}
 
-        .nav a:hover {
+.showcase-small{
+    color:#747a87;
 
-            color:
-                #ffffff;
-        }
+    font-size:10px;
+}
 
+.showcase-symbol{
+    width:125px;
+    height:125px;
 
-        .nav a:hover::after {
+    margin:auto;
 
-            width:
-                100%;
-        }
+    display:grid;
+    place-items:center;
 
+    border-radius:35px;
 
-        /* =====================================================
-           HEADER ACTIONS
-        ===================================================== */
+    border:1px solid rgba(255,255,255,.12);
 
-        .header-actions {
+    background:
+        rgba(255,255,255,.05);
 
-            display:
-                flex;
+    font-size:58px;
+}
 
-            align-items:
-                center;
+.showcase-center{
+    text-align:center;
+}
 
-            gap:
-                9px;
-        }
+.showcase-center h3{
+    font-size:24px;
 
+    margin-top:18px;
+}
 
-        .icon-button {
+.showcase-center p{
+    color:#777d8a;
 
-            position:
-                relative;
+    font-size:10px;
+}
 
-            width:
-                42px;
+.showcase-price{
+    font-size:18px;
+}
 
-            height:
-                42px;
 
-            display:
-                grid;
+/* =========================
+   FEATURES
+========================= */
 
-            place-items:
-                center;
+.features{
+    border-bottom:1px solid var(--line);
+}
 
-            border:
-                1px solid var(--border);
+.features-grid{
+    display:grid;
 
-            border-radius:
-                12px;
+    grid-template-columns:
+        repeat(4,1fr);
+}
 
-            background:
-                rgba(255,255,255,0.035);
+.feature{
+    min-height:88px;
 
-            color:
-                #ffffff;
+    display:flex;
 
-            font-size:
-                19px;
+    align-items:center;
+    justify-content:center;
 
-            transition:
-                background .2s ease,
-                border-color .2s ease,
-                transform .2s ease;
-        }
+    gap:10px;
 
+    border-left:1px solid var(--line);
 
-        .icon-button:hover {
+    color:var(--soft);
 
-            background:
-                rgba(255,255,255,0.09);
+    font-size:11px;
+}
 
-            border-color:
-                var(--border-strong);
+.feature:last-child{
+    border-left:0;
+}
 
-            transform:
-                translateY(-1px);
-        }
+.feature-icon{
+    width:34px;
+    height:34px;
 
+    border:1px solid var(--line);
 
-        .cart-count {
+    border-radius:10px;
 
-            position:
-                absolute;
+    display:grid;
 
-            top:
-                -4px;
+    place-items:center;
 
-            left:
-                -4px;
+    background:
+        rgba(255,255,255,.03);
+}
 
-            min-width:
-                18px;
 
-            height:
-                18px;
+/* =========================
+   SHOP
+========================= */
 
-            padding:
-                0 4px;
+.shop{
+    padding:95px 0;
+}
 
-            display:
-                grid;
+.section-head{
+    display:flex;
 
-            place-items:
-                center;
+    align-items:end;
 
-            border-radius:
-                999px;
+    justify-content:space-between;
 
-            background:
-                #ffffff;
+    gap:25px;
 
-            color:
-                #090a0f;
+    margin-bottom:30px;
+}
 
-            font-size:
-                10px;
+.kicker{
+    font-size:10px;
 
-            line-height:
-                1;
+    color:#747a87;
 
-            font-weight:
-                700;
-        }
+    margin-bottom:4px;
+}
 
+.section-title{
+    font-size:34px;
 
-        /* =====================================================
-           HERO
-        ===================================================== */
+    line-height:1.5;
+}
 
-        .hero {
+.section-desc{
+    font-size:12px;
 
-            position:
-                relative;
+    color:var(--muted);
+}
 
-            min-height:
-                650px;
 
-            display:
-                flex;
+/* =========================
+   SEARCH
+========================= */
 
-            align-items:
-                center;
+.search{
+    width:min(100%,340px);
 
-            overflow:
-                hidden;
+    height:47px;
 
-            border-bottom:
-                1px solid var(--border);
-        }
+    position:relative;
+}
 
+.search input{
+    width:100%;
+    height:100%;
 
-        .hero::before {
+    border:1px solid var(--line);
 
-            content:
-                "";
+    outline:none;
 
-            position:
-                absolute;
+    border-radius:11px;
 
-            width:
-                800px;
+    background:
+        rgba(255,255,255,.035);
 
-            height:
-                800px;
+    color:#fff;
 
-            top:
-                -440px;
+    padding:
+        0 43px
+        0 15px;
 
-            right:
-                50%;
+    font-size:12px;
+}
 
-            transform:
-                translateX(50%);
+.search input:focus{
+    border-color:var(--line2);
 
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(255,255,255,0.09),
-                    transparent 68%
-                );
+    background:
+        rgba(255,255,255,.055);
+}
 
-            pointer-events:
-                none;
-        }
+.search-icon{
+    position:absolute;
 
+    right:15px;
 
-        .hero::after {
+    top:50%;
 
-            content:
-                "";
+    transform:translateY(-50%);
 
-            position:
-                absolute;
+    color:#737987;
 
-            width:
-                500px;
+    pointer-events:none;
+}
 
-            height:
-                500px;
 
-            bottom:
-                -360px;
+/* =========================
+   TOOLBAR
+========================= */
 
-            left:
-                -150px;
+.toolbar{
+    display:flex;
 
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(255,255,255,0.04),
-                    transparent 68%
-                );
+    align-items:center;
 
-            pointer-events:
-                none;
-        }
+    justify-content:space-between;
 
+    margin-bottom:22px;
+}
 
-        .hero-grid {
+.result-count{
+    color:#777d8a;
 
-            position:
-                relative;
+    font-size:11px;
+}
 
-            z-index:
-                1;
+.sort{
+    background:
+        rgba(255,255,255,.035);
 
-            display:
-                grid;
+    border:1px solid var(--line);
 
-            grid-template-columns:
-                1.15fr
-                .85fr;
+    color:#fff;
 
-            align-items:
-                center;
+    border-radius:10px;
 
-            gap:
-                70px;
-        }
+    min-height:38px;
 
+    padding:0 12px;
 
-        .hero-content {
+    font-size:10px;
 
-            max-width:
-                720px;
-        }
+    outline:none;
+}
 
 
-        .hero-label {
+/* =========================
+   PRODUCTS
+========================= */
 
-            display:
-                inline-flex;
+.products{
+    display:grid;
 
-            align-items:
-                center;
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
 
-            gap:
-                9px;
+    gap:18px;
+}
 
-            padding:
-                6px 15px;
+.card{
+    overflow:hidden;
 
-            border:
-                1px solid var(--border);
+    border:1px solid var(--line);
 
-            border-radius:
-                999px;
+    border-radius:18px;
 
-            background:
-                rgba(255,255,255,0.035);
+    background:var(--panel);
 
-            color:
-                #b8bdc9;
+    transition:.25s;
+}
 
-            font-size:
-                12px;
+.card:hover{
+    transform:translateY(-5px);
 
-            font-weight:
-                700;
+    border-color:var(--line2);
 
-            margin-bottom:
-                24px;
-        }
+    box-shadow:
+        0 25px 60px
+        rgba(0,0,0,.3);
+}
 
+.card-image{
+    aspect-ratio:1/1;
 
-        .hero-label-dot {
+    position:relative;
 
-            width:
-                7px;
+    overflow:hidden;
 
-            height:
-                7px;
+    background:
+        linear-gradient(
+            145deg,
+            #1a1d25,
+            #0d0f14
+        );
+}
 
-            border-radius:
-                50%;
+.card-image img{
+    width:100%;
+    height:100%;
 
-            background:
-                #ffffff;
-        }
+    object-fit:cover;
 
+    display:block;
 
-        .hero h1 {
+    transition:.5s;
+}
 
-            max-width:
-                760px;
+.card:hover .card-image img{
+    transform:scale(1.045);
+}
 
-            font-size:
-                clamp(
-                    48px,
-                    6vw,
-                    78px
-                );
+.card-label{
+    position:absolute;
 
-            line-height:
-                1.3;
+    top:12px;
+    right:12px;
 
-            letter-spacing:
-                -1.5px;
+    padding:4px 9px;
 
-            font-weight:
-                700;
+    border-radius:999px;
 
-            margin-bottom:
-                22px;
-        }
+    background:
+        rgba(0,0,0,.58);
 
+    border:
+        1px solid
+        rgba(255,255,255,.12);
 
-        .hero h1 span {
+    font-size:9px;
+}
 
-            color:
-                #6e7483;
-        }
+.placeholder{
+    height:100%;
 
+    display:grid;
 
-        .hero-description {
+    place-items:center;
 
-            max-width:
-                650px;
+    color:#626875;
 
-            color:
-                var(--muted);
+    font-size:11px;
+}
 
-            font-size:
-                17px;
+.card-body{
+    padding:17px;
+}
 
-            line-height:
-                2.1;
+.card-name{
+    font-size:16px;
 
-            font-weight:
-                700;
+    margin-bottom:4px;
+}
 
-            margin-bottom:
-                31px;
-        }
+.card-desc{
+    color:var(--muted);
 
+    font-size:10px;
 
-        .hero-buttons {
+    line-height:1.9;
 
-            display:
-                flex;
+    min-height:40px;
 
-            align-items:
-                center;
+    display:-webkit-box;
 
-            gap:
-                11px;
+    -webkit-line-clamp:2;
 
-            flex-wrap:
-                wrap;
-        }
+    -webkit-box-orient:vertical;
 
+    overflow:hidden;
+}
 
-        .button-primary {
+.card-bottom{
+    display:flex;
 
-            min-height:
-                50px;
+    align-items:center;
 
-            display:
-                inline-flex;
+    justify-content:space-between;
 
-            align-items:
-                center;
+    gap:8px;
 
-            justify-content:
-                center;
+    margin-top:15px;
+}
 
-            padding:
-                0 25px;
+.price{
+    font-size:17px;
+}
 
-            border:
-                1px solid #ffffff;
+.view{
+    min-height:36px;
 
-            border-radius:
-                12px;
+    padding:0 12px;
 
-            background:
-                #ffffff;
+    border:1px solid var(--line);
 
-            color:
-                #090a0f;
+    border-radius:9px;
 
-            font-size:
-                14px;
+    background:
+        rgba(255,255,255,.045);
 
-            font-weight:
-                700;
+    color:#fff;
 
-            transition:
-                transform .2s ease,
-                opacity .2s ease;
-        }
+    font-size:10px;
+}
 
+.view:hover{
+    background:
+        rgba(255,255,255,.1);
+}
 
-        .button-primary:hover {
 
-            transform:
-                translateY(-2px);
+/* =========================
+   STATES
+========================= */
 
-            opacity:
-                .9;
-        }
+.state{
+    grid-column:1/-1;
 
+    min-height:260px;
 
-        .button-secondary {
+    border:1px solid var(--line);
 
-            min-height:
-                50px;
+    border-radius:18px;
 
-            display:
-                inline-flex;
+    display:flex;
 
-            align-items:
-                center;
+    align-items:center;
 
-            justify-content:
-                center;
+    justify-content:center;
 
-            padding:
-                0 25px;
+    flex-direction:column;
 
-            border:
-                1px solid var(--border);
+    background:
+        rgba(255,255,255,.015);
+}
 
-            border-radius:
-                12px;
+.state-icon{
+    width:52px;
+    height:52px;
 
-            background:
-                rgba(255,255,255,0.035);
+    border:1px solid var(--line);
 
-            color:
-                #ffffff;
+    border-radius:15px;
 
-            font-size:
-                14px;
+    display:grid;
 
-            font-weight:
-                700;
+    place-items:center;
 
-            transition:
-                background .2s ease,
-                transform .2s ease;
-        }
+    margin-bottom:12px;
+}
 
+.state h3{
+    font-size:17px;
+}
 
-        .button-secondary:hover {
+.state p{
+    color:var(--muted);
 
-            background:
-                rgba(255,255,255,0.08);
+    font-size:11px;
+}
 
-            transform:
-                translateY(-2px);
-        }
 
+/* =========================
+   BANNER
+========================= */
 
-        /* =====================================================
-           HERO VISUAL
-        ===================================================== */
+.banner{
+    margin-top:25px;
 
-        .hero-visual {
+    border:1px solid var(--line);
 
-            position:
-                relative;
+    border-radius:22px;
 
-            min-height:
-                440px;
+    padding:45px;
 
-            display:
-                flex;
+    display:flex;
 
-            align-items:
-                center;
+    align-items:center;
 
-            justify-content:
-                center;
-        }
+    justify-content:space-between;
 
+    gap:30px;
 
-        .hero-orbit {
+    background:
+        linear-gradient(
+            135deg,
+            #151821,
+            #0d0f14
+        );
+}
 
-            position:
-                absolute;
+.banner h2{
+    font-size:27px;
+}
 
-            width:
-                380px;
+.banner p{
+    color:var(--muted);
 
-            height:
-                380px;
+    font-size:11px;
 
-            border:
-                1px solid rgba(255,255,255,0.07);
+    margin-top:5px;
+}
 
-            border-radius:
-                50%;
-        }
+.banner .primary{
+    white-space:nowrap;
+}
 
 
-        .hero-orbit::before {
+/* =========================
+   FOOTER
+========================= */
 
-            content:
-                "";
+.footer{
+    border-top:1px solid var(--line);
 
-            position:
-                absolute;
+    background:#06070a;
+}
 
-            inset:
-                35px;
+.footer-grid{
+    padding:60px 0;
 
-            border:
-                1px solid rgba(255,255,255,0.05);
+    display:grid;
 
-            border-radius:
-                50%;
-        }
+    grid-template-columns:
+        1.6fr
+        1fr
+        1fr;
 
+    gap:50px;
+}
 
-        .hero-card {
+.footer h3{
+    font-size:19px;
 
-            position:
-                relative;
+    margin-bottom:8px;
+}
 
-            width:
-                min(100%, 340px);
+.footer h4{
+    font-size:12px;
 
-            aspect-ratio:
-                0.78;
+    margin-bottom:10px;
+}
 
-            padding:
-                18px;
+.footer p,
+.footer a{
+    color:#747a87;
 
-            border:
-                1px solid var(--border-strong);
+    font-size:10px;
+}
 
-            border-radius:
-                24px;
+.footer a{
+    display:block;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #191c25,
-                    #0e1016
-                );
+    margin:5px 0;
+}
 
-            box-shadow:
-                0 35px 90px
-                rgba(0,0,0,0.45);
+.footer a:hover{
+    color:#fff;
+}
 
-            transform:
-                rotate(-4deg);
-        }
+.footer-bottom{
+    border-top:1px solid var(--line);
 
+    min-height:65px;
 
-        .hero-card-inner {
+    display:flex;
 
-            width:
-                100%;
+    align-items:center;
 
-            height:
-                100%;
+    justify-content:space-between;
 
-            display:
-                flex;
+    color:#555b67;
 
-            flex-direction:
-                column;
+    font-size:9px;
+}
 
-            justify-content:
-                space-between;
 
-            padding:
-                25px;
+/* =========================
+   PRODUCT MODAL
+========================= */
 
-            border:
-                1px solid rgba(255,255,255,0.06);
+.modal{
+    position:fixed;
 
-            border-radius:
-                18px;
+    inset:0;
 
-            background:
-                rgba(255,255,255,0.025);
-        }
+    z-index:3000;
 
+    background:
+        rgba(0,0,0,.72);
 
-        .hero-card-top {
+    backdrop-filter:blur(10px);
 
-            display:
-                flex;
+    display:none;
 
-            align-items:
-                center;
+    align-items:center;
 
-            justify-content:
-                space-between;
-        }
+    justify-content:center;
 
+    padding:18px;
+}
 
-        .hero-card-brand {
+.modal.open{
+    display:flex;
+}
 
-            font-size:
-                16px;
+.modal-card{
+    width:min(900px,100%);
 
-            font-weight:
-                700;
-        }
+    max-height:90vh;
 
+    overflow:auto;
 
-        .hero-card-badge {
+    display:grid;
 
-            padding:
-                5px 10px;
+    grid-template-columns:1fr 1fr;
 
-            border-radius:
-                999px;
+    border:1px solid var(--line2);
 
-            background:
-                rgba(255,255,255,0.08);
+    border-radius:22px;
 
-            color:
-                #aeb4c2;
+    background:#101218;
 
-            font-size:
-                10px;
-        }
+    position:relative;
+}
 
+.modal-image{
+    min-height:430px;
 
-        .hero-card-center {
+    background:#0d0f14;
+}
 
-            text-align:
-                center;
-        }
+.modal-image img{
+    width:100%;
+    height:100%;
 
+    object-fit:cover;
 
-        .hero-card-symbol {
+    display:block;
+}
 
-            width:
-                115px;
+.modal-info{
+    padding:40px;
 
-            height:
-                115px;
+    display:flex;
 
-            margin:
-                auto;
+    flex-direction:column;
 
-            display:
-                grid;
+    justify-content:center;
+}
 
-            place-items:
-                center;
+.modal-info h2{
+    font-size:29px;
+}
 
-            border:
-                1px solid rgba(255,255,255,0.1);
+.modal-info p{
+    color:var(--muted);
 
-            border-radius:
-                32px;
+    font-size:11px;
 
-            background:
-                rgba(255,255,255,0.05);
+    line-height:2;
 
-            font-size:
-                54px;
+    margin:10px 0 20px;
+}
 
-            font-weight:
-                700;
-        }
+.modal-price{
+    font-size:25px;
 
+    margin-bottom:22px;
+}
 
-        .hero-card-center h3 {
+.close{
+    position:absolute;
 
-            margin-top:
-                24px;
+    left:13px;
+    top:13px;
 
-            font-size:
-                24px;
-        }
+    width:38px;
+    height:38px;
 
+    border:1px solid var(--line);
 
-        .hero-card-center p {
+    border-radius:10px;
 
-            margin-top:
-                3px;
+    background:
+        rgba(0,0,0,.5);
 
-            color:
-                var(--muted);
+    color:#fff;
 
-            font-size:
-                12px;
-        }
+    font-size:18px;
 
+    z-index:2;
+}
 
-        .hero-card-bottom {
+.add{
+    min-height:48px;
 
-            display:
-                flex;
+    border:0;
 
-            align-items:
-                end;
+    border-radius:11px;
 
-            justify-content:
-                space-between;
-        }
+    background:#fff;
 
+    color:#090a0e;
 
-        .hero-card-price {
+    font-size:12px;
+}
 
-            font-size:
-                24px;
 
-            font-weight:
-                700;
-        }
+/* =========================
+   CART
+========================= */
 
+.drawer-overlay{
+    position:fixed;
 
-        .hero-card-small {
+    inset:0;
 
-            color:
-                #777d8b;
+    z-index:3500;
 
-            font-size:
-                11px;
-        }
+    background:
+        rgba(0,0,0,.72);
 
+    backdrop-filter:blur(10px);
 
-        /* =====================================================
-           FEATURES
-        ===================================================== */
+    display:none;
 
-        .features {
+    justify-content:flex-start;
+}
 
-            border-bottom:
-                1px solid var(--border);
-        }
+.drawer-overlay.open{
+    display:flex;
+}
 
+.drawer{
+    width:min(430px,100%);
 
-        .features-grid {
+    height:100%;
 
-            min-height:
-                96px;
+    background:#0e1015;
 
-            display:
-                grid;
+    border-left:1px solid var(--line);
 
-            grid-template-columns:
-                repeat(4,1fr);
-        }
+    padding:25px;
 
+    overflow:auto;
+}
 
-        .feature {
+.drawer-head{
+    display:flex;
 
-            display:
-                flex;
+    align-items:center;
 
-            align-items:
-                center;
+    justify-content:space-between;
 
-            justify-content:
-                center;
+    padding-bottom:20px;
 
-            gap:
-                12px;
+    border-bottom:1px solid var(--line);
+}
 
-            padding:
-                15px;
+.drawer-head h2{
+    font-size:22px;
+}
 
-            border-left:
-                1px solid var(--border);
+.cart-empty{
+    text-align:center;
 
-            color:
-                var(--muted-light);
+    padding:80px 20px;
 
-            font-size:
-                13px;
+    color:var(--muted);
 
-            font-weight:
-                700;
-        }
+    font-size:11px;
+}
 
+.cart-items{
+    padding-top:20px;
+}
 
-        .feature:last-child {
+.cart-item{
+    display:flex;
 
-            border-left:
-                0;
-        }
+    gap:12px;
 
+    padding:13px 0;
 
-        .feature-icon {
+    border-bottom:1px solid var(--line);
+}
 
-            width:
-                35px;
+.cart-item img{
+    width:70px;
+    height:70px;
 
-            height:
-                35px;
+    object-fit:cover;
 
-            display:
-                grid;
+    border-radius:10px;
 
-            place-items:
-                center;
+    background:#171a22;
+}
 
-            border:
-                1px solid var(--border);
+.cart-item-info{
+    flex:1;
+}
 
-            border-radius:
-                10px;
+.cart-item-info h3{
+    font-size:13px;
+}
 
-            color:
-                #ffffff;
+.cart-item-info p{
+    color:var(--muted);
 
-            background:
-                rgba(255,255,255,0.035);
+    font-size:10px;
+}
 
-            font-size:
-                15px;
-        }
+.remove{
+    border:0;
 
+    background:none;
 
-        /* =====================================================
-           SECTION HEADER
-        ===================================================== */
+    color:#777;
 
-        .section-header {
+    font-size:15px;
+}
 
-            display:
-                flex;
+.drawer-total{
+    margin-top:20px;
 
-            align-items:
-                end;
+    padding-top:18px;
 
-            justify-content:
-                space-between;
+    border-top:1px solid var(--line);
 
-            gap:
-                30px;
+    display:flex;
 
-            margin-bottom:
-                34px;
-        }
+    justify-content:space-between;
+}
 
 
-        .section-title {
+/* =========================
+   TOAST
+========================= */
 
-            font-size:
-                35px;
+.toast{
+    position:fixed;
 
-            line-height:
-                1.5;
+    right:20px;
+    bottom:20px;
 
-            font-weight:
-                700;
+    z-index:6000;
 
-            letter-spacing:
-                -0.5px;
-        }
+    background:#151821;
 
+    border:1px solid var(--line2);
 
-        .section-subtitle {
+    padding:12px 17px;
 
-            margin-top:
-                2px;
+    border-radius:10px;
 
-            color:
-                var(--muted);
+    font-size:10px;
 
-            font-size:
-                13px;
+    opacity:0;
 
-            font-weight:
-                700;
-        }
+    transform:translateY(12px);
 
+    pointer-events:none;
 
-        /* =====================================================
-           SEARCH
-        ===================================================== */
+    transition:.25s;
+}
 
-        .search {
+.toast.show{
+    opacity:1;
 
-            position:
-                relative;
+    transform:none;
+}
 
-            width:
-                min(100%, 330px);
-        }
 
+/* =========================
+   RESPONSIVE
+========================= */
 
-        .search input {
+@media(max-width:1100px){
 
-            width:
-                100%;
+    .products{
+        grid-template-columns:
+            repeat(3,minmax(0,1fr));
+    }
 
-            height:
-                48px;
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
 
-            padding:
-                0 45px
-                0 16px;
+    .hero-content{
+        text-align:center;
+        margin:auto;
+    }
 
-            border:
-                1px solid var(--border);
+    .hero-copy{
+        margin:auto;
+    }
 
-            border-radius:
-                12px;
+    .hero-buttons{
+        justify-content:center;
+    }
 
-            outline:
-                none;
+    .hero-stats{
+        justify-content:center;
+    }
 
-            background:
-                rgba(255,255,255,0.035);
+    .visual{
+        min-height:430px;
+    }
+}
 
-            color:
-                #ffffff;
 
-            direction:
-                rtl;
+@media(max-width:800px){
 
-            font-size:
-                13px;
+    .container{
+        width:calc(100% - 30px);
+    }
 
-            font-weight:
-                700;
+    .nav{
+        display:none;
+    }
 
-            transition:
-                border-color .2s ease,
-                background .2s ease;
-        }
+    .features-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
 
+    .feature{
+        border-bottom:1px solid var(--line);
+    }
 
-        .search input::placeholder {
+    .feature:nth-child(even){
+        border-left:0;
+    }
 
-            color:
-                #696f7d;
-        }
+    .section-head{
+        align-items:stretch;
 
+        flex-direction:column;
+    }
 
-        .search input:focus {
+    .search{
+        width:100%;
+    }
 
-            border-color:
-                var(--border-strong);
+    .products{
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
 
-            background:
-                rgba(255,255,255,0.06);
-        }
+    .banner{
+        padding:30px;
 
+        flex-direction:column;
 
-        .search-icon {
+        text-align:center;
+    }
 
-            position:
-                absolute;
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
 
-            right:
-                15px;
+    .footer-brand{
+        grid-column:1/-1;
+    }
 
-            top:
-                50%;
+    .modal-card{
+        grid-template-columns:1fr;
+    }
 
-            transform:
-                translateY(-50%);
+    .modal-image{
+        min-height:280px;
 
-            color:
-                #777d8a;
+        max-height:350px;
+    }
+}
 
-            font-size:
-                18px;
 
-            pointer-events:
-                none;
-        }
+@media(max-width:500px){
 
+    .announcement{
+        font-size:9px;
+    }
 
-        /* =====================================================
-           PRODUCTS
-        ===================================================== */
+    .header-inner{
+        height:68px;
+    }
 
-        .products {
+    .brand-name{
+        font-size:17px;
+    }
 
-            display:
-                grid;
+    .brand-logo{
+        width:37px;
+        height:37px;
+    }
 
-            grid-template-columns:
-                repeat(
-                    auto-fill,
-                    minmax(255px,1fr)
-                );
+    .actions .search-button{
+        display:none;
+    }
 
-            gap:
-                20px;
-        }
+    .hero{
+        padding:65px 0;
+    }
 
+    .hero h1{
+        font-size:40px;
+    }
 
-        .product {
+    .hero-copy{
+        font-size:13px;
+    }
 
-            overflow:
-                hidden;
+    .hero-stats{
+        gap:18px;
+    }
 
-            border:
-                1px solid var(--border);
+    .showcase{
+        width:275px;
+    }
 
-            border-radius:
-                var(--radius);
+    .products{
+        grid-template-columns:1fr;
+    }
 
-            background:
-                var(--surface);
+    .section-title{
+        font-size:29px;
+    }
 
-            transition:
-                transform .25s ease,
-                border-color .25s ease,
-                box-shadow .25s ease;
-        }
+    .toolbar{
+        align-items:stretch;
 
+        flex-direction:column;
 
-        .product:hover {
+        gap:10px;
+    }
 
-            transform:
-                translateY(-6px);
+    .sort{
+        width:100%;
+    }
 
-            border-color:
-                var(--border-strong);
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
 
-            box-shadow:
-                0 25px 60px
-                rgba(0,0,0,0.3);
-        }
+    .footer-brand{
+        grid-column:auto;
+    }
 
+    .footer-bottom{
+        flex-direction:column;
 
-        .product-image {
+        justify-content:center;
 
-            position:
-                relative;
+        gap:4px;
 
-            aspect-ratio:
-                1 / 1;
+        padding:18px 0;
+    }
 
-            overflow:
-                hidden;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #191c25,
-                    #0e1016
-                );
-        }
-
-
-        .product-image img {
-
-            width:
-                100%;
-
-            height:
-                100%;
-
-            object-fit:
-                cover;
-
-            display:
-                block;
-
-            transition:
-                transform .55s ease;
-        }
-
-
-        .product:hover
-        .product-image img {
-
-            transform:
-                scale(1.05);
-        }
-
-
-        .product-placeholder {
-
-            width:
-                100%;
-
-            height:
-                100%;
-
-            display:
-                grid;
-
-            place-items:
-                center;
-
-            color:
-                #606674;
-
-            font-size:
-                13px;
-
-            font-weight:
-                700;
-        }
-
-
-        .product-content {
-
-            padding:
-                20px;
-        }
-
-
-        .product-name {
-
-            font-size:
-                18px;
-
-            font-weight:
-                700;
-
-            margin-bottom:
-                5px;
-        }
-
-
-        .product-description {
-
-            min-height:
-                48px;
-
-            color:
-                var(--muted);
-
-            font-size:
-                12px;
-
-            line-height:
-                1.9;
-
-            margin-bottom:
-                17px;
-
-            display:
-                -webkit-box;
-
-            -webkit-box-orient:
-                vertical;
-
-            -webkit-line-clamp:
-                2;
-
-            overflow:
-                hidden;
-        }
-
-
-        .product-footer {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            gap:
-                12px;
-        }
-
-
-        .price {
-
-            font-size:
-                19px;
-
-            font-weight:
-                700;
-        }
-
-
-        .view-button {
-
-            min-height:
-                39px;
-
-            padding:
-                0 15px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                10px;
-
-            background:
-                rgba(255,255,255,0.05);
-
-            color:
-                #ffffff;
-
-            font-size:
-                12px;
-
-            font-weight:
-                700;
-
-            transition:
-                background .2s ease;
-        }
-
-
-        .view-button:hover {
-
-            background:
-                rgba(255,255,255,0.11);
-        }
-
-
-        /* =====================================================
-           PRODUCT STATE
-        ===================================================== */
-
-        .state {
-
-            grid-column:
-                1 / -1;
-
-            min-height:
-                270px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            flex-direction:
-                column;
-
-            text-align:
-                center;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                var(--radius);
-
-            background:
-                rgba(255,255,255,0.018);
-        }
-
-
-        .state-icon {
-
-            width:
-                55px;
-
-            height:
-                55px;
-
-            display:
-                grid;
-
-            place-items:
-                center;
-
-            margin-bottom:
-                15px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                15px;
-
-            background:
-                rgba(255,255,255,0.04);
-
-            color:
-                #ffffff;
-
-            font-size:
-                18px;
-        }
-
-
-        .state h3 {
-
-            font-size:
-                18px;
-
-            margin-bottom:
-                4px;
-        }
-
-
-        .state p {
-
-            color:
-                var(--muted);
-
-            font-size:
-                12px;
-
-            font-weight:
-                700;
-        }
-
-
-        .error-state {
-
-            border-color:
-                rgba(255,100,100,0.18);
-        }
-
-
-        .error-state .state-icon {
-
-            color:
-                var(--danger);
-        }
-
-
-        /* =====================================================
-           CTA
-        ===================================================== */
-
-        .cta {
-
-            position:
-                relative;
-
-            overflow:
-                hidden;
-
-            padding:
-                75px 40px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                25px;
-
-            text-align:
-                center;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #151821,
-                    #0c0e13
-                );
-        }
-
-
-        .cta::before {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            width:
-                500px;
-
-            height:
-                500px;
-
-            top:
-                -350px;
-
-            right:
-                -100px;
-
-            border-radius:
-                50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(255,255,255,0.08),
-                    transparent 68%
-                );
-
-            pointer-events:
-                none;
-        }
-
-
-        .cta-content {
-
-            position:
-                relative;
-
-            z-index:
-                1;
-        }
-
-
-        .cta h2 {
-
-            font-size:
-                36px;
-
-            margin-bottom:
-                8px;
-        }
-
-
-        .cta p {
-
-            max-width:
-                580px;
-
-            margin:
-                0 auto 26px;
-
-            color:
-                var(--muted);
-
-            font-size:
-                13px;
-
-            line-height:
-                2;
-
-            font-weight:
-                700;
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        .footer {
-
-            border-top:
-                1px solid var(--border);
-
-            background:
-                #06070a;
-        }
-
-
-        .footer-top {
-
-            padding:
-                65px 0;
-
-            display:
-                grid;
-
-            grid-template-columns:
-                1.5fr
-                1fr
-                1fr;
-
-            gap:
-                60px;
-        }
-
-
-        .footer-brand {
-
-            max-width:
-                350px;
-        }
-
-
-        .footer-brand h3 {
-
-            font-size:
-                20px;
-
-            margin-bottom:
-                10px;
-        }
-
-
-        .footer-brand p {
-
-            color:
-                var(--muted);
-
-            font-size:
-                12px;
-
-            line-height:
-                2;
-        }
-
-
-        .footer-column h4 {
-
-            font-size:
-                14px;
-
-            margin-bottom:
-                13px;
-        }
-
-
-        .footer-column a {
-
-            display:
-                block;
-
-            width:
-                fit-content;
-
-            color:
-                var(--muted);
-
-            font-size:
-                12px;
-
-            margin-bottom:
-                7px;
-
-            transition:
-                color .2s ease;
-        }
-
-
-        .footer-column a:hover {
-
-            color:
-                #ffffff;
-        }
-
-
-        .footer-bottom {
-
-            min-height:
-                75px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            gap:
-                20px;
-
-            border-top:
-                1px solid var(--border);
-
-            color:
-                #5f6470;
-
-            font-size:
-                11px;
-        }
-
-
-        /* =====================================================
-           MODAL
-        ===================================================== */
-
-        .modal {
-
-            position:
-                fixed;
-
-            inset:
-                0;
-
-            z-index:
-                3000;
-
-            display:
-                none;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            padding:
-                20px;
-
-            background:
-                rgba(0,0,0,0.75);
-
-            backdrop-filter:
-                blur(12px);
-
-            -webkit-backdrop-filter:
-                blur(12px);
-        }
-
-
-        .modal.open {
-
-            display:
-                flex;
-        }
-
-
-        .modal-card {
-
-            position:
-                relative;
-
-            width:
-                min(
-                    100%,
-                    900px
-                );
-
-            max-height:
-                90vh;
-
-            overflow:
-                auto;
-
-            display:
-                grid;
-
-            grid-template-columns:
-                1fr
-                1fr;
-
-            border:
-                1px solid var(--border-strong);
-
-            border-radius:
-                22px;
-
-            background:
-                #101219;
-
-            box-shadow:
-                0 40px 100px
-                rgba(0,0,0,0.5);
-        }
-
-
-        .modal-image {
-
-            min-height:
-                450px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #191c25,
-                    #0e1016
-                );
-        }
-
-
-        .modal-image img {
-
-            width:
-                100%;
-
-            height:
-                100%;
-
-            object-fit:
-                cover;
-
-            display:
-                block;
-        }
-
-
-        .modal-info {
-
-            padding:
-                42px;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            justify-content:
-                center;
-        }
-
-
-        .modal-close {
-
-            position:
-                absolute;
-
-            top:
-                15px;
-
-            left:
-                15px;
-
-            width:
-                40px;
-
-            height:
-                40px;
-
-            display:
-                grid;
-
-            place-items:
-                center;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                10px;
-
-            background:
-                rgba(0,0,0,0.45);
-
-            color:
-                #ffffff;
-
-            font-size:
-                18px;
-        }
-
-
-        .modal-info h2 {
-
-            font-size:
-                31px;
-
-            line-height:
-                1.5;
-
-            margin-bottom:
-                12px;
-        }
-
-
-        .modal-description {
-
-            color:
-                var(--muted);
-
-            font-size:
-                13px;
-
-            line-height:
-                2;
-
-            margin-bottom:
-                25px;
-        }
-
-
-        .modal-price {
-
-            font-size:
-                27px;
-
-            font-weight:
-                700;
-
-            margin-bottom:
-                25px;
-        }
-
-
-        .modal-add {
-
-            width:
-                100%;
-
-            min-height:
-                50px;
-
-            border:
-                0;
-
-            border-radius:
-                12px;
-
-            background:
-                #ffffff;
-
-            color:
-                #090a0f;
-
-            font-size:
-                14px;
-
-            font-weight:
-                700;
-        }
-
-
-        /* =====================================================
-           TOAST
-        ===================================================== */
-
-        .toast {
-
-            position:
-                fixed;
-
-            right:
-                25px;
-
-            bottom:
-                25px;
-
-            z-index:
-                5000;
-
-            max-width:
-                330px;
-
-            padding:
-                14px 18px;
-
-            border:
-                1px solid var(--border-strong);
-
-            border-radius:
-                12px;
-
-            background:
-                #151821;
-
-            color:
-                #ffffff;
-
-            font-size:
-                12px;
-
-            font-weight:
-                700;
-
-            box-shadow:
-                0 15px 40px
-                rgba(0,0,0,0.35);
-
-            opacity:
-                0;
-
-            transform:
-                translateY(15px);
-
-            pointer-events:
-                none;
-
-            transition:
-                opacity .25s ease,
-                transform .25s ease;
-        }
-
-
-        .toast.show {
-
-            opacity:
-                1;
-
-            transform:
-                translateY(0);
-        }
-
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
-        @media (max-width: 1000px) {
-
-            .hero-grid {
-
-                grid-template-columns:
-                    1fr;
-
-                text-align:
-                    center;
-            }
-
-
-            .hero-content {
-
-                max-width:
-                    760px;
-
-                margin-inline:
-                    auto;
-            }
-
-
-            .hero-description {
-
-                margin-inline:
-                    auto;
-            }
-
-
-            .hero-buttons {
-
-                justify-content:
-                    center;
-            }
-
-
-            .hero-visual {
-
-                min-height:
-                    390px;
-            }
-
-
-            .features-grid {
-
-                grid-template-columns:
-                    repeat(2,1fr);
-            }
-
-
-            .feature {
-
-                border-bottom:
-                    1px solid var(--border);
-            }
-
-
-            .footer-top {
-
-                grid-template-columns:
-                    1fr 1fr;
-            }
-
-        }
-
-
-        @media (max-width: 700px) {
-
-            .container {
-
-                width:
-                    min(
-                        calc(100% - 30px),
-                        var(--max-width)
-                    );
-            }
-
-
-            .announcement {
-
-                font-size:
-                    11px;
-            }
-
-
-            .header-inner {
-
-                height:
-                    68px;
-            }
-
-
-            .nav {
-
-                display:
-                    none;
-            }
-
-
-            .brand-text {
-
-                font-size:
-                    18px;
-            }
-
-
-            .brand-icon {
-
-                width:
-                    37px;
-
-                height:
-                    37px;
-            }
-
-
-            .header-actions .search-header-button {
-
-                display:
-                    none;
-            }
-
-
-            .hero {
-
-                min-height:
-                    auto;
-
-                padding:
-                    90px 0
-                    80px;
-            }
-
-
-            .hero h1 {
-
-                font-size:
-                    43px;
-
-                letter-spacing:
-                    0;
-            }
-
-
-            .hero-description {
-
-                font-size:
-                    15px;
-            }
-
-
-            .hero-visual {
-
-                min-height:
-                    350px;
-            }
-
-
-            .hero-orbit {
-
-                width:
-                    310px;
-
-                height:
-                    310px;
-            }
-
-
-            .hero-card {
-
-                width:
-                    275px;
-            }
-
-
-            .section {
-
-                padding:
-                    80px 0;
-            }
-
-
-            .section-header {
-
-                align-items:
-                    stretch;
-
-                flex-direction:
-                    column;
-            }
-
-
-            .section-title {
-
-                font-size:
-                    30px;
-            }
-
-
-            .search {
-
-                width:
-                    100%;
-            }
-
-
-            .products {
-
-                grid-template-columns:
-                    repeat(
-                        2,
-                        minmax(0,1fr)
-                    );
-
-                gap:
-                    13px;
-            }
-
-
-            .product-content {
-
-                padding:
-                    15px;
-            }
-
-
-            .product-name {
-
-                font-size:
-                    15px;
-            }
-
-
-            .product-description {
-
-                font-size:
-                    11px;
-
-                min-height:
-                    43px;
-            }
-
-
-            .price {
-
-                font-size:
-                    16px;
-            }
-
-
-            .view-button {
-
-                padding:
-                    0 11px;
-
-                font-size:
-                    10px;
-            }
-
-
-            .modal-card {
-
-                grid-template-columns:
-                    1fr;
-
-                max-height:
-                    92vh;
-            }
-
-
-            .modal-image {
-
-                min-height:
-                    280px;
-
-                max-height:
-                    350px;
-            }
-
-
-            .modal-info {
-
-                padding:
-                    28px;
-            }
-
-
-            .footer-top {
-
-                grid-template-columns:
-                    1fr;
-
-                gap:
-                    35px;
-
-                padding:
-                    50px 0;
-            }
-
-
-            .footer-bottom {
-
-                min-height:
-                    auto;
-
-                padding:
-                    22px 0;
-
-                flex-direction:
-                    column;
-
-                justify-content:
-                    center;
-
-                text-align:
-                    center;
-            }
-
-        }
-
-
-        @media (max-width: 430px) {
-
-            .header-actions {
-
-                gap:
-                    5px;
-            }
-
-
-            .icon-button {
-
-                width:
-                    38px;
-
-                height:
-                    38px;
-            }
-
-
-            .hero h1 {
-
-                font-size:
-                    38px;
-            }
-
-
-            .hero-buttons {
-
-                flex-direction:
-                    column;
-            }
-
-
-            .button-primary,
-            .button-secondary {
-
-                width:
-                    100%;
-            }
-
-
-            .products {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .features-grid {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .feature {
-
-                border-left:
-                    0;
-            }
-
-        }
-
-    </style>
-
+    .modal-info{
+        padding:27px;
+    }
+}
+</style>
 </head>
 
 
 <body>
 
 
-    <!-- =====================================================
-         ANNOUNCEMENT
-    ====================================================== -->
+<!-- ANNOUNCEMENT -->
 
-    <div class="announcement">
+<div class="announcement">
+    بەخێربێیت بۆ سورا ستۆر — بەرهەمەکانت بە سادەیی بدۆزەرەوە.
+</div>
 
-        بە سورا ستۆر، کڕینەکەت بە سادەیی و خێرایی دەست پێ دەکات.
+
+<!-- HEADER -->
+
+<header class="header">
+
+<div class="container header-inner">
+
+    <a class="brand" href="#home">
+
+        <span class="brand-logo">
+            S
+        </span>
+
+        <span class="brand-name">
+            سورا ستۆر
+        </span>
+
+    </a>
+
+
+    <nav class="nav">
+
+        <a class="active" href="#home">
+            سەرەتا
+        </a>
+
+        <a href="#products">
+            بەرهەمەکان
+        </a>
+
+        <a href="#about">
+            دەربارەی ئێمە
+        </a>
+
+        <a href="#contact">
+            پەیوەندی
+        </a>
+
+    </nav>
+
+
+    <div class="actions">
+
+        <button
+            class="icon-btn search-button"
+            aria-label="گەڕان"
+            onclick="focusSearch()"
+        >
+            ⌕
+        </button>
+
+
+        <button
+            class="icon-btn"
+            aria-label="سەبەتە"
+            onclick="openCart()"
+        >
+
+            🛒
+
+            <span
+                class="badge"
+                id="cartCount"
+            >
+                0
+            </span>
+
+        </button>
+
+    </div>
+
+</div>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main id="home">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container hero-grid">
+
+
+    <div class="hero-content">
+
+
+        <div class="eyebrow">
+
+            <span class="dot"></span>
+
+            فرۆشگای نوێی سورا
+
+        </div>
+
+
+        <h1>
+
+            کڕینی باشتر،
+
+            <br>
+
+            <span>
+                بە شێوازێکی جیاواز.
+            </span>
+
+        </h1>
+
+
+        <p class="hero-copy">
+
+            بەرهەمە هەڵبژێردراوەکانت
+            لە سورا ستۆر بدۆزەرەوە.
+            دیزاینێکی مۆدێرن،
+            زانیاریی ڕوون و
+            ئەزموونێکی خۆش بۆ کڕین.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                class="primary"
+                href="#products"
+            >
+                بینینی بەرهەمەکان
+            </a>
+
+
+            <a
+                class="secondary"
+                href="#about"
+            >
+                دەربارەی سورا ستۆر
+            </a>
+
+        </div>
+
+
+        <div class="hero-stats">
+
+            <div class="stat">
+
+                <strong id="heroProductCount">
+                    —
+                </strong>
+
+                <span>
+                    بەرهەم
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    24/7
+                </strong>
+
+                <span>
+                    بەردەوام
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    100%
+                </strong>
+
+                <span>
+                    ئۆنلاین
+                </span>
+
+            </div>
+
+        </div>
 
     </div>
 
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+    <!-- VISUAL -->
 
-    <header class="header">
+    <div class="visual">
 
-        <div class="container header-inner">
+        <div class="glow"></div>
 
 
-            <a
-                href="#home"
-                class="brand"
-                aria-label="سورا ستۆر"
-            >
+        <div class="showcase">
 
-                <span class="brand-icon">
-                    S
-                </span>
-
-                <span class="brand-text">
-                    سورا ستۆر
-                </span>
-
-            </a>
+            <div class="showcase-inner">
 
 
-            <nav class="nav">
+                <div class="showcase-top">
 
-                <a href="#home">
-                    سەرەتا
-                </a>
-
-                <a href="#products">
-                    بەرهەمەکان
-                </a>
-
-                <a href="#about">
-                    دەربارەی ئێمە
-                </a>
-
-                <a href="#contact">
-                    پەیوەندی
-                </a>
-
-            </nav>
-
-
-            <div class="header-actions">
-
-
-                <button
-                    class="icon-button search-header-button"
-                    type="button"
-                    aria-label="گەڕان"
-                    onclick="
-                        document
-                        .getElementById('search')
-                        .focus()
-                    "
-                >
-                    ⌕
-                </button>
-
-
-                <button
-                    class="icon-button"
-                    type="button"
-                    aria-label="سەبەتە"
-                    onclick="showCartMessage()"
-                >
-
-                    🛒
-
-                    <span
-                        class="cart-count"
-                        id="cart-count"
-                    >
-                        0
+                    <span>
+                        سورا ستۆر
                     </span>
 
-                </button>
+                    <span class="showcase-small">
+                        SURA / 01
+                    </span>
+
+                </div>
 
 
-            </div>
+                <div class="showcase-center">
 
-        </div>
-
-    </header>
-
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
-    <main id="home">
-
-
-        <!-- =================================================
-             HERO
-        ================================================== -->
-
-        <section class="hero">
-
-
-            <div class="container hero-grid">
-
-
-                <div class="hero-content">
-
-
-                    <div class="hero-label">
-
-                        <span
-                            class="hero-label-dot"
-                        ></span>
-
-                        بەخێربێیت بۆ سورا ستۆر
-
+                    <div class="showcase-symbol">
+                        S
                     </div>
 
+                    <h3>
+                        هەڵبژاردەی تۆ
+                    </h3>
 
-                    <h1>
-
-                        هەموو ئەوەی
-                        <br>
-
-                        <span>
-                            پێویستتە، لێرەیە.
-                        </span>
-
-                    </h1>
-
-
-                    <p class="hero-description">
-
-                        کۆمەڵێک بەرهەمی هەڵبژێردراو
-                        بە نرخی ڕوون و ئەزموونێکی
-                        پیشەیی بۆ کڕینی ئۆنلاین.
-
+                    <p>
+                        کوالیتی • سادەیی • متمانە
                     </p>
 
-
-                    <div class="hero-buttons">
-
-
-                        <a
-                            href="#products"
-                            class="button-primary"
-                        >
-                            بینینی بەرهەمەکان
-                        </a>
-
-
-                        <a
-                            href="#about"
-                            class="button-secondary"
-                        >
-                            زیاتر بزانە
-                        </a>
-
-
-                    </div>
-
                 </div>
 
 
-                <!-- HERO VISUAL -->
+                <div class="showcase-bottom">
 
-                <div
-                    class="hero-visual"
-                    aria-hidden="true"
-                >
-
-
-                    <div class="hero-orbit"></div>
-
-
-                    <div class="hero-card">
-
-
-                        <div class="hero-card-inner">
-
-
-                            <div class="hero-card-top">
-
-                                <span class="hero-card-brand">
-                                    سورا ستۆر
-                                </span>
-
-                                <span class="hero-card-badge">
-                                    SURA
-                                </span>
-
-                            </div>
-
-
-                            <div class="hero-card-center">
-
-                                <div class="hero-card-symbol">
-                                    S
-                                </div>
-
-                                <h3>
-                                    کڕینی جیاواز
-                                </h3>
-
-                                <p>
-                                    کوالیتی • سادەیی • متمانە
-                                </p>
-
-                            </div>
-
-
-                            <div class="hero-card-bottom">
-
-                                <span class="hero-card-price">
-                                    SuraStore
-                                </span>
-
-                                <span class="hero-card-small">
-                                    ئۆنلاین
-                                </span>
-
-                            </div>
-
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             FEATURES
-        ================================================== -->
-
-        <section class="features">
-
-
-            <div class="container features-grid">
-
-
-                <div class="feature">
-
-                    <span class="feature-icon">
-                        ✓
+                    <span class="showcase-price">
+                        Sura Store
                     </span>
 
-                    بەرهەمی کوالیتی
-
-                </div>
-
-
-                <div class="feature">
-
-                    <span class="feature-icon">
-                        $
+                    <span class="showcase-small">
+                        ONLINE
                     </span>
 
-                    نرخی ڕوون
-
-                </div>
-
-
-                <div class="feature">
-
-                    <span class="feature-icon">
-                        ◇
-                    </span>
-
-                    ئەزموونی کڕینی ئاسان
-
-                </div>
-
-
-                <div class="feature">
-
-                    <span class="feature-icon">
-                        ★
-                    </span>
-
-                    خزمەتگوزاریی پیشەیی
-
                 </div>
 
 
             </div>
 
-        </section>
+        </div>
+
+    </div>
 
 
-        <!-- =================================================
-             PRODUCTS
-        ================================================== -->
+</div>
 
-        <section
-            class="section"
-            id="products"
-        >
+</section>
 
 
-            <div class="container">
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="container features-grid">
 
 
-                <div class="section-header">
+    <div class="feature">
+
+        <span class="feature-icon">
+            ✓
+        </span>
+
+        بەرهەمی کوالیتی
+
+    </div>
 
 
-                    <div>
+    <div class="feature">
 
-                        <h2 class="section-title">
-                            بەرهەمەکان
-                        </h2>
+        <span class="feature-icon">
+            ◇
+        </span>
 
-                        <p class="section-subtitle">
-                            نوێترین بەرهەمە بەردەستەکانمان
-                        </p>
+        کڕینی ئاسان
 
-                    </div>
+    </div>
 
 
-                    <div class="search">
+    <div class="feature">
 
-                        <span
-                            class="search-icon"
-                            aria-hidden="true"
-                        >
-                            ⌕
-                        </span>
+        <span class="feature-icon">
+            $
+        </span>
 
+        نرخی ڕوون
 
-                        <input
-                            id="search"
-                            type="search"
-                            placeholder="گەڕان بەدوای بەرهەمێک..."
-                            autocomplete="off"
-                            aria-label="گەڕان بەدوای بەرهەم"
-                        >
-
-                    </div>
+    </div>
 
 
-                </div>
+    <div class="feature">
+
+        <span class="feature-icon">
+            ★
+        </span>
+
+        خزمەتگوزاریی پیشەیی
+
+    </div>
 
 
-                <div
-                    class="products"
-                    id="products-container"
-                >
+</div>
+
+</section>
 
 
-                    <div class="state">
+<!-- PRODUCTS -->
 
-                        <div class="state-icon">
-                            …
-                        </div>
+<section
+    class="shop"
+    id="products"
+>
 
-                        <h3>
-                            بەرهەمەکان بار دەکرێن
-                        </h3>
-
-                        <p>
-                            تکایە چاوەڕێ بکە.
-                        </p>
-
-                    </div>
+<div class="container">
 
 
-                </div>
+    <div class="section-head">
 
 
+        <div>
+
+            <div class="kicker">
+                SURA STORE / COLLECTION
             </div>
 
-        </section>
+            <h2 class="section-title">
+                بەرهەمەکان
+            </h2>
 
-
-        <!-- =================================================
-             ABOUT
-        ================================================== -->
-
-        <section
-            class="section"
-            id="about"
-        >
-
-
-            <div class="container">
-
-
-                <div class="cta">
-
-
-                    <div class="cta-content">
-
-
-                        <h2>
-                            سورا ستۆر بۆ کڕینی باشتر دروست کراوە.
-                        </h2>
-
-
-                        <p>
-
-                            ئێمە هەوڵ دەدەین ئەزموونێکی
-                            سادە، خێرا و متمانەپێکراو
-                            بۆ هەموو کڕیارەکانمان دابین بکەین.
-
-                        </p>
-
-
-                        <a
-                            href="#products"
-                            class="button-primary"
-                        >
-                            بەرهەمەکان ببینە
-                        </a>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-    </main>
-
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <footer
-        class="footer"
-        id="contact"
-    >
-
-
-        <div class="container footer-top">
-
-
-            <div class="footer-brand">
-
-                <h3>
-                    سورا ستۆر
-                </h3>
-
-                <p>
-
-                    فرۆشگایەکی ئۆنلاین بۆ
-                    بەرهەمە هەڵبژێردراوەکان،
-                    بە دیزاینێکی سادە و ئەزموونێکی
-                    پیشەیی.
-
-                </p>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h4>
-                    بەستەرەکان
-                </h4>
-
-                <a href="#home">
-                    سەرەتا
-                </a>
-
-                <a href="#products">
-                    بەرهەمەکان
-                </a>
-
-                <a href="#about">
-                    دەربارەی ئێمە
-                </a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h4>
-                    پەیوەندی
-                </h4>
-
-                <a href="#contact">
-                    پەیوەندی بە ئێمە
-                </a>
-
-                <a href="#products">
-                    بەرهەمەکان
-                </a>
-
-            </div>
-
+            <p class="section-desc">
+                نوێترین بەرهەمە بەردەستەکانمان بگەڕێ.
+            </p>
 
         </div>
 
 
-        <div class="container footer-bottom">
+        <div class="search">
 
-            <span>
-                © ٢٠٢٦ سورا ستۆر
+            <span class="search-icon">
+                ⌕
             </span>
 
-            <span>
-                هەموو مافەکان پارێزراون.
-            </span>
+            <input
+                id="search"
+                type="search"
+                placeholder="گەڕان بەدوای بەرهەمێک..."
+                autocomplete="off"
+            >
 
         </div>
 
 
-    </footer>
+    </div>
 
 
-    <!-- =====================================================
-         PRODUCT MODAL
-    ====================================================== -->
+    <div class="toolbar">
+
+        <span
+            class="result-count"
+            id="resultCount"
+        >
+            بارکردنی بەرهەمەکان...
+        </span>
+
+
+        <select
+            class="sort"
+            id="sort"
+        >
+
+            <option value="default">
+                ڕیزکردن: بنەڕەت
+            </option>
+
+            <option value="low">
+                نرخ: کەم بۆ زۆر
+            </option>
+
+            <option value="high">
+                نرخ: زۆر بۆ کەم
+            </option>
+
+            <option value="az">
+                ناو: A بۆ Z
+            </option>
+
+        </select>
+
+    </div>
+
 
     <div
-        class="modal"
-        id="product-modal"
-        role="dialog"
-        aria-modal="true"
-        aria-hidden="true"
+        class="products"
+        id="products"
     >
 
+        <div class="state">
 
-        <div class="modal-card">
+            <div class="state-icon">
+                …
+            </div>
+
+            <h3>
+                بەرهەمەکان بار دەکرێن
+            </h3>
+
+            <p>
+                تکایە چاوەڕێ بکە.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="banner">
+
+        <div>
+
+            <h2>
+                بەرهەمەکەت بدۆزەرەوە.
+            </h2>
+
+            <p>
+                بگەڕێ لە کۆمەڵە بەرهەمەکانی سورا ستۆر.
+            </p>
+
+        </div>
+
+
+        <a
+            class="primary"
+            href="#products"
+        >
+            گەڕان بەرهەمەکان
+        </a>
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section
+    class="shop"
+    id="about"
+    style="padding-top:0"
+>
+
+<div class="container">
+
+    <div class="banner">
+
+        <div>
+
+            <div class="kicker">
+                ABOUT SURA STORE
+            </div>
+
+            <h2>
+                سورا ستۆر بۆ ئەزموونێکی باشتر دروست کراوە.
+            </h2>
+
+            <p>
+                ئامانجمان ئەوەیە کڕینی ئۆنلاین
+                بۆت سادە، ڕوون و خۆش بێت.
+            </p>
+
+        </div>
+
+
+        <a
+            class="secondary"
+            href="#contact"
+        >
+            پەیوەندیمان پێوە بکە
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer
+    class="footer"
+    id="contact"
+>
+
+<div class="container footer-grid">
+
+
+    <div class="footer-brand">
+
+        <h3>
+            سورا ستۆر
+        </h3>
+
+        <p>
+
+            فرۆشگای ئۆنلاین بۆ
+            بەرهەمە هەڵبژێردراوەکان،
+            بە دیزاینێکی مۆدێرن و
+            ئەزموونێکی سادە.
+
+        </p>
+
+    </div>
+
+
+    <div>
+
+        <h4>
+            بەستەرەکان
+        </h4>
+
+        <a href="#home">
+            سەرەتا
+        </a>
+
+        <a href="#products">
+            بەرهەمەکان
+        </a>
+
+        <a href="#about">
+            دەربارەی ئێمە
+        </a>
+
+    </div>
+
+
+    <div>
+
+        <h4>
+            سورا ستۆر
+        </h4>
+
+        <a href="#contact">
+            پەیوەندی
+        </a>
+
+        <a href="#products">
+            کۆمەڵە بەرهەمەکان
+        </a>
+
+    </div>
+
+
+</div>
+
+
+<div class="container footer-bottom">
+
+    <span>
+        © ٢٠٢٦ سورا ستۆر
+    </span>
+
+    <span>
+        هەموو مافەکان پارێزراون.
+    </span>
+
+</div>
+
+</footer>
+
+
+<!-- PRODUCT MODAL -->
+
+<div
+    class="modal"
+    id="modal"
+    aria-hidden="true"
+>
+
+    <div class="modal-card">
+
+
+        <button
+            class="close"
+            onclick="closeModal()"
+            aria-label="داخستن"
+        >
+            ×
+        </button>
+
+
+        <div
+            class="modal-image"
+            id="modalImage"
+        ></div>
+
+
+        <div class="modal-info">
+
+            <h2 id="modalName"></h2>
+
+
+            <p id="modalDescription"></p>
+
+
+            <div
+                class="modal-price"
+                id="modalPrice"
+            ></div>
 
 
             <button
-                class="modal-close"
-                type="button"
-                onclick="closeProductModal()"
-                aria-label="داخستن"
+                class="add"
+                onclick="addCurrent()"
+            >
+                زیادکردن بۆ سەبەتە
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- CART -->
+
+<div
+    class="drawer-overlay"
+    id="cartOverlay"
+    onclick="overlayCart(event)"
+>
+
+    <aside class="drawer">
+
+
+        <div class="drawer-head">
+
+            <h2>
+                سەبەتە
+            </h2>
+
+            <button
+                class="close"
+                onclick="closeCart()"
             >
                 ×
             </button>
 
-
-            <div
-                class="modal-image"
-                id="modal-image"
-            ></div>
+        </div>
 
 
-            <div class="modal-info">
+        <div
+            class="cart-items"
+            id="cartItems"
+        ></div>
 
 
-                <h2 id="modal-name">
-                    بەرهەم
-                </h2>
+        <div class="drawer-total">
 
+            <span>
+                کۆی گشتی
+            </span>
 
-                <p
-                    class="modal-description"
-                    id="modal-description"
-                >
-                </p>
-
-
-                <div
-                    class="modal-price"
-                    id="modal-price"
-                >
-                    $0.00
-                </div>
-
-
-                <button
-                    class="modal-add"
-                    type="button"
-                    onclick="addCurrentProductToCart()"
-                >
-                    زیادکردن بۆ سەبەتە
-                </button>
-
-
-            </div>
-
+            <strong id="cartTotal">
+                $0.00
+            </strong>
 
         </div>
 
-    </div>
+
+    </aside>
+
+</div>
 
 
-    <!-- =====================================================
-         TOAST
-    ====================================================== -->
+<!-- TOAST -->
 
-    <div
-        class="toast"
-        id="toast"
-    ></div>
+<div
+    class="toast"
+    id="toast"
+></div>
 
 
-    <!-- =====================================================
-         FIREBASE
-    ====================================================== -->
+<!-- FIREBASE -->
 
-    <script type="module">
+<script type="module">
 
-
-        import {
-            db
-        } from "./firebase.js";
+import {
+    db
+} from "./firebase.js";
 
 
-        import {
-            collection,
-            getDocs,
-            query,
-            where
-        } from
-        "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+import {
+    collection,
+    getDocs,
+    query,
+    where
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-        /* =================================================
-           ELEMENTS
-        ================================================= */
-
-        const productsContainer =
-            document.getElementById(
-                "products-container"
-            );
+const productsEl =
+    document.getElementById(
+        "products"
+    );
 
 
-        const searchInput =
-            document.getElementById(
-                "search"
-            );
+const searchEl =
+    document.getElementById(
+        "search"
+    );
 
 
-        const cartCount =
-            document.getElementById(
-                "cart-count"
-            );
+const resultEl =
+    document.getElementById(
+        "resultCount"
+    );
 
 
-        const modal =
-            document.getElementById(
-                "product-modal"
-            );
+const sortEl =
+    document.getElementById(
+        "sort"
+    );
 
 
-        const modalImage =
-            document.getElementById(
-                "modal-image"
-            );
+const heroCountEl =
+    document.getElementById(
+        "heroProductCount"
+    );
 
 
-        const modalName =
-            document.getElementById(
-                "modal-name"
-            );
+const modal =
+    document.getElementById(
+        "modal"
+    );
 
 
-        const modalDescription =
-            document.getElementById(
-                "modal-description"
-            );
+const cartOverlay =
+    document.getElementById(
+        "cartOverlay"
+    );
 
 
-        const modalPrice =
-            document.getElementById(
-                "modal-price"
-            );
+const cartItemsEl =
+    document.getElementById(
+        "cartItems"
+    );
 
 
-        const toast =
-            document.getElementById(
-                "toast"
-            );
+const cartCountEl =
+    document.getElementById(
+        "cartCount"
+    );
 
 
-        let products = [];
+const cartTotalEl =
+    document.getElementById(
+        "cartTotal"
+    );
 
-        let currentProduct = null;
 
-        let cartItems = 0;
+const toastEl =
+    document.getElementById(
+        "toast"
+    );
 
 
-        /* =================================================
-           ESCAPE HTML
-        ================================================= */
+let products = [];
 
-        function escapeHTML(value) {
+let cart = [];
 
-            const element =
+let currentProduct = null;
+
+let toastTimer;
+
+
+/* =========================
+   SECURITY
+========================= */
+
+function escapeHTML(value){
+
+    const el =
+        document.createElement(
+            "div"
+        );
+
+    el.textContent =
+        String(value ?? "");
+
+    return el.innerHTML;
+}
+
+
+/* =========================
+   MONEY
+========================= */
+
+function money(value){
+
+    const n =
+        Number(value);
+
+    return Number.isFinite(n)
+        ? `$${n.toFixed(2)}`
+        : "$0.00";
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function render(list){
+
+    productsEl.innerHTML =
+        "";
+
+    resultEl.textContent =
+        `${list.length} بەرهەم`;
+
+
+    if(!list.length){
+
+        productsEl.innerHTML = `
+
+            <div class="state">
+
+                <div class="state-icon">
+                    ⌕
+                </div>
+
+                <h3>
+                    هیچ بەرهەمێک نەدۆزرایەوە
+                </h3>
+
+                <p>
+                    وشەی گەڕانت بگۆڕە و دووبارە هەوڵ بدەرەوە.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    list.forEach(
+        product => {
+
+            const card =
                 document.createElement(
-                    "div"
-                );
-
-            element.textContent =
-                String(value ?? "");
-
-            return element.innerHTML;
-        }
-
-
-        /* =================================================
-           LOAD PRODUCTS
-        ================================================= */
-
-        async function loadProducts() {
-
-            try {
-
-                const productsQuery =
-                    query(
-
-                        collection(
-                            db,
-                            "products"
-                        ),
-
-                        where(
-                            "published",
-                            "==",
-                            true
-                        )
-
-                    );
-
-
-                const snapshot =
-                    await getDocs(
-                        productsQuery
-                    );
-
-
-                products =
-                    snapshot.docs.map(
-                        documentSnapshot => ({
-
-                            id:
-                                documentSnapshot.id,
-
-                            ...documentSnapshot.data()
-
-                        })
-                    );
-
-
-                renderProducts(
-                    products
+                    "article"
                 );
 
 
-            } catch (error) {
+            card.className =
+                "card";
 
-                console.error(
-                    "SuraStore Firebase error:",
-                    error
+
+            const name =
+                escapeHTML(
+                    product.name ||
+                    "بەرهەم"
                 );
 
 
-                productsContainer.innerHTML = `
-
-                    <div class="state error-state">
-
-                        <div class="state-icon">
-                            !
-                        </div>
-
-                        <h3>
-                            کێشەیەک ڕوویدا
-                        </h3>
-
-                        <p>
-                            نەتوانرا بەرهەمەکان بار بکرێن.
-                        </p>
-
-                    </div>
-
-                `;
-
-            }
-
-        }
-
-
-        /* =================================================
-           RENDER PRODUCTS
-        ================================================= */
-
-        function renderProducts(
-            productList
-        ) {
-
-            productsContainer.innerHTML =
-                "";
-
-
-            if (
-                productList.length === 0
-            ) {
-
-                productsContainer.innerHTML = `
-
-                    <div class="state">
-
-                        <div class="state-icon">
-                            ○
-                        </div>
-
-                        <h3>
-                            هیچ بەرهەمێک نەدۆزرایەوە
-                        </h3>
-
-                        <p>
-                            هەوڵ بدەرەوە بە وشەیەکی تر.
-                        </p>
-
-                    </div>
-
-                `;
-
-                return;
-            }
-
-
-            productList.forEach(
-                product => {
-
-
-                    const card =
-                        document.createElement(
-                            "article"
-                        );
-
-
-                    card.className =
-                        "product";
-
-
-                    const name =
-                        escapeHTML(
-                            product.name ||
-                            "بەرهەم"
-                        );
-
-
-                    const description =
-                        escapeHTML(
-                            product.description ||
-                            "وەسفی بەرهەم بەردەست نییە."
-                        );
-
-
-                    const image =
-                        escapeHTML(
-                            product.image ||
-                            ""
-                        );
-
-
-                    const numericPrice =
-                        Number(
-                            product.price
-                        );
-
-
-                    const price =
-                        Number.isFinite(
-                            numericPrice
-                        )
-                            ? numericPrice.toFixed(2)
-                            : "0.00";
-
-
-                    const imageHTML =
-                        image
-
-                        ? `
-
-                            <img
-                                src="${image}"
-                                alt="${name}"
-                                loading="lazy"
-                            >
-
-                        `
-
-                        : `
-
-                            <div
-                                class="product-placeholder"
-                            >
-                                وێنە بەردەست نییە
-                            </div>
-
-                        `;
-
-
-                    card.innerHTML = `
-
-                        <div class="product-image">
-
-                            ${imageHTML}
-
-                        </div>
-
-
-                        <div class="product-content">
-
-                            <h3 class="product-name">
-                                ${name}
-                            </h3>
-
-
-                            <p class="product-description">
-                                ${description}
-                            </p>
-
-
-                            <div class="product-footer">
-
-                                <span class="price">
-                                    $${price}
-                                </span>
-
-
-                                <button
-                                    class="view-button"
-                                    type="button"
-                                >
-                                    بینینی بەرهەم
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    `;
-
-
-                    const viewButton =
-                        card.querySelector(
-                            ".view-button"
-                        );
-
-
-                    viewButton.addEventListener(
-                        "click",
-                        () => {
-
-                            openProductModal(
-                                product
-                            );
-
-                        }
-                    );
-
-
-                    productsContainer.appendChild(
-                        card
-                    );
-
-                }
-            );
-
-        }
-
-
-        /* =================================================
-           PRODUCT MODAL
-        ================================================= */
-
-        function openProductModal(
-            product
-        ) {
-
-            currentProduct =
-                product;
-
-
-            modalName.textContent =
-                product.name ||
-                "بەرهەم";
-
-
-            modalDescription.textContent =
-                product.description ||
-                "وەسفی بەرهەم بەردەست نییە.";
+            const desc =
+                escapeHTML(
+                    product.description ||
+                    "وەسفی بەرهەم بەردەست نییە."
+                );
+
+
+            const image =
+                String(
+                    product.image ||
+                    ""
+                );
 
 
             const price =
-                Number(
+                money(
                     product.price
                 );
 
 
-            modalPrice.textContent =
-                Number.isFinite(price)
-                    ? `$${price.toFixed(2)}`
-                    : "$0.00";
+            card.innerHTML = `
+
+                <div class="card-image">
+
+                    ${
+                        image
+
+                        ?
+
+                        `<img
+                            src="${escapeHTML(image)}"
+                            alt="${name}"
+                            loading="lazy"
+                        >`
+
+                        :
+
+                        `<div class="placeholder">
+                            وێنە بەردەست نییە
+                        </div>`
+                    }
 
 
-            modalImage.innerHTML =
-                "";
+                    <span class="card-label">
+                        SURA
+                    </span>
+
+                </div>
 
 
-            if (
-                product.image
-            ) {
+                <div class="card-body">
 
-                const image =
-                    document.createElement(
-                        "img"
-                    );
+                    <h3 class="card-name">
+                        ${name}
+                    </h3>
 
 
-                image.src =
-                    product.image;
+                    <p class="card-desc">
+                        ${desc}
+                    </p>
 
 
-                image.alt =
-                    product.name ||
-                    "بەرهەم";
+                    <div class="card-bottom">
+
+                        <span class="price">
+                            ${price}
+                        </span>
 
 
-                modalImage.appendChild(
-                    image
-                );
+                        <button
+                            class="view"
+                        >
+                            بینینی بەرهەم
+                        </button>
 
-            } else {
-
-                modalImage.innerHTML = `
-
-                    <div
-                        class="product-placeholder"
-                    >
-                        وێنە بەردەست نییە
                     </div>
 
-                `;
+                </div>
+
+            `;
+
+
+            card
+                .querySelector(".view")
+                .addEventListener(
+                    "click",
+                    () => openModal(product)
+                );
+
+
+            productsEl.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   FILTER
+========================= */
+
+function applyFilters(){
+
+    const term =
+        searchEl.value
+            .trim()
+            .toLowerCase();
+
+
+    let list =
+        products.filter(
+            product => {
+
+                const name =
+                    String(
+                        product.name ||
+                        ""
+                    ).toLowerCase();
+
+
+                const description =
+                    String(
+                        product.description ||
+                        ""
+                    ).toLowerCase();
+
+
+                return (
+                    name.includes(term) ||
+                    description.includes(term)
+                );
 
             }
+        );
 
 
-            modal.classList.add(
-                "open"
+    if(
+        sortEl.value ===
+        "low"
+    ){
+
+        list.sort(
+            (a,b) =>
+                Number(a.price || 0) -
+                Number(b.price || 0)
+        );
+
+    }
+
+
+    if(
+        sortEl.value ===
+        "high"
+    ){
+
+        list.sort(
+            (a,b) =>
+                Number(b.price || 0) -
+                Number(a.price || 0)
+        );
+
+    }
+
+
+    if(
+        sortEl.value ===
+        "az"
+    ){
+
+        list.sort(
+            (a,b) =>
+                String(
+                    a.name || ""
+                ).localeCompare(
+                    String(
+                        b.name || ""
+                    )
+                )
+        );
+
+    }
+
+
+    render(list);
+
+}
+
+
+/* =========================
+   LOAD PRODUCTS
+========================= */
+
+async function loadProducts(){
+
+    try{
+
+        const q =
+            query(
+                collection(
+                    db,
+                    "products"
+                ),
+                where(
+                    "published",
+                    "==",
+                    true
+                )
             );
 
 
-            modal.setAttribute(
-                "aria-hidden",
-                "false"
+        const snapshot =
+            await getDocs(q);
+
+
+        products =
+            snapshot.docs.map(
+                d => ({
+                    id:d.id,
+                    ...d.data()
+                })
             );
 
 
-            document.body.style.overflow =
-                "hidden";
+        heroCountEl.textContent =
+            products.length;
+
+
+        applyFilters();
+
+
+    }catch(error){
+
+        console.error(
+            "Firebase error:",
+            error
+        );
+
+
+        resultEl.textContent =
+            "کێشە لە بارکردن";
+
+
+        productsEl.innerHTML = `
+
+            <div class="state">
+
+                <div class="state-icon">
+                    !
+                </div>
+
+                <h3>
+                    کێشەیەک ڕوویدا
+                </h3>
+
+                <p>
+                    نەتوانرا بەرهەمەکان لە Firebase وەربگیرێن.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+function openModal(product){
+
+    currentProduct =
+        product;
+
+
+    document
+        .getElementById(
+            "modalName"
+        )
+        .textContent =
+            product.name ||
+            "بەرهەم";
+
+
+    document
+        .getElementById(
+            "modalDescription"
+        )
+        .textContent =
+            product.description ||
+            "وەسفی بەرهەم بەردەست نییە.";
+
+
+    document
+        .getElementById(
+            "modalPrice"
+        )
+        .textContent =
+            money(
+                product.price
+            );
+
+
+    const holder =
+        document.getElementById(
+            "modalImage"
+        );
+
+
+    holder.innerHTML =
+        "";
+
+
+    if(product.image){
+
+        const img =
+            document.createElement(
+                "img"
+            );
+
+
+        img.src =
+            product.image;
+
+
+        img.alt =
+            product.name ||
+            "بەرهەم";
+
+
+        holder.appendChild(
+            img
+        );
+
+    }else{
+
+        holder.innerHTML = `
+
+            <div class="placeholder">
+                وێنە بەردەست نییە
+            </div>
+
+        `;
+
+    }
+
+
+    modal.classList.add(
+        "open"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+window.closeModal =
+function(){
+
+    modal.classList.remove(
+        "open"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+};
+
+
+/* =========================
+   CART
+========================= */
+
+window.addCurrent =
+function(){
+
+    if(!currentProduct)
+        return;
+
+
+    cart.push(
+        currentProduct
+    );
+
+
+    updateCart();
+
+
+    closeModal();
+
+
+    showToast(
+        "بەرهەمەکە زیادکرا بۆ سەبەتە."
+    );
+
+};
+
+
+function updateCart(){
+
+    cartCountEl.textContent =
+        cart.length;
+
+
+    cartItemsEl.innerHTML =
+        "";
+
+
+    if(!cart.length){
+
+        cartItemsEl.innerHTML = `
+
+            <div class="cart-empty">
+                سەبەتەکەت هێشتا بەتاڵە.
+            </div>
+
+        `;
+
+
+        cartTotalEl.textContent =
+            "$0.00";
+
+
+        return;
+    }
+
+
+    let total = 0;
+
+
+    cart.forEach(
+        (product,index) => {
+
+            total +=
+                Number(
+                    product.price || 0
+                );
+
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "cart-item";
+
+
+            item.innerHTML = `
+
+                ${
+                    product.image
+
+                    ?
+
+                    `<img
+                        src="${escapeHTML(product.image)}"
+                        alt=""
+                    >`
+
+                    :
+
+                    `<div
+                        style="
+                            width:70px;
+                            height:70px;
+                            border-radius:10px;
+                            background:#171a22;
+                            display:grid;
+                            place-items:center;
+                        "
+                    >
+                        S
+                    </div>`
+                }
+
+
+                <div class="cart-item-info">
+
+                    <h3>
+                        ${escapeHTML(
+                            product.name ||
+                            "بەرهەم"
+                        )}
+                    </h3>
+
+                    <p>
+                        ${money(product.price)}
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="remove"
+                    aria-label="سڕینەوە"
+                >
+                    ×
+                </button>
+
+            `;
+
+
+            item
+                .querySelector(
+                    ".remove"
+                )
+                .onclick =
+                () => {
+
+                    cart.splice(
+                        index,
+                        1
+                    );
+
+                    updateCart();
+
+                };
+
+
+            cartItemsEl.appendChild(
+                item
+            );
+
+        }
+    );
+
+
+    cartTotalEl.textContent =
+        money(total);
+
+}
+
+
+window.openCart =
+function(){
+
+    updateCart();
+
+    cartOverlay.classList.add(
+        "open"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+
+};
+
+
+window.closeCart =
+function(){
+
+    cartOverlay.classList.remove(
+        "open"
+    );
+
+    document.body.style.overflow =
+        "";
+
+};
+
+
+window.overlayCart =
+function(event){
+
+    if(
+        event.target ===
+        cartOverlay
+    ){
+
+        closeCart();
+
+    }
+
+};
+
+
+/* =========================
+   SEARCH
+========================= */
+
+window.focusSearch =
+function(){
+
+    document
+        .getElementById(
+            "products"
+        )
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+
+    setTimeout(
+        () =>
+            searchEl.focus(),
+        450
+    );
+
+};
+
+
+searchEl.addEventListener(
+    "input",
+    applyFilters
+);
+
+
+sortEl.addEventListener(
+    "change",
+    applyFilters
+);
+
+
+/* =========================
+   CLOSE MODAL
+========================= */
+
+modal.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target ===
+            modal
+        ){
+
+            closeModal();
 
         }
 
-
-        window.closeProductModal =
-            function () {
-
-                modal.classList.remove(
-                    "open"
-                );
+    }
+);
 
 
-                modal.setAttribute(
-                    "aria-hidden",
-                    "true"
-                );
+document.addEventListener(
+    "keydown",
+    event => {
 
+        if(
+            event.key ===
+            "Escape"
+        ){
 
-                document.body.style.overflow =
-                    "";
+            closeModal();
 
-            };
-
-
-        modal.addEventListener(
-            "click",
-            event => {
-
-                if (
-                    event.target === modal
-                ) {
-
-                    closeProductModal();
-
-                }
-
-            }
-        );
-
-
-        document.addEventListener(
-            "keydown",
-            event => {
-
-                if (
-                    event.key === "Escape"
-                ) {
-
-                    closeProductModal();
-
-                }
-
-            }
-        );
-
-
-        /* =================================================
-           CART
-        ================================================= */
-
-        window.addCurrentProductToCart =
-            function () {
-
-                if (
-                    !currentProduct
-                ) {
-
-                    return;
-
-                }
-
-
-                cartItems++;
-
-
-                cartCount.textContent =
-                    cartItems;
-
-
-                closeProductModal();
-
-
-                showToast(
-                    "بەرهەمەکە زیادکرا بۆ سەبەتە."
-                );
-
-            };
-
-
-        window.showCartMessage =
-            function () {
-
-                if (
-                    cartItems === 0
-                ) {
-
-                    showToast(
-                        "سەبەتەکەت هێشتا بەتاڵە."
-                    );
-
-                    return;
-
-                }
-
-
-                showToast(
-                    `لە سەبەتەکەتدا ${cartItems} بەرهەم هەیە.`
-                );
-
-            };
-
-
-        /* =================================================
-           TOAST
-        ================================================= */
-
-        let toastTimer;
-
-
-        function showToast(
-            message
-        ) {
-
-            toast.textContent =
-                message;
-
-
-            toast.classList.add(
-                "show"
-            );
-
-
-            clearTimeout(
-                toastTimer
-            );
-
-
-            toastTimer =
-                setTimeout(
-                    () => {
-
-                        toast.classList.remove(
-                            "show"
-                        );
-
-                    },
-                    2800
-                );
+            closeCart();
 
         }
 
-
-        /* =================================================
-           SEARCH
-        ================================================= */
-
-        searchInput.addEventListener(
-            "input",
-            event => {
+    }
+);
 
 
-                const searchTerm =
-                    event.target.value
-                        .trim()
-                        .toLowerCase();
+/* =========================
+   TOAST
+========================= */
+
+function showToast(
+    message
+){
+
+    toastEl.textContent =
+        message;
 
 
-                if (
-                    !searchTerm
-                ) {
-
-                    renderProducts(
-                        products
-                    );
-
-                    return;
-
-                }
+    toastEl.classList.add(
+        "show"
+    );
 
 
-                const filtered =
-                    products.filter(
-                        product => {
+    clearTimeout(
+        toastTimer
+    );
 
 
-                            const name =
-                                String(
-                                    product.name ||
-                                    ""
-                                )
-                                .toLowerCase();
-
-
-                            const description =
-                                String(
-                                    product.description ||
-                                    ""
-                                )
-                                .toLowerCase();
-
-
-                            return (
-
-                                name.includes(
-                                    searchTerm
-                                )
-
-                                ||
-
-                                description.includes(
-                                    searchTerm
-                                )
-
-                            );
-
-                        }
-                    );
-
-
-                renderProducts(
-                    filtered
-                );
-
-            }
+    toastTimer =
+        setTimeout(
+            () =>
+                toastEl.classList.remove(
+                    "show"
+                ),
+            2600
         );
 
+}
 
-        /* =================================================
-           START
-        ================================================= */
 
-        loadProducts();
+/* =========================
+   START
+========================= */
 
-    </script>
+updateCart();
 
+loadProducts();
+
+</script>
 
 </body>
-
 </html>
