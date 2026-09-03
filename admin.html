@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SuraStore Admin</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b0f;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           LAYOUT
+        ========================== */
+
+        .admin-layout {
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================== */
+
+        .sidebar {
+            width: 250px;
+            min-height: 100vh;
+            background: #111116;
+            border-right: 1px solid #25252d;
+            padding: 25px 15px;
+        }
+
+        .brand {
+            padding: 0 15px 30px;
+            border-bottom: 1px solid #25252d;
+            margin-bottom: 20px;
+        }
+
+        .brand h1 {
+            font-size: 22px;
+        }
+
+        .brand p {
+            color: #777783;
+            font-size: 13px;
+            margin-top: 6px;
+        }
+
+        .menu-title {
+            color: #666672;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 15px;
+        }
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu li {
+            margin-bottom: 5px;
+        }
+
+        .menu button {
+            width: 100%;
+            padding: 13px 15px;
+
+            background: transparent;
+            border: 0;
+            border-radius: 8px;
+
+            color: #a8a8b3;
+            text-align: left;
+            font-size: 14px;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+        }
+
+        .menu button:hover {
+            background: #1b1b23;
+            color: #ffffff;
+        }
+
+        .menu button.active {
+            background: #22222c;
+            color: #ffffff;
+        }
+
+        /* =========================
+           MAIN
+        ========================== */
+
+        .main-content {
+            flex: 1;
+            padding: 35px;
+            overflow-x: hidden;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 35px;
+        }
+
+        .topbar h2 {
+            font-size: 28px;
+        }
+
+        .website-button {
+            padding: 10px 16px;
+
+            background: #ffffff;
+            color: #0b0b0f;
+
+            border: 0;
+            border-radius: 7px;
+
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .website-button:hover {
+            opacity: 0.85;
+        }
+
+        /* =========================
+           PAGE
+        ========================== */
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-description {
+            color: #9999a5;
+            margin-top: 8px;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           CARDS
+        ========================== */
+
+        .cards {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 20px;
+        }
+
+        .card {
+            background: #15151c;
+            border: 1px solid #282832;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .card h3 {
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #9999a5;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        /* =========================
+           BLACKBLAZE
+        ========================== */
+
+        .blackblaze-header {
+            background: #15151c;
+            border: 1px solid #282832;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .blackblaze-header h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .blackblaze-header p {
+            color: #9999a5;
+            line-height: 1.5;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 15px;
+
+            padding: 7px 11px;
+
+            border-radius: 20px;
+
+            background: #20202a;
+            color: #b8b8c4;
+
+            font-size: 12px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 750px) {
+
+            .admin-layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+
+                border-right: 0;
+                border-bottom: 1px solid #25252d;
+            }
+
+            .menu {
+                display: grid;
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 5px;
+            }
+
+            .main-content {
+                padding: 25px 20px;
+            }
+
+            .topbar {
+                gap: 15px;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <h1>SuraStore</h1>
+            <p>Admin Dashboard</p>
+        </div>
+
+        <div class="menu-title">
+            Administration
+        </div>
+
+        <ul class="menu">
+
+            <li>
+                <button
+                    class="menu-button active"
+                    data-page="dashboard"
+                >
+                    Dashboard
+                </button>
+            </li>
+
+            <li>
+                <button
+                    class="menu-button"
+                    data-page="blackblaze"
+                >
+                    BlackBlaze
+                </button>
+            </li>
+
+            <li>
+                <button
+                    class="menu-button"
+                    data-page="products"
+                >
+                    Products
+                </button>
+            </li>
+
+            <li>
+                <button
+                    class="menu-button"
+                    data-page="settings"
+                >
+                    Settings
+                </button>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <h2 id="page-title">
+                Dashboard
+            </h2>
+
+            <a
+                class="website-button"
+                href="index.html"
+            >
+                Main Website
+            </a>
+
+        </div>
+
+
+        <!-- =========================
+             DASHBOARD
+        ========================== -->
+
+        <section
+            class="page active"
+            id="dashboard"
+        >
+
+            <h3>
+                Welcome to SuraStore
+            </h3>
+
+            <p class="page-description">
+                Manage your SuraStore website from this dashboard.
+            </p>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>BlackBlaze</h3>
+
+                    <p>
+                        Manage the connection and settings
+                        for your main website.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Products</h3>
+
+                    <p>
+                        Add, edit and manage products
+                        displayed on SuraStore.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Pricing</h3>
+
+                    <p>
+                        Manage product prices from
+                        the administration system.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BLACKBLAZE
+        ========================== -->
+
+        <section
+            class="page"
+            id="blackblaze"
+        >
+
+            <h3>
+                BlackBlaze
+            </h3>
+
+            <p class="page-description">
+                Manage your SuraStore website through
+                the BlackBlaze control system.
+            </p>
+
+            <div class="blackblaze-header">
+
+                <h3>
+                    Main Website
+                </h3>
+
+                <p>
+                    This section will control the products,
+                    pricing and content displayed on the
+                    SuraStore main website.
+                </p>
+
+                <span class="status">
+                    Connection setup pending
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PRODUCTS
+        ========================== -->
+
+        <section
+            class="page"
+            id="products"
+        >
+
+            <h3>
+                Products
+            </h3>
+
+            <p class="page-description">
+                Product management will be added here.
+            </p>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Add Product</h3>
+
+                    <p>
+                        Create a new product for
+                        the main website.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Edit Product</h3>
+
+                    <p>
+                        Change product information,
+                        images and descriptions.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Pricing</h3>
+
+                    <p>
+                        Change product prices and
+                        other pricing information.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SETTINGS
+        ========================== -->
+
+        <section
+            class="page"
+            id="settings"
+        >
+
+            <h3>
+                Settings
+            </h3>
+
+            <p class="page-description">
+                SuraStore administration settings.
+            </p>
+
+            <div class="card">
+
+                <h3>
+                    Store Settings
+                </h3>
+
+                <p>
+                    Additional settings will be
+                    added here later.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+    const menuButtons =
+        document.querySelectorAll(".menu-button");
+
+    const pages =
+        document.querySelectorAll(".page");
+
+    const pageTitle =
+        document.getElementById("page-title");
+
+
+    const titles = {
+        dashboard: "Dashboard",
+        blackblaze: "BlackBlaze",
+        products: "Products",
+        settings: "Settings"
+    };
+
+
+    menuButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const pageName =
+                button.dataset.page;
+
+
+            menuButtons.forEach(item => {
+                item.classList.remove("active");
+            });
+
+
+            button.classList.add("active");
+
+
+            pages.forEach(page => {
+                page.classList.remove("active");
+            });
+
+
+            const selectedPage =
+                document.getElementById(pageName);
+
+
+            if (selectedPage) {
+                selectedPage.classList.add("active");
+            }
+
+
+            pageTitle.textContent =
+                titles[pageName] || "Dashboard";
+
+        });
+
+    });
+</script>
+
+</body>
+</html>
