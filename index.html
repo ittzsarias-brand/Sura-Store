@@ -250,15 +250,13 @@ a{
 }
 
 .hero-grid{
-    min-height:570px;
+    min-height:420px;
 
     display:grid;
 
-    grid-template-columns:
-        1.05fr
-        .95fr;
+    grid-template-columns:1fr;
 
-    gap:70px;
+    gap:0;
 
     align-items:center;
 }
@@ -1675,18 +1673,69 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;bac
 @media(max-width:800px){.trust-strip{grid-template-columns:1fr}.shop{padding-top:75px}}
 @media(max-width:500px){.hero-grid{min-height:0}.trust-item{text-align:center}.category-bar{margin-inline:-3px;padding-inline:3px}.card-buy{min-height:42px}}
 
+
+.top-search{
+    width:100%;
+    margin:0 auto 18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.top-search .search{
+    width:100%;
+    flex:1;
+}
+.settings-wrap{
+    position:relative;
+    flex:0 0 auto;
+}
+.settings-button{
+    width:47px;
+    height:47px;
+    border:1px solid var(--line);
+    border-radius:11px;
+    background:rgba(255,255,255,.035);
+    color:#aeb5c4;
+    cursor:pointer;
+    font-size:19px;
+    transition:.2s;
+}
+.settings-button:hover{
+    color:#fff;
+    border-color:rgba(124,92,255,.55);
+    background:rgba(124,92,255,.10);
+}
+.settings-menu{
+    position:absolute;
+    top:56px;
+    left:0;
+    z-index:30;
+    min-width:190px;
+    padding:10px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:rgba(18,18,25,.98);
+    box-shadow:0 18px 45px rgba(0,0,0,.35);
+    display:none;
+}
+.settings-menu.open{display:block}
+.settings-menu label{
+    display:block;
+    margin-bottom:7px;
+    color:#858c9b;
+    font-size:10px;
+}
+.settings-menu .sort{
+    width:100%;
+}
+.shop{
+    padding-top:34px;
+}
 </style>
 </head>
 
 
 <body>
-
-
-<!-- ANNOUNCEMENT -->
-
-<div class="announcement">
-    بەخێربێیت بۆ سورا ستۆر — بەرهەمەکانت بە سادەیی بدۆزەرەوە.
-</div>
 
 
 <!-- HEADER -->
@@ -1769,237 +1818,6 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;bac
 <main id="home">
 
 
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="container hero-grid">
-
-
-    <div class="hero-content">
-
-
-        <div class="eyebrow">
-
-            <span class="dot"></span>
-
-            فرۆشگای نوێی سورا
-
-        </div>
-
-
-        <h1>
-
-            کڕینی باشتر،
-
-            <br>
-
-            <span>
-                بە شێوازێکی جیاواز.
-            </span>
-
-        </h1>
-
-
-        <p class="hero-copy">
-
-            بەرهەمە هەڵبژێردراوەکانت
-            لە سورا ستۆر بدۆزەرەوە.
-            دیزاینێکی مۆدێرن،
-            زانیاریی ڕوون و
-            ئەزموونێکی خۆش بۆ کڕین.
-
-        </p>
-
-
-        <div class="hero-buttons">
-
-            <a
-                class="primary"
-                href="#products"
-            >
-                بینینی بەرهەمەکان
-            </a>
-
-
-            <a
-                class="secondary"
-                href="#about"
-            >
-                دەربارەی سورا ستۆر
-            </a>
-
-        </div>
-
-
-        <div class="hero-stats">
-
-            <div class="stat">
-
-                <strong id="heroProductCount">
-                    —
-                </strong>
-
-                <span>
-                    بەرهەم
-                </span>
-
-            </div>
-
-
-            <div class="stat">
-
-                <strong>
-                    24/7
-                </strong>
-
-                <span>
-                    بەردەوام
-                </span>
-
-            </div>
-
-
-            <div class="stat">
-
-                <strong>
-                    100%
-                </strong>
-
-                <span>
-                    ئۆنلاین
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- VISUAL -->
-
-    <div class="visual">
-
-        <div class="glow"></div>
-
-
-        <div class="showcase">
-
-            <div class="showcase-inner">
-
-
-                <div class="showcase-top">
-
-                    <span>
-                        سورا ستۆر
-                    </span>
-
-                    <span class="showcase-small">
-                        SURA / 01
-                    </span>
-
-                </div>
-
-
-                <div class="showcase-center">
-
-                    <div class="showcase-symbol">
-                        S
-                    </div>
-
-                    <h3>
-                        هەڵبژاردەی تۆ
-                    </h3>
-
-                    <p>
-                        کوالیتی • سادەیی • متمانە
-                    </p>
-
-                </div>
-
-
-                <div class="showcase-bottom">
-
-                    <span class="showcase-price">
-                        Sura Store
-                    </span>
-
-                    <span class="showcase-small">
-                        ONLINE
-                    </span>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-</div>
-
-</section>
-
-
-<!-- FEATURES -->
-
-<section class="features">
-
-<div class="container features-grid">
-
-
-    <div class="feature">
-
-        <span class="feature-icon">
-            ✓
-        </span>
-
-        بەرهەمی کوالیتی
-
-    </div>
-
-
-    <div class="feature">
-
-        <span class="feature-icon">
-            ◇
-        </span>
-
-        کڕینی ئاسان
-
-    </div>
-
-
-    <div class="feature">
-
-        <span class="feature-icon">
-            $
-        </span>
-
-        نرخی ڕوون
-
-    </div>
-
-
-    <div class="feature">
-
-        <span class="feature-icon">
-            ★
-        </span>
-
-        خزمەتگوزاریی پیشەیی
-
-    </div>
-
-
-</div>
-
-</section>
-
-
 <!-- PRODUCTS -->
 
 <section
@@ -2010,25 +1828,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;bac
 <div class="container">
 
 
-    <div class="section-head">
-
-
-        <div>
-
-            <div class="kicker">
-                SURA STORE / COLLECTION
-            </div>
-
-            <h2 class="section-title">
-                بەرهەمەکان
-            </h2>
-
-            <p class="section-desc">
-                نوێترین بەرهەمە بەردەستەکانمان بگەڕێ.
-            </p>
-
-        </div>
-
+    <div class="top-search">
 
         <div class="search">
 
@@ -2045,6 +1845,27 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;bac
 
         </div>
 
+        <div class="settings-wrap">
+            <button
+                class="settings-button"
+                id="settingsButton"
+                type="button"
+                aria-label="ڕێکخستنەکان"
+                aria-expanded="false"
+            >
+                ⚙
+            </button>
+
+            <div class="settings-menu" id="settingsMenu">
+                <label for="sort">ڕیزکردنی بەرهەمەکان</label>
+                <select class="sort" id="sort">
+                    <option value="default">بنەڕەت</option>
+                    <option value="low">نرخ: کەم بۆ زۆر</option>
+                    <option value="high">نرخ: زۆر بۆ کەم</option>
+                    <option value="az">ناو: A بۆ Z</option>
+                </select>
+            </div>
+        </div>
 
     </div>
 
@@ -2056,47 +1877,9 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;bac
         <button class="category-chip" data-category="accessories">ئاکسسوارات</button>
     </div>
 
-    <div class="trust-strip">
-        <div class="trust-item"><strong>کوالیتیی هەڵبژێردراو</strong><span>بەرهەمەکان بە وردی هەڵدەبژێرین</span></div>
-        <div class="trust-item"><strong>کڕینی سادە و خێرا</strong><span>گەڕان، بینین و زیادکردن بۆ سەبەتە</span></div>
-        <div class="trust-item"><strong>دیزاینی پیشەیی</strong><span>ئەزموونێکی پاک و مۆدێرن لە هەموو ئامێرێک</span></div>
+    <div class="result-count" id="resultCount" style="margin:0 0 18px;">
+        بارکردنی بەرهەمەکان...
     </div>
-
-    <div class="toolbar">
-
-        <span
-            class="result-count"
-            id="resultCount"
-        >
-            بارکردنی بەرهەمەکان...
-        </span>
-
-
-        <select
-            class="sort"
-            id="sort"
-        >
-
-            <option value="default">
-                ڕیزکردن: بنەڕەت
-            </option>
-
-            <option value="low">
-                نرخ: کەم بۆ زۆر
-            </option>
-
-            <option value="high">
-                نرخ: زۆر بۆ کەم
-            </option>
-
-            <option value="az">
-                ناو: A بۆ Z
-            </option>
-
-        </select>
-
-    </div>
-
 
     <div
         class="products"
@@ -2436,12 +2219,6 @@ const resultEl =
 const sortEl =
     document.getElementById(
         "sort"
-    );
-
-
-const heroCountEl =
-    document.getElementById(
-        "heroProductCount"
     );
 
 
@@ -2850,8 +2627,7 @@ async function loadProducts(){
         // Test catalog: keep the electronics demo products visible alongside Firestore products.
         products = [...products, ...demoProducts];
 
-        heroCountEl.textContent =
-            products.length;
+        // Hero count removed from the new storefront layout.
 
 
         applyFilters();
@@ -2866,7 +2642,7 @@ async function loadProducts(){
 
 
         products = demoProducts;
-        heroCountEl.textContent = products.length;
+        // Hero count removed from the new storefront layout.
         applyFilters();
         showToast("کاتێک Firebase بەردەست نییە، کاتەلۆگی تاقیکردنەوە پیشان دەدرێت.");
         return;
@@ -3250,6 +3026,22 @@ function(){
 
 };
 
+
+const settingsButton = document.getElementById("settingsButton");
+const settingsMenu = document.getElementById("settingsMenu");
+
+settingsButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isOpen = settingsMenu.classList.toggle("open");
+    settingsButton.setAttribute("aria-expanded", String(isOpen));
+});
+
+document.addEventListener("click", (event) => {
+    if (!settingsMenu.contains(event.target) && event.target !== settingsButton) {
+        settingsMenu.classList.remove("open");
+        settingsButton.setAttribute("aria-expanded", "false");
+    }
+});
 
 searchEl.addEventListener(
     "input",
