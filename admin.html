@@ -264,6 +264,28 @@
                 flex-direction: column;
             }
         }
+
+
+        body::before{
+            content:"";
+            position:fixed;
+            inset:0;
+            pointer-events:none;
+            background:radial-gradient(circle at 80% 0%,rgba(255,255,255,.045),transparent 30rem);
+        }
+        .sidebar{position:sticky;top:0;height:100vh;box-shadow:18px 0 60px rgba(0,0,0,.12)}
+        .brand h1{letter-spacing:-.5px}
+        .menu button{display:flex;align-items:center;gap:10px;border:1px solid transparent}
+        .menu button.active{border-color:#30303a;box-shadow:inset 3px 0 #fff}
+        .topbar{padding-bottom:22px;border-bottom:1px solid #20202a}
+        .website-button{box-shadow:0 10px 30px rgba(0,0,0,.18)}
+        .card,.blackblaze-header{box-shadow:0 12px 35px rgba(0,0,0,.13);transition:.2s ease}
+        .card:hover,.blackblaze-header:hover{transform:translateY(-2px);border-color:#353540}
+        .cards{grid-auto-rows:1fr}
+        .card{position:relative;overflow:hidden}
+        .card::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#fff,transparent);opacity:.14}
+        .status{border:1px solid #30303a}
+        @media(max-width:750px){.sidebar{position:relative;height:auto;box-shadow:none}.topbar{padding-bottom:18px}}
     </style>
 </head>
 

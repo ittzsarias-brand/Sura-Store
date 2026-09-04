@@ -17,6 +17,9 @@
 
 :root{
     --bg:#08090d;
+    --accent:#ffffff;
+    --accent-soft:rgba(255,255,255,.07);
+    --success:#77e0a0;
     --panel:#101218;
     --panel2:#151821;
     --line:rgba(255,255,255,.085);
@@ -123,6 +126,7 @@ a{
 
 .header-inner{
     height:78px;
+    position:relative;
 
     display:flex;
     align-items:center;
@@ -585,6 +589,7 @@ a{
 
 .shop{
     padding:95px 0;
+    position:relative;
 }
 
 .section-head{
@@ -1343,6 +1348,80 @@ a{
 }
 
 
+
+/* =========================
+   STORE POLISH
+========================= */
+
+.header::after{
+    content:"";
+    position:absolute;
+    inset:auto 0 0;
+    height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+    pointer-events:none;
+}
+
+.hero{
+    background:
+        radial-gradient(circle at 78% 48%,rgba(255,255,255,.045),transparent 25rem),
+        radial-gradient(circle at 20% 20%,rgba(255,255,255,.035),transparent 22rem);
+}
+
+.hero-content{position:relative;z-index:2}
+
+.hero h1{font-weight:700;text-wrap:balance}
+
+.primary,.secondary,.view,.add,.icon-btn,.sort{transition:transform .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease}
+.primary:hover{box-shadow:0 12px 35px rgba(255,255,255,.08)}
+
+.feature{background:rgba(255,255,255,.008)}
+.feature-icon{font-weight:700}
+
+.products{align-items:stretch}
+
+.card{display:flex;flex-direction:column;position:relative;box-shadow:0 8px 30px rgba(0,0,0,.12)}
+.card-body{display:flex;flex:1;flex-direction:column}
+.card-bottom{margin-top:auto;padding-top:15px}
+
+.card-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.18));
+    pointer-events:none;
+}
+
+.card-label{z-index:1}
+
+.card-buy{
+    width:100%;
+    min-height:38px;
+    margin-top:10px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:#fff;
+    color:#090a0e;
+    font-size:10px;
+    font-weight:700;
+    cursor:pointer;
+}
+.card-buy:hover{transform:translateY(-1px);box-shadow:0 10px 25px rgba(0,0,0,.2)}
+
+.store-meta{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:8px;
+    color:#6f7582;
+    font-size:9px;
+}
+.store-dot{width:6px;height:6px;border-radius:50%;background:var(--success);box-shadow:0 0 12px rgba(119,224,160,.45)}
+
+@media(max-width:500px){
+    .card-buy{min-height:42px}
+}
+
 /* =========================
    RESPONSIVE
 ========================= */
@@ -1532,6 +1611,70 @@ a{
         padding:27px;
     }
 }
+
+/* =========================
+   SURA STORE PRO LAYER
+========================= */
+:root{
+  --accent:#7c5cff;
+  --accent-2:#00d4ff;
+  --success:#38d996;
+  --danger:#ff6b7a;
+  --glass:rgba(255,255,255,.045);
+  --shadow:0 24px 80px rgba(0,0,0,.34);
+}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 15% 25%,rgba(124,92,255,.11),transparent 28rem),radial-gradient(circle at 85% 55%,rgba(0,212,255,.07),transparent 25rem)}
+.announcement{background:linear-gradient(90deg,#fff,#dfe4ff,#fff);font-weight:700;letter-spacing:.15px}
+.header{background:rgba(7,8,13,.72);box-shadow:0 10px 35px rgba(0,0,0,.16)}
+.brand-logo{box-shadow:0 8px 30px rgba(255,255,255,.12)}
+.nav a{position:relative;padding:8px 2px}.nav a:after{content:"";position:absolute;right:0;left:0;bottom:0;height:2px;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform:scaleX(0);transition:.25s}.nav a:hover:after,.nav a.active:after{transform:scaleX(1)}
+.icon-btn{box-shadow:inset 0 1px rgba(255,255,255,.04)}
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.018),transparent)}
+.hero-grid{min-height:610px}
+.hero h1{font-weight:900;text-wrap:balance}
+.hero h1 span{background:linear-gradient(90deg,#858cff,#5ce3ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{border-color:rgba(124,92,255,.28);background:rgba(124,92,255,.08)}
+.dot{background:var(--accent);box-shadow:0 0 18px var(--accent)}
+.primary{background:linear-gradient(135deg,#fff,#dfe5ff);box-shadow:0 14px 35px rgba(255,255,255,.08)}
+.secondary:hover{border-color:rgba(124,92,255,.55);background:rgba(124,92,255,.09)}
+.showcase{transform:rotate(-4deg);box-shadow:var(--shadow),0 0 100px rgba(124,92,255,.08);border-color:rgba(255,255,255,.16)}
+.showcase-symbol{background:linear-gradient(145deg,rgba(124,92,255,.24),rgba(0,212,255,.08));border-color:rgba(124,92,255,.25);box-shadow:inset 0 0 50px rgba(124,92,255,.08)}
+.features{background:rgba(255,255,255,.012)}
+.feature{transition:.25s}.feature:hover{background:rgba(255,255,255,.025)}
+.feature-icon{color:#bfc7ff;border-color:rgba(124,92,255,.25);background:rgba(124,92,255,.07)}
+.shop{padding-top:105px}
+.section-title{font-weight:900}
+.search input{box-shadow:inset 0 1px rgba(255,255,255,.04)}
+.search input:focus{border-color:rgba(124,92,255,.6);box-shadow:0 0 0 4px rgba(124,92,255,.08)}
+.toolbar{gap:15px;flex-wrap:wrap}
+.category-bar{display:flex;gap:8px;overflow:auto;padding:4px 0 18px;scrollbar-width:none}.category-bar::-webkit-scrollbar{display:none}
+.category-chip{white-space:nowrap;border:1px solid var(--line);background:var(--glass);color:var(--soft);border-radius:999px;padding:8px 14px;font-size:10px;transition:.2s}.category-chip:hover,.category-chip.active{color:#fff;border-color:rgba(124,92,255,.55);background:rgba(124,92,255,.12)}
+.products{gap:20px}
+.card{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012));box-shadow:0 10px 35px rgba(0,0,0,.13)}
+.card:before{content:"";position:absolute;inset:0;border-radius:18px;padding:1px;background:linear-gradient(135deg,rgba(255,255,255,.09),transparent 45%,rgba(124,92,255,.13));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.card:hover{transform:translateY(-7px);box-shadow:0 30px 70px rgba(0,0,0,.36),0 0 35px rgba(124,92,255,.07)}
+.card-image{background:radial-gradient(circle at 50% 45%,rgba(124,92,255,.12),transparent 55%),linear-gradient(145deg,#191d28,#0b0d12)}
+.card-image img{transition:.6s;filter:saturate(.92)}.card:hover .card-image img{transform:scale(1.06);filter:saturate(1.08)}
+.card-label{background:rgba(124,92,255,.16);border-color:rgba(124,92,255,.3);backdrop-filter:blur(10px)}
+.card-body{padding:18px}
+.card-name{font-weight:800}
+.card-desc{min-height:43px}
+.card-bottom{margin-top:16px}
+.price{font-weight:900;font-size:18px}
+.view,.card-buy{transition:.2s}.view:hover{border-color:rgba(124,92,255,.5)}
+.card-buy{width:100%;margin-top:10px;min-height:40px;border:1px solid rgba(124,92,255,.25);border-radius:10px;background:linear-gradient(135deg,rgba(124,92,255,.16),rgba(0,212,255,.07));color:#fff;font-size:10px}.card-buy:hover{background:linear-gradient(135deg,rgba(124,92,255,.28),rgba(0,212,255,.12));transform:translateY(-1px)}
+.store-meta{display:flex;align-items:center;gap:6px;margin-top:10px;color:#727988;font-size:9px}.store-dot{width:6px;height:6px;border-radius:50%;background:var(--success);box-shadow:0 0 10px rgba(56,217,150,.5)}
+.quick-info{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.quick-info span{font-size:8px;color:#777f90;border:1px solid var(--line);padding:3px 7px;border-radius:999px;background:rgba(255,255,255,.025)}
+.banner{background:radial-gradient(circle at 85% 50%,rgba(124,92,255,.13),transparent 25rem),linear-gradient(135deg,#171b27,#0c0e14);box-shadow:var(--shadow)}
+.modal-card{box-shadow:0 35px 120px rgba(0,0,0,.55)}
+.modal-price{font-weight:900;background:linear-gradient(90deg,#fff,#aeb7ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.add{background:linear-gradient(135deg,#fff,#dce2ff);font-weight:800;box-shadow:0 12px 30px rgba(255,255,255,.08)}
+.drawer{box-shadow:-25px 0 80px rgba(0,0,0,.35)}
+.toast{border-color:rgba(124,92,255,.35);box-shadow:0 18px 45px rgba(0,0,0,.3)}
+.trust-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 25px}.trust-item{padding:15px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}.trust-item strong{display:block;font-size:12px}.trust-item span{display:block;color:#777f8e;font-size:9px;margin-top:2px}
+@media(max-width:800px){.trust-strip{grid-template-columns:1fr}.shop{padding-top:75px}}
+@media(max-width:500px){.hero-grid{min-height:0}.trust-item{text-align:center}.category-bar{margin-inline:-3px;padding-inline:3px}.card-buy{min-height:42px}}
+
 </style>
 </head>
 
@@ -1905,6 +2048,19 @@ a{
 
     </div>
 
+    <div class="category-bar" id="categoryBar">
+        <button class="category-chip active" data-category="all">هەموو بەرهەمەکان</button>
+        <button class="category-chip" data-category="electronics">ئەلیکترۆنیک</button>
+        <button class="category-chip" data-category="audio">دەنگ و موزیک</button>
+        <button class="category-chip" data-category="computing">کۆمپیوتەر</button>
+        <button class="category-chip" data-category="accessories">ئاکسسوارات</button>
+    </div>
+
+    <div class="trust-strip">
+        <div class="trust-item"><strong>کوالیتیی هەڵبژێردراو</strong><span>بەرهەمەکان بە وردی هەڵدەبژێرین</span></div>
+        <div class="trust-item"><strong>کڕینی سادە و خێرا</strong><span>گەڕان، بینین و زیادکردن بۆ سەبەتە</span></div>
+        <div class="trust-item"><strong>دیزاینی پیشەیی</strong><span>ئەزموونێکی پاک و مۆدێرن لە هەموو ئامێرێک</span></div>
+    </div>
 
     <div class="toolbar">
 
@@ -1944,7 +2100,7 @@ a{
 
     <div
         class="products"
-        id="products"
+        id="productGrid"
     >
 
         <div class="state">
@@ -1958,7 +2114,7 @@ a{
             </h3>
 
             <p>
-                تکایە چاوەڕێ بکە.
+                بەرهەمەکانی کۆگاکەمان بار دەکرێن.
             </p>
 
         </div>
@@ -2171,7 +2327,7 @@ a{
                 class="add"
                 onclick="addCurrent()"
             >
-                زیادکردن بۆ سەبەتە
+                کڕین / زیادکردن بۆ سەبەتە
             </button>
 
         </div>
@@ -2261,7 +2417,7 @@ import {
 
 const productsEl =
     document.getElementById(
-        "products"
+        "productGrid"
     );
 
 
@@ -2326,8 +2482,20 @@ const toastEl =
 
 
 let products = [];
+let activeCategory = "all";
 
-let cart = [];
+const demoProducts = [
+    {id:"demo-airpods", name:"SuraPods Pro", description:"گۆشەگیرەی بێ وایەر بە ANC و کیسەی شارژ.", price:129, category:"audio", brand:"SURA", image:"https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=900&q=85", tags:["ANC","Bluetooth"]},
+    {id:"demo-headphones", name:"Pulse X Wireless Headphones", description:"هێدفۆنی بەرزکوالیتی بۆ موزیک و یاری.", price:89, category:"audio", brand:"SURA", image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85", tags:["Wireless","40h"]},
+    {id:"demo-laptop", name:"NovaBook 14", description:"لەپتۆپێکی مۆدێرن بۆ کار، خوێندن و پرۆگرامسازی.", price:749, category:"computing", brand:"NOVA", image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=85", tags:["14-inch","SSD"]},
+    {id:"demo-keyboard", name:"Forge Mechanical Keyboard", description:"کیبۆردی میکانیکی RGB بە تایپی خێرا و هەستی باش.", price:79, category:"accessories", brand:"FORGE", image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=900&q=85", tags:["RGB","Mechanical"]},
+    {id:"demo-mouse", name:"Vector Pro Mouse", description:"ماوسی گەیمینگ بە سنسەری ورد و دیزاینی سووک.", price:59, category:"accessories", brand:"VECTOR", image:"https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=900&q=85", tags:["12000 DPI","Gaming"]},
+    {id:"demo-speaker", name:"Orbit Mini Speaker", description:"سپیکەری پۆرتەبڵ بە دەنگی پاک و باتریی درێژخایەن.", price:69, category:"audio", brand:"ORBIT", image:"https://images.unsplash.com/photo-1589003077984-894e133dabab?auto=format&fit=crop&w=900&q=85", tags:["Portable","12h"]},
+    {id:"demo-camera", name:"Vision 4K Camera", description:"کامێرای دیجیتاڵ بۆ وێنە و ڤیدیۆی 4K.", price:499, category:"electronics", brand:"VISION", image:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=85", tags:["4K","Wi-Fi"]},
+    {id:"demo-watch", name:"Aero Smart Watch", description:"ساعەتی زیرەک بە شاشەی ڕوون و پەیوەندی بە مۆبایل.", price:119, category:"electronics", brand:"AERO", image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85", tags:["Smart","AMOLED"]}
+];
+
+let cart = JSON.parse(localStorage.getItem("sura-cart") || "[]");
 
 let currentProduct = null;
 
@@ -2470,7 +2638,7 @@ function render(list){
 
 
                     <span class="card-label">
-                        SURA
+                        ${escapeHTML(product.brand || "SURA")}
                     </span>
 
                 </div>
@@ -2494,7 +2662,6 @@ function render(list){
                             ${price}
                         </span>
 
-
                         <button
                             class="view"
                         >
@@ -2502,6 +2669,19 @@ function render(list){
                         </button>
 
                     </div>
+
+                    <div class="store-meta">
+                        <span class="store-dot"></span>
+                        بەردەستە بۆ کڕین
+                    </div>
+
+                    <div class="quick-info">
+                        ${(product.tags || []).slice(0,2).map(tag => `<span>${escapeHTML(tag)}</span>`).join("")}
+                    </div>
+
+                    <button class="card-buy" type="button">
+                        زیادکردن بۆ سەبەتە
+                    </button>
 
                 </div>
 
@@ -2513,6 +2693,17 @@ function render(list){
                 .addEventListener(
                     "click",
                     () => openModal(product)
+                );
+
+            card
+                .querySelector(".card-buy")
+                .addEventListener(
+                    "click",
+                    () => {
+                        cart.push(product);
+                        updateCart();
+                        showToast("بەرهەمەکە زیادکرا بۆ سەبەتە.");
+                    }
                 );
 
 
@@ -2556,9 +2747,14 @@ function applyFilters(){
                     ).toLowerCase();
 
 
+                const categoryMatch =
+                    activeCategory === "all" ||
+                    String(product.category || "electronics").toLowerCase() === activeCategory;
+
                 return (
-                    name.includes(term) ||
-                    description.includes(term)
+                    categoryMatch &&
+                    (name.includes(term) ||
+                    description.includes(term))
                 );
 
             }
@@ -2651,6 +2847,8 @@ async function loadProducts(){
                 })
             );
 
+        // Test catalog: keep the electronics demo products visible alongside Firestore products.
+        products = [...products, ...demoProducts];
 
         heroCountEl.textContent =
             products.length;
@@ -2667,9 +2865,11 @@ async function loadProducts(){
         );
 
 
-        resultEl.textContent =
-            "کێشە لە بارکردن";
-
+        products = demoProducts;
+        heroCountEl.textContent = products.length;
+        applyFilters();
+        showToast("کاتێک Firebase بەردەست نییە، کاتەلۆگی تاقیکردنەوە پیشان دەدرێت.");
+        return;
 
         productsEl.innerHTML = `
 
@@ -2845,6 +3045,8 @@ function(){
 
 
 function updateCart(){
+
+    localStorage.setItem("sura-cart", JSON.stringify(cart));
 
     cartCountEl.textContent =
         cart.length;
@@ -3134,6 +3336,18 @@ function showToast(
 
 }
 
+
+/* =========================
+   CATEGORY FILTERS
+========================= */
+document.querySelectorAll(".category-chip").forEach(button => {
+    button.addEventListener("click", () => {
+        activeCategory = button.dataset.category || "all";
+        document.querySelectorAll(".category-chip").forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        applyFilters();
+    });
+});
 
 /* =========================
    START
