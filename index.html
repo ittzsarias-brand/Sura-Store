@@ -1,121 +1,351 @@
-<!doctype html>
-<html lang="ku" dir="rtl">
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#050505">
-<title>کورد لایتینگ — ڕووناکی بە شێوازی تۆ</title>
-<style>
-@font-face{font-family:Rudaw;src:url("./rudawbold.ttf") format("truetype");font-weight:700;font-display:swap}
-:root{--bg:#050505;--fg:#f5f5f0;--dim:#8f8f8a;--line:#20201e;--card:#0c0c0b;--lime:#d8ff3e;--pink:#ff3bd4;--cyan:#39e7ff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font-family:Rudaw,Tahoma,sans-serif;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.045;background-image:radial-gradient(#fff .6px,transparent .6px);background-size:5px 5px;z-index:20}
-a{text-decoration:none;color:inherit}button{font:inherit}
-.wrap{width:min(1240px,calc(100% - 48px));margin:auto}
-.header{position:fixed;top:0;left:0;right:0;z-index:30;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(5,5,5,.72);backdrop-filter:blur(20px)}
-.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:25px}
-.logo{font-size:1.2rem;display:flex;align-items:center;gap:12px}.logoMark{width:34px;height:34px;border-radius:50%;background:var(--lime);box-shadow:0 0 30px rgba(216,255,62,.35);display:grid;place-items:center;color:#050505}
-.links{display:flex;gap:28px;color:#aaa;font-size:.82rem}.links a:hover{color:#fff}
-.navCta{border:1px solid #30302d;border-radius:999px;padding:8px 15px;font-size:.75rem;background:#10100f}
-.hero{min-height:100vh;padding-top:78px;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:60px}
-.kicker{color:var(--lime);font-size:.72rem;letter-spacing:.08em;margin-bottom:18px}
-.hero h1{font-size:clamp(3rem,7.2vw,7rem);line-height:1.02;letter-spacing:-.05em;margin:0 0 25px;max-width:680px}
-.hero h1 span{display:block;color:#70706c}
-.hero p{color:#a8a8a3;max-width:560px;line-height:2;font-size:.9rem;margin-bottom:30px}
-.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:1px solid #30302d;border-radius:999px;padding:12px 20px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:.25s}.primary{background:var(--lime);color:#050505;border-color:var(--lime)}.btn:hover{transform:translateY(-2px)}
-.heroArt{height:min(720px,78vh);min-height:480px;position:relative;display:grid;place-items:center}
-.neonScene{width:100%;height:100%;position:relative;overflow:hidden;border-radius:34px;border:1px solid #1d1d1a;background:radial-gradient(circle at 45% 40%,#171714 0,#090908 43%,#050505 72%)}
-.neonScene:before{content:"";position:absolute;width:72%;height:9%;top:42%;left:14%;background:linear-gradient(90deg,transparent,var(--cyan),white,var(--pink),transparent);filter:blur(17px);opacity:.75}
-.neonLine{position:absolute;width:72%;height:3px;top:45%;left:14%;background:linear-gradient(90deg,var(--cyan),white,var(--pink));box-shadow:0 0 9px var(--cyan),0 0 25px var(--pink),0 0 55px rgba(255,59,212,.35)}
-.neonLine.two{top:55%;transform:rotate(-10deg);opacity:.55}.neonLine.three{top:34%;transform:rotate(8deg);opacity:.35}
-.sceneText{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-size:clamp(2rem,6vw,5rem);text-shadow:0 0 12px rgba(255,255,255,.3),0 0 45px rgba(216,255,62,.16)}
-.sceneText small{display:block;font-size:.65rem;color:#aaa;text-shadow:none;margin-top:15px}
-.corner{position:absolute;padding:15px;font-size:.65rem;color:#777;border-color:#272724}.tl{top:0;right:0;border-left:1px solid;border-bottom:1px solid}.br{bottom:0;left:0;border-right:1px solid;border-top:1px solid}
-section{padding:120px 0}.sectionTop{display:flex;justify-content:space-between;align-items:end;margin-bottom:38px;gap:30px}.sectionTop h2{font-size:clamp(2rem,4vw,4rem);line-height:1.1;margin:0}.sectionTop p{color:#888;max-width:440px;font-size:.78rem;line-height:2}
-.productGrid{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:16px}.product{border:1px solid #20201e;background:var(--card);border-radius:28px;overflow:hidden;position:relative;transition:.35s}.product:hover{transform:translateY(-5px);border-color:#393935}.product.featured{grid-row:span 2}.visual{aspect-ratio:1/.9;background:radial-gradient(circle at 50% 45%,#262620,#0a0a09 62%);position:relative;overflow:hidden}.featured .visual{aspect-ratio:1/1.08}.visual img{width:100%;height:100%;object-fit:cover;display:block}.mock{position:absolute;inset:0;display:grid;place-items:center;color:#777;font-size:.8rem}.mock:before{content:"";position:absolute;width:68%;height:3px;background:linear-gradient(90deg,var(--cyan),white,var(--pink));box-shadow:0 0 20px var(--cyan),0 0 45px var(--pink);transform:rotate(-8deg)}.productInfo{padding:20px}.tag{font-size:.62rem;color:var(--lime);margin-bottom:8px}.product h3{margin:0 0 8px;font-size:1.15rem}.product p{margin:0;color:#858580;font-size:.72rem;line-height:1.9;min-height:50px}.priceLine{display:flex;align-items:baseline;gap:10px;margin:15px 0}.price{font-size:1.15rem}.old{text-decoration:line-through;color:#555;font-size:.72rem}.specs{display:flex;gap:7px;flex-wrap:wrap}.spec{border:1px solid #242421;border-radius:999px;padding:4px 9px;color:#777;font-size:.6rem}.productButton{margin-top:15px;width:100%;background:#11110f;color:#fff;border:1px solid #292925;border-radius:12px;padding:10px;cursor:pointer}.productButton:hover{border-color:#666}.number{position:absolute;top:15px;left:16px;color:#555;font-size:.65rem;z-index:2}
-.statement{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:85px 0}.statement h2{font-size:clamp(2.2rem,6vw,6rem);line-height:1.12;max-width:1000px;margin:0}.statement h2 em{font-style:normal;color:var(--lime)}
-.features{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.feature{padding:30px 22px;border-left:1px solid var(--line)}.feature:last-child{border-left:0}.featureNum{color:var(--lime);font-size:.65rem}.feature h3{font-size:1rem;margin:30px 0 8px}.feature p{color:#777;font-size:.7rem;line-height:2}
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}.contact h2{font-size:clamp(2.3rem,5vw,5rem);line-height:1.05;margin:0}.contact p{color:#888;font-size:.8rem;line-height:2}.contactBox{border:1px solid #22221f;border-radius:25px;padding:28px;background:#0a0a09}.contactRow{display:flex;justify-content:space-between;gap:20px;padding:17px 0;border-bottom:1px solid #1d1d1a;font-size:.75rem}.contactRow:last-child{border:0}.contactRow span{color:#777}
-footer{border-top:1px solid var(--line);padding:35px 0;color:#656560;font-size:.65rem}.foot{display:flex;justify-content:space-between;gap:20px}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);display:none;place-items:center;z-index:100;padding:20px}.modal.open{display:grid}.modalBox{width:min(780px,100%);background:#0b0b0a;border:1px solid #292925;border-radius:26px;padding:24px;max-height:90vh;overflow:auto;position:relative}.close{position:absolute;left:18px;top:18px;border:1px solid #333;border-radius:50%;width:36px;height:36px;background:#111;color:#fff;cursor:pointer}.modalVisual{aspect-ratio:16/9;background:#111;border-radius:18px;overflow:hidden;margin-bottom:20px}.modalVisual img{width:100%;height:100%;object-fit:cover}.modalBox h2{font-size:2rem;margin:0 0 8px}.modalBox p{color:#888;line-height:2;font-size:.78rem;white-space:pre-line}.modalMeta{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:20px 0}.meta{border:1px solid #222;padding:12px;border-radius:12px}.meta small{display:block;color:#666;font-size:.6rem}.meta b{font-size:.75rem}
-@media(max-width:950px){.hero{grid-template-columns:1fr;gap:30px;padding-top:130px}.heroArt{min-height:460px;height:65vh}.productGrid{grid-template-columns:1fr 1fr}.featured{grid-column:span 2;grid-row:auto}.featured .visual{aspect-ratio:1/.75}.contact{grid-template-columns:1fr}.links{display:none}}
-@media(max-width:620px){.wrap{width:min(100% - 28px,500px)}.nav{height:68px}.hero{padding-top:105px}.hero h1{font-size:3.15rem}.heroArt{min-height:350px;height:58vh}.neonScene{border-radius:22px}.productGrid{grid-template-columns:1fr}.featured{grid-column:auto}.features{grid-template-columns:1fr}.feature{border-left:0;border-bottom:1px solid var(--line)}.sectionTop{display:block}.sectionTop p{margin-top:12px}.contactBox{padding:20px}.foot{flex-direction:column;text-align:center}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کورد لایتینگ | Kurd Lighting</title>
+    <style>
+        @font-face {
+            font-family: 'RudawBold';
+            src: url('rudawbold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        :root {
+            --bg-color: #0d0f17;
+            --card-bg: #161925;
+            --accent-color: #00f2fe;
+            --accent-glow: #4facfe;
+            --text-color: #ffffff;
+            --text-muted: #a0aec0;
+            --discount-color: #ff4757;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'RudawBold', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding-bottom: 50px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, rgba(0,242,254,0.1) 0%, rgba(13,15,23,0) 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 242, 254, 0.15);
+            border-color: rgba(0, 242, 254, 0.3);
+        }
+
+        .image-gallery {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--discount-color);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .product-details {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .description {
+            list-style-type: none;
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .specs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.03);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-label {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .price-section {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .current-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .old-price {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-glow), var(--accent-color));
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
 </head>
 <body>
-<header class="header"><div class="wrap nav">
-<a class="logo" href="#"><span class="logoMark">✦</span>کورد لایتینگ</a>
-<nav class="links"><a href="#products">بەرهەمەکان</a><a href="#story">چیرۆک</a><a href="#contact">پەیوەندی</a></nav>
-<a class="navCta" href="#products">کاتەلۆگ ←</a>
-</div></header>
 
-<main>
-<section class="wrap hero">
-<div>
-<div class="kicker">KURD LIGHTING / 01</div>
-<h1>ڕووناکی،<span>بە شێوازی</span> تۆ.</h1>
-<p>کۆمەڵێک LED ـی دیزاینکراو بۆ ئەوەی شوێنەکەت تەنها ڕووناک نەکات، بەڵکو کەشێکی تایبەت دروست بکات.</p>
-<div class="actions"><a class="btn primary" href="#products">بینینی بەرهەمەکان</a><a class="btn" href="#contact">پەیوەندیمان پێوە بکە</a></div>
-</div>
-<div class="heroArt"><div class="neonScene">
-<div class="corner tl">RGB / IC / SMART</div><div class="corner br">KURD LIGHTING</div>
-<div class="neonLine"></div><div class="neonLine two"></div><div class="neonLine three"></div>
-<div class="sceneText">کورد<br><span>لایتینگ</span><small>LIGHT UP YOUR SPACE</small></div>
-</div></div>
-</section>
+    <header>
+        <h1>کورد لایتینگ</h1>
+        <p>باشترین و نایابترین رووناکی و لێدی دیکۆری</p>
+    </header>
 
-<section class="wrap" id="products">
-<div class="sectionTop"><h2>بەرهەمە<br>هەڵبژێردراوەکان.</h2><p>یەکەم بەرهەمی ڕاستەقینەی کورد لایتینگ لێرەیە. سێ بەرهەمی تاقیکردنەوەیی لە خوارەوە دەتوانرێت دواتر بە ئاسانترین شێوە بگۆڕدرێت.</p></div>
-<div class="productGrid" id="productGrid"></div>
-</section>
+    <div class="container">
+        <div class="grid">
+            
+            <div class="product-card">
+                <div class="image-gallery">
+                    <span class="badge">داشکاندن</span>
+                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80" alt="لێدی نیۆن">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">لێدی نیۆن</h2>
+                    <ul class="description">
+                        <li>• لێدێکی زۆر نایاب و ناوازە</li>
+                        <li>• کۆنترۆلی خۆی لەگەلدایە</li>
+                        <li>• ئەپی تایبەت بەخۆی هەیە</li>
+                    </ul>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">قەبارە</span>
+                            <span>٥ مەتر</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">ڕەنگ</span>
+                            <span>RGB-IC</span>
+                        </div>
+                    </div>
+                    <div class="price-section">
+                        <span class="current-price">15,000 دینار</span>
+                        <span class="old-price">20,000 دینار</span>
+                    </div>
+                    <div class="actions">
+                        <a href="https://vt.tiktok.com/ZSq8qnkvk/" target="_blank" class="btn btn-secondary">سەیری ڤیدیۆ بکە</a>
+                        <a href="https://pin.it/4lex2oN0f" target="_blank" class="btn btn-primary">بینینی وێنەکان</a>
+                    </div>
+                </div>
+            </div>
 
-<section class="statement" id="story"><div class="wrap"><h2>هەر شوێنێک، <em>کەسایەتییەکی خۆی</em> هەیە. ڕووناکییەکەشی دەبێت هەمان شت بێت.</h2></div></section>
+            <div class="product-card">
+                <div class="image-gallery">
+                    <span class="badge">داشکاندن</span>
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80" alt="لێدی نیۆن">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">لێدی نیۆن</h2>
+                    <ul class="description">
+                        <li>• لێدێکی زۆر نایاب و ناوازە</li>
+                        <li>• کۆنترۆلی خۆی لەگەلدایە</li>
+                        <li>• ئەپی تایبەت بەخۆی هەیە</li>
+                    </ul>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">قەبارە</span>
+                            <span>٥ مەتر</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">ڕەنگ</span>
+                            <span>RGB-IC</span>
+                        </div>
+                    </div>
+                    <div class="price-section">
+                        <span class="current-price">15,000 دینار</span>
+                        <span class="old-price">20,000 دینار</span>
+                    </div>
+                    <div class="actions">
+                        <a href="https://vt.tiktok.com/ZSq8qnkvk/" target="_blank" class="btn btn-secondary">سەیری ڤیدیۆ بکە</a>
+                        <a href="https://pin.it/2dz2OZtki" target="_blank" class="btn btn-primary">بینینی وێنەکان</a>
+                    </div>
+                </div>
+            </div>
 
-<section class="wrap"><div class="features">
-<div class="feature"><span class="featureNum">01 /</span><h3>دیزاینی مۆدێرن</h3><p>پیشاندانی بەرهەم بە شێوەیەکی سادە و لوکس، بێ شلوغی و زیادەڕۆیی.</p></div>
-<div class="feature"><span class="featureNum">02 /</span><h3>زانیاری ڕوون</h3><p>نرخ، نرخی کۆن، قەبارە و ڕەنگ بە شێوەیەکی ڕاستەوخۆ لەگەڵ هەر بەرهەمێک.</p></div>
-<div class="feature"><span class="featureNum">03 /</span><h3>ئامادە بۆ مۆبایل</h3><p>دیزاینەکە لە شاشەی گەورە و مۆبایل هەمان هەستی پیشەیی دەدات.</p></div>
-</div></section>
+            <div class="product-card">
+                <div class="image-gallery">
+                    <span class="badge">داشکاندن</span>
+                    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=600&q=80" alt="لێدی نیۆن">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">لێدی نیۆن</h2>
+                    <ul class="description">
+                        <li>• لێدێکی زۆر نایاب و ناوازە</li>
+                        <li>• کۆنترۆلی خۆی لەگەلدایە</li>
+                        <li>• ئەپی تایبەت بەخۆی هەیە</li>
+                    </ul>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">قەبارە</span>
+                            <span>٥ مەتر</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">ڕەنگ</span>
+                            <span>RGB-IC</span>
+                        </div>
+                    </div>
+                    <div class="price-section">
+                        <span class="current-price">15,000 دینار</span>
+                        <span class="old-price">20,000 دینار</span>
+                    </div>
+                    <div class="actions">
+                        <a href="https://vt.tiktok.com/ZSq8qnkvk/" target="_blank" class="btn btn-secondary">سەیری ڤیدیۆ بکە</a>
+                        <a href="https://pin.it/7Ma3rQZbK" target="_blank" class="btn btn-primary">بینینی وێنەکان</a>
+                    </div>
+                </div>
+            </div>
 
-<section class="wrap contact" id="contact">
-<div><div class="kicker">GET IN TOUCH / 02</div><h2>با شوێنەکەت<br>بدرەوشێتەوە.</h2><p>ئەم بەشە دەتوانین دواتر بە ژمارەی واتساپ، ئینستاگرام و زانیارییەکانی فرۆشتنت پڕ بکەین.</p></div>
-<div class="contactBox">
-<div class="contactRow"><span>ناوی براند</span><b>کورد لایتینگ</b></div>
-<div class="contactRow"><span>بەرهەمی تایبەت</span><b>لێدی نیۆن</b></div>
-<div class="contactRow"><span>نرخ</span><b>15,000 د.ع</b></div>
-<div class="contactRow"><span>قەبارە</span><b>٥ مەتر</b></div>
-</div>
-</section>
-</main>
+            <div class="product-card">
+                <div class="image-gallery">
+                    <span class="badge">داشکاندن</span>
+                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80" alt="لێدی نیۆن">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">لێدی نیۆن</h2>
+                    <ul class="description">
+                        <li>• لێدێکی زۆر نایاب و ناوازە</li>
+                        <li>• کۆنترۆلی خۆی لەگەلدایە</li>
+                        <li>• ئەپی تایبەت بەخۆی هەیە</li>
+                    </ul>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">قەبارە</span>
+                            <span>٥ مەتر</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">ڕەنگ</span>
+                            <span>RGB-IC</span>
+                        </div>
+                    </div>
+                    <div class="price-section">
+                        <span class="current-price">15,000 دینار</span>
+                        <span class="old-price">20,000 دینار</span>
+                    </div>
+                    <div class="actions">
+                        <a href="https://vt.tiktok.com/ZSq8qnkvk/" target="_blank" class="btn btn-secondary">سەیری ڤیدیۆ بکە</a>
+                        <a href="https://pin.it/4lex2oN0f" target="_blank" class="btn btn-primary">بینینی وێنەکان</a>
+                    </div>
+                </div>
+            </div>
 
-<footer><div class="wrap foot"><span>کورد لایتینگ © <span id="year"></span></span><span>LIGHTING / DESIGN / RGB</span></div></footer>
+        </div>
+    </div>
 
-<div class="modal" id="modal"><div class="modalBox">
-<button class="close" onclick="closeModal()">×</button><div class="modalVisual"><img id="mImg" alt=""></div>
-<h2 id="mTitle"></h2><p id="mDesc"></p><div class="modalMeta">
-<div class="meta"><small>نرخ</small><b id="mPrice"></b></div><div class="meta"><small>نرخی کۆن</small><b id="mOld"></b></div>
-<div class="meta"><small>قەبارە</small><b id="mSize"></b></div><div class="meta"><small>ڕەنگ</small><b id="mColor"></b></div></div>
-<div class="actions"><a id="mVideo" class="btn primary" target="_blank" rel="noopener">بینینی ڤیدیۆ ↗</a><button class="btn" onclick="closeModal()">داخستن</button></div>
-</div></div>
-
-<script>
-/* EDIT PRODUCTS HERE LATER */
-const products=[
-{id:1,name:"لێدی نیۆن",tag:"FEATURED / RGB-IC",description:"١. لێدێکی زۆر نایاب و ناوازە\n٢. کۆنترۆلی خۆی لەگەڵدایە\n٣. ئەپی تایبەت بەخۆی هەیە",price:"15,000",old:"20,000",size:"٥ مەتر",color:"RGB-IC",image:"",video:"https://vt.tiktok.com/ZSq8qnkvk/",featured:true},
-{id:2,name:"LED Strip Pro",tag:"TEST PRODUCT",description:"بەرهەمێکی تاقیکردنەوەیی — دواتر زانیارییە ڕاستەقینەکان دابنێ.",price:"25,000",old:"30,000",size:"٥ مەتر",color:"RGB",image:"",video:""},
-{id:3,name:"Neon Bar",tag:"TEST PRODUCT",description:"بەرهەمێکی تاقیکردنەوەیی — ناو، نرخ و وێنەکە دەتوانیت بگۆڕیت.",price:"35,000",old:"42,000",size:"١ متر",color:"RGB-IC",image:"",video:""},
-{id:4,name:"Wall Neon",tag:"TEST PRODUCT",description:"بەرهەمێکی تاقیکردنەوەیی بۆ پڕکردنەوەی کاتەلۆگی کورد لایتینگ.",price:"45,000",old:"55,000",size:"جۆراوجۆر",color:"RGB",image:"",video:""}
-];
-
-const grid=document.getElementById("productGrid");
-function visual(p){return p.image?`<img src="${p.image}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:`<div class="mock">${p.name}</div>`}
-grid.innerHTML=products.map((p,i)=>`<article class="product ${p.featured?'featured':''}"><span class="number">0${i+1}</span><div class="visual">${visual(p)}</div><div class="productInfo"><div class="tag">${p.tag}</div><h3>${p.name}</h3><p>${p.description.replace(/\n/g,"<br>")}</p><div class="priceLine"><b class="price">${p.price} د.ع</b><span class="old">${p.old} د.ع</span></div><div class="specs"><span class="spec">${p.size}</span><span class="spec">${p.color}</span></div><button class="productButton" onclick="openProduct(${p.id})">بینینی وردەکاری ←</button></div></article>`).join("");
-
-function openProduct(id){const p=products.find(x=>x.id===id);document.getElementById("mTitle").textContent=p.name;document.getElementById("mDesc").innerHTML=p.description.replace(/\n/g,"<br>");document.getElementById("mPrice").textContent=p.price+" د.ع";document.getElementById("mOld").textContent=p.old+" د.ع";document.getElementById("mSize").textContent=p.size;document.getElementById("mColor").textContent=p.color;const img=document.getElementById("mImg");if(p.image){img.src=p.image;img.style.display="block"}else{img.removeAttribute("src");img.style.display="none"}const v=document.getElementById("mVideo");if(p.video){v.href=p.video;v.style.display="inline-flex"}else v.style.display="none";document.getElementById("modal").classList.add("open");document.body.style.overflow="hidden"}
-function closeModal(){document.getElementById("modal").classList.remove("open");document.body.style.overflow=""}
-document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
-document.getElementById("year").textContent=new Date().getFullYear();
-</script>
 </body>
 </html>
