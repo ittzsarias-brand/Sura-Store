@@ -4,342 +4,566 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>کورد لایتینگ | Kurd Lighting</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
     <style>
         @font-face {
-            font-family: 'RudawBold';
-            src: url('rudawbold.ttf') format('truetype');
-            font-weight: bold;
+            font-family: 'Rabar37';
+            src: url('Rabar_037.ttf') format('truetype');
+            font-weight: normal;
             font-style: normal;
         }
 
         :root {
-            --bg-color: #0d0f17;
-            --card-bg: #161925;
-            --accent-color: #00f2fe;
-            --accent-glow: #4facfe;
-            --text-color: #ffffff;
-            --text-muted: #a0aec0;
-            --discount-color: #ff4757;
+            --bg-color: #08080a;
+            --card-bg: #121319;
+            --accent-glow: rgba(0, 242, 254, 0.25);
+            --neon-blue: #00f2fe;
+            --text-main: #ffffff;
+            --text-muted: #8e95a5;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --btn-bg: #ffffff;
+            --btn-text: #000000;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'RudawBold', sans-serif;
+            font-family: 'Rabar37', sans-serif;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-color);
-            padding-bottom: 50px;
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding-bottom: 80px;
         }
 
+        /* Ambient Glow Background */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(79, 172, 254, 0.05) 0%, transparent 50%);
+        }
+
+        /* Header Animation */
         header {
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(180deg, rgba(0,242,254,0.1) 0%, rgba(13,15,23,0) 100%);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 60px 20px 40px;
+            position: relative;
+            animation: fadeInDown 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            text-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
-            margin-bottom: 10px;
+        .logo-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 20px var(--accent-glow);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
         }
 
-        header p {
+        .subtitle {
             color: var(--text-muted);
             font-size: 1.1rem;
+            opacity: 0.9;
         }
 
+        /* Container */
         .container {
-            max-width: 1200px;
-            margin: 40px auto;
+            max-width: 1250px;
+            margin: 0 auto;
             padding: 0 20px;
         }
 
+        /* Product Grid */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 30px;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        /* Product Card Styles */
         .product-card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 242, 254, 0.15);
-            border-color: rgba(0, 242, 254, 0.3);
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-glow);
         }
 
-        .image-gallery {
-            position: relative;
+        /* Swiper Gallery inside Card */
+        .swiper {
             width: 100%;
-            height: 250px;
-            overflow: hidden;
+            height: 280px;
             background-color: #000;
         }
 
-        .image-gallery img {
+        .swiper-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.6s ease;
         }
 
+        .product-card:hover .swiper-slide img {
+            transform: scale(1.04);
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: #fff !important;
+            background: rgba(0,0,0,0.4);
+            width: 32px !important;
+            height: 32px !important;
+            border-radius: 50%;
+            backdrop-filter: blur(4px);
+            transition: background 0.3s ease;
+        }
+
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 12px !important;
+            font-weight: bold;
+        }
+
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background: rgba(255,255,255,0.8);
+            color: #000 !important;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #fff !important;
+        }
+
+        /* Discount Badge */
         .badge {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: var(--discount-color);
-            color: #fff;
-            padding: 4px 12px;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #000;
+            padding: 6px 14px;
+            border-radius: 30px;
             font-size: 0.85rem;
             font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
         }
 
-        .product-details {
-            padding: 20px;
+        /* Card Content */
+        .card-body {
+            padding: 24px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
         .product-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            font-weight: bold;
             margin-bottom: 12px;
             color: #fff;
         }
 
-        .description {
-            list-style-type: none;
+        .description-list {
+            list-style: none;
             margin-bottom: 20px;
+        }
+
+        .description-list li {
             color: var(--text-muted);
             font-size: 0.95rem;
-            line-height: 1.8;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .specs {
+        .description-list li i {
+            color: var(--neon-blue);
+            font-size: 0.8rem;
+        }
+
+        /* Specifications Pill Group */
+        .specs-group {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             margin-bottom: 20px;
-            font-size: 0.9rem;
-            background: rgba(255,255,255,0.03);
-            padding: 10px;
-            border-radius: 8px;
         }
 
-        .spec-item {
-            display: flex;
-            flex-direction: column;
+        .spec-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 12px;
+            border-radius: 10px;
+            flex: 1;
+            text-align: center;
         }
 
-        .spec-label {
-            color: var(--text-muted);
+        .spec-pill .label {
+            display: block;
             font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 2px;
         }
 
-        .price-section {
+        .spec-pill .value {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Pricing */
+        .price-container {
             display: flex;
             align-items: baseline;
-            gap: 10px;
+            gap: 12px;
             margin-top: auto;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 20px;
         }
 
         .current-price {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            color: var(--accent-color);
+            color: #fff;
         }
 
         .old-price {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-muted);
             text-decoration: line-through;
         }
 
-        .actions {
+        /* Black & White Premium Buttons */
+        .btn-group {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
         }
 
-        .btn {
+        .btn-bw {
             flex: 1;
-            text-align: center;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 12px 16px;
+            border-radius: 12px;
             text-decoration: none;
+            font-size: 0.95rem;
             font-weight: bold;
-            font-size: 0.9rem;
-            transition: opacity 0.2s;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: 1px solid transparent;
         }
 
-        .btn-primary {
-            background: linear-gradient(45deg, var(--accent-glow), var(--accent-color));
-            color: #000;
+        /* Primary: White Button / Black Text */
+        .btn-bw-primary {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
         }
 
-        .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
+        .btn-bw-primary:hover {
+            background-color: #000000;
+            color: #ffffff;
+            border-color: #ffffff;
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
         }
 
-        .btn:hover {
-            opacity: 0.9;
+        /* Secondary: Outline/Dark Button */
+        .btn-bw-secondary {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-bw-secondary:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .logo-title {
+                font-size: 2.2rem;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
+    <div class="ambient-bg"></div>
+
     <header>
-        <h1>کورد لایتینگ</h1>
-        <p>باشترین و نایابترین رووناکی و لێدی دیکۆری</p>
+        <h1 class="logo-title">کورد لایتینگ</h1>
+        <p class="subtitle">تایبەتمەند لە نایابترین و بەرزترین کوالێتی رووناکی لێد</p>
     </header>
 
     <div class="container">
         <div class="grid">
             
             <div class="product-card">
-                <div class="image-gallery">
-                    <span class="badge">داشکاندن</span>
-                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80" alt="لێدی نیۆن">
-                </div>
-                <div class="product-details">
-                    <h2 class="product-title">لێدی نیۆن</h2>
-                    <ul class="description">
-                        <li>• لێدێکی زۆر نایاب و ناوازە</li>
-                        <li>• کۆنترۆلی خۆی لەگەلدایە</li>
-                        <li>• ئەپی تایبەت بەخۆی هەیە</li>
-                    </ul>
-                    <div class="specs">
-                        <div class="spec-item">
-                            <span class="spec-label">قەبارە</span>
-                            <span>٥ مەتر</span>
+                <span class="badge">داشکاندن</span>
+                <div class="swiper product-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=800&q=80" alt="لێدی نیۆن">
                         </div>
-                        <div class="spec-item">
-                            <span class="spec-label">ڕەنگ</span>
-                            <span>RGB-IC</span>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80" alt="لێدی نیۆن">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80" alt="لێدی نیۆن">
                         </div>
                     </div>
-                    <div class="price-section">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                
+                <div class="card-body">
+                    <h2 class="product-title">لێدی نیۆن</h2>
+                    <ul class="description-list">
+                        <li><i class="fa-solid fa-check"></i> لێدێکی زۆر نایاب و ناوازە</li>
+                        <li><i class="fa-solid fa-check"></i> کۆنترۆلی خۆی لەگەلدایە</li>
+                        <li><i class="fa-solid fa-check"></i> ئەپی تایبەت بەخۆی هەیە</li>
+                    </ul>
+
+                    <div class="specs-group">
+                        <div class="spec-pill">
+                            <span class="label">قەبارە</span>
+                            <span class="value">٥ مەتر</span>
+                        </div>
+                        <div class="spec-pill">
+                            <span class="label">ڕەنگ</span>
+                            <span class="value">RGB-IC</span>
+                        </div>
+                    </div>
+
+                    <div class="price-container">
                         <span class="current-price">15,000 دینار</span>
                         <span class="old-price">20,000 دینار</span>
                     </div>
-                    <div class="actions">
-                        <a href="https://vt.tiktok.com/ZSq8qnkvk/" target="_blank" class="btn btn-secondary">سەیری ڤیدیۆ بکە</a>
-                        <a href="https://pin.it/4lex2oN0f" target="_blank" class="btn btn-primary">بینینی وێنەکان</a>
+
+                    <div class="btn-group">
+                        <a href="https://pin.it/4lex2oN0f" target="_blank" class="btn-bw btn-bw-primary">
+                            <i class="fa-solid fa-image"></i> وێنەکان
+                        </a>
+                        <a href="https://vt.tiktok.com/ZSq8qnkvk/" target="_blank" class="btn-bw btn-bw-secondary">
+                            <i class="fa-brands fa-tiktok"></i> ڤیدیۆ
+                        </a>
                     </div>
                 </div>
             </div>
 
             <div class="product-card">
-                <div class="image-gallery">
-                    <span class="badge">داشکاندن</span>
-                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80" alt="لێدی نیۆن">
-                </div>
-                <div class="product-details">
-                    <h2 class="product-title">لێدی نیۆن</h2>
-                    <ul class="description">
-                        <li>• لێدێکی زۆر نایاب و ناوازە</li>
-                        <li>• کۆنترۆلی خۆی لەگەلدایە</li>
-                        <li>• ئەپی تایبەت بەخۆی هەیە</li>
-                    </ul>
-                    <div class="specs">
-                        <div class="spec-item">
-                            <span class="spec-label">قەبارە</span>
-                            <span>٥ مەتر</span>
+                <span class="badge">داشکاندن</span>
+                <div class="swiper product-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80" alt="لێدی نیۆن">
                         </div>
-                        <div class="spec-item">
-                            <span class="spec-label">ڕەنگ</span>
-                            <span>RGB-IC</span>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=800&q=80" alt="لێدی نیۆن">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80" alt="لێدی نیۆن">
                         </div>
                     </div>
-                    <div class="price-section">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                
+                <div class="card-body">
+                    <h2 class="product-title">لێدی نیۆن</h2>
+                    <ul class="description-list">
+                        <li><i class="fa-solid fa-check"></i> لێدێکی زۆر نایاب و ناوازە</li>
+                        <li><i class="fa-solid fa-check"></i> کۆنترۆلی خۆی لەگەلدایە</li>
+                        <li><i class="fa-solid fa-check"></i> ئەپی تایبەت بەخۆی هەیە</li>
+                    </ul>
+
+                    <div class="specs-group">
+                        <div class="spec-pill">
+                            <span class="label">قەبارە</span>
+                            <span class="value">٥ مەتر</span>
+                        </div>
+                        <div class="spec-pill">
+                            <span class="label">ڕەنگ</span>
+                            <span class="value">RGB-IC</span>
+                        </div>
+                    </div>
+
+                    <div class="price-container">
                         <span class="current-price">15,000 دینار</span>
                         <span class="old-price">20,000 دینار</span>
                     </div>
-                    <div class="actions">
-                        <a href="https://vt.tiktok.com/ZSq8qnkvk/" target="_blank" class="btn btn-secondary">سەیری ڤیدیۆ بکە</a>
-                        <a href="https://pin.it/2dz2OZtki" target="_blank" class="btn btn-primary">بینینی وێنەکان</a>
+
+                    <div class="btn-group">
+                        <a href="https://pin.it/2dz2OZtki" target="_blank" class="btn-bw btn-bw-primary">
+                            <i class="fa-solid fa-image"></i> وێنەکان
+                        </a>
+                        <a href="https://vt.tiktok.com/ZSq8qnkvk/" target="_blank" class="btn-bw btn-bw-secondary">
+                            <i class="fa-brands fa-tiktok"></i> ڤیدیۆ
+                        </a>
                     </div>
                 </div>
             </div>
 
             <div class="product-card">
-                <div class="image-gallery">
-                    <span class="badge">داشکاندن</span>
-                    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=600&q=80" alt="لێدی نیۆن">
-                </div>
-                <div class="product-details">
-                    <h2 class="product-title">لێدی نیۆن</h2>
-                    <ul class="description">
-                        <li>• لێدێکی زۆر نایاب و ناوازە</li>
-                        <li>• کۆنترۆلی خۆی لەگەلدایە</li>
-                        <li>• ئەپی تایبەت بەخۆی هەیە</li>
-                    </ul>
-                    <div class="specs">
-                        <div class="spec-item">
-                            <span class="spec-label">قەبارە</span>
-                            <span>٥ مەتر</span>
+                <span class="badge">داشکاندن</span>
+                <div class="swiper product-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80" alt="لێدی نیۆن">
                         </div>
-                        <div class="spec-item">
-                            <span class="spec-label">ڕەنگ</span>
-                            <span>RGB-IC</span>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=800&q=80" alt="لێدی نیۆن">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80" alt="لێدی نیۆن">
                         </div>
                     </div>
-                    <div class="price-section">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                
+                <div class="card-body">
+                    <h2 class="product-title">لێدی نیۆن</h2>
+                    <ul class="description-list">
+                        <li><i class="fa-solid fa-check"></i> لێدێکی زۆر نایاب و ناوازە</li>
+                        <li><i class="fa-solid fa-check"></i> کۆنترۆلی خۆی لەگەلدایە</li>
+                        <li><i class="fa-solid fa-check"></i> ئەپی تایبەت بەخۆی هەیە</li>
+                    </ul>
+
+                    <div class="specs-group">
+                        <div class="spec-pill">
+                            <span class="label">قەبارە</span>
+                            <span class="value">٥ مەتر</span>
+                        </div>
+                        <div class="spec-pill">
+                            <span class="label">ڕەنگ</span>
+                            <span class="value">RGB-IC</span>
+                        </div>
+                    </div>
+
+                    <div class="price-container">
                         <span class="current-price">15,000 دینار</span>
                         <span class="old-price">20,000 دینار</span>
                     </div>
-                    <div class="actions">
-                        <a href="https://vt.tiktok.com/ZSq8qnkvk/" target="_blank" class="btn btn-secondary">سەیری ڤیدیۆ بکە</a>
-                        <a href="https://pin.it/7Ma3rQZbK" target="_blank" class="btn btn-primary">بینینی وێنەکان</a>
+
+                    <div class="btn-group">
+                        <a href="https://pin.it/7Ma3rQZbK" target="_blank" class="btn-bw btn-bw-primary">
+                            <i class="fa-solid fa-image"></i> وێنەکان
+                        </a>
+                        <a href="https://vt.tiktok.com/ZSq8qnkvk/" target="_blank" class="btn-bw btn-bw-secondary">
+                            <i class="fa-brands fa-tiktok"></i> ڤیدیۆ
+                        </a>
                     </div>
                 </div>
             </div>
 
             <div class="product-card">
-                <div class="image-gallery">
-                    <span class="badge">داشکاندن</span>
-                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80" alt="لێدی نیۆن">
-                </div>
-                <div class="product-details">
-                    <h2 class="product-title">لێدی نیۆن</h2>
-                    <ul class="description">
-                        <li>• لێدێکی زۆر نایاب و ناوازە</li>
-                        <li>• کۆنترۆلی خۆی لەگەلدایە</li>
-                        <li>• ئەپی تایبەت بەخۆی هەیە</li>
-                    </ul>
-                    <div class="specs">
-                        <div class="spec-item">
-                            <span class="spec-label">قەبارە</span>
-                            <span>٥ مەتر</span>
+                <span class="badge">داشکاندن</span>
+                <div class="swiper product-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=800&q=80" alt="لێدی نیۆن">
                         </div>
-                        <div class="spec-item">
-                            <span class="spec-label">ڕەنگ</span>
-                            <span>RGB-IC</span>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80" alt="لێدی نیۆن">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80" alt="لێدی نیۆن">
                         </div>
                     </div>
-                    <div class="price-section">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                
+                <div class="card-body">
+                    <h2 class="product-title">لێدی نیۆن</h2>
+                    <ul class="description-list">
+                        <li><i class="fa-solid fa-check"></i> لێدێکی زۆر نایاب و ناوازە</li>
+                        <li><i class="fa-solid fa-check"></i> کۆنترۆلی خۆی لەگەلدایە</li>
+                        <li><i class="fa-solid fa-check"></i> ئەپی تایبەت بەخۆی هەیە</li>
+                    </ul>
+
+                    <div class="specs-group">
+                        <div class="spec-pill">
+                            <span class="label">قەبارە</span>
+                            <span class="value">٥ مەتر</span>
+                        </div>
+                        <div class="spec-pill">
+                            <span class="label">ڕەنگ</span>
+                            <span class="value">RGB-IC</span>
+                        </div>
+                    </div>
+
+                    <div class="price-container">
                         <span class="current-price">15,000 دینار</span>
                         <span class="old-price">20,000 دینار</span>
                     </div>
-                    <div class="actions">
-                        <a href="https://vt.tiktok.com/ZSq8qnkvk/" target="_blank" class="btn btn-secondary">سەیری ڤیدیۆ بکە</a>
-                        <a href="https://pin.it/4lex2oN0f" target="_blank" class="btn btn-primary">بینینی وێنەکان</a>
+
+                    <div class="btn-group">
+                        <a href="https://pin.it/4lex2oN0f" target="_blank" class="btn-bw btn-bw-primary">
+                            <i class="fa-solid fa-image"></i> وێنەکان
+                        </a>
+                        <a href="https://vt.tiktok.com/ZSq8qnkvk/" target="_blank" class="btn-bw btn-bw-secondary">
+                            <i class="fa-brands fa-tiktok"></i> ڤیدیۆ
+                        </a>
                     </div>
                 </div>
             </div>
@@ -347,5 +571,24 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper sliders for all product cards
+        document.querySelectorAll('.product-slider').forEach((slider) => {
+            new Swiper(slider, {
+                loop: true,
+                grabCursor: true,
+                spaceBetween: 10,
+                pagination: {
+                    el: slider.querySelector('.swiper-pagination'),
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: slider.querySelector('.swiper-button-next'),
+                    prevEl: slider.querySelector('.swiper-button-prev'),
+                },
+            });
+        });
+    </script>
 </body>
 </html>
