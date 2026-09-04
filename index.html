@@ -268,6 +268,31 @@ body{min-height:100vh;display:flex;justify-content:center;overflow-x:hidden}
   .buy{width:26px;height:26px;}
 }
 
+/* Extra-small requested elements only */
+@media (max-width:700px){
+  .brand{font-size:16px;}
+  .tagline{font-size:7px;}
+  .search-box{height:45px;border-radius:13px;}
+  .search-icon{width:34px;}
+  .search-icon svg{width:20px;height:20px;}
+  .search-box input{font-size:11px;padding-right:5px;}
+  .settings{width:45px;height:45px;border-radius:13px;}
+  .settings svg{width:20px;height:20px;}
+  .categories{padding-top:9px;padding-bottom:7px;gap:4px;}
+  .cat{height:35px;border-radius:10px;font-size:10px;padding:0 8px;gap:4px;}
+  .cat svg{width:15px;height:15px;}
+  .arrow{width:34px;height:34px;flex-basis:34px;font-size:20px;}
+}
+@media (max-width:380px){
+  .brand{font-size:15px;}
+  .tagline{font-size:6px;}
+  .search-box{height:42px;}
+  .settings{width:42px;height:42px;}
+  .cat{height:33px;font-size:9px;padding:0 7px;}
+  .cat svg{width:14px;height:14px;}
+  .arrow{width:32px;height:32px;flex-basis:32px;}
+}
+
 </style>
 </head>
 <body>
