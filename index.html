@@ -4,240 +4,1538 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VOLT — Premium Mobile Store</title>
+
 <style>
 :root{
-  --bg:#f6f6f4;--surface:#fff;--text:#111;--muted:#777;--line:#e7e7e3;
-  --accent:#111;--radius:22px;--shadow:0 18px 50px rgba(0,0,0,.08);
+  --bg:#f6f6f4;
+  --surface:#fff;
+  --text:#111;
+  --muted:#777;
+  --line:#e7e7e3;
+  --accent:#111;
+  --radius:22px;
+  --shadow:0 18px 50px rgba(0,0,0,.08);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
-button,a{font:inherit} a{text-decoration:none;color:inherit}
-.top{background:#111;color:#fff;text-align:center;font-size:12px;letter-spacing:.08em;padding:9px}
-header{background:rgba(246,246,244,.94);backdrop-filter:blur(14px);position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line)}
-.nav{max-width:1250px;margin:auto;height:76px;display:flex;align-items:center;gap:36px;padding:0 22px}
-.logo{font-size:24px;font-weight:900;letter-spacing:-.06em}
-.navlinks{display:flex;gap:25px;font-size:14px;flex:1}
-.navlinks a{color:#555}.navlinks a:hover{color:#111}
-.actions{display:flex;gap:10px;align-items:center}
-.iconbtn{width:40px;height:40px;border:1px solid var(--line);background:#fff;border-radius:50%;cursor:pointer}
-.cart{position:relative}.count{position:absolute;right:-2px;top:-2px;background:#111;color:#fff;width:17px;height:17px;border-radius:50%;font-size:10px;display:grid;place-items:center}
-.hero{max-width:1250px;margin:26px auto 0;padding:0 22px}
-.hero-card{min-height:510px;border-radius:32px;background:#151515;color:white;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;position:relative}
-.hero-copy{padding:70px;display:flex;flex-direction:column;justify-content:center;z-index:2}
-.kicker{text-transform:uppercase;font-size:12px;letter-spacing:.18em;color:#aaa;margin-bottom:20px}
-h1{font-size:clamp(48px,6vw,82px);line-height:.91;letter-spacing:-.065em;max-width:620px}
-.hero-copy p{color:#aaa;max-width:450px;margin:26px 0;font-size:16px;line-height:1.6}
-.btn{border:0;background:#fff;color:#111;border-radius:999px;padding:14px 22px;cursor:pointer;font-weight:700;width:max-content}
-.hero-art{position:relative;display:flex;align-items:center;justify-content:center}
-.phone{width:220px;height:390px;border-radius:42px;background:linear-gradient(145deg,#777,#171717 65%);border:6px solid #252525;box-shadow:35px 30px 70px rgba(0,0,0,.55);transform:rotate(9deg);position:relative}
-.phone:before{content:"";position:absolute;inset:9px;border-radius:34px;background:radial-gradient(circle at 70% 20%,#fff5 0 2%,transparent 22%),linear-gradient(140deg,#d9d9d9,#3b3b3b 48%,#080808)}
-.camera{position:absolute;top:25px;left:22px;width:82px;height:98px;border-radius:22px;background:#111;z-index:2}
-.camera i{display:block;width:25px;height:25px;border-radius:50%;background:#333;border:4px solid #777;margin:9px}
-.floating{position:absolute;right:35px;bottom:40px;background:#242424;border:1px solid #444;border-radius:18px;padding:14px 18px;color:#ddd;font-size:13px}
-.section{max-width:1250px;margin:70px auto 0;padding:0 22px}
-.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:22px}
-.section h2{font-size:32px;letter-spacing:-.04em}.section-head p{color:var(--muted);font-size:13px}
-.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.cat{background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px;min-height:145px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:.2s}
-.cat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-.cat-icon{font-size:29px}.cat b{font-size:17px}.cat span{color:#888;font-size:12px}
-.toolbar{display:flex;gap:10px;align-items:center;margin:25px 0 18px;overflow:auto}
-.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;cursor:pointer;white-space:nowrap;font-size:13px}
-.filter.active,.filter:hover{background:#111;color:#fff;border-color:#111}
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;position:relative}
-.product-img{height:245px;background:#f0f0ed;display:grid;place-items:center;position:relative}
-.product-img .device{width:100px;height:185px;border-radius:24px;background:linear-gradient(150deg,#c8c8c8,#222);box-shadow:0 15px 35px #0002;transform:rotate(7deg)}
-.product-img.case .device{width:145px;height:180px;border-radius:26px;background:linear-gradient(145deg,#252525,#b6b6b6);border:8px solid #111}
-.product-img.charger .device{width:130px;height:105px;border-radius:20px;background:linear-gradient(145deg,#fff,#ccc);box-shadow:0 18px 30px #0002}
-.product-img.adapter .device{width:90px;height:120px;border-radius:17px;background:linear-gradient(145deg,#f8f8f8,#aaa)}
-.badge{position:absolute;left:12px;top:12px;background:#111;color:#fff;border-radius:999px;padding:6px 9px;font-size:10px}
-.info{padding:17px}.info small{color:#999}.info h3{font-size:15px;margin:6px 0 11px}.row{display:flex;justify-content:space-between;align-items:center}.price{font-weight:800}.add{border:0;background:#111;color:#fff;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:18px}
-footer{margin-top:90px;background:#111;color:#fff;padding:55px 22px}
-.footer-inner{max-width:1250px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.footer-logo{font-size:28px;font-weight:900}.footer p,.footer a{color:#999;font-size:13px;line-height:1.8}.footer h4{margin-bottom:14px;font-size:13px}
-.drawer{position:fixed;inset:0;background:#0006;z-index:50;display:none}.drawer.open{display:block}.panel{margin-left:auto;width:min(430px,100%);height:100%;background:#fff;padding:25px;overflow:auto}.panel-head{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#eee;border-radius:50%;width:36px;height:36px;cursor:pointer}.cart-item{display:flex;gap:13px;padding:18px 0;border-bottom:1px solid var(--line)}.mini{width:62px;height:62px;border-radius:14px;background:#eee}.empty{color:#888;text-align:center;padding:80px 0}
-@media(max-width:900px){.navlinks{display:none}.hero-card{grid-template-columns:1fr}.hero-art{min-height:280px}.hero-copy{padding:45px}.categories,.products{grid-template-columns:repeat(2,1fr)}.footer-inner{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.nav{height:65px}.hero-card{min-height:610px}.hero-copy{padding:35px 28px}.hero-art{min-height:250px}.categories,.products{grid-template-columns:1fr 1fr;gap:9px}.product-img{height:190px}.product-img .device{transform:scale(.78) rotate(7deg)}.section{margin-top:48px}.footer-inner{grid-template-columns:1fr}}
 
-@font-face{font-family:Rabar;src:url("Rabar_037_2.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
-html[dir="rtl"] body,html[dir="rtl"] button,html[dir="rtl"] a{font-family:Rabar,Arial,sans-serif}
-body.dark{--bg:#0b0b0b;--surface:#151515;--text:#f5f5f2;--muted:#aaa;--line:#2b2b2b}
-body.dark header{background:rgba(11,11,11,.94)}
-body.dark .cat,body.dark .card,body.dark .filter,body.dark .iconbtn{background:#151515;color:#f5f5f2;border-color:#2b2b2b}
-body.dark .product-img{background:#20201f}
-body.dark .top,body.dark footer{background:#050505}
-body.dark .hero-card{background:#1b1b1b}
-body.dark .navlinks a{color:#aaa}
-body.dark .navlinks a:hover{color:#fff}
-.settings-panel{width:min(390px,100%);margin-left:auto;height:100%;background:var(--surface);color:var(--text);padding:28px;overflow:auto}
-.settings-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
-.settings-title h2{font-size:25px;letter-spacing:-.04em}
-.setting-group{margin-bottom:30px}.setting-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px}
-.setting-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.setting-option{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:17px;padding:18px 15px;text-align:left;cursor:pointer;min-height:82px}
-.setting-option.active{border-color:var(--text);box-shadow:inset 0 0 0 1px var(--text)}
-.setting-option strong{display:block;font-size:14px;margin-bottom:5px}.setting-option span{font-size:12px;color:var(--muted)}
-.language-option{width:100%;text-align:center;font-size:17px}
-@media(max-width:560px){.settings-panel{padding:22px}}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+button,a{
+  font:inherit;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+header{
+  background:rgba(246,246,244,.94);
+  backdrop-filter:blur(14px);
+  position:sticky;
+  top:0;
+  z-index:20;
+  border-bottom:1px solid var(--line);
+}
+
+.nav{
+  max-width:1250px;
+  margin:auto;
+  height:76px;
+  display:flex;
+  align-items:center;
+  gap:36px;
+  padding:0 22px;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:-.06em;
+}
+
+.navlinks{
+  display:flex;
+  gap:25px;
+  font-size:14px;
+  flex:1;
+}
+
+.navlinks a{
+  color:#555;
+}
+
+.navlinks a:hover{
+  color:#111;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.iconbtn{
+  width:40px;
+  height:40px;
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+.cart{
+  position:relative;
+}
+
+.count{
+  position:absolute;
+  right:-2px;
+  top:-2px;
+  background:#111;
+  color:#fff;
+  width:17px;
+  height:17px;
+  border-radius:50%;
+  font-size:10px;
+  display:grid;
+  place-items:center;
+}
+
+.hero{
+  max-width:1250px;
+  margin:26px auto 0;
+  padding:0 22px;
+}
+
+.hero-card{
+  min-height:510px;
+  border-radius:32px;
+  background:#151515;
+  color:white;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;
+}
+
+.hero-copy{
+  padding:70px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  z-index:2;
+}
+
+.kicker{
+  display:none;
+}
+
+h1{
+  font-size:clamp(48px,6vw,82px);
+  line-height:.91;
+  letter-spacing:-.065em;
+  max-width:620px;
+}
+
+.hero-copy p{
+  color:#aaa;
+  max-width:450px;
+  margin:26px 0;
+  font-size:16px;
+  line-height:1.6;
+}
+
+.btn{
+  border:0;
+  background:#fff;
+  color:#111;
+  border-radius:999px;
+  padding:14px 22px;
+  cursor:pointer;
+  font-weight:700;
+  width:max-content;
+}
+
+.hero-art{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.phone{
+  width:220px;
+  height:390px;
+  border-radius:42px;
+  background:linear-gradient(145deg,#777,#171717 65%);
+  border:6px solid #252525;
+  box-shadow:35px 30px 70px rgba(0,0,0,.55);
+  transform:rotate(9deg);
+  position:relative;
+}
+
+.phone:before{
+  content:"";
+  position:absolute;
+  inset:9px;
+  border-radius:34px;
+  background:
+    radial-gradient(circle at 70% 20%,#fff5 0 2%,transparent 22%),
+    linear-gradient(140deg,#d9d9d9,#3b3b3b 48%,#080808);
+}
+
+.camera{
+  position:absolute;
+  top:25px;
+  left:22px;
+  width:82px;
+  height:98px;
+  border-radius:22px;
+  background:#111;
+  z-index:2;
+}
+
+.camera i{
+  display:block;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  background:#333;
+  border:4px solid #777;
+  margin:9px;
+}
+
+.floating{
+  position:absolute;
+  right:35px;
+  bottom:40px;
+  background:#242424;
+  border:1px solid #444;
+  border-radius:18px;
+  padding:14px 18px;
+  color:#ddd;
+  font-size:13px;
+}
+
+.section{
+  max-width:1250px;
+  margin:70px auto 0;
+  padding:0 22px;
+}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  margin-bottom:22px;
+}
+
+.section h2{
+  font-size:32px;
+  letter-spacing:-.04em;
+}
+
+.section-head p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.cat{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:25px;
+  min-height:145px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.cat:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
+}
+
+.cat-icon{
+  font-size:29px;
+}
+
+.cat b{
+  font-size:17px;
+}
+
+.cat span{
+  color:#888;
+  font-size:12px;
+}
+
+.toolbar{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin:25px 0 18px;
+  overflow:auto;
+}
+
+.filter{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:999px;
+  padding:10px 15px;
+  cursor:pointer;
+  white-space:nowrap;
+  font-size:13px;
+}
+
+.filter.active,
+.filter:hover{
+  background:#111;
+  color:#fff;
+  border-color:#111;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  position:relative;
+}
+
+.product-img{
+  height:245px;
+  background:#f0f0ed;
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+
+.product-img .device{
+  width:100px;
+  height:185px;
+  border-radius:24px;
+  background:linear-gradient(150deg,#c8c8c8,#222);
+  box-shadow:0 15px 35px #0002;
+  transform:rotate(7deg);
+}
+
+.product-img.case .device{
+  width:145px;
+  height:180px;
+  border-radius:26px;
+  background:linear-gradient(145deg,#252525,#b6b6b6);
+  border:8px solid #111;
+}
+
+.product-img.charger .device{
+  width:130px;
+  height:105px;
+  border-radius:20px;
+  background:linear-gradient(145deg,#fff,#ccc);
+  box-shadow:0 18px 30px #0002;
+}
+
+.product-img.adapter .device{
+  width:90px;
+  height:120px;
+  border-radius:17px;
+  background:linear-gradient(145deg,#f8f8f8,#aaa);
+}
+
+.badge{
+  position:absolute;
+  left:12px;
+  top:12px;
+  background:#111;
+  color:#fff;
+  border-radius:999px;
+  padding:6px 9px;
+  font-size:10px;
+}
+
+.info{
+  padding:17px;
+}
+
+.info small{
+  color:#999;
+}
+
+.info h3{
+  font-size:15px;
+  margin:6px 0 11px;
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.price{
+  font-weight:800;
+}
+
+.add{
+  border:0;
+  background:#111;
+  color:#fff;
+  border-radius:50%;
+  width:36px;
+  height:36px;
+  cursor:pointer;
+  font-size:18px;
+}
+
+footer{
+  margin-top:90px;
+  background:#111;
+  color:#fff;
+  padding:55px 22px;
+}
+
+.footer-inner{
+  max-width:1250px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:30px;
+}
+
+.footer-logo{
+  font-size:28px;
+  font-weight:900;
+}
+
+.footer p,
+.footer a{
+  color:#999;
+  font-size:13px;
+  line-height:1.8;
+}
+
+.footer h4{
+  margin-bottom:14px;
+  font-size:13px;
+}
+
+.drawer{
+  position:fixed;
+  inset:0;
+  background:#0006;
+  z-index:50;
+  display:none;
+}
+
+.drawer.open{
+  display:block;
+}
+
+.panel{
+  margin-left:auto;
+  width:min(430px,100%);
+  height:100%;
+  background:#fff;
+  padding:25px;
+  overflow:auto;
+}
+
+.panel-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.close{
+  border:0;
+  background:#eee;
+  border-radius:50%;
+  width:36px;
+  height:36px;
+  cursor:pointer;
+}
+
+.cart-item{
+  display:flex;
+  gap:13px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.mini{
+  width:62px;
+  height:62px;
+  border-radius:14px;
+  background:#eee;
+}
+
+.empty{
+  color:#888;
+  text-align:center;
+  padding:80px 0;
+}
+
+/* Kurdish Sorani Font */
+@font-face{
+  font-family:Rabar;
+  src:url("Rabar_037_2.ttf") format("truetype");
+  font-weight:100 900;
+  font-style:normal;
+  font-display:swap;
+}
+
+html[dir="rtl"] body,
+html[dir="rtl"] button,
+html[dir="rtl"] a{
+  font-family:Rabar,Arial,sans-serif;
+}
+
+/* Dark Appearance */
+body.dark{
+  --bg:#0b0b0b;
+  --surface:#151515;
+  --text:#f5f5f2;
+  --muted:#aaa;
+  --line:#2b2b2b;
+}
+
+body.dark header{
+  background:rgba(11,11,11,.94);
+}
+
+body.dark .cat,
+body.dark .card,
+body.dark .filter,
+body.dark .iconbtn{
+  background:#151515;
+  color:#f5f5f2;
+  border-color:#2b2b2b;
+}
+
+body.dark .product-img{
+  background:#20201f;
+}
+
+body.dark .hero-card{
+  background:#1b1b1b;
+}
+
+body.dark .navlinks a{
+  color:#aaa;
+}
+
+body.dark .navlinks a:hover{
+  color:#fff;
+}
+
+body.dark footer{
+  background:#050505;
+}
+
+/* Settings Drawer */
+.settings-panel{
+  width:min(390px,100%);
+  margin-left:auto;
+  height:100%;
+  background:var(--surface);
+  color:var(--text);
+  padding:28px;
+  overflow:auto;
+}
+
+.settings-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:30px;
+}
+
+.settings-title h2{
+  font-size:25px;
+  letter-spacing:-.04em;
+}
+
+.setting-group{
+  margin-bottom:30px;
+}
+
+.setting-label{
+  font-size:12px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  margin-bottom:12px;
+}
+
+.setting-options{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.setting-option{
+  border:1px solid var(--line);
+  background:var(--surface);
+  color:var(--text);
+  border-radius:17px;
+  padding:18px 15px;
+  text-align:left;
+  cursor:pointer;
+  min-height:82px;
+}
+
+.setting-option.active{
+  border-color:var(--text);
+  box-shadow:inset 0 0 0 1px var(--text);
+}
+
+.setting-option strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:5px;
+}
+
+.setting-option span{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.language-option{
+  width:100%;
+  text-align:center;
+  font-size:17px;
+}
+
+@media(max-width:900px){
+  .navlinks{
+    display:none;
+  }
+
+  .hero-card{
+    grid-template-columns:1fr;
+  }
+
+  .hero-art{
+    min-height:280px;
+  }
+
+  .hero-copy{
+    padding:45px;
+  }
+
+  .categories,
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:560px){
+  .nav{
+    height:65px;
+  }
+
+  .hero-card{
+    min-height:610px;
+  }
+
+  .hero-copy{
+    padding:35px 28px;
+  }
+
+  .hero-art{
+    min-height:250px;
+  }
+
+  .categories,
+  .products{
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+  }
+
+  .product-img{
+    height:190px;
+  }
+
+  .product-img .device{
+    transform:scale(.78) rotate(7deg);
+  }
+
+  .section{
+    margin-top:48px;
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr;
+  }
+
+  .settings-panel{
+    padding:22px;
+  }
+}
 </style>
 </head>
+
 <body>
-<div class="top"><span id="shippingBar">FREE SHIPPING ON ORDERS OVER $75 · 30-DAY RETURNS</span></div>
+
 <header>
   <nav class="nav">
+
     <div class="logo">VOLT.</div>
+
     <div class="navlinks">
-      <a id="navPhones" href="#phones">Phones</a><a id="navCases" href="#cases">Cases</a><a id="navChargers" href="#chargers">Chargers</a><a id="navAdapters" href="#adapters">Adapters</a><a id="navDeals" href="#deals">Deals</a>
+      <a id="navPhones" href="#phones">Phones</a>
+      <a id="navCases" href="#cases">Cases</a>
+      <a id="navChargers" href="#chargers">Chargers</a>
+      <a id="navAdapters" href="#adapters">Adapters</a>
+      <a id="navDeals" href="#deals">Deals</a>
     </div>
+
     <div class="actions">
-      <button class="iconbtn" onclick="focusSearch()" aria-label="Search">⌕</button>
-      <button class="iconbtn" onclick="openSettings()" aria-label="Settings">⚙</button>
-      <button class="iconbtn cart" onclick="openCart()" aria-label="Cart">🛒<span class="count" id="count">0</span></button>
+
+      <button
+        class="iconbtn"
+        onclick="focusSearch()"
+        aria-label="Search">
+        ⌕
+      </button>
+
+      <button
+        class="iconbtn"
+        onclick="openSettings()"
+        aria-label="Settings">
+        ⚙
+      </button>
+
+      <button
+        class="iconbtn cart"
+        onclick="openCart()"
+        aria-label="Cart">
+        🛒
+        <span class="count" id="count">0</span>
+      </button>
+
     </div>
+
   </nav>
 </header>
 
 <main>
+
 <section class="hero">
+
   <div class="hero-card">
+
     <div class="hero-copy">
-      <div class="kicker" id="heroKicker">New collection · 2026</div>
-      <h1 id="heroTitle">Premium tech. Simply chosen.</h1>
-      <p id="heroText">Shop phones and the accessories that make them better. Curated hardware, premium cases, fast chargers and reliable adapters.</p>
-      <a class="btn" id="shopPhones" href="#phones">Shop phones →</a>
+
+      <h1 id="heroTitle">
+        Phones &amp; Accessories
+      </h1>
+
+      <p id="heroText">
+        Shop phones and the accessories that make them better.
+        Curated hardware, premium cases, fast chargers and reliable adapters.
+      </p>
+
+      <a
+        class="btn"
+        id="shopPhones"
+        href="#phones">
+        Shop phones →
+      </a>
+
     </div>
+
     <div class="hero-art">
-      <div class="phone"><div class="camera"><i></i><i></i><i></i></div></div>
-      <div class="floating">Titan Pro · From $899</div>
+
+      <div class="phone">
+        <div class="camera">
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+      </div>
+
+      <div class="floating">
+        Titan Pro · From $899
+      </div>
+
     </div>
+
   </div>
+
 </section>
 
 <section class="section" id="categories">
-  <div class="section-head"><div><h2 id="shopHeading">Shop by category</h2><p id="shopSub">Everything for your phone, in one place.</p></div></div>
-  <div class="categories">
-    <a class="cat" href="#phones"><div class="cat-icon">📱</div><div><b id="categoryPhones">Phones</b><br><span id="categoryPhonesDesc">Latest smartphones</span></div></a>
-    <a class="cat" href="#cases"><div class="cat-icon">▣</div><div><b id="categoryCases">Phone Cases</b><br><span id="categoryCasesDesc">Protective & premium</span></div></a>
-    <a class="cat" href="#chargers"><div class="cat-icon">⚡</div><div><b id="categoryChargers">Chargers</b><br><span id="categoryChargersDesc">Fast charging</span></div></a>
-    <a class="cat" href="#adapters"><div class="cat-icon">⌁</div><div><b id="categoryAdapters">Adapters</b><br><span id="categoryAdaptersDesc">Power & connectivity</span></div></a>
+
+  <div class="section-head">
+
+    <div>
+      <h2 id="shopHeading">
+        Shop by category
+      </h2>
+
+      <p id="shopSub">
+        Everything for your phone, in one place.
+      </p>
+    </div>
+
   </div>
+
+  <div class="categories">
+
+    <a class="cat" href="#phones">
+      <div class="cat-icon">📱</div>
+
+      <div>
+        <b id="categoryPhones">Phones</b>
+        <br>
+        <span id="categoryPhonesDesc">
+          Latest smartphones
+        </span>
+      </div>
+    </a>
+
+    <a class="cat" href="#cases">
+      <div class="cat-icon">▣</div>
+
+      <div>
+        <b id="categoryCases">Phone Cases</b>
+        <br>
+        <span id="categoryCasesDesc">
+          Protective &amp; premium
+        </span>
+      </div>
+    </a>
+
+    <a class="cat" href="#chargers">
+      <div class="cat-icon">⚡</div>
+
+      <div>
+        <b id="categoryChargers">Chargers</b>
+        <br>
+        <span id="categoryChargersDesc">
+          Fast charging
+        </span>
+      </div>
+    </a>
+
+    <a class="cat" href="#adapters">
+      <div class="cat-icon">⌁</div>
+
+      <div>
+        <b id="categoryAdapters">Adapters</b>
+        <br>
+        <span id="categoryAdaptersDesc">
+          Power &amp; connectivity
+        </span>
+      </div>
+    </a>
+
+  </div>
+
 </section>
 
 <section class="section" id="phones">
-  <div class="section-head"><div><h2 id="bestHeading">Best sellers</h2><p id="bestSub">Popular picks from the VOLT collection.</p></div></div>
-  <div class="toolbar">
-    <button id="allFilter" class="filter active" onclick="filterProducts('all',this)">All</button>
-    <button class="filter" onclick="filterProducts('phone',this)">Phones</button>
-    <button class="filter" onclick="filterProducts('case',this)">Phone Cases</button>
-    <button class="filter" onclick="filterProducts('charger',this)">Chargers</button>
-    <button class="filter" onclick="filterProducts('adapter',this)">Adapters</button>
+
+  <div class="section-head">
+
+    <div>
+      <h2 id="bestHeading">
+        Best sellers
+      </h2>
+
+      <p id="bestSub">
+        Popular picks from the VOLT collection.
+      </p>
+    </div>
+
   </div>
-  <div class="products" id="productGrid"></div>
+
+  <div class="toolbar">
+
+    <button
+      id="allFilter"
+      class="filter active"
+      onclick="filterProducts('all',this)">
+      All
+    </button>
+
+    <button
+      class="filter"
+      onclick="filterProducts('phone',this)">
+      Phones
+    </button>
+
+    <button
+      class="filter"
+      onclick="filterProducts('case',this)">
+      Phone Cases
+    </button>
+
+    <button
+      class="filter"
+      onclick="filterProducts('charger',this)">
+      Chargers
+    </button>
+
+    <button
+      class="filter"
+      onclick="filterProducts('adapter',this)">
+      Adapters
+    </button>
+
+  </div>
+
+  <div
+    class="products"
+    id="productGrid">
+  </div>
+
 </section>
+
 </main>
 
 <footer>
+
   <div class="footer-inner">
-    <div><div class="footer-logo">VOLT.</div><p>Premium mobile hardware and accessories.<br>Designed for everyday tech.</p></div>
-    <div><h4>SHOP</h4><p><a href="#phones">Phones</a><br><a href="#cases">Cases</a><br><a href="#chargers">Chargers</a><br><a href="#adapters">Adapters</a></p></div>
-    <div><h4>HELP</h4><p>Shipping<br>Returns<br>Warranty<br>Contact</p></div>
-    <div><h4>ABOUT</h4><p>Our story<br>Stores<br>Privacy<br>Terms</p></div>
+
+    <div>
+      <div class="footer-logo">
+        VOLT.
+      </div>
+
+      <p>
+        Premium mobile hardware and accessories.
+        <br>
+        Designed for everyday tech.
+      </p>
+    </div>
+
+    <div>
+      <h4>SHOP</h4>
+
+      <p>
+        <a href="#phones">Phones</a>
+        <br>
+        <a href="#cases">Cases</a>
+        <br>
+        <a href="#chargers">Chargers</a>
+        <br>
+        <a href="#adapters">Adapters</a>
+      </p>
+    </div>
+
+    <div>
+      <h4>HELP</h4>
+
+      <p>
+        Shipping
+        <br>
+        Returns
+        <br>
+        Warranty
+        <br>
+        Contact
+      </p>
+    </div>
+
+    <div>
+      <h4>ABOUT</h4>
+
+      <p>
+        Our story
+        <br>
+        Stores
+        <br>
+        Privacy
+        <br>
+        Terms
+      </p>
+    </div>
+
   </div>
+
 </footer>
 
-<div class="drawer" id="drawer" onclick="closeCart(event)">
-  <aside class="panel" onclick="event.stopPropagation()">
-    <div class="panel-head"><h2 id="cartHeading">Your cart</h2><button class="close" onclick="closeCart()">×</button></div>
+<!-- Cart Drawer -->
+
+<div
+  class="drawer"
+  id="drawer"
+  onclick="closeCart(event)">
+
+  <aside
+    class="panel"
+    onclick="event.stopPropagation()">
+
+    <div class="panel-head">
+
+      <h2 id="cartHeading">
+        Your cart
+      </h2>
+
+      <button
+        class="close"
+        onclick="closeCart()">
+        ×
+      </button>
+
+    </div>
+
     <div id="cartItems"></div>
+
   </aside>
+
+</div>
+
+<!-- Settings Drawer -->
+
+<div
+  class="drawer"
+  id="settingsDrawer"
+  onclick="closeSettings(event)">
+
+  <aside
+    class="settings-panel"
+    onclick="event.stopPropagation()">
+
+    <div class="settings-title">
+
+      <h2 id="settingsHeading">
+        Settings
+      </h2>
+
+      <button
+        class="close"
+        onclick="closeSettings()">
+        ×
+      </button>
+
+    </div>
+
+    <div class="setting-group">
+
+      <div
+        class="setting-label"
+        id="appearanceLabel">
+        Appearance
+      </div>
+
+      <div class="setting-options">
+
+        <button
+          type="button"
+          class="setting-option active"
+          id="whiteOption"
+          onclick="setAppearance('white')">
+
+          <strong id="whiteText">
+            White
+          </strong>
+
+          <span id="whiteDesc">
+            Light storefront
+          </span>
+
+        </button>
+
+        <button
+          type="button"
+          class="setting-option"
+          id="blackOption"
+          onclick="setAppearance('black')">
+
+          <strong id="blackText">
+            Black
+          </strong>
+
+          <span id="blackDesc">
+            Dark storefront
+          </span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="setting-group">
+
+      <div
+        class="setting-label"
+        id="languageLabel">
+        Language
+      </div>
+
+      <button
+        type="button"
+        class="setting-option language-option"
+        id="languageOption"
+        onclick="toggleLanguage()">
+
+        <strong id="languageText">
+          کوردی سۆرانی
+        </strong>
+
+        <span id="languageDesc">
+          Switch store language
+        </span>
+
+      </button>
+
+    </div>
+
+  </aside>
+
 </div>
 
 <script>
-const products=[
- {id:1,type:'phone',name:'Titan Pro 256GB',price:899,badge:'NEW'},
- {id:2,type:'phone',name:'Aero X 128GB',price:699,badge:'BEST'},
- {id:3,type:'phone',name:'Nova Mini 128GB',price:549,badge:''},
- {id:4,type:'phone',name:'Titan Pro Max 512GB',price:1099,badge:'PRO'},
- {id:5,type:'case',name:'Arctic MagSafe Case',price:49,badge:'NEW'},
- {id:6,type:'case',name:'Carbon Shield Case',price:59,badge:'BEST'},
- {id:7,type:'case',name:'Clear Armor Case',price:39,badge:''},
- {id:8,type:'case',name:'Soft Touch Case',price:45,badge:''},
- {id:9,type:'charger',name:'65W GaN Fast Charger',price:69,badge:'FAST'},
- {id:10,type:'charger',name:'30W Pocket Charger',price:39,badge:''},
- {id:11,type:'charger',name:'Dual USB-C Charger',price:49,badge:'BEST'},
- {id:12,type:'charger',name:'Wireless Charging Pad',price:59,badge:''},
- {id:13,type:'adapter',name:'USB-C to USB-A Adapter',price:19,badge:''},
- {id:14,type:'adapter',name:'USB-C Multi Adapter',price:49,badge:'BEST'},
- {id:15,type:'adapter',name:'HDMI Display Adapter',price:39,badge:''},
- {id:16,type:'adapter',name:'Travel Power Adapter',price:35,badge:'NEW'}
+
+const products = [
+
+  {
+    id:1,
+    type:'phone',
+    name:'Titan Pro 256GB',
+    price:899,
+    badge:'NEW'
+  },
+
+  {
+    id:2,
+    type:'phone',
+    name:'Aero X 128GB',
+    price:699,
+    badge:'BEST'
+  },
+
+  {
+    id:3,
+    type:'phone',
+    name:'Nova Mini 128GB',
+    price:549,
+    badge:''
+  },
+
+  {
+    id:4,
+    type:'phone',
+    name:'Titan Pro Max 512GB',
+    price:1099,
+    badge:'PRO'
+  },
+
+  {
+    id:5,
+    type:'case',
+    name:'Arctic MagSafe Case',
+    price:49,
+    badge:'NEW'
+  },
+
+  {
+    id:6,
+    type:'case',
+    name:'Carbon Shield Case',
+    price:59,
+    badge:'BEST'
+  },
+
+  {
+    id:7,
+    type:'case',
+    name:'Clear Armor Case',
+    price:39,
+    badge:''
+  },
+
+  {
+    id:8,
+    type:'case',
+    name:'Soft Touch Case',
+    price:45,
+    badge:''
+  },
+
+  {
+    id:9,
+    type:'charger',
+    name:'65W GaN Fast Charger',
+    price:69,
+    badge:'FAST'
+  },
+
+  {
+    id:10,
+    type:'charger',
+    name:'30W Pocket Charger',
+    price:39,
+    badge:''
+  },
+
+  {
+    id:11,
+    type:'charger',
+    name:'Dual USB-C Charger',
+    price:49,
+    badge:'BEST'
+  },
+
+  {
+    id:12,
+    type:'charger',
+    name:'Wireless Charging Pad',
+    price:59,
+    badge:''
+  },
+
+  {
+    id:13,
+    type:'adapter',
+    name:'USB-C to USB-A Adapter',
+    price:19,
+    badge:''
+  },
+
+  {
+    id:14,
+    type:'adapter',
+    name:'USB-C Multi Adapter',
+    price:49,
+    badge:'BEST'
+  },
+
+  {
+    id:15,
+    type:'adapter',
+    name:'HDMI Display Adapter',
+    price:39,
+    badge:''
+  },
+
+  {
+    id:16,
+    type:'adapter',
+    name:'Travel Power Adapter',
+    price:35,
+    badge:'NEW'
+  }
+
 ];
-let cart=[];
-let sorani=false;
-const translations={
- en:{phones:'Phones',cases:'Phone Cases',chargers:'Chargers',adapters:'Adapters',deals:'Deals',shop:'Shop by category',shopSub:'Everything for your phone, in one place.',best:'Best sellers',bestSub:'Popular picks from the VOLT collection.',all:'All',heroKicker:'New collection · 2026',heroTitle:'Premium tech. Simply chosen.',heroText:'Shop phones and the accessories that make them better. Curated hardware, premium cases, fast chargers and reliable adapters.',shopPhones:'Shop phones →',settings:'Settings',appearance:'Appearance',white:'White',whiteDesc:'Light storefront',black:'Black',blackDesc:'Dark storefront',language:'Language',languageDesc:'Switch store language',categoryPhones:'Phones',categoryPhonesDesc:'Latest smartphones',categoryCases:'Phone Cases',categoryCasesDesc:'Protective & premium',categoryChargers:'Chargers',categoryChargersDesc:'Fast charging',categoryAdapters:'Adapters',categoryAdaptersDesc:'Power & connectivity',cart:'Your cart',empty:'Your cart is empty.',total:'Total',checkout:'Checkout',free:'FREE SHIPPING ON ORDERS OVER $75 · 30-DAY RETURNS'},
- ku:{phones:'مۆبایل',cases:'کەیسەکانی مۆبایل',chargers:'شارژەرەکان',adapters:'ئاداپتەرەکان',deals:'داشکاندنەکان',shop:'بەپێی جۆر بگەڕێ',shopSub:'هەموو شتێک بۆ مۆبایلەکەت لە یەک شوێن.',best:'فرۆشراوە باشەکان',bestSub:'هەڵبژاردە بەناوبانگەکانی کۆمەڵەی VOLT.',all:'هەموو',heroKicker:'کۆمەڵەی نوێ · ٢٠٢٦',heroTitle:'تەکنەلۆژیای پڕیمیۆم، بە سادەیی هەڵیبژێرە.',heroText:'مۆبایل و ئاکسسواراتەکان بکڕە کە تەکنەلۆژیای ڕۆژانەت باشتر دەکەن؛ کەیس، شارژەری خێرا و ئەداپتەری متمانەپێکراو.',shopPhones:'مۆبایلەکان ببینە ←',settings:'ڕێکخستنەکان',appearance:'ڕووکار',white:'سپی',whiteDesc:'ڕووکاری ڕوون',black:'ڕەش',blackDesc:'ڕووکاری تاریک',language:'زمان',languageDesc:'زمانی کۆگاکە بگۆڕە',categoryPhones:'مۆبایل',categoryPhonesDesc:'نوێترین مۆبایلەکان',categoryCases:'کەیسەکانی مۆبایل',categoryCasesDesc:'پارێزەر و پڕیمیۆم',categoryChargers:'شارژەرەکان',categoryChargersDesc:'شارژکردنی خێرا',categoryAdapters:'ئاداپتەرەکان',categoryAdaptersDesc:'وزە و پەیوەندی',cart:'سەبەتەکەت',empty:'سەبەتەکەت بەتاڵە.',total:'کۆی گشتی',checkout:'پارەدان',free:'گەیاندنی بەخۆڕایی بۆ داواکارییەکانی سەرووی $75 · گەڕاندنەوەی ٣٠ ڕۆژە'}
+
+let cart = [];
+let sorani = false;
+
+const translations = {
+
+  en:{
+    phones:'Phones',
+    cases:'Phone Cases',
+    chargers:'Chargers',
+    adapters:'Adapters',
+    deals:'Deals',
+
+    shop:'Shop by category',
+    shopSub:'Everything for your phone, in one place.',
+
+    best:'Best sellers',
+    bestSub:'Popular picks from the VOLT collection.',
+
+    all:'All',
+
+    heroTitle:'Phones & Accessories',
+
+    heroText:
+      'Shop phones and the accessories that make them better. Curated hardware, premium cases, fast chargers and reliable adapters.',
+
+    shopPhones:'Shop phones →',
+
+    settings:'Settings',
+
+    appearance:'Appearance',
+
+    white:'White',
+    whiteDesc:'Light storefront',
+
+    black:'Black',
+    blackDesc:'Dark storefront',
+
+    language:'Language',
+    languageDesc:'Switch store language',
+
+    categoryPhones:'Phones',
+    categoryPhonesDesc:'Latest smartphones',
+
+    categoryCases:'Phone Cases',
+    categoryCasesDesc:'Protective & premium',
+
+    categoryChargers:'Chargers',
+    categoryChargersDesc:'Fast charging',
+
+    categoryAdapters:'Adapters',
+    categoryAdaptersDesc:'Power & connectivity',
+
+    cart:'Your cart',
+    empty:'Your cart is empty.',
+    total:'Total',
+    checkout:'Checkout'
+  },
+
+  ku:{
+    phones:'مۆبایل',
+
+    cases:'کەیسەکانی مۆبایل',
+
+    chargers:'شارژەرەکان',
+
+    adapters:'ئاداپتەرەکان',
+
+    deals:'داشکاندنەکان',
+
+    shop:'بەپێی جۆر بگەڕێ',
+
+    shopSub:
+      'هەموو شتێک بۆ مۆبایلەکەت لە یەک شوێن.',
+
+    best:'فرۆشراوە باشەکان',
+
+    bestSub:
+      'هەڵبژاردە بەناوبانگەکانی کۆمەڵەی VOLT.',
+
+    all:'هەموو',
+
+    heroTitle:'مۆبایل و ئاکسسوارات',
+
+    heroText:
+      'مۆبایل و ئاکسسواراتەکان بکڕە کە تەکنەلۆژیای ڕۆژانەت باشتر دەکەن؛ کەیس، شارژەری خێرا و ئەداپتەری متمانەپێکراو.',
+
+    shopPhones:'مۆبایلەکان ببینە ←',
+
+    settings:'ڕێکخستنەکان',
+
+    appearance:'ڕووکار',
+
+    white:'سپی',
+    whiteDesc:'ڕووکاری ڕوون',
+
+    black:'ڕەش',
+    blackDesc:'ڕووکاری تاریک',
+
+    language:'زمان',
+    languageDesc:'زمانی کۆگاکە بگۆڕە',
+
+    categoryPhones:'مۆبایل',
+    categoryPhonesDesc:'نوێترین مۆبایلەکان',
+
+    categoryCases:'کەیسەکانی مۆبایل',
+    categoryCasesDesc:'پارێزەر و پڕیمیۆم',
+
+    categoryChargers:'شارژەرەکان',
+    categoryChargersDesc:'شارژکردنی خێرا',
+
+    categoryAdapters:'ئاداپتەرەکان',
+    categoryAdaptersDesc:'وزە و پەیوەندی',
+
+    cart:'سەبەتەکەت',
+
+    empty:'سەبەتەکەت بەتاڵە.',
+
+    total:'کۆی گشتی',
+
+    checkout:'پارەدان'
+  }
+
 };
-function t(key){return translations[sorani?'ku':'en'][key]}
+
+function t(key){
+  return translations[sorani ? 'ku' : 'en'][key];
+}
+
 function applyLanguage(){
- document.documentElement.dir=sorani?'rtl':'ltr';
- document.documentElement.lang=sorani?'ckb':'en';
- const map={navPhones:'phones',navCases:'cases',navChargers:'chargers',navAdapters:'adapters',navDeals:'deals',shopHeading:'shop',shopSub:'shopSub',bestHeading:'best',bestSub:'bestSub',allFilter:'all',heroKicker:'heroKicker',heroTitle:'heroTitle',heroText:'heroText',shopPhones:'shopPhones',settingsHeading:'settings',appearanceLabel:'appearance',whiteText:'white',whiteDesc:'whiteDesc',blackText:'black',blackDesc:'blackDesc',languageLabel:'language',languageDesc:'languageDesc',categoryPhones:'categoryPhones',categoryPhonesDesc:'categoryPhonesDesc',categoryCases:'categoryCases',categoryCasesDesc:'categoryCasesDesc',categoryChargers:'categoryChargers',categoryChargersDesc:'categoryChargersDesc',categoryAdapters:'categoryAdapters',categoryAdaptersDesc:'categoryAdaptersDesc',cartHeading:'cart',totalLabel:'total',checkoutBtn:'checkout',shippingBar:'free'};
- Object.entries(map).forEach(([id,key])=>{const el=document.getElementById(id);if(el)el.textContent=t(key)});
- render();
- updateCart();
+
+  document.documentElement.dir =
+    sorani ? 'rtl' : 'ltr';
+
+  document.documentElement.lang =
+    sorani ? 'ckb' : 'en';
+
+  const map = {
+
+    navPhones:'phones',
+    navCases:'cases',
+    navChargers:'chargers',
+    navAdapters:'adapters',
+    navDeals:'deals',
+
+    shopHeading:'shop',
+    shopSub:'shopSub',
+
+    bestHeading:'best',
+    bestSub:'bestSub',
+
+    allFilter:'all',
+
+    heroTitle:'heroTitle',
+    heroText:'heroText',
+    shopPhones:'shopPhones',
+
+    settingsHeading:'settings',
+
+    appearanceLabel:'appearance',
+
+    whiteText:'white',
+    whiteDesc:'whiteDesc',
+
+    blackText:'black',
+    blackDesc:'blackDesc',
+
+    languageLabel:'language',
+    languageDesc:'languageDesc',
+
+    categoryPhones:'categoryPhones',
+    categoryPhonesDesc:'categoryPhonesDesc',
+
+    categoryCases:'categoryCases',
+    categoryCasesDesc:'categoryCasesDesc',
+
+    categoryChargers:'categoryChargers',
+    categoryChargersDesc:'categoryChargersDesc',
+
+    categoryAdapters:'categoryAdapters',
+    categoryAdaptersDesc:'categoryAdaptersDesc',
+
+    cartHeading:'cart'
+  };
+
+  Object.entries(map).forEach(([id,key])=>{
+
+    const element =
+      document.getElementById(id);
+
+    if(element){
+      element.textContent = t(key);
+    }
+
+  });
+
+  render();
+  updateCart();
 }
+
 function setAppearance(mode){
- document.body.classList.toggle('dark',mode==='black');
- document.getElementById('whiteOption').classList.toggle('active',mode==='white');
- document.getElementById('blackOption').classList.toggle('active',mode==='black');
-}
-function toggleLanguage(){sorani=!sorani;applyLanguage()}
-function openSettings(){document.getElementById('settingsDrawer').classList.add('open')}
-function closeSettings(e){if(!e||e.target.id==='settingsDrawer')document.getElementById('settingsDrawer').classList.remove('open')}
 
-function render(list=products){
- const grid=document.getElementById('productGrid');
- grid.innerHTML=list.map(p=>`<article class="card" data-type="${p.type}">
-  <div class="product-img ${p.type}">${p.badge?`<span class="badge">${p.badge}</span>`:''}<div class="device"></div></div>
-  <div class="info"><small>${({phone:t("phones"),case:t("cases"),charger:t("chargers"),adapter:t("adapters")})[p.type]}</small><h3>${p.name}</h3><div class="row"><span class="price">$${p.price}</span><button class="add" onclick="addToCart(${p.id})">+</button></div></div>
- </article>`).join('');
-}
-function filterProducts(type,btn){
- document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));btn.classList.add('active');
- render(type==='all'?products:products.filter(p=>p.type===type));
-}
-function addToCart(id){const p=products.find(x=>x.id===id);cart.push(p);updateCart();openCart()}
-function updateCart(){
- document.getElementById('count').textContent=cart.length;
- const box=document.getElementById('cartItems');
- if(!cart.length){box.innerHTML='<div class="empty" id="emptyCart">'+t('empty')+'</div>';return}
- box.innerHTML=cart.map((p,i)=>`<div class="cart-item"><div class="mini"></div><div style="flex:1"><b>${p.name}</b><br><span>$${p.price}</span></div><button class="close" onclick="removeItem(${i})">×</button></div>`).join('')+
- `<div style="padding-top:25px;font-weight:800;display:flex;justify-content:space-between"><span id="totalLabel">Total</span><span>$${cart.reduce((s,p)=>s+p.price,0)}</span></div>
- <button class="btn" style="width:100%;margin-top:20px;background:#111;color:#fff" onclick="alert('Checkout demo — connect your payment provider here.')" id="checkoutBtn">Checkout</button>`;
-}
-function removeItem(i){cart.splice(i,1);updateCart()}
-function openCart(){document.getElementById('drawer').classList.add('open')}
-function closeCart(e){if(!e||e.target.id==='drawer')document.getElementById('drawer').classList.remove('open')}
-function focusSearch(){alert('Search UI can be connected to your product database.')}
-render();updateCart();applyLanguage();
-</script>
+  document.body.classList.toggle(
+    'dark',
+    mode === 'black'
+  );
 
-<div class="drawer" id="settingsDrawer" onclick="closeSettings(event)">
-  <aside class="settings-panel" onclick="event.stopPropagation()">
-    <div class="settings-title"><h2 id="settingsHeading">Settings</h2><button class="close" onclick="closeSettings()">×</button></div>
-    <div class="setting-group">
-      <div class="setting-label" id="appearanceLabel">Appearance</div>
-      <div class="setting-options">
-        <button type="button" class="setting-option active" id="whiteOption" onclick="setAppearance('white')"><strong id="whiteText">White</strong><span id="whiteDesc">Light storefront</span></button>
-        <button type="button" class="setting-option" id="blackOption" onclick="setAppearance('black')"><strong id="blackText">Black</strong><span id="blackDesc">Dark storefront</span></button>
+  document
+    .getElementById('whiteOption')
+    .classList.toggle(
+      'active',
+      mode === 'white'
+    );
+
+  document
+    .getElementById('blackOption')
+    .classList.toggle(
+      'active',
+      mode === 'black'
+    );
+}
+
+function toggleLanguage(){
+
+  sorani = !sorani;
+
+  applyLanguage();
+}
+
+function openSettings(){
+
+  document
+    .getElementById('settingsDrawer')
+    .classList.add('open');
+}
+
+function closeSettings(event){
+
+  if(
+    !event ||
+    event.target.id === 'settingsDrawer'
+  ){
+
+    document
+      .getElementById('settingsDrawer')
+      .classList.remove('open');
+
+  }
+
+}
+
+function render(list = products){
+
+  const grid =
+    document.getElementById('productGrid');
+
+  grid.innerHTML = list.map(p => `
+
+    <article
+      class="card"
+      data-type="${p.type}">
+
+      <div class="product-img ${p.type}">
+
+        ${
+          p.badge
+          ? `<span class="badge">${p.badge}</span>`
+          : ''
+        }
+
+        <div class="device"></div>
+
       </div>
-    </div>
-    <div class="setting-group">
-      <div class="setting-label" id="languageLabel">Language</div>
-      <button type="button" class="setting-option language-option" id="languageOption" onclick="toggleLanguage()"><strong id="languageText">کوردی سۆرانی</strong><span id="languageDesc">Switch store language</span></button>
-    </div>
-  </aside>
-</div>
 
-</body>
-</html>
+      <div class="info">
+
+        <small>
+          ${
+            {
+              phone:t("phones"),
+              case:t("cases"),
+              charger:t("chargers"),
+              adapter:t("adapters")
+            }[p.type]
+          }
+        </small>
+
+        <h3>
+          ${p.name}
