@@ -58,18 +58,40 @@ footer{margin-top:90px;background:#111;color:#fff;padding:55px 22px}
 .drawer{position:fixed;inset:0;background:#0006;z-index:50;display:none}.drawer.open{display:block}.panel{margin-left:auto;width:min(430px,100%);height:100%;background:#fff;padding:25px;overflow:auto}.panel-head{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#eee;border-radius:50%;width:36px;height:36px;cursor:pointer}.cart-item{display:flex;gap:13px;padding:18px 0;border-bottom:1px solid var(--line)}.mini{width:62px;height:62px;border-radius:14px;background:#eee}.empty{color:#888;text-align:center;padding:80px 0}
 @media(max-width:900px){.navlinks{display:none}.hero-card{grid-template-columns:1fr}.hero-art{min-height:280px}.hero-copy{padding:45px}.categories,.products{grid-template-columns:repeat(2,1fr)}.footer-inner{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.nav{height:65px}.hero-card{min-height:610px}.hero-copy{padding:35px 28px}.hero-art{min-height:250px}.categories,.products{grid-template-columns:1fr 1fr;gap:9px}.product-img{height:190px}.product-img .device{transform:scale(.78) rotate(7deg)}.section{margin-top:48px}.footer-inner{grid-template-columns:1fr}}
+
+@font-face{font-family:Rabar;src:url("Rabar_037_2.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
+html[dir="rtl"] body,html[dir="rtl"] button,html[dir="rtl"] a{font-family:Rabar,Arial,sans-serif}
+body.dark{--bg:#0b0b0b;--surface:#151515;--text:#f5f5f2;--muted:#aaa;--line:#2b2b2b}
+body.dark header{background:rgba(11,11,11,.94)}
+body.dark .cat,body.dark .card,body.dark .filter,body.dark .iconbtn{background:#151515;color:#f5f5f2;border-color:#2b2b2b}
+body.dark .product-img{background:#20201f}
+body.dark .top,body.dark footer{background:#050505}
+body.dark .hero-card{background:#1b1b1b}
+body.dark .navlinks a{color:#aaa}
+body.dark .navlinks a:hover{color:#fff}
+.settings-panel{width:min(390px,100%);margin-left:auto;height:100%;background:var(--surface);color:var(--text);padding:28px;overflow:auto}
+.settings-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
+.settings-title h2{font-size:25px;letter-spacing:-.04em}
+.setting-group{margin-bottom:30px}.setting-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px}
+.setting-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.setting-option{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:17px;padding:18px 15px;text-align:left;cursor:pointer;min-height:82px}
+.setting-option.active{border-color:var(--text);box-shadow:inset 0 0 0 1px var(--text)}
+.setting-option strong{display:block;font-size:14px;margin-bottom:5px}.setting-option span{font-size:12px;color:var(--muted)}
+.language-option{width:100%;text-align:center;font-size:17px}
+@media(max-width:560px){.settings-panel{padding:22px}}
 </style>
 </head>
 <body>
-<div class="top">FREE SHIPPING ON ORDERS OVER $75 · 30-DAY RETURNS</div>
+<div class="top"><span id="shippingBar">FREE SHIPPING ON ORDERS OVER $75 · 30-DAY RETURNS</span></div>
 <header>
   <nav class="nav">
     <div class="logo">VOLT.</div>
     <div class="navlinks">
-      <a href="#phones">Phones</a><a href="#cases">Cases</a><a href="#chargers">Chargers</a><a href="#adapters">Adapters</a><a href="#deals">Deals</a>
+      <a id="navPhones" href="#phones">Phones</a><a id="navCases" href="#cases">Cases</a><a id="navChargers" href="#chargers">Chargers</a><a id="navAdapters" href="#adapters">Adapters</a><a id="navDeals" href="#deals">Deals</a>
     </div>
     <div class="actions">
       <button class="iconbtn" onclick="focusSearch()" aria-label="Search">⌕</button>
+      <button class="iconbtn" onclick="openSettings()" aria-label="Settings">⚙</button>
       <button class="iconbtn cart" onclick="openCart()" aria-label="Cart">🛒<span class="count" id="count">0</span></button>
     </div>
   </nav>
@@ -79,10 +101,10 @@ footer{margin-top:90px;background:#111;color:#fff;padding:55px 22px}
 <section class="hero">
   <div class="hero-card">
     <div class="hero-copy">
-      <div class="kicker">New collection · 2026</div>
-      <h1>Premium tech. Simply chosen.</h1>
-      <p>Shop phones and the accessories that make them better. Curated hardware, premium cases, fast chargers and reliable adapters.</p>
-      <a class="btn" href="#phones">Shop phones →</a>
+      <div class="kicker" id="heroKicker">New collection · 2026</div>
+      <h1 id="heroTitle">Premium tech. Simply chosen.</h1>
+      <p id="heroText">Shop phones and the accessories that make them better. Curated hardware, premium cases, fast chargers and reliable adapters.</p>
+      <a class="btn" id="shopPhones" href="#phones">Shop phones →</a>
     </div>
     <div class="hero-art">
       <div class="phone"><div class="camera"><i></i><i></i><i></i></div></div>
@@ -92,19 +114,19 @@ footer{margin-top:90px;background:#111;color:#fff;padding:55px 22px}
 </section>
 
 <section class="section" id="categories">
-  <div class="section-head"><div><h2>Shop by category</h2><p>Everything for your phone, in one place.</p></div></div>
+  <div class="section-head"><div><h2 id="shopHeading">Shop by category</h2><p id="shopSub">Everything for your phone, in one place.</p></div></div>
   <div class="categories">
-    <a class="cat" href="#phones"><div class="cat-icon">📱</div><div><b>Phones</b><br><span>Latest smartphones</span></div></a>
-    <a class="cat" href="#cases"><div class="cat-icon">▣</div><div><b>Phone Cases</b><br><span>Protective & premium</span></div></a>
-    <a class="cat" href="#chargers"><div class="cat-icon">⚡</div><div><b>Chargers</b><br><span>Fast charging</span></div></a>
-    <a class="cat" href="#adapters"><div class="cat-icon">⌁</div><div><b>Adapters</b><br><span>Power & connectivity</span></div></a>
+    <a class="cat" href="#phones"><div class="cat-icon">📱</div><div><b id="categoryPhones">Phones</b><br><span id="categoryPhonesDesc">Latest smartphones</span></div></a>
+    <a class="cat" href="#cases"><div class="cat-icon">▣</div><div><b id="categoryCases">Phone Cases</b><br><span id="categoryCasesDesc">Protective & premium</span></div></a>
+    <a class="cat" href="#chargers"><div class="cat-icon">⚡</div><div><b id="categoryChargers">Chargers</b><br><span id="categoryChargersDesc">Fast charging</span></div></a>
+    <a class="cat" href="#adapters"><div class="cat-icon">⌁</div><div><b id="categoryAdapters">Adapters</b><br><span id="categoryAdaptersDesc">Power & connectivity</span></div></a>
   </div>
 </section>
 
 <section class="section" id="phones">
-  <div class="section-head"><div><h2>Best sellers</h2><p>Popular picks from the VOLT collection.</p></div></div>
+  <div class="section-head"><div><h2 id="bestHeading">Best sellers</h2><p id="bestSub">Popular picks from the VOLT collection.</p></div></div>
   <div class="toolbar">
-    <button class="filter active" onclick="filterProducts('all',this)">All</button>
+    <button id="allFilter" class="filter active" onclick="filterProducts('all',this)">All</button>
     <button class="filter" onclick="filterProducts('phone',this)">Phones</button>
     <button class="filter" onclick="filterProducts('case',this)">Phone Cases</button>
     <button class="filter" onclick="filterProducts('charger',this)">Chargers</button>
@@ -125,7 +147,7 @@ footer{margin-top:90px;background:#111;color:#fff;padding:55px 22px}
 
 <div class="drawer" id="drawer" onclick="closeCart(event)">
   <aside class="panel" onclick="event.stopPropagation()">
-    <div class="panel-head"><h2>Your cart</h2><button class="close" onclick="closeCart()">×</button></div>
+    <div class="panel-head"><h2 id="cartHeading">Your cart</h2><button class="close" onclick="closeCart()">×</button></div>
     <div id="cartItems"></div>
   </aside>
 </div>
@@ -150,11 +172,34 @@ const products=[
  {id:16,type:'adapter',name:'Travel Power Adapter',price:35,badge:'NEW'}
 ];
 let cart=[];
+let sorani=false;
+const translations={
+ en:{phones:'Phones',cases:'Phone Cases',chargers:'Chargers',adapters:'Adapters',deals:'Deals',shop:'Shop by category',shopSub:'Everything for your phone, in one place.',best:'Best sellers',bestSub:'Popular picks from the VOLT collection.',all:'All',heroKicker:'New collection · 2026',heroTitle:'Premium tech. Simply chosen.',heroText:'Shop phones and the accessories that make them better. Curated hardware, premium cases, fast chargers and reliable adapters.',shopPhones:'Shop phones →',settings:'Settings',appearance:'Appearance',white:'White',whiteDesc:'Light storefront',black:'Black',blackDesc:'Dark storefront',language:'Language',languageDesc:'Switch store language',categoryPhones:'Phones',categoryPhonesDesc:'Latest smartphones',categoryCases:'Phone Cases',categoryCasesDesc:'Protective & premium',categoryChargers:'Chargers',categoryChargersDesc:'Fast charging',categoryAdapters:'Adapters',categoryAdaptersDesc:'Power & connectivity',cart:'Your cart',empty:'Your cart is empty.',total:'Total',checkout:'Checkout',free:'FREE SHIPPING ON ORDERS OVER $75 · 30-DAY RETURNS'},
+ ku:{phones:'مۆبایل',cases:'کەیسەکانی مۆبایل',chargers:'شارژەرەکان',adapters:'ئاداپتەرەکان',deals:'داشکاندنەکان',shop:'بەپێی جۆر بگەڕێ',shopSub:'هەموو شتێک بۆ مۆبایلەکەت لە یەک شوێن.',best:'فرۆشراوە باشەکان',bestSub:'هەڵبژاردە بەناوبانگەکانی کۆمەڵەی VOLT.',all:'هەموو',heroKicker:'کۆمەڵەی نوێ · ٢٠٢٦',heroTitle:'تەکنەلۆژیای پڕیمیۆم، بە سادەیی هەڵیبژێرە.',heroText:'مۆبایل و ئاکسسواراتەکان بکڕە کە تەکنەلۆژیای ڕۆژانەت باشتر دەکەن؛ کەیس، شارژەری خێرا و ئەداپتەری متمانەپێکراو.',shopPhones:'مۆبایلەکان ببینە ←',settings:'ڕێکخستنەکان',appearance:'ڕووکار',white:'سپی',whiteDesc:'ڕووکاری ڕوون',black:'ڕەش',blackDesc:'ڕووکاری تاریک',language:'زمان',languageDesc:'زمانی کۆگاکە بگۆڕە',categoryPhones:'مۆبایل',categoryPhonesDesc:'نوێترین مۆبایلەکان',categoryCases:'کەیسەکانی مۆبایل',categoryCasesDesc:'پارێزەر و پڕیمیۆم',categoryChargers:'شارژەرەکان',categoryChargersDesc:'شارژکردنی خێرا',categoryAdapters:'ئاداپتەرەکان',categoryAdaptersDesc:'وزە و پەیوەندی',cart:'سەبەتەکەت',empty:'سەبەتەکەت بەتاڵە.',total:'کۆی گشتی',checkout:'پارەدان',free:'گەیاندنی بەخۆڕایی بۆ داواکارییەکانی سەرووی $75 · گەڕاندنەوەی ٣٠ ڕۆژە'}
+};
+function t(key){return translations[sorani?'ku':'en'][key]}
+function applyLanguage(){
+ document.documentElement.dir=sorani?'rtl':'ltr';
+ document.documentElement.lang=sorani?'ckb':'en';
+ const map={navPhones:'phones',navCases:'cases',navChargers:'chargers',navAdapters:'adapters',navDeals:'deals',shopHeading:'shop',shopSub:'shopSub',bestHeading:'best',bestSub:'bestSub',allFilter:'all',heroKicker:'heroKicker',heroTitle:'heroTitle',heroText:'heroText',shopPhones:'shopPhones',settingsHeading:'settings',appearanceLabel:'appearance',whiteText:'white',whiteDesc:'whiteDesc',blackText:'black',blackDesc:'blackDesc',languageLabel:'language',languageDesc:'languageDesc',categoryPhones:'categoryPhones',categoryPhonesDesc:'categoryPhonesDesc',categoryCases:'categoryCases',categoryCasesDesc:'categoryCasesDesc',categoryChargers:'categoryChargers',categoryChargersDesc:'categoryChargersDesc',categoryAdapters:'categoryAdapters',categoryAdaptersDesc:'categoryAdaptersDesc',cartHeading:'cart',totalLabel:'total',checkoutBtn:'checkout',shippingBar:'free'};
+ Object.entries(map).forEach(([id,key])=>{const el=document.getElementById(id);if(el)el.textContent=t(key)});
+ render();
+ updateCart();
+}
+function setAppearance(mode){
+ document.body.classList.toggle('dark',mode==='black');
+ document.getElementById('whiteOption').classList.toggle('active',mode==='white');
+ document.getElementById('blackOption').classList.toggle('active',mode==='black');
+}
+function toggleLanguage(){sorani=!sorani;applyLanguage()}
+function openSettings(){document.getElementById('settingsDrawer').classList.add('open')}
+function closeSettings(e){if(!e||e.target.id==='settingsDrawer')document.getElementById('settingsDrawer').classList.remove('open')}
+
 function render(list=products){
  const grid=document.getElementById('productGrid');
  grid.innerHTML=list.map(p=>`<article class="card" data-type="${p.type}">
   <div class="product-img ${p.type}">${p.badge?`<span class="badge">${p.badge}</span>`:''}<div class="device"></div></div>
-  <div class="info"><small>${p.type.toUpperCase()}</small><h3>${p.name}</h3><div class="row"><span class="price">$${p.price}</span><button class="add" onclick="addToCart(${p.id})">+</button></div></div>
+  <div class="info"><small>${({phone:t("phones"),case:t("cases"),charger:t("chargers"),adapter:t("adapters")})[p.type]}</small><h3>${p.name}</h3><div class="row"><span class="price">$${p.price}</span><button class="add" onclick="addToCart(${p.id})">+</button></div></div>
  </article>`).join('');
 }
 function filterProducts(type,btn){
@@ -165,16 +210,34 @@ function addToCart(id){const p=products.find(x=>x.id===id);cart.push(p);updateCa
 function updateCart(){
  document.getElementById('count').textContent=cart.length;
  const box=document.getElementById('cartItems');
- if(!cart.length){box.innerHTML='<div class="empty">Your cart is empty.</div>';return}
+ if(!cart.length){box.innerHTML='<div class="empty" id="emptyCart">'+t('empty')+'</div>';return}
  box.innerHTML=cart.map((p,i)=>`<div class="cart-item"><div class="mini"></div><div style="flex:1"><b>${p.name}</b><br><span>$${p.price}</span></div><button class="close" onclick="removeItem(${i})">×</button></div>`).join('')+
- `<div style="padding-top:25px;font-weight:800;display:flex;justify-content:space-between"><span>Total</span><span>$${cart.reduce((s,p)=>s+p.price,0)}</span></div>
- <button class="btn" style="width:100%;margin-top:20px;background:#111;color:#fff" onclick="alert('Checkout demo — connect your payment provider here.')">Checkout</button>`;
+ `<div style="padding-top:25px;font-weight:800;display:flex;justify-content:space-between"><span id="totalLabel">Total</span><span>$${cart.reduce((s,p)=>s+p.price,0)}</span></div>
+ <button class="btn" style="width:100%;margin-top:20px;background:#111;color:#fff" onclick="alert('Checkout demo — connect your payment provider here.')" id="checkoutBtn">Checkout</button>`;
 }
 function removeItem(i){cart.splice(i,1);updateCart()}
 function openCart(){document.getElementById('drawer').classList.add('open')}
 function closeCart(e){if(!e||e.target.id==='drawer')document.getElementById('drawer').classList.remove('open')}
 function focusSearch(){alert('Search UI can be connected to your product database.')}
-render();updateCart();
+render();updateCart();applyLanguage();
 </script>
+
+<div class="drawer" id="settingsDrawer" onclick="closeSettings(event)">
+  <aside class="settings-panel" onclick="event.stopPropagation()">
+    <div class="settings-title"><h2 id="settingsHeading">Settings</h2><button class="close" onclick="closeSettings()">×</button></div>
+    <div class="setting-group">
+      <div class="setting-label" id="appearanceLabel">Appearance</div>
+      <div class="setting-options">
+        <button type="button" class="setting-option active" id="whiteOption" onclick="setAppearance('white')"><strong id="whiteText">White</strong><span id="whiteDesc">Light storefront</span></button>
+        <button type="button" class="setting-option" id="blackOption" onclick="setAppearance('black')"><strong id="blackText">Black</strong><span id="blackDesc">Dark storefront</span></button>
+      </div>
+    </div>
+    <div class="setting-group">
+      <div class="setting-label" id="languageLabel">Language</div>
+      <button type="button" class="setting-option language-option" id="languageOption" onclick="toggleLanguage()"><strong id="languageText">کوردی سۆرانی</strong><span id="languageDesc">Switch store language</span></button>
+    </div>
+  </aside>
+</div>
+
 </body>
 </html>
