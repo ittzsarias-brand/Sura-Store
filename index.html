@@ -3,53 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TRILLIONAIRE COLLECTION — modern essentials, refined silhouettes, elevated everyday clothing." />
+  <title>TRILLIONAIRE COLLECTION — Luxury Clothing</title>
 
-  <meta
-    name="description"
-    content="Trillionaire Collection — A luxury fashion house defined by timeless design, exceptional quality and quiet confidence."
-  />
-
-  <title>Trillionaire Collection — Luxury Fashion</title>
-
-  <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
     rel="stylesheet"
-  />
+  >
 
   <style>
 
-    /* =========================================================
-       ROOT
-    ========================================================= */
-
     :root {
-      --black: #080808;
-      --black-2: #101010;
-      --charcoal: #181818;
-      --white: #ffffff;
-      --cream: #f5f1e8;
-      --gold: #c5a46d;
-      --gold-light: #e1c895;
-      --gray: #9b9b9b;
-      --line: rgba(255,255,255,0.12);
-
-      --max-width: 1440px;
-      --transition: 0.35s cubic-bezier(.2,.7,.2,1);
+      --ink: #11110f;
+      --muted: #74716a;
+      --line: #dedbd3;
+      --paper: #f7f6f2;
+      --white: #fff;
+      --dark: #151513;
+      --accent: #b9a27c;
+      --max: 1380px;
+      --radius: 22px;
+      --shadow: 0 18px 50px rgba(17,17,15,.08);
     }
 
-
-    /* =========================================================
-       RESET
-    ========================================================= */
-
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
@@ -57,21 +40,11 @@
     }
 
     body {
-      background: var(--black);
-      color: var(--white);
-      font-family: "Inter", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.5;
       overflow-x: hidden;
-    }
-
-    body.no-scroll {
-      overflow: hidden;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
     }
 
     a {
@@ -79,1490 +52,1181 @@
       text-decoration: none;
     }
 
-    button,
-    input {
+    button {
       font: inherit;
     }
 
-    button {
-      cursor: pointer;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
 
-    /* =========================================================
-       LOADER
-    ========================================================= */
-
-    .loader {
-      position: fixed;
-      inset: 0;
-      background: var(--black);
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-    }
-
-    .loader.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader-content {
-      text-align: center;
-    }
-
-    .loader-logo {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 42px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .loader-line {
-      width: 100px;
-      height: 1px;
-      background: var(--gold);
-      margin: 20px auto;
-      animation: loaderLine 1.5s infinite;
-    }
-
-    @keyframes loaderLine {
-      0% {
-        transform: scaleX(0);
-        transform-origin: left;
-      }
-
-      50% {
-        transform: scaleX(1);
-        transform-origin: left;
-      }
-
-      100% {
-        transform: scaleX(0);
-        transform-origin: right;
-      }
-    }
-
-
-    /* =========================================================
+    /* =========================
        ANNOUNCEMENT
-    ========================================================= */
+    ========================= */
 
     .announcement {
-      height: 38px;
-      background: var(--gold);
-      color: var(--black);
+      background: var(--dark);
+      color: #fff;
+
+      min-height: 38px;
+
       display: flex;
       align-items: center;
       justify-content: center;
 
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
+      font-size: 11px;
+      letter-spacing: .16em;
       text-transform: uppercase;
+
+      padding: 8px 20px;
     }
 
 
-    /* =========================================================
-       NAVBAR
-    ========================================================= */
+    /* =========================
+       HEADER
+    ========================= */
 
-    .navbar {
-      position: fixed;
-      top: 38px;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
 
-      transition:
-        background var(--transition),
-        transform var(--transition),
-        border-color var(--transition);
+      background: rgba(247,246,242,.9);
 
-      border-bottom: 1px solid transparent;
+      backdrop-filter: blur(18px);
+
+      border-bottom:
+        1px solid
+        rgba(222,219,211,.8);
     }
 
-    .navbar.scrolled {
-      background: rgba(8,8,8,0.92);
-      backdrop-filter: blur(20px);
-      border-bottom-color: var(--line);
-    }
 
-    .nav-inner {
-      max-width: var(--max-width);
-      height: 88px;
+    .nav {
+      max-width: var(--max);
+
       margin: auto;
-      padding: 0 40px;
+
+      height: 78px;
+
+      padding: 0 28px;
 
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+
+      grid-template-columns:
+        1fr
+        auto
+        1fr;
+
       align-items: center;
+
+      gap: 20px;
     }
 
 
-    /* =========================================================
+    /* =========================
        BRAND
-    ========================================================= */
+    ========================= */
 
     .brand {
-      justify-self: start;
-    }
-
-    .brand-main {
-      display: block;
-
-      font-family: "Cormorant Garamond", serif;
-      font-size: 30px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .brand-sub {
-      display: block;
-      margin-top: -3px;
-
-      color: var(--gold);
-
-      font-size: 7px;
-      font-weight: 600;
-      letter-spacing: 0.55em;
-      text-transform: uppercase;
-    }
-
-
-    /* =========================================================
-       NAV LINKS
-    ========================================================= */
-
-    .nav-links {
       display: flex;
       align-items: center;
-      gap: 42px;
 
-      list-style: none;
+      gap: 10px;
+
+      font-size: 19px;
+      font-weight: 700;
+
+      letter-spacing: .13em;
     }
 
-    .nav-links a {
-      position: relative;
 
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+
+      object-fit: contain;
+
+      border-radius: 50%;
+
+      flex-shrink: 0;
+    }
+
+
+    /* =========================
+       NAVIGATION LINKS
+    ========================= */
+
+    .navlinks {
+      display: flex;
+
+      justify-content: center;
+
+      gap: 34px;
+
+      font-size: 12px;
+      font-weight: 600;
+
+      letter-spacing: .11em;
+
       text-transform: uppercase;
-
-      color: rgba(255,255,255,0.88);
-
-      transition: color var(--transition);
     }
 
-    .nav-links a::after {
+
+    .navlinks a {
+      position: relative;
+    }
+
+
+    .navlinks a::after {
       content: "";
 
       position: absolute;
+
       left: 0;
-      bottom: -9px;
+      bottom: -7px;
 
       width: 0;
       height: 1px;
 
-      background: var(--gold);
+      background: var(--ink);
 
-      transition: width var(--transition);
+      transition: .3s;
     }
 
-    .nav-links a:hover {
-      color: var(--gold-light);
-    }
 
-    .nav-links a:hover::after {
+    .navlinks a:hover::after {
       width: 100%;
     }
 
 
-    /* =========================================================
-       NAV ACTIONS
-    ========================================================= */
+    /* =========================
+       ACTIONS
+    ========================= */
 
-    .nav-actions {
-      justify-self: end;
-
+    .actions {
       display: flex;
-      align-items: center;
+
+      justify-content: flex-end;
+
       gap: 10px;
     }
 
-    .nav-icon {
+
+    .icon-btn {
       width: 40px;
       height: 40px;
 
-      display: grid;
-      place-items: center;
+      border: 1px solid var(--line);
 
       background: transparent;
-      color: white;
 
-      border: 1px solid rgba(255,255,255,0.18);
       border-radius: 50%;
-
-      transition: var(--transition);
-    }
-
-    .nav-icon:hover {
-      background: var(--gold);
-      color: var(--black);
-      border-color: var(--gold);
-      transform: translateY(-2px);
-    }
-
-    .bag-wrapper {
-      position: relative;
-    }
-
-    .bag-count {
-      position: absolute;
-      top: -4px;
-      right: -3px;
-
-      width: 17px;
-      height: 17px;
 
       display: grid;
       place-items: center;
 
-      border-radius: 50%;
+      cursor: pointer;
 
-      background: var(--gold);
-      color: var(--black);
-
-      font-size: 8px;
-      font-weight: 700;
+      transition: .25s;
     }
 
 
-    /* =========================================================
+    .icon-btn:hover {
+      background: var(--ink);
+
+      color: #fff;
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =========================
        HERO
-    ========================================================= */
+    ========================= */
 
     .hero {
-      position: relative;
-      min-height: 100vh;
+      min-height:
+        calc(100vh - 116px);
 
-      display: flex;
-      align-items: flex-end;
-
-      overflow: hidden;
-    }
-
-    .hero-image {
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0,0,0,0.72),
-          rgba(0,0,0,0.28) 60%,
-          rgba(0,0,0,0.45)
-        ),
-        url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=2400&q=95")
-        center / cover;
-
-      transform: scale(1.02);
-      animation: heroZoom 12s ease-out forwards;
-    }
-
-    @keyframes heroZoom {
-      from {
-        transform: scale(1.08);
-      }
-
-      to {
-        transform: scale(1);
-      }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-
-      max-width: var(--max-width);
-      width: 100%;
+      max-width: var(--max);
 
       margin: auto;
 
       padding:
-        0 40px
-        110px;
+        20px
+        28px
+        28px;
+
+      position: relative;
     }
 
-    .hero-kicker {
-      display: flex;
-      align-items: center;
-      gap: 15px;
 
-      margin-bottom: 22px;
+    .hero-card {
+      min-height:
+        calc(100vh - 164px);
 
-      color: var(--gold-light);
+      border-radius: 28px;
 
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.28em;
+      overflow: hidden;
+
+      position: relative;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(8,8,7,.68),
+          rgba(8,8,7,.15) 65%,
+          rgba(8,8,7,.05)
+        ),
+        url(
+          "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=2200&q=90"
+        )
+        center / cover;
+    }
+
+
+    .hero-content {
+      position: absolute;
+
+      left: 7%;
+      bottom: 9%;
+
+      max-width: 640px;
+
+      color: #fff;
+    }
+
+
+    .eyebrow {
+      font-size: 11px;
+
+      letter-spacing: .2em;
+
       text-transform: uppercase;
+
+      font-weight: 600;
+
+      margin-bottom: 18px;
     }
 
-    .hero-kicker::before {
-      content: "";
 
-      width: 45px;
-      height: 1px;
+    .hero h1 {
+      font-family:
+        "Playfair Display",
+        serif;
 
-      background: var(--gold);
+      font-size:
+        clamp(58px, 8vw, 122px);
+
+      line-height: .88;
+
+      font-weight: 600;
+
+      letter-spacing: -.055em;
+
+      margin-bottom: 28px;
     }
 
-    .hero-title {
-      max-width: 900px;
 
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(70px, 10vw, 150px);
-      font-weight: 500;
-      line-height: 0.82;
-      letter-spacing: -0.045em;
+    .hero p {
+      max-width: 470px;
+
+      color:
+        rgba(255,255,255,.82);
+
+      font-size: 16px;
 
       margin-bottom: 30px;
     }
 
-    .hero-title span {
-      color: var(--gold-light);
-      font-style: italic;
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .btn {
+      border: 0;
+
+      cursor: pointer;
+
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 12px;
+
+      padding: 15px 22px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: .13em;
+
+      text-transform: uppercase;
+
+      transition: .25s;
     }
 
-    .hero-description {
-      max-width: 470px;
 
-      color: rgba(255,255,255,0.72);
+    .btn-dark {
+      background: var(--ink);
 
-      font-size: 14px;
-      line-height: 1.8;
+      color: #fff;
+    }
+
+
+    .btn-light {
+      background: #fff;
+
+      color: var(--ink);
+    }
+
+
+    .btn:hover {
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 10px 25px
+        rgba(0,0,0,.14);
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    .section {
+      max-width: var(--max);
+
+      margin: auto;
+
+      padding:
+        110px
+        28px;
+    }
+
+
+    .section-head {
+      display: flex;
+
+      align-items: end;
+
+      justify-content:
+        space-between;
+
+      gap: 30px;
 
       margin-bottom: 34px;
     }
 
 
-    /* =========================================================
-       BUTTON
-    ========================================================= */
+    .kicker {
+      font-size: 11px;
 
-    .luxury-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 25px;
-
-      padding: 16px 24px;
-
-      background: var(--white);
-      color: var(--black);
-
-      border: none;
-
-      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.16em;
+
+      letter-spacing: .18em;
+
       text-transform: uppercase;
 
-      transition: var(--transition);
-    }
+      color: var(--muted);
 
-    .luxury-btn span {
-      font-size: 17px;
-      font-weight: 400;
-
-      transition: transform var(--transition);
-    }
-
-    .luxury-btn:hover {
-      background: var(--gold);
-      transform: translateY(-3px);
-    }
-
-    .luxury-btn:hover span {
-      transform: translateX(5px);
-    }
-
-    .luxury-btn.dark {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    .luxury-btn.dark:hover {
-      background: var(--gold);
-      color: var(--black);
+      margin-bottom: 10px;
     }
 
 
-    /* =========================================================
-       HERO SIDE INFO
-    ========================================================= */
+    h2 {
+      font-family:
+        "Playfair Display",
+        serif;
 
-    .hero-side {
-      position: absolute;
-      right: 40px;
-      bottom: 55px;
-      z-index: 2;
+      font-size:
+        clamp(42px, 5vw, 70px);
 
-      writing-mode: vertical-rl;
+      line-height: 1;
 
-      color: rgba(255,255,255,0.55);
+      letter-spacing: -.04em;
 
-      font-size: 9px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-    }
-
-
-    /* =========================================================
-       SECTION
-    ========================================================= */
-
-    .section {
-      max-width: var(--max-width);
-      margin: auto;
-      padding: 125px 40px;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-
-      margin-bottom: 45px;
-    }
-
-    .section-label {
-      color: var(--gold);
-
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-family: "Cormorant Garamond", serif;
-
-      font-size: clamp(48px, 5vw, 76px);
-      font-weight: 500;
-
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-    }
-
-    .section-description {
-      max-width: 390px;
-
-      color: var(--gray);
-
-      font-size: 12px;
-      line-height: 1.8;
-    }
-
-
-    /* =========================================================
-       PRODUCTS
-    ========================================================= */
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .product {
-      min-width: 0;
-    }
-
-    .product-image {
-      position: relative;
-
-      aspect-ratio: 0.76;
-
-      overflow: hidden;
-
-      background: #1b1b1b;
-    }
-
-    .product-image img {
-      transition:
-        transform 0.9s cubic-bezier(.2,.7,.2,1);
-    }
-
-    .product:hover .product-image img {
-      transform: scale(1.06);
-    }
-
-    .product-badge {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      z-index: 2;
-
-      padding: 7px 10px;
-
-      background: var(--gold);
-      color: var(--black);
-
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    .wishlist {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      z-index: 3;
-
-      width: 37px;
-      height: 37px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 50%;
-
-      background: rgba(0,0,0,0.35);
-      color: white;
-
-      transition: var(--transition);
-    }
-
-    .wishlist:hover,
-    .wishlist.active {
-      background: var(--white);
-      color: var(--black);
-    }
-
-    .quick-add {
-      position: absolute;
-      bottom: 15px;
-      left: 15px;
-      right: 15px;
-
-      padding: 14px;
-
-      background: rgba(255,255,255,0.95);
-      color: var(--black);
-
-      border: none;
-
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-
-      transform: translateY(15px);
-      opacity: 0;
-
-      transition: var(--transition);
-    }
-
-    .product:hover .quick-add {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .product-info {
-      padding-top: 17px;
-
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-    }
-
-    .product-name {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 21px;
       font-weight: 600;
     }
 
-    .product-category {
-      color: var(--gray);
 
-      font-size: 9px;
-      letter-spacing: 0.08em;
+    .text-link {
+      font-size: 11px;
 
-      margin-top: 3px;
-    }
+      font-weight: 700;
 
-    .product-price {
-      font-size: 12px;
-      font-weight: 500;
+      letter-spacing: .14em;
+
+      text-transform: uppercase;
+
+      border-bottom:
+        1px solid
+        var(--ink);
+
+      padding-bottom: 6px;
 
       white-space: nowrap;
     }
 
 
-    /* =========================================================
-       DARK DIVIDER
-    ========================================================= */
+    /* =========================
+       PRODUCTS
+    ========================= */
 
-    .gold-line {
-      width: 100%;
-      height: 1px;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          var(--gold),
-          transparent
-        );
-
-      opacity: 0.35;
-    }
-
-
-    /* =========================================================
-       FEATURE EDITORIAL
-    ========================================================= */
-
-    .editorial {
-      max-width: var(--max-width);
-      margin: auto;
-
-      min-height: 700px;
-
+    .products {
       display: grid;
-      grid-template-columns: 1fr 1fr;
 
-      background: var(--cream);
-      color: var(--black);
-    }
+      grid-template-columns:
+        repeat(4, 1fr);
 
-    .editorial-image {
-      min-height: 700px;
-
-      background:
-        url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=95")
-        center / cover;
-    }
-
-    .editorial-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      padding: 80px clamp(40px, 7vw, 110px);
-    }
-
-    .editorial-content .section-label {
-      color: #8f713c;
-    }
-
-    .editorial-title {
-      font-family: "Cormorant Garamond", serif;
-
-      font-size: clamp(50px, 6vw, 88px);
-      font-weight: 500;
-
-      line-height: 0.9;
-
-      letter-spacing: -0.045em;
-
-      margin-bottom: 28px;
-    }
-
-    .editorial-title em {
-      font-style: italic;
-    }
-
-    .editorial-text {
-      max-width: 450px;
-
-      color: #666;
-
-      font-size: 13px;
-      line-height: 1.9;
-
-      margin-bottom: 32px;
-    }
-
-
-    /* =========================================================
-       CATEGORY COLLECTIONS
-    ========================================================= */
-
-    .collections {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
-    .collection {
-      position: relative;
 
-      height: 580px;
+    .product {
+      min-width: 0;
+    }
+
+
+    .product-media {
+      aspect-ratio:
+        3 / 4;
 
       overflow: hidden;
-    }
 
-    .collection img {
-      transition: transform 1s cubic-bezier(.2,.7,.2,1);
-    }
+      position: relative;
 
-    .collection::after {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          to top,
-          rgba(0,0,0,0.78),
-          transparent 55%
-        );
-    }
-
-    .collection:hover img {
-      transform: scale(1.06);
-    }
-
-    .collection-content {
-      position: absolute;
-
-      left: 30px;
-      bottom: 30px;
-
-      z-index: 2;
-    }
-
-    .collection-number {
-      color: var(--gold-light);
-
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      font-weight: 600;
-
-      margin-bottom: 8px;
-    }
-
-    .collection-title {
-      font-family: "Cormorant Garamond", serif;
-
-      font-size: 45px;
-      font-weight: 500;
-
-      margin-bottom: 10px;
-    }
-
-    .collection-link {
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-
-      border-bottom: 1px solid var(--gold);
-
-      padding-bottom: 5px;
-    }
-
-
-    /* =========================================================
-       BRAND STATEMENT
-    ========================================================= */
-
-    .statement {
-      text-align: center;
-
-      max-width: 1000px;
-
-      margin: auto;
-
-      padding: 150px 30px;
-    }
-
-    .statement-symbol {
-      color: var(--gold);
-
-      font-family: "Cormorant Garamond", serif;
-      font-size: 32px;
-
-      margin-bottom: 25px;
-    }
-
-    .statement-text {
-      font-family: "Cormorant Garamond", serif;
-
-      font-size: clamp(38px, 5vw, 68px);
-
-      line-height: 1.05;
-
-      letter-spacing: -0.03em;
-    }
-
-    .statement-text em {
-      color: var(--gold-light);
-    }
-
-
-    /* =========================================================
-       SERVICES
-    ========================================================= */
-
-    .services {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .service {
-      padding: 55px 35px;
-
-      text-align: center;
-
-      border-right: 1px solid var(--line);
-    }
-
-    .service:last-child {
-      border-right: none;
-    }
-
-    .service-icon {
-      color: var(--gold);
-
-      font-size: 22px;
-
-      margin-bottom: 18px;
-    }
-
-    .service-title {
-      font-family: "Cormorant Garamond", serif;
-
-      font-size: 25px;
-
-      margin-bottom: 8px;
-    }
-
-    .service-text {
-      color: var(--gray);
-
-      font-size: 10px;
-
-      line-height: 1.7;
-    }
-
-
-    /* =========================================================
-       NEWSLETTER
-    ========================================================= */
-
-    .newsletter {
-      text-align: center;
-
-      padding: 130px 25px;
-    }
-
-    .newsletter-title {
-      font-family: "Cormorant Garamond", serif;
-
-      font-size: clamp(48px, 6vw, 80px);
-
-      line-height: 0.95;
+      background: #e8e5de;
 
       margin-bottom: 15px;
     }
 
-    .newsletter-text {
-      max-width: 430px;
 
-      margin: 0 auto 35px;
-
-      color: var(--gray);
-
-      font-size: 12px;
-      line-height: 1.8;
+    .product-media img {
+      transition:
+        transform
+        .7s
+        cubic-bezier(.2,.7,.2,1);
     }
 
-    .newsletter-form {
-      max-width: 500px;
 
-      margin: auto;
-
-      display: flex;
-
-      border-bottom: 1px solid rgba(255,255,255,0.4);
+    .product:hover
+    .product-media img {
+      transform:
+        scale(1.045);
     }
 
-    .newsletter-form input {
-      flex: 1;
 
-      background: transparent;
-      border: none;
-      outline: none;
+    .badge {
+      position: absolute;
 
-      padding: 15px 0;
+      left: 12px;
+      top: 12px;
 
-      color: white;
+      z-index: 2;
 
-      font-size: 12px;
-    }
+      background: #fff;
 
-    .newsletter-form input::placeholder {
-      color: #777;
-    }
-
-    .newsletter-form button {
-      border: none;
-      background: transparent;
-
-      color: var(--gold-light);
+      padding:
+        7px
+        9px;
 
       font-size: 9px;
+
       font-weight: 700;
 
-      letter-spacing: 0.15em;
+      letter-spacing: .12em;
+
       text-transform: uppercase;
     }
 
 
-    /* =========================================================
-       FOOTER
-    ========================================================= */
+    .quick {
+      position: absolute;
 
-    footer {
-      border-top: 1px solid var(--line);
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
 
-      padding: 80px 40px 30px;
+      background:
+        rgba(255,255,255,.94);
+
+      border: 0;
+
+      padding: 13px;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: .12em;
+
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      opacity: 0;
+
+      transform:
+        translateY(8px);
+
+      transition: .25s;
     }
 
+
+    .product:hover
+    .quick {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+
+    .product-info {
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      gap: 12px;
+
+      font-size: 13px;
+    }
+
+
+    .product-name {
+      font-weight: 600;
+    }
+
+
+    .product-meta {
+      color: var(--muted);
+
+      font-size: 11px;
+
+      margin-top: 4px;
+    }
+
+
+    .price {
+      font-weight: 600;
+
+      white-space: nowrap;
+    }
+
+
+    /* =========================
+       EDITORIAL
+    ========================= */
+
+    .editorial {
+      background: var(--dark);
+
+      color: #fff;
+
+      max-width: var(--max);
+
+      margin: 0 auto;
+
+      min-height: 650px;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      overflow: hidden;
+    }
+
+
+    .editorial-copy {
+      padding:
+        90px
+        clamp(35px,7vw,110px);
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+    }
+
+
+    .editorial-copy .kicker {
+      color: #aaa79e;
+    }
+
+
+    .editorial h2 {
+      font-size:
+        clamp(45px,5vw,74px);
+
+      margin-bottom: 24px;
+    }
+
+
+    .editorial p {
+      color: #aaa79e;
+
+      max-width: 460px;
+
+      margin-bottom: 30px;
+    }
+
+
+    .editorial-media {
+      min-height: 650px;
+
+      background:
+        url(
+          "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=90"
+        )
+        center / cover;
+    }
+
+
+    /* =========================
+       CATEGORIES
+    ========================= */
+
+    .categories {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+
+    .category {
+      min-height: 530px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      color: #fff;
+
+      background: #222;
+    }
+
+
+    .category::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          0deg,
+          rgba(0,0,0,.62),
+          transparent 60%
+        );
+    }
+
+
+    .category img {
+      transition: .7s;
+    }
+
+
+    .category:hover img {
+      transform:
+        scale(1.05);
+    }
+
+
+    .category-content {
+      position: absolute;
+
+      z-index: 2;
+
+      left: 26px;
+      bottom: 25px;
+    }
+
+
+    .category h3 {
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 38px;
+
+      margin-bottom: 10px;
+    }
+
+
+    .category span {
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: .16em;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =========================
+       MANIFESTO
+    ========================= */
+
+    .manifesto {
+      text-align: center;
+
+      padding:
+        150px
+        28px;
+
+      border-top:
+        1px solid
+        var(--line);
+
+      border-bottom:
+        1px solid
+        var(--line);
+    }
+
+
+    .manifesto p {
+      max-width: 960px;
+
+      margin:
+        20px
+        auto
+        0;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(32px,4vw,58px);
+
+      line-height: 1.08;
+
+      letter-spacing: -.03em;
+    }
+
+
+    /* =========================
+       NEWSLETTER
+    ========================= */
+
+    .newsletter {
+      max-width: var(--max);
+
+      margin: auto;
+
+      padding:
+        110px
+        28px;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      gap: 70px;
+
+      align-items: end;
+    }
+
+
+    .newsletter h2 {
+      max-width: 580px;
+    }
+
+
+    .newsletter-copy {
+      color: var(--muted);
+
+      max-width: 420px;
+
+      margin-top: 18px;
+    }
+
+
+    form {
+      display: flex;
+
+      border-bottom:
+        1px solid
+        var(--ink);
+
+      padding-bottom: 10px;
+    }
+
+
+    input {
+      flex: 1;
+
+      border: 0;
+
+      outline: 0;
+
+      background: transparent;
+
+      font: inherit;
+
+      font-size: 14px;
+
+      color: var(--ink);
+    }
+
+
+    form button {
+      border: 0;
+
+      background: none;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: .14em;
+
+      text-transform: uppercase;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: var(--dark);
+
+      color: #fff;
+
+      padding:
+        65px
+        28px
+        28px;
+    }
+
+
     .footer-grid {
-      max-width: var(--max-width);
+      max-width: var(--max);
 
       margin: auto;
 
       display: grid;
 
-      grid-template-columns: 2fr 1fr 1fr 1fr;
+      grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr;
 
       gap: 50px;
 
-      padding-bottom: 75px;
+      padding-bottom: 70px;
     }
 
-    .footer-logo {
-      font-family: "Cormorant Garamond", serif;
 
-      font-size: 38px;
+    .footer-brand {
+      font-size: 22px;
 
-      letter-spacing: 0.12em;
+      letter-spacing: .15em;
+
+      font-weight: 700;
     }
 
-    .footer-tagline {
+
+    .footer-desc {
+      color: #99968e;
+
       max-width: 300px;
 
-      color: #777;
+      margin-top: 18px;
 
-      font-size: 11px;
-      line-height: 1.8;
-
-      margin-top: 12px;
+      font-size: 13px;
     }
 
-    .footer-heading {
-      color: var(--gold);
 
-      font-size: 9px;
-      font-weight: 600;
+    footer h4 {
+      font-size: 10px;
 
-      letter-spacing: 0.2em;
+      letter-spacing: .16em;
+
       text-transform: uppercase;
 
-      margin-bottom: 20px;
+      margin-bottom: 18px;
+
+      color: #aaa79e;
     }
 
-    .footer-links {
+
+    footer li {
       list-style: none;
+
+      margin: 9px 0;
+
+      font-size: 13px;
+
+      color: #ddd;
     }
 
-    .footer-links li {
-      margin-bottom: 10px;
-    }
 
-    .footer-links a {
-      color: #aaa;
-
-      font-size: 11px;
-
-      transition: color var(--transition);
-    }
-
-    .footer-links a:hover {
-      color: var(--gold-light);
-    }
-
-    .footer-bottom {
-      max-width: var(--max-width);
+    .copyright {
+      max-width: var(--max);
 
       margin: auto;
 
-      padding-top: 25px;
+      padding-top: 22px;
 
-      border-top: 1px solid var(--line);
+      border-top:
+        1px solid
+        #33332f;
+
+      color: #77736b;
+
+      font-size: 10px;
 
       display: flex;
-      justify-content: space-between;
 
-      color: #555;
+      justify-content:
+        space-between;
 
-      font-size: 9px;
-      letter-spacing: 0.08em;
+      letter-spacing: .08em;
+
       text-transform: uppercase;
     }
 
 
-    /* =========================================================
-       CART PANEL
-    ========================================================= */
-
-    .cart-overlay {
-      position: fixed;
-      inset: 0;
-
-      background: rgba(0,0,0,0.65);
-
-      z-index: 2000;
-
-      opacity: 0;
-      visibility: hidden;
-
-      transition: var(--transition);
-    }
-
-    .cart-overlay.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .cart-panel {
-      position: absolute;
-
-      top: 0;
-      right: 0;
-
-      width: min(430px, 100%);
-
-      height: 100%;
-
-      background: var(--cream);
-      color: var(--black);
-
-      transform: translateX(100%);
-
-      transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
-
-      padding: 35px;
-    }
-
-    .cart-overlay.open .cart-panel {
-      transform: translateX(0);
-    }
-
-    .cart-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      padding-bottom: 25px;
-
-      border-bottom: 1px solid #d7d1c4;
-    }
-
-    .cart-title {
-      font-family: "Cormorant Garamond", serif;
-
-      font-size: 34px;
-    }
-
-    .close-cart {
-      width: 38px;
-      height: 38px;
-
-      border: 1px solid #ccc;
-      border-radius: 50%;
-
-      background: transparent;
-
-      font-size: 20px;
-    }
-
-    .cart-empty {
-      text-align: center;
-
-      color: #777;
-
-      font-size: 12px;
-
-      margin-top: 100px;
-    }
-
-    .cart-items {
-      margin-top: 25px;
-    }
-
-    .cart-item {
-      display: flex;
-      gap: 15px;
-
-      padding: 15px 0;
-
-      border-bottom: 1px solid #ddd;
-    }
-
-    .cart-item-image {
-      width: 75px;
-      height: 95px;
-
-      object-fit: cover;
-    }
-
-    .cart-item-name {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 19px;
-    }
-
-    .cart-item-price {
-      font-size: 11px;
-      color: #666;
-
-      margin-top: 5px;
-    }
-
-
-    /* =========================================================
+    /* =========================
        TOAST
-    ========================================================= */
+    ========================= */
 
     .toast {
       position: fixed;
 
-      bottom: 25px;
-      left: 50%;
+      right: 22px;
+      bottom: 22px;
 
-      transform: translate(-50%, 120px);
+      z-index: 100;
 
-      z-index: 3000;
+      background: var(--ink);
 
-      background: var(--gold);
-      color: var(--black);
+      color: #fff;
 
-      padding: 14px 22px;
+      padding:
+        14px
+        18px;
 
-      font-size: 10px;
-      font-weight: 700;
+      font-size: 12px;
 
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-
-      opacity: 0;
-
-      transition: var(--transition);
-    }
-
-    .toast.show {
-      opacity: 1;
+      box-shadow: var(--shadow);
 
       transform:
-        translate(-50%, 0);
+        translateY(130%);
+
+      transition: .35s;
     }
 
 
-    /* =========================================================
-       MOBILE MENU
-    ========================================================= */
-
-    .mobile-menu {
-      display: none;
-
-      position: fixed;
-      inset: 0;
-
-      background: var(--black);
-
-      z-index: 1500;
-
-      padding: 120px 30px 40px;
-    }
-
-    .mobile-menu.open {
-      display: block;
-    }
-
-    .mobile-links {
-      list-style: none;
-    }
-
-    .mobile-links li {
-      margin-bottom: 22px;
-    }
-
-    .mobile-links a {
-      font-family: "Cormorant Garamond", serif;
-
-      font-size: 42px;
-
-      color: white;
-    }
-
-    .mobile-menu-close {
-      position: absolute;
-
-      top: 30px;
-      right: 25px;
-
-      width: 42px;
-      height: 42px;
-
-      border: 1px solid #333;
-
-      border-radius: 50%;
-
-      background: transparent;
-      color: white;
-
-      font-size: 20px;
+    .toast.show {
+      transform:
+        translateY(0);
     }
 
 
-    /* =========================================================
-       RESPONSIVE — TABLET
-    ========================================================= */
+    /* =========================
+       TABLET
+    ========================= */
 
-    @media (max-width: 1000px) {
+    @media(max-width:900px) {
 
-      .nav-links {
-        gap: 22px;
+      .nav {
+        grid-template-columns:
+          auto
+          1fr
+          auto;
+      }
+
+      .navlinks {
+        display: none;
       }
 
       .products {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2,1fr);
       }
 
       .editorial {
         grid-template-columns: 1fr;
       }
 
-      .editorial-image {
-        min-height: 600px;
+      .editorial-media {
+        min-height: 520px;
+
+        order: -1;
       }
 
-      .collections {
+      .categories {
         grid-template-columns: 1fr;
       }
 
-      .collection {
-        height: 500px;
+      .category {
+        min-height: 430px;
+      }
+
+      .newsletter {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
       }
 
       .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+          1fr
+          1fr;
       }
 
     }
 
 
-    /* =========================================================
-       RESPONSIVE — MOBILE
-    ========================================================= */
+    /* =========================
+       MOBILE
+    ========================= */
 
-    @media (max-width: 700px) {
+    @media(max-width:560px) {
 
-      .announcement {
-        font-size: 8px;
-        letter-spacing: 0.12em;
+      .nav {
+        height: 68px;
+
+        padding:
+          0
+          16px;
       }
 
-      .navbar {
-        top: 38px;
+      .brand {
+        font-size: 15px;
       }
 
-      .nav-inner {
-        height: 72px;
-        padding: 0 18px;
-
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .brand-main {
-        font-size: 23px;
-      }
-
-      .brand-sub {
-        font-size: 5px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .nav-actions {
-        gap: 6px;
-      }
-
-      .nav-icon {
-        width: 36px;
-        height: 36px;
+      .brand-logo {
+        width: 42px;
+        height: 42px;
       }
 
       .hero {
-        min-height: 92vh;
+        padding:
+          10px
+          12px
+          12px;
       }
 
-      .hero-image {
-        background-position: 63% center;
+      .hero-card {
+        min-height: 76vh;
+
+        border-radius: 20px;
       }
 
       .hero-content {
-        padding: 0 22px 70px;
+        left: 8%;
+        right: 7%;
+        bottom: 8%;
       }
 
-      .hero-title {
-        font-size: clamp(62px, 19vw, 100px);
-      }
-
-      .hero-description {
-        font-size: 12px;
-      }
-
-      .hero-side {
-        display: none;
+      .hero h1 {
+        font-size: 58px;
       }
 
       .section {
-        padding: 90px 18px;
+        padding:
+          75px
+          16px;
       }
 
-      .section-header {
-        display: block;
-      }
+      .section-head {
+        align-items: start;
 
-      .section-description {
-        margin-top: 20px;
+        flex-direction: column;
       }
 
       .products {
-        grid-template-columns: 1fr 1fr;
-
-        gap: 20px 10px;
+        gap: 12px;
       }
 
-      .product-name {
-        font-size: 17px;
+      .product-media {
+        margin-bottom: 11px;
       }
 
-      .product-category {
-        font-size: 8px;
-      }
-
-      .product-price {
-        font-size: 10px;
-      }
-
-      .quick-add {
+      .quick {
         display: none;
       }
 
-      .wishlist {
-        width: 32px;
-        height: 32px;
+      .product-info {
+        display: block;
       }
 
-      .editorial-image {
-        min-height: 480px;
+      .price {
+        margin-top: 5px;
       }
 
-      .editorial-content {
-        padding: 75px 25px;
+      .editorial {
+        margin:
+          0
+          12px;
       }
 
-      .collection {
-        height: 480px;
+      .editorial-copy {
+        padding:
+          70px
+          30px;
       }
 
-      .statement {
-        padding: 100px 20px;
+      .manifesto {
+        padding:
+          95px
+          20px;
       }
 
-      .services {
-        grid-template-columns: 1fr;
-      }
-
-      .service {
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .service:last-child {
-        border-bottom: none;
+      .newsletter {
+        padding:
+          75px
+          16px;
       }
 
       .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+          1fr
+          1fr;
 
-        gap: 45px 25px;
-
-        padding-left: 0;
-        padding-right: 0;
+        gap: 35px;
       }
 
       .footer-grid > div:first-child {
-        grid-column: 1 / -1;
+        grid-column:
+          1 / -1;
       }
 
-      .footer-bottom {
+      .copyright {
         display: block;
 
         line-height: 2;
-      }
 
-    }
-
-
-    /* =========================================================
-       SMALL PHONES
-    ========================================================= */
-
-    @media (max-width: 420px) {
-
-      .products {
-        grid-template-columns: 1fr;
-      }
-
-      .product-image {
-        aspect-ratio: 0.82;
-      }
-
-      .newsletter-form {
-        display: block;
-
-        padding-bottom: 15px;
-      }
-
-      .newsletter-form button {
-        margin-top: 10px;
-      }
-
-      .cart-panel {
-        padding: 25px;
+        padding:
+          20px
+          0;
       }
 
     }
@@ -1574,563 +1238,153 @@
 <body>
 
 
-  <!-- =======================================================
-       LOADER
-  ======================================================== -->
-
-  <div class="loader" id="loader">
-
-    <div class="loader-content">
-
-      <div class="loader-logo">
-        Trillionaire
-      </div>
-
-      <div class="loader-line"></div>
-
-      <div
-        style="
-          font-size:8px;
-          letter-spacing:.35em;
-          color:#c5a46d;
-          text-transform:uppercase;
-        "
-      >
-        Collection
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- =======================================================
+  <!-- ==========================================
        ANNOUNCEMENT
-  ======================================================== -->
+  =========================================== -->
 
   <div class="announcement">
-    Complimentary shipping on orders over $250
+
+    Free shipping on orders over $150
+    ·
+    New season now live
+
   </div>
 
 
-  <!-- =======================================================
-       NAVBAR
-  ======================================================== -->
+  <!-- ==========================================
+       HEADER
+  =========================================== -->
 
-  <header class="navbar" id="navbar">
+  <header>
 
-    <div class="nav-inner">
+    <nav
+      class="nav"
+      aria-label="Main navigation"
+    >
 
 
       <!-- BRAND -->
 
-      <a href="#" class="brand">
+      <a
+        class="brand"
+        href="#"
+      >
 
-        <span class="brand-main">
-          Trillionaire
-        </span>
+        <img
+          class="brand-logo"
+          src="45DE865A-DD16-4695-BAF6-CED2E1E917A9.png"
+          alt="Trillionaire Collection logo"
+        >
 
-        <span class="brand-sub">
-          Collection
-        </span>
+        TRILLIONAIRE COLLECTION
 
       </a>
 
 
-      <!-- DESKTOP LINKS -->
+      <!-- NAVIGATION -->
 
-      <ul class="nav-links">
+      <div class="navlinks">
 
-        <li>
-          <a href="#new">
-            New Arrivals
-          </a>
-        </li>
+        <a href="#new">
+          New In
+        </a>
 
-        <li>
-          <a href="#collections">
-            Collections
-          </a>
-        </li>
+        <a href="#shop">
+          Shop
+        </a>
 
-        <li>
-          <a href="#story">
-            The House
-          </a>
-        </li>
+        <a href="#story">
+          Our Story
+        </a>
 
-        <li>
-          <a href="#services">
-            Experience
-          </a>
-        </li>
+        <a href="#journal">
+          Journal
+        </a>
 
-      </ul>
+      </div>
 
 
       <!-- ACTIONS -->
 
-      <div class="nav-actions">
+      <div class="actions">
 
         <button
-          class="nav-icon"
-          onclick="showToast('Search coming soon')"
+          class="icon-btn"
           aria-label="Search"
+          onclick="
+            showToast(
+              'Search is ready to connect to your store.'
+            )
+          "
         >
           ⌕
         </button>
 
-        <div class="bag-wrapper">
 
-          <button
-            class="nav-icon"
-            onclick="openCart()"
-            aria-label="Shopping bag"
-          >
-            ♧
-          </button>
-
-          <span
-            class="bag-count"
-            id="bagCount"
-          >
-            0
-          </span>
-
-        </div>
+        <button
+          class="icon-btn"
+          aria-label="Shopping bag"
+          onclick="
+            showToast(
+              'Your bag is currently empty.'
+            )
+          "
+        >
+          ▢
+        </button>
 
       </div>
 
-    </div>
+    </nav>
 
   </header>
 
 
-  <!-- =======================================================
-       MOBILE MENU
-  ======================================================== -->
-
-  <div class="mobile-menu" id="mobileMenu">
-
-    <button
-      class="mobile-menu-close"
-      onclick="closeMobileMenu()"
-    >
-      ×
-    </button>
-
-    <ul class="mobile-links">
-
-      <li>
-        <a href="#new" onclick="closeMobileMenu()">
-          New Arrivals
-        </a>
-      </li>
-
-      <li>
-        <a href="#collections" onclick="closeMobileMenu()">
-          Collections
-        </a>
-      </li>
-
-      <li>
-        <a href="#story" onclick="closeMobileMenu()">
-          The House
-        </a>
-      </li>
-
-      <li>
-        <a href="#services" onclick="closeMobileMenu()">
-          Experience
-        </a>
-      </li>
-
-    </ul>
-
-  </div>
-
-
-  <!-- =======================================================
-       HERO
-  ======================================================== -->
+  <!-- ==========================================
+       MAIN
+  =========================================== -->
 
   <main>
 
+
+    <!-- ========================================
+         HERO
+    ========================================= -->
+
     <section class="hero">
 
-      <div class="hero-image"></div>
+      <div class="hero-card">
 
+        <div class="hero-content">
 
-      <div class="hero-content">
-
-        <div class="hero-kicker">
-          Autumn / Winter 2026
-        </div>
-
-        <h1 class="hero-title">
-
-          The art of
-          <span>being</span>
-          extraordinary.
-
-        </h1>
-
-        <p class="hero-description">
-
-          Trillionaire Collection is a luxury fashion house
-          built around timeless silhouettes, refined materials
-          and an uncompromising attention to detail.
-
-        </p>
-
-        <a
-          href="#new"
-          class="luxury-btn"
-        >
-
-          Explore Collection
-
-          <span>
-            →
-          </span>
-
-        </a>
-
-      </div>
-
-
-      <div class="hero-side">
-
-        TRILLIONAIRE COLLECTION · EST. 2026
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         NEW ARRIVALS
-    ====================================================== -->
-
-    <section class="section" id="new">
-
-      <div class="section-header">
-
-        <div>
-
-          <div class="section-label">
-            The latest
+          <div class="eyebrow">
+            Autumn / Winter 2026
           </div>
 
-          <h2 class="section-title">
-            New arrivals
-          </h2>
 
-        </div>
+          <h1>
+            Made for
+            <br>
+            the now.
+          </h1>
 
-        <p class="section-description">
 
-          A curated selection of signature pieces designed
-          for the modern luxury wardrobe.
+          <p>
 
-        </p>
+            Quiet confidence.
+            Precise silhouettes.
+            Elevated essentials designed to become
+            part of your everyday uniform.
 
-      </div>
+          </p>
 
-
-      <div class="products">
-
-
-        <!-- PRODUCT 01 -->
-
-        <article class="product">
-
-          <div class="product-image">
-
-            <span class="product-badge">
-              New
-            </span>
-
-            <button
-              class="wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-            <img
-              src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1000&q=90"
-              alt="Black luxury jacket"
-            />
-
-            <button
-              class="quick-add"
-              onclick="addToCart(
-                'The Signature Jacket',
-                '$420',
-                'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=300&q=80'
-              )"
-            >
-              Add to bag
-            </button>
-
-          </div>
-
-          <div class="product-info">
-
-            <div>
-
-              <div class="product-name">
-                The Signature Jacket
-              </div>
-
-              <div class="product-category">
-                Tailored Outerwear
-              </div>
-
-            </div>
-
-            <div class="product-price">
-              $420
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- PRODUCT 02 -->
-
-        <article class="product">
-
-          <div class="product-image">
-
-            <span class="product-badge">
-              Essential
-            </span>
-
-            <button
-              class="wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-            <img
-              src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=90"
-              alt="Luxury white t-shirt"
-            />
-
-            <button
-              class="quick-add"
-              onclick="addToCart(
-                'The Essential Tee',
-                '$145',
-                'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=300&q=80'
-              )"
-            >
-              Add to bag
-            </button>
-
-          </div>
-
-          <div class="product-info">
-
-            <div>
-
-              <div class="product-name">
-                The Essential Tee
-              </div>
-
-              <div class="product-category">
-                Premium Cotton
-              </div>
-
-            </div>
-
-            <div class="product-price">
-              $145
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- PRODUCT 03 -->
-
-        <article class="product">
-
-          <div class="product-image">
-
-            <span class="product-badge">
-              Limited
-            </span>
-
-            <button
-              class="wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-            <img
-              src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1000&q=90"
-              alt="Luxury cream hoodie"
-            />
-
-            <button
-              class="quick-add"
-              onclick="addToCart(
-                'The Royal Hoodie',
-                '$280',
-                'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=300&q=80'
-              )"
-            >
-              Add to bag
-            </button>
-
-          </div>
-
-          <div class="product-info">
-
-            <div>
-
-              <div class="product-name">
-                The Royal Hoodie
-              </div>
-
-              <div class="product-category">
-                Signature Collection
-              </div>
-
-            </div>
-
-            <div class="product-price">
-              $280
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- PRODUCT 04 -->
-
-        <article class="product">
-
-          <div class="product-image">
-
-            <span class="product-badge">
-              Signature
-            </span>
-
-            <button
-              class="wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-            <img
-              src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=1000&q=90"
-              alt="Dark premium denim"
-            />
-
-            <button
-              class="quick-add"
-              onclick="addToCart(
-                'The Founder Denim',
-                '$310',
-                'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=300&q=80'
-              )"
-            >
-              Add to bag
-            </button>
-
-          </div>
-
-          <div class="product-info">
-
-            <div>
-
-              <div class="product-name">
-                The Founder Denim
-              </div>
-
-              <div class="product-category">
-                Japanese Denim
-              </div>
-
-            </div>
-
-            <div class="product-price">
-              $310
-            </div>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         GOLD DIVIDER
-    ====================================================== -->
-
-    <div class="gold-line"></div>
-
-
-    <!-- =====================================================
-         BRAND STORY
-    ====================================================== -->
-
-    <section
-      class="editorial"
-      id="story"
-    >
-
-      <div class="editorial-image"></div>
-
-      <div class="editorial-content">
-
-        <div class="section-label">
-          The House
-        </div>
-
-        <h2 class="editorial-title">
-
-          Luxury is
-          <em>felt</em>,
-          not announced.
-
-        </h2>
-
-        <p class="editorial-text">
-
-          Trillionaire Collection was created with one
-          philosophy: create clothing that carries presence
-          without demanding attention.
-
-          <br><br>
-
-          Every silhouette is considered. Every detail has
-          purpose. Every collection is designed to live
-          beyond the season.
-
-        </p>
-
-        <div>
 
           <a
-            href="#collections"
-            class="luxury-btn dark"
+            class="btn btn-light"
+            href="#new"
           >
 
-            Discover the House
+            Explore the collection
 
             <span>
               →
@@ -2145,25 +1399,361 @@
     </section>
 
 
-    <!-- =====================================================
-         COLLECTIONS
-    ====================================================== -->
+    <!-- ========================================
+         NEW ARRIVALS
+    ========================================= -->
 
     <section
       class="section"
-      id="collections"
+      id="new"
     >
 
-      <div class="section-header">
+      <div class="section-head">
+
 
         <div>
 
-          <div class="section-label">
-            Explore
+          <div class="kicker">
+            The latest
           </div>
 
-          <h2 class="section-title">
-            The collections
+          <h2>
+            New arrivals
+          </h2>
+
+        </div>
+
+
+        <a
+          class="text-link"
+          href="#shop"
+        >
+
+          View all pieces
+
+        </a>
+
+      </div>
+
+
+      <div class="products">
+
+
+        <!-- PRODUCT 1 -->
+
+        <article class="product">
+
+          <div class="product-media">
+
+            <span class="badge">
+              New
+            </span>
+
+
+            <img
+              src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=88"
+              alt="Minimal black jacket"
+            >
+
+
+            <button
+              class="quick"
+              onclick="
+                showToast(
+                  'Added — The Atelier Jacket'
+                )
+              "
+            >
+
+              Quick add
+
+            </button>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <div class="product-name">
+                The Atelier Jacket
+              </div>
+
+              <div class="product-meta">
+                Black · Tailored fit
+              </div>
+
+            </div>
+
+
+            <div class="price">
+              $189
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 2 -->
+
+        <article class="product">
+
+          <div class="product-media">
+
+            <span class="badge">
+              Best seller
+            </span>
+
+
+            <img
+              src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=88"
+              alt="Premium white t-shirt"
+            >
+
+
+            <button
+              class="quick"
+              onclick="
+                showToast(
+                  'Added — Essential Tee'
+                )
+              "
+            >
+
+              Quick add
+
+            </button>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <div class="product-name">
+                Essential Tee
+              </div>
+
+              <div class="product-meta">
+                Off-white · Heavyweight cotton
+              </div>
+
+            </div>
+
+
+            <div class="price">
+              $64
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 3 -->
+
+        <article class="product">
+
+          <div class="product-media">
+
+            <span class="badge">
+              Limited
+            </span>
+
+
+            <img
+              src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=88"
+              alt="Premium neutral hoodie"
+            >
+
+
+            <button
+              class="quick"
+              onclick="
+                showToast(
+                  'Added — Studio Hoodie'
+                )
+              "
+            >
+
+              Quick add
+
+            </button>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <div class="product-name">
+                Studio Hoodie
+              </div>
+
+              <div class="product-meta">
+                Stone · Relaxed fit
+              </div>
+
+            </div>
+
+
+            <div class="price">
+              $118
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 4 -->
+
+        <article class="product">
+
+          <div class="product-media">
+
+
+            <img
+              src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=900&q=88"
+              alt="Dark denim jeans"
+            >
+
+
+            <button
+              class="quick"
+              onclick="
+                showToast(
+                  'Added — Form Denim'
+                )
+              "
+            >
+
+              Quick add
+
+            </button>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <div class="product-name">
+                Form Denim
+              </div>
+
+              <div class="product-meta">
+                Raw indigo · Straight leg
+              </div>
+
+            </div>
+
+
+            <div class="price">
+              $132
+            </div>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         BRAND STORY
+    ========================================= -->
+
+    <section
+      id="story"
+      class="editorial"
+    >
+
+
+      <div class="editorial-copy">
+
+        <div class="kicker">
+          The TRILLIONAIRE COLLECTION philosophy
+        </div>
+
+
+        <h2>
+
+          Less noise.
+          <br>
+          More character.
+
+        </h2>
+
+
+        <p>
+
+          We believe great clothing doesn't need to shout.
+
+          TRILLIONAIRE COLLECTION pairs considered materials,
+          clean construction and timeless proportions to create
+          pieces that work beyond a single season.
+
+        </p>
+
+
+        <div>
+
+          <a
+            class="btn btn-light"
+            href="#journal"
+          >
+
+            Discover our story
+
+            <span>
+              →
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="editorial-media"
+        aria-label="Fashion editorial image"
+      ></div>
+
+    </section>
+
+
+    <!-- ========================================
+         SHOP CATEGORIES
+    ========================================= -->
+
+    <section
+      class="section"
+      id="shop"
+    >
+
+
+      <div class="section-head">
+
+        <div>
+
+          <div class="kicker">
+            Shop by category
+          </div>
+
+
+          <h2>
+            Build your uniform.
           </h2>
 
         </div>
@@ -2171,32 +1761,29 @@
       </div>
 
 
-      <div class="collections">
+      <div class="categories">
 
 
-        <!-- COLLECTION 01 -->
+        <!-- CATEGORY 1 -->
 
         <a
+          class="category"
           href="#new"
-          class="collection"
         >
 
           <img
-            src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1400&q=90"
-            alt="Luxury outerwear"
-          />
+            src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1200&q=88"
+            alt="Outerwear collection"
+          >
 
-          <div class="collection-content">
 
-            <div class="collection-number">
-              01 / 03
-            </div>
+          <div class="category-content">
 
-            <h3 class="collection-title">
+            <h3>
               Outerwear
             </h3>
 
-            <span class="collection-link">
+            <span>
               Explore collection →
             </span>
 
@@ -2205,29 +1792,26 @@
         </a>
 
 
-        <!-- COLLECTION 02 -->
+        <!-- CATEGORY 2 -->
 
         <a
+          class="category"
           href="#new"
-          class="collection"
         >
 
           <img
-            src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1400&q=90"
-            alt="Luxury essentials"
-          />
+            src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=88"
+            alt="Everyday essentials collection"
+          >
 
-          <div class="collection-content">
 
-            <div class="collection-number">
-              02 / 03
-            </div>
+          <div class="category-content">
 
-            <h3 class="collection-title">
+            <h3>
               Essentials
             </h3>
 
-            <span class="collection-link">
+            <span>
               Explore collection →
             </span>
 
@@ -2236,29 +1820,26 @@
         </a>
 
 
-        <!-- COLLECTION 03 -->
+        <!-- CATEGORY 3 -->
 
         <a
+          class="category"
           href="#new"
-          class="collection"
         >
 
           <img
-            src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=90"
-            alt="Luxury evening collection"
-          />
+            src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=88"
+            alt="New season collection"
+          >
 
-          <div class="collection-content">
 
-            <div class="collection-number">
-              03 / 03
-            </div>
+          <div class="category-content">
 
-            <h3 class="collection-title">
-              Evening
+            <h3>
+              New Season
             </h3>
 
-            <span class="collection-link">
+            <span>
               Explore collection →
             </span>
 
@@ -2266,163 +1847,117 @@
 
         </a>
 
+
       </div>
 
     </section>
 
 
-    <!-- =====================================================
-         BRAND STATEMENT
-    ====================================================== -->
+    <!-- ========================================
+         MANIFESTO
+    ========================================= -->
 
-    <section class="statement">
+    <section
+      class="manifesto"
+      id="journal"
+    >
 
-      <div class="statement-symbol">
-        ✦
+      <div class="kicker">
+
+        TRILLIONAIRE COLLECTION / 2026
+
       </div>
 
-      <p class="statement-text">
 
-        Designed for those who understand that
-        <em>true luxury</em>
-        begins with what cannot be replicated.
+      <p>
+
+        “Clothing should make you feel more like
+        yourself — not like someone else.”
 
       </p>
 
     </section>
 
 
-    <!-- =====================================================
-         SERVICES
-    ====================================================== -->
-
-    <section
-      class="services"
-      id="services"
-    >
-
-      <div class="service">
-
-        <div class="service-icon">
-          ◇
-        </div>
-
-        <h3 class="service-title">
-          Exceptional Quality
-        </h3>
-
-        <p class="service-text">
-          Carefully selected materials and
-          considered construction.
-        </p>
-
-      </div>
-
-
-      <div class="service">
-
-        <div class="service-icon">
-          ✦
-        </div>
-
-        <h3 class="service-title">
-          Signature Packaging
-        </h3>
-
-        <p class="service-text">
-          Every order arrives presented as
-          an experience.
-        </p>
-
-      </div>
-
-
-      <div class="service">
-
-        <div class="service-icon">
-          ∞
-        </div>
-
-        <h3 class="service-title">
-          Timeless Design
-        </h3>
-
-        <p class="service-text">
-          Pieces designed to remain relevant
-          season after season.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
+    <!-- ========================================
          NEWSLETTER
-    ====================================================== -->
+    ========================================= -->
 
     <section class="newsletter">
 
-      <div class="section-label">
-        Private access
+
+      <div>
+
+        <div class="kicker">
+          Stay in the loop
+        </div>
+
+
+        <h2>
+          First access to new drops.
+        </h2>
+
+
+        <p class="newsletter-copy">
+
+          Join the TRILLIONAIRE COLLECTION list for
+          collection launches, limited pieces and
+          private offers.
+
+        </p>
+
       </div>
-
-      <h2 class="newsletter-title">
-        Enter the world.
-      </h2>
-
-      <p class="newsletter-text">
-
-        Join the Trillionaire Collection private list
-        for first access to new collections, exclusive
-        releases and private events.
-
-      </p>
 
 
       <form
-        class="newsletter-form"
         onsubmit="subscribe(event)"
       >
 
         <input
-          type="email"
           id="email"
+          type="email"
           placeholder="Your email address"
+          aria-label="Email address"
           required
-        />
+        >
+
 
         <button type="submit">
-          Join the list →
+
+          Join →
+
         </button>
 
       </form>
 
+
     </section>
+
 
   </main>
 
 
-  <!-- =======================================================
+  <!-- ==========================================
        FOOTER
-  ======================================================== -->
+  =========================================== -->
 
   <footer>
+
 
     <div class="footer-grid">
 
 
       <div>
 
-        <div class="footer-logo">
-          Trillionaire
+        <div class="footer-brand">
+          TRILLIONAIRE COLLECTION
         </div>
 
-        <p class="footer-tagline">
 
-          A luxury fashion house built around
-          timeless design, refined craftsmanship
-          and quiet confidence.
+        <p class="footer-desc">
+
+          Modern clothing for people who value
+          restraint, quality and personal style.
 
         </p>
 
@@ -2431,33 +1966,34 @@
 
       <div>
 
-        <div class="footer-heading">
+        <h4>
           Shop
-        </div>
+        </h4>
 
-        <ul class="footer-links">
+
+        <ul>
 
           <li>
             <a href="#new">
-              New Arrivals
+              New In
             </a>
           </li>
 
           <li>
-            <a href="#collections">
-              Collections
-            </a>
-          </li>
-
-          <li>
-            <a href="#new">
+            <a href="#shop">
               Essentials
             </a>
           </li>
 
           <li>
-            <a href="#new">
+            <a href="#shop">
               Outerwear
+            </a>
+          </li>
+
+          <li>
+            <a href="#shop">
+              Collections
             </a>
           </li>
 
@@ -2468,11 +2004,12 @@
 
       <div>
 
-        <div class="footer-heading">
-          House
-        </div>
+        <h4>
+          Company
+        </h4>
 
-        <ul class="footer-links">
+
+        <ul>
 
           <li>
             <a href="#story">
@@ -2481,14 +2018,8 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="#journal">
               Journal
-            </a>
-          </li>
-
-          <li>
-            <a href="#">
-              Contact
             </a>
           </li>
 
@@ -2498,6 +2029,12 @@
             </a>
           </li>
 
+          <li>
+            <a href="#">
+              Contact
+            </a>
+          </li>
+
         </ul>
 
       </div>
@@ -2505,11 +2042,12 @@
 
       <div>
 
-        <div class="footer-heading">
-          Client Services
-        </div>
+        <h4>
+          Help
+        </h4>
 
-        <ul class="footer-links">
+
+        <ul>
 
           <li>
             <a href="#">
@@ -2539,75 +2077,31 @@
 
       </div>
 
-    </div>
-
-
-    <div class="footer-bottom">
-
-      <span>
-        © 2026 Trillionaire Collection
-      </span>
-
-      <span>
-        Luxury · Designed with intention
-      </span>
 
     </div>
+
+
+    <div class="copyright">
+
+      <span>
+        © 2026 TRILLIONAIRE COLLECTION.
+        All rights reserved.
+      </span>
+
+
+      <span>
+        Designed for the modern wardrobe.
+      </span>
+
+    </div>
+
 
   </footer>
 
 
-  <!-- =======================================================
-       CART
-  ======================================================== -->
-
-  <div
-    class="cart-overlay"
-    id="cartOverlay"
-    onclick="closeCartOutside(event)"
-  >
-
-    <aside class="cart-panel">
-
-      <div class="cart-header">
-
-        <h2 class="cart-title">
-          Your Bag
-        </h2>
-
-        <button
-          class="close-cart"
-          onclick="closeCart()"
-        >
-          ×
-        </button>
-
-      </div>
-
-
-      <div
-        class="cart-empty"
-        id="cartEmpty"
-      >
-
-        Your bag is currently empty.
-
-      </div>
-
-
-      <div
-        class="cart-items"
-        id="cartItems"
-      ></div>
-
-    </aside>
-
-  </div>
-
-
-  <!-- =======================================================
+  <!-- ==========================================
        TOAST
-  ======================================================== -->
+  =========================================== -->
 
   <div
     class="toast"
@@ -2615,56 +2109,11 @@
   ></div>
 
 
-  <!-- =======================================================
+  <!-- ==========================================
        JAVASCRIPT
-  ======================================================== -->
+  =========================================== -->
 
   <script>
-
-    /* ========================================================
-       LOADER
-    ======================================================== */
-
-    window.addEventListener("load", () => {
-
-      setTimeout(() => {
-
-        document
-          .getElementById("loader")
-          .classList.add("hide");
-
-      }, 900);
-
-    });
-
-
-    /* ========================================================
-       NAVBAR SCROLL
-    ======================================================== */
-
-    const navbar =
-      document.getElementById("navbar");
-
-    window.addEventListener("scroll", () => {
-
-      if (window.scrollY > 50) {
-
-        navbar.classList.add("scrolled");
-
-      } else {
-
-        navbar.classList.remove("scrolled");
-
-      }
-
-    });
-
-
-    /* ========================================================
-       TOAST
-    ======================================================== */
-
-    let toastTimer;
 
     function showToast(message) {
 
@@ -2675,215 +2124,19 @@
 
       toast.classList.add("show");
 
-      clearTimeout(toastTimer);
+      clearTimeout(
+        window.toastTimer
+      );
 
-      toastTimer = setTimeout(() => {
+      window.toastTimer =
+        setTimeout(() => {
 
-        toast.classList.remove("show");
+          toast.classList.remove("show");
 
-      }, 2600);
-
-    }
-
-
-    /* ========================================================
-       WISHLIST
-    ======================================================== */
-
-    function toggleWishlist(button) {
-
-      button.classList.toggle("active");
-
-      if (button.classList.contains("active")) {
-
-        button.textContent = "♥";
-
-        showToast("Added to your wishlist");
-
-      } else {
-
-        button.textContent = "♡";
-
-        showToast("Removed from your wishlist");
-
-      }
+        }, 2600);
 
     }
 
-
-    /* ========================================================
-       CART DATA
-    ======================================================== */
-
-    let cart = [];
-
-
-    /* ========================================================
-       ADD TO CART
-    ======================================================== */
-
-    function addToCart(name, price, image) {
-
-      cart.push({
-        name: name,
-        price: price,
-        image: image
-      });
-
-      updateCart();
-
-      showToast(name + " added to your bag");
-
-      openCart();
-
-    }
-
-
-    /* ========================================================
-       UPDATE CART
-    ======================================================== */
-
-    function updateCart() {
-
-      const count =
-        document.getElementById("bagCount");
-
-      const empty =
-        document.getElementById("cartEmpty");
-
-      const items =
-        document.getElementById("cartItems");
-
-
-      count.textContent = cart.length;
-
-
-      if (cart.length === 0) {
-
-        empty.style.display = "block";
-
-        items.innerHTML = "";
-
-        return;
-
-      }
-
-
-      empty.style.display = "none";
-
-
-      items.innerHTML = cart
-        .map((item, index) => `
-
-          <div class="cart-item">
-
-            <img
-              class="cart-item-image"
-              src="${item.image}"
-              alt="${item.name}"
-            >
-
-            <div>
-
-              <div class="cart-item-name">
-                ${item.name}
-              </div>
-
-              <div class="cart-item-price">
-                ${item.price}
-              </div>
-
-              <button
-                onclick="removeFromCart(${index})"
-                style="
-                  border:0;
-                  background:none;
-                  margin-top:10px;
-                  font-size:9px;
-                  letter-spacing:.12em;
-                  text-transform:uppercase;
-                  cursor:pointer;
-                "
-              >
-                Remove
-              </button>
-
-            </div>
-
-          </div>
-
-        `)
-        .join("");
-
-    }
-
-
-    /* ========================================================
-       REMOVE CART ITEM
-    ======================================================== */
-
-    function removeFromCart(index) {
-
-      cart.splice(index, 1);
-
-      updateCart();
-
-      showToast("Item removed");
-
-    }
-
-
-    /* ========================================================
-       OPEN CART
-    ======================================================== */
-
-    function openCart() {
-
-      document
-        .getElementById("cartOverlay")
-        .classList.add("open");
-
-      document.body.classList.add("no-scroll");
-
-    }
-
-
-    /* ========================================================
-       CLOSE CART
-    ======================================================== */
-
-    function closeCart() {
-
-      document
-        .getElementById("cartOverlay")
-        .classList.remove("open");
-
-      document.body.classList.remove("no-scroll");
-
-    }
-
-
-    /* ========================================================
-       CLOSE CART OUTSIDE
-    ======================================================== */
-
-    function closeCartOutside(event) {
-
-      if (
-        event.target ===
-        document.getElementById("cartOverlay")
-      ) {
-
-        closeCart();
-
-      }
-
-    }
-
-
-    /* ========================================================
-       NEWSLETTER
-    ======================================================== */
 
     function subscribe(event) {
 
@@ -2892,13 +2145,15 @@
       const email =
         document.getElementById("email");
 
-      if (!email.value) return;
+      if (email.value) {
 
-      showToast(
-        "Welcome to the Trillionaire Collection private list."
-      );
+        showToast(
+          "You're on the list — welcome to TRILLIONAIRE COLLECTION."
+        );
 
-      email.value = "";
+        email.value = "";
+
+      }
 
     }
 
