@@ -1,2472 +1,2692 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Trillionaire Collection — luxury clothing, timeless design and exceptional craftsmanship.">
-<title>Trillionaire Collection — Luxury Lives Differently</title>
-
-<style>
-:root{
-  --green:#071c17;
-  --green-dark:#030e0b;
-  --cream:#f4f0e7;
-  --gold:#b59a65;
-  --gold-light:#d5c18e;
-  --ink:#151513;
-  --muted:#77736b;
-  --line:#d6d1c5;
-}
-
-@font-face{
-  font-family:"Trillionaire Luxury";
-  src:url("EBGaramond-Luxury.ttf") format("truetype");
-  font-weight:400;
-  font-style:normal;
-  font-display:swap;
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:var(--cream);
-  color:var(--ink);
-  font-family:Arial,Helvetica,sans-serif;
-  font-weight:300;
-  transition:background .35s ease,color .35s ease;
-}
-
-body.no-scroll{
-  overflow:hidden;
-}
-
-body.dark-mode{
-  --cream:#071c17;
-  --ink:#f4f0e7;
-  --muted:#aaa69d;
-  --line:rgba(255,255,255,.15);
-  background:#071c17;
-  color:#f4f0e7;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button,
-input{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-h1,h2,h3,
-.brand-name,
-.footer-brand-text,
-.product-name{
-  font-family:"Trillionaire Luxury","Times New Roman",serif;
-  font-weight:400;
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-.site-header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:100;
-  color:#fff;
-  transition:.45s ease;
-}
-
-.site-header.scrolled{
-  background:rgba(7,28,23,.96);
-  backdrop-filter:blur(18px);
-}
-
-.nav{
-  height:86px;
-  max-width:1500px;
-  margin:auto;
-  padding:0 30px;
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
-}
-
-.nav-side{
-  display:flex;
-  align-items:center;
-  gap:28px;
-}
-
-.nav-side.right{
-  justify-content:flex-end;
-}
-
-.nav-link{
-  position:relative;
-  font-size:9px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.86);
-}
-
-.nav-link:after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-8px;
-  width:0;
-  height:1px;
-  background:var(--gold-light);
-  transition:.3s;
-}
-
-.nav-link:hover:after{
-  width:100%;
-}
-
-.menu-btn{
-  width:44px;
-  height:44px;
-  border:0;
-  background:none;
-  color:#fff;
-  display:none;
-}
-
-.menu-lines{
-  display:block;
-  width:20px;
-  height:12px;
-  border-top:1px solid #fff;
-  border-bottom:1px solid #fff;
-  position:relative;
-  margin:auto;
-}
-
-.menu-lines:after{
-  content:"";
-  position:absolute;
-  left:0;
-  top:5px;
-  width:14px;
-  border-top:1px solid #fff;
-}
-
-.brand{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:4px;
-  color:#fff;
-}
-
-.brand img{
-  width:52px;
-  height:52px;
-  object-fit:contain;
-  border-radius:50%;
-  background:#fff;
-}
-
-.brand-name{
-  font-size:16px;
-  letter-spacing:.17em;
-  text-transform:uppercase;
-  line-height:.8;
-}
-
-.brand-sub{
-  font-size:6px;
-  letter-spacing:.45em;
-  text-transform:uppercase;
-  color:var(--gold-light);
-  margin-left:.45em;
-}
-
-.header-action{
-  border:0;
-  background:none;
-  color:#fff;
-  font-size:9px;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  min-height:44px;
-}
-
-.header-action .icon{
-  font-size:18px;
-  line-height:1;
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero{
-  min-height:100svh;
-  position:relative;
-  color:#fff;
-  overflow:hidden;
-  background:#071c17;
-}
-
-.hero-media{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(3,14,11,.88),
-      rgba(3,14,11,.48) 43%,
-      rgba(3,14,11,.18)
-    ),
-    linear-gradient(
-      0deg,
-      rgba(0,0,0,.35),
-      transparent 55%
-    ),
-    url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=2400&q=90")
-    center/cover;
-  animation:heroZoom 14s ease-out both;
-}
-
-@keyframes heroZoom{
-  from{
-    transform:scale(1.07);
-  }
-
-  to{
-    transform:scale(1);
-  }
-}
-
-.hero-inner{
-  position:relative;
-  z-index:2;
-  max-width:1500px;
-  margin:auto;
-  min-height:100svh;
-  padding:150px 8% 90px;
-  display:flex;
-  align-items:center;
-}
-
-.hero-copy{
-  max-width:720px;
-}
-
-.overline{
-  color:var(--gold-light);
-  font-size:9px;
-  letter-spacing:.34em;
-  text-transform:uppercase;
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:25px;
-}
-
-.overline:before{
-  content:"";
-  width:42px;
-  height:1px;
-  background:var(--gold);
-}
-
-.hero h1{
-  font-size:clamp(64px,8.6vw,132px);
-  line-height:.79;
-  letter-spacing:-.055em;
-  text-transform:uppercase;
-}
-
-.hero h1 span{
-  color:var(--gold-light);
-}
-
-.hero-description{
-  max-width:455px;
-  color:rgba(255,255,255,.72);
-  font-size:12px;
-  line-height:1.9;
-  margin:31px 0 28px;
-}
-
-.luxury-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:24px;
-  border:1px solid var(--gold);
-  padding:15px 18px;
-  color:#fff;
-  background:transparent;
-  font-size:8px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  transition:.3s;
-}
-
-.luxury-btn .arrow{
-  width:27px;
-  height:27px;
-  border:1px solid var(--gold);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  font-size:13px;
-}
-
-.luxury-btn:hover{
-  background:var(--gold);
-  color:#071c17;
-}
-
-.hero-index{
-  position:absolute;
-  left:31px;
-  top:50%;
-  transform:translateY(-50%);
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-  color:rgba(255,255,255,.42);
-  font-size:8px;
-}
-
-.hero-index .active{
-  color:var(--gold-light);
-}
-
-.scroll-note{
-  position:absolute;
-  right:35px;
-  bottom:34px;
-  writing-mode:vertical-rl;
-  color:rgba(255,255,255,.55);
-  font-size:8px;
-  letter-spacing:.25em;
-  text-transform:uppercase;
-}
-
-
-/* =====================================================
-   INTRO
-===================================================== */
-
-.intro{
-  background:var(--cream);
-  text-align:center;
-  padding:100px 24px 90px;
-  transition:background .35s ease;
-}
-
-.intro .overline{
-  justify-content:center;
-  color:#82704e;
-}
-
-.intro .overline:before{
-  display:none;
-}
-
-.intro h2{
-  font-size:clamp(46px,6vw,82px);
-  line-height:.95;
-  letter-spacing:-.045em;
-  text-transform:uppercase;
-}
-
-.intro p{
-  max-width:570px;
-  margin:22px auto 0;
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.9;
-}
-
-
-/* =====================================================
-   COLLECTION
-===================================================== */
-
-.collection{
-  max-width:1500px;
-  margin:auto;
-  padding:0 30px 120px;
-  background:var(--cream);
-  transition:background .35s ease;
-}
-
-.collection-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  margin-bottom:26px;
-}
-
-.collection-title .kicker{
-  color:#8b754b;
-  font-size:8px;
-  letter-spacing:.25em;
-  text-transform:uppercase;
-  margin-bottom:9px;
-}
-
-.collection-title h2{
-  font-size:52px;
-  letter-spacing:-.04em;
-  text-transform:uppercase;
-}
-
-.product-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:13px;
-}
-
-.product-card{
-  min-width:0;
-  cursor:pointer;
-}
-
-.product-image{
-  aspect-ratio:.77;
-  overflow:hidden;
-  background:#ddd;
-  position:relative;
-}
-
-.product-image img{
-  transition:transform .8s cubic-bezier(.2,.75,.2,1);
-}
-
-.product-card:hover .product-image img{
-  transform:scale(1.045);
-}
-
-.product-badge{
-  position:absolute;
-  top:13px;
-  left:13px;
-  z-index:2;
-  background:#fff;
-  color:#111;
-  padding:7px 9px;
-  font-size:7px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-}
-
-.product-info{
-  padding:12px 2px 0;
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.product-name{
-  font-size:18px;
-  text-transform:uppercase;
-}
-
-.product-meta{
-  font-size:8px;
-  color:#807c74;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  margin-top:4px;
-}
-
-.product-price{
-  font-size:10px;
-  letter-spacing:.08em;
-  white-space:nowrap;
-}
-
-
-/* =====================================================
-   HOUSE
-===================================================== */
-
-.house{
-  max-width:1500px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  background:var(--green);
-  color:#fff;
-}
-
-.house-copy{
-  padding:95px clamp(35px,8vw,125px);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-
-.house-copy h2{
-  font-size:clamp(50px,5.5vw,82px);
-  line-height:.85;
-  text-transform:uppercase;
-  letter-spacing:-.045em;
-}
-
-.house-copy p{
-  max-width:450px;
-  color:rgba(255,255,255,.62);
-  font-size:11px;
-  line-height:1.9;
-  margin:25px 0 30px;
-}
-
-.house-image{
-  min-height:650px;
-  background:
-    linear-gradient(
-      0deg,
-      rgba(0,0,0,.12),
-      rgba(0,0,0,.12)
-    ),
-    url("https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1500&q=90")
-    center/cover;
-}
-
-
-/* =====================================================
-   CAMPAIGN
-===================================================== */
-
-.campaign{
-  min-height:680px;
-  position:relative;
-  color:#fff;
-  display:flex;
-  align-items:flex-end;
-  max-width:1500px;
-  margin:auto;
-  overflow:hidden;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0,0,0,.68),
-      rgba(0,0,0,.1)
-    ),
-    url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2200&q=90")
-    center/cover;
-}
-
-.campaign-copy{
-  padding:80px;
-  max-width:620px;
-}
-
-.campaign h2{
-  font-size:clamp(55px,6vw,90px);
-  line-height:.82;
-  text-transform:uppercase;
-  letter-spacing:-.045em;
-}
-
-.campaign p{
-  font-size:11px;
-  color:rgba(255,255,255,.7);
-  max-width:400px;
-  margin:22px 0 26px;
-}
-
-
-/* =====================================================
-   CATEGORIES
-===================================================== */
-
-.categories{
-  background:var(--green);
-  color:#fff;
-  padding:105px 30px 120px;
-}
-
-.categories-inner{
-  max-width:1500px;
-  margin:auto;
-}
-
-.categories-title{
-  text-align:center;
-  margin-bottom:45px;
-}
-
-.categories-title h2{
-  font-size:55px;
-  text-transform:uppercase;
-  letter-spacing:-.04em;
-}
-
-.category-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.category-card{
-  position:relative;
-  aspect-ratio:1.6;
-  overflow:hidden;
-}
-
-.category-card img{
-  transition:transform .8s;
-}
-
-.category-card:hover img{
-  transform:scale(1.06);
-}
-
-.category-card:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    0deg,
-    rgba(0,0,0,.7),
-    transparent 70%
-  );
-}
-
-.category-copy{
-  position:absolute;
-  z-index:2;
-  left:25px;
-  bottom:23px;
-}
-
-.category-copy small{
-  font-size:7px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--gold-light);
-}
-
-.category-copy h3{
-  font-size:32px;
-  text-transform:uppercase;
-}
-
-.category-copy span{
-  font-size:7px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-}
-
-
-/* =====================================================
-   STANDARD
-===================================================== */
-
-.standard{
-  max-width:1500px;
-  margin:auto;
-  padding:90px 30px;
-  background:var(--cream);
-  transition:background .35s ease;
-}
-
-.standard-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
-
-.standard-item{
-  text-align:center;
-  padding:42px 20px;
-  border-right:1px solid var(--line);
-}
-
-.standard-item:last-child{
-  border-right:0;
-}
-
-.standard-icon{
-  font-size:27px;
-  color:#92794d;
-  margin-bottom:15px;
-}
-
-.standard-item h3{
-  font-size:21px;
-  text-transform:uppercase;
-}
-
-.standard-item p{
-  font-size:9px;
-  color:var(--muted);
-  line-height:1.7;
-  margin-top:5px;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-  background:var(--green);
-  color:#fff;
-  padding:75px 30px 22px;
-}
-
-.footer-grid{
-  max-width:1500px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1.4fr;
-  gap:55px;
-  padding-bottom:65px;
-}
-
-.footer-brand{
-  display:flex;
-  align-items:center;
-  gap:15px;
-}
-
-.footer-brand img{
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  object-fit:contain;
-  background:#fff;
-}
-
-.footer-brand-text{
-  font-size:20px;
-  letter-spacing:.16em;
-}
-
-.footer-brand-text small{
-  display:block;
-  font-family:Arial,Helvetica,sans-serif;
-  font-size:7px;
-  letter-spacing:.38em;
-  color:var(--gold-light);
-  margin-top:5px;
-}
-
-.footer-desc{
-  max-width:310px;
-  color:rgba(255,255,255,.5);
-  font-size:10px;
-  line-height:1.9;
-  margin-top:20px;
-}
-
-footer h4{
-  color:var(--gold-light);
-  font-size:8px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  margin-bottom:18px;
-}
-
-footer ul{
-  list-style:none;
-}
-
-footer li{
-  margin-bottom:10px;
-}
-
-footer li a{
-  font-size:9px;
-  color:rgba(255,255,255,.7);
-}
-
-.footer-form{
-  display:flex;
-  border-bottom:1px solid rgba(255,255,255,.3);
-  max-width:350px;
-}
-
-.footer-form input{
-  flex:1;
-  border:0;
-  outline:0;
-  background:transparent;
-  color:#fff;
-  padding:12px 0;
-  font-size:10px;
-}
-
-.footer-form input::placeholder{
-  color:rgba(255,255,255,.4);
-}
-
-.footer-form button{
-  border:0;
-  background:none;
-  color:var(--gold-light);
-  font-size:17px;
-}
-
-.footer-bottom{
-  max-width:1500px;
-  margin:auto;
-  padding-top:22px;
-  border-top:1px solid rgba(255,255,255,.1);
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  color:rgba(255,255,255,.35);
-  font-size:7px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
-
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
-.search-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(7,28,23,.97);
-  z-index:300;
-  display:none;
-  align-items:flex-start;
-  justify-content:center;
-  padding:150px 30px;
-}
-
-.search-overlay.open{
-  display:flex;
-}
-
-.search-box{
-  width:min(800px,100%);
-  border-bottom:1px solid var(--gold);
-  display:flex;
-  align-items:center;
-}
-
-.search-box input{
-  width:100%;
-  border:0;
-  outline:0;
-  background:transparent;
-  color:#fff;
-  font-family:"Trillionaire Luxury",serif;
-  font-size:45px;
-  padding:15px 0;
-}
-
-.search-box input::placeholder{
-  color:rgba(255,255,255,.35);
-}
-
-.search-box button{
-  border:0;
-  background:none;
-  color:#fff;
-  font-size:32px;
-  min-width:44px;
-  min-height:44px;
-}
-
-
-/* =====================================================
-   CART
-===================================================== */
-
-.cart-overlay{
-  position:fixed;
-  inset:0;
-  z-index:400;
-  background:rgba(0,0,0,.45);
-  display:flex;
-  justify-content:flex-end;
-  opacity:0;
-  visibility:hidden;
-  transition:.35s;
-}
-
-.cart-overlay.open{
-  opacity:1;
-  visibility:visible;
-}
-
-.cart{
-  width:min(430px,100%);
-  height:100%;
-  background:var(--cream);
-  color:var(--ink);
-  padding:30px;
-  transform:translateX(100%);
-  transition:.4s cubic-bezier(.2,.8,.2,1);
-  overflow:auto;
-}
-
-.cart-overlay.open .cart{
-  transform:translateX(0);
-}
-
-.cart-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid var(--line);
-  padding-bottom:20px;
-}
-
-.cart-head h2{
-  font-size:35px;
-  text-transform:uppercase;
-}
-
-.close{
-  width:44px;
-  height:44px;
-  border:0;
-  background:none;
-  font-size:28px;
-  color:var(--ink);
-}
-
-.cart-empty{
-  padding:45px 0;
-  text-align:center;
-  color:var(--muted);
-  font-size:10px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-
-.cart-list{
-  padding-top:20px;
-}
-
-.cart-item{
-  display:grid;
-  grid-template-columns:75px 1fr;
-  gap:15px;
-  padding:18px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.cart-item h3{
-  font-size:19px;
-  text-transform:uppercase;
-}
-
-.cart-item p{
-  margin-top:6px;
-  font-size:10px;
-}
-
-.cart-remove{
-  border:0;
-  background:none;
-  padding:8px 0 0;
-  color:#8b754b;
-  font-size:7px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-}
-
-
-/* =====================================================
-   SETTINGS DRAWER
-===================================================== */
-
-.settings-overlay{
-  position:fixed;
-  inset:0;
-  z-index:450;
-  background:rgba(0,0,0,.48);
-  opacity:0;
-  visibility:hidden;
-  transition:opacity .35s ease,visibility .35s ease;
-}
-
-.settings-overlay.open{
-  opacity:1;
-  visibility:visible;
-}
-
-.settings-drawer{
-  position:absolute;
-  top:0;
-  right:0;
-  width:min(420px,100%);
-  height:100%;
-  background:var(--cream);
-  color:var(--ink);
-  padding:32px;
-  transform:translateX(100%);
-  transition:transform .45s cubic-bezier(.2,.8,.2,1);
-  overflow-y:auto;
-}
-
-.settings-overlay.open .settings-drawer{
-  transform:translateX(0);
-}
-
-.settings-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding-bottom:22px;
-  border-bottom:1px solid var(--line);
-}
-
-.settings-head h2{
-  font-size:38px;
-  text-transform:uppercase;
-  letter-spacing:-.03em;
-}
-
-.settings-close{
-  width:44px;
-  height:44px;
-  border:1px solid rgba(128,120,105,.45);
-  background:transparent;
-  font-size:25px;
-  color:var(--ink);
-}
-
-.settings-section{
-  padding:32px 0;
-}
-
-.settings-label{
-  font-size:8px;
-  letter-spacing:.25em;
-  text-transform:uppercase;
-  color:#8b754b;
-  margin-bottom:16px;
-}
-
-.appearance-options{
-  display:grid;
-  gap:10px;
-}
-
-.appearance-option{
-  width:100%;
-  min-height:82px;
-  border:1px solid rgba(128,120,105,.35);
-  background:transparent;
-  padding:17px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  text-align:left;
-  color:var(--ink);
-  transition:.25s ease;
-}
-
-.appearance-option:hover{
-  border-color:var(--gold);
-}
-
-.appearance-option.active{
-  border-color:var(--gold);
-  background:rgba(181,154,101,.09);
-}
-
-.appearance-left{
-  display:flex;
-  align-items:center;
-  gap:15px;
-  min-width:0;
-}
-
-.appearance-icon{
-  width:40px;
-  height:40px;
-  flex:0 0 40px;
-  border:1px solid rgba(128,120,105,.4);
-  display:grid;
-  place-items:center;
-  font-size:18px;
-}
-
-.appearance-name{
-  display:block;
-  font-family:"Trillionaire Luxury",serif;
-  font-size:22px;
-}
-
-.appearance-description{
-  display:block;
-  font-family:Arial,Helvetica,sans-serif;
-  font-size:8px;
-  letter-spacing:.08em;
-  color:var(--muted);
-  margin-top:4px;
-}
-
-.appearance-check{
-  width:19px;
-  height:19px;
-  flex:0 0 19px;
-  border:1px solid #aaa193;
-  border-radius:50%;
-  position:relative;
-}
-
-.appearance-option.active .appearance-check{
-  border-color:var(--gold);
-}
-
-.appearance-option.active .appearance-check:after{
-  content:"";
-  position:absolute;
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:var(--gold);
-  left:4px;
-  top:4px;
-}
-
-
-/* =====================================================
-   TOAST
-===================================================== */
-
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:25px;
-  transform:translate(-50%,20px);
-  background:var(--green);
-  color:#fff;
-  border:1px solid var(--gold);
-  padding:14px 20px;
-  font-size:9px;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  z-index:500;
-  opacity:0;
-  pointer-events:none;
-  transition:.35s;
-}
-
-.toast.show{
-  opacity:1;
-  transform:translate(-50%,0);
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:900px){
-
-  .nav{
-    height:76px;
-    padding:0 20px;
-  }
-
-  .nav-side.left .nav-link,
-  .nav-side.right .nav-link{
-    display:none;
-  }
-
-  .menu-btn{
-    display:block;
-  }
-
-  .nav-side.left{
-    gap:5px;
-  }
-
-  .nav-side.right{
-    gap:5px;
-  }
-
-  .brand img{
-    width:45px;
-    height:45px;
-  }
-
-  .brand-name{
-    font-size:12px;
-  }
-
-  .brand-sub{
-    font-size:5px;
-  }
-
-  .header-action{
-    font-size:0;
-    padding:0 5px;
-  }
-
-  .header-action .icon{
-    font-size:19px;
-  }
-
-  .hero-inner{
-    padding:130px 30px 70px;
-  }
-
-  .hero h1{
-    font-size:clamp(58px,17vw,95px);
-  }
-
-  .hero-description{
-    font-size:11px;
-  }
-
-  .hero-index{
-    display:none;
-  }
-
-  .scroll-note{
-    right:20px;
-    bottom:22px;
-  }
-
-  .intro{
-    padding:75px 20px 70px;
-  }
-
-  .collection{
-    padding:0 20px 80px;
-  }
-
-  .collection-head{
-    align-items:flex-start;
-    flex-direction:column;
-    gap:15px;
-  }
-
-  .collection-title h2{
-    font-size:43px;
-  }
-
-  .product-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:22px 10px;
-  }
-
-  .product-name{
-    font-size:15px;
-  }
-
-  .product-info{
-    display:block;
-  }
-
-  .product-price{
-    margin-top:7px;
-  }
-
-  .house{
-    grid-template-columns:1fr;
-  }
-
-  .house-copy{
-    padding:75px 30px;
-  }
-
-  .house-image{
-    min-height:500px;
-  }
-
-  .campaign{
-    min-height:600px;
-  }
-
-  .campaign-copy{
-    padding:50px 30px;
-  }
-
-  .campaign h2{
-    font-size:65px;
-  }
-
-  .categories{
-    padding:75px 20px 80px;
-  }
-
-  .category-grid{
-    grid-template-columns:1fr;
-  }
-
-  .standard{
-    padding:70px 20px;
-  }
-
-  .standard-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .standard-item{
-    padding:32px 14px;
-  }
-
-  .standard-item:nth-child(2){
-    border-right:0;
-  }
-
-  .standard-item:nth-child(3),
-  .standard-item:nth-child(4){
-    border-top:1px solid var(--line);
-  }
-
-  footer{
-    padding:60px 20px 20px;
-  }
-
-  .footer-grid{
-    grid-template-columns:1fr 1fr;
-    gap:45px 25px;
-  }
-
-  .footer-grid>div:first-child,
-  .footer-grid>div:last-child{
-    grid-column:1/-1;
-  }
-
-  .footer-bottom{
-    flex-direction:column;
-  }
-
-  .settings-drawer{
-    width:min(390px,100%);
-    padding:26px 22px;
-  }
-
-  .settings-head h2{
-    font-size:34px;
-  }
-
-}
-
-
-@media(max-width:520px){
-
-  .hero-inner{
-    padding-left:22px;
-    padding-right:22px;
-  }
-
-  .hero h1{
-    font-size:64px;
-  }
-
-  .house-copy h2{
-    font-size:58px;
-  }
-
-  .campaign h2{
-    font-size:56px;
-  }
-
-  .standard-grid{
-    grid-template-columns:1fr;
-  }
-
-  .standard-item,
-  .standard-item:nth-child(2){
-    border-right:0;
-  }
-
-  .standard-item:nth-child(n+2){
-    border-top:1px solid var(--line);
-  }
-
-  .footer-grid{
-    grid-template-columns:1fr;
-  }
-
-  .footer-grid>div{
-    grid-column:auto !important;
-  }
-
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <meta
+    name="description"
+    content="Trillionaire Collection — Modern luxury clothing."
+  >
+
+  <title>Trillionaire Collection</title>
+
+  <style>
+
+    /* =========================================================
+       FONTS
+       ========================================================= */
+
+    @font-face {
+      font-family: "Trillionaire Luxury";
+      src: url("EBGaramond-Luxury.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Rabar Kurdish";
+      src: url("Rabar_037.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+
+    /* =========================================================
+       VARIABLES
+       ========================================================= */
+
+    :root {
+      --green: #17352a;
+      --green-dark: #0d211a;
+      --cream: #f4f0e7;
+      --cream-light: #faf8f2;
+      --gold: #b89a62;
+      --line: rgba(23, 53, 42, 0.15);
+      --header: 76px;
+    }
+
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: var(--cream-light);
+      color: var(--green);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+      transition:
+        background-color 0.35s ease,
+        color 0.35s ease;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =========================================================
+       LUXURY FONT
+       ========================================================= */
+
+    h1,
+    h2,
+    h3,
+    .brand-name,
+    .footer-brand-text,
+    .product-name,
+    .cart-head h2,
+    .menu-head h2 {
+      font-family:
+        "Trillionaire Luxury",
+        "Times New Roman",
+        Georgia,
+        serif;
+
+      font-weight: 400;
+    }
+
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: var(--header);
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 42px;
+
+      z-index: 1000;
+
+      background: rgba(244, 240, 231, 0.94);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      border-bottom:
+        1px solid rgba(23, 53, 42, 0.08);
+
+      transition: 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(244, 240, 231, 0.98);
+
+      box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.05);
+    }
+
+
+    /* =========================================================
+       HEADER LEFT
+       ========================================================= */
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+    }
+
+
+    /* =========================================================
+       LOGO
+       ========================================================= */
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      font-size: 21px;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    .nav a,
+    .nav button {
+      position: relative;
+
+      border: none;
+      background: transparent;
+
+      color: var(--green);
+
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+
+      padding: 10px 0;
+
+      transition: 0.3s ease;
+    }
+
+    .nav a::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: 3px;
+
+      width: 0;
+      height: 1px;
+
+      background: var(--gold);
+
+      transition: 0.3s ease;
+    }
+
+    .nav a:hover,
+    .nav button:hover {
+      color: var(--gold);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+
+    /* =========================================================
+       HEADER ACTIONS
+       ========================================================= */
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .header-button {
+      border: none;
+      background: transparent;
+
+      color: var(--green);
+
+      font-size: 11px;
+
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+
+      padding: 10px 0;
+
+      transition: 0.3s ease;
+    }
+
+    .header-button:hover {
+      color: var(--gold);
+    }
+
+    .bag-button {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    #bagCount {
+      width: 19px;
+      height: 19px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: var(--green);
+      color: var(--cream);
+
+      font-size: 9px;
+    }
+
+
+    /* =========================================================
+       HAMBURGER
+       ========================================================= */
+
+    .mobile-menu-button {
+      display: block;
+
+      border: none;
+      background: transparent;
+
+      color: var(--green);
+
+      font-size: 25px;
+      line-height: 1;
+
+      padding: 8px;
+    }
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+
+      padding:
+        150px 8%
+        90px;
+
+      color: var(--cream);
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(10, 28, 22, 0.86),
+          rgba(10, 28, 22, 0.52),
+          rgba(10, 28, 22, 0.15)
+        ),
+        url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=2200&q=85")
+        center / cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      display: block;
+
+      margin-bottom: 20px;
+
+      color: var(--gold);
+
+      font-size: 11px;
+
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+    }
+
+    .hero h1 {
+      font-size: clamp(58px, 8vw, 120px);
+
+      line-height: 0.9;
+
+      letter-spacing: -0.025em;
+
+      margin-bottom: 30px;
+    }
+
+    .hero p {
+      max-width: 550px;
+
+      color:
+        rgba(244, 240, 231, 0.82);
+
+      font-size: 15px;
+      line-height: 1.9;
+
+      margin-bottom: 38px;
+    }
+
+
+    /* =========================================================
+       BUTTON
+       ========================================================= */
+
+    .luxury-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 50px;
+
+      padding: 0 28px;
+
+      border:
+        1px solid var(--gold);
+
+      background: var(--gold);
+
+      color: #17140e;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+
+      transition: 0.3s ease;
+    }
+
+    .luxury-button:hover {
+      background: transparent;
+      color: var(--cream);
+    }
+
+
+    /* =========================================================
+       INTRO
+       ========================================================= */
+
+    .intro {
+      padding: 150px 10%;
+
+      text-align: center;
+
+      background: var(--cream-light);
+    }
+
+    .intro-inner {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .intro h2 {
+      font-size: clamp(48px, 6vw, 80px);
+
+      line-height: 0.95;
+
+      margin-bottom: 30px;
+    }
+
+    .intro p {
+      max-width: 650px;
+
+      margin: auto;
+
+      color: #67635b;
+
+      font-size: 15px;
+
+      line-height: 2;
+    }
+
+
+    /* =========================================================
+       COLLECTION
+       ========================================================= */
+
+    .collection-section {
+      padding:
+        80px 6%
+        140px;
+
+      background: var(--cream);
+    }
+
+    .collection-title {
+      display: flex;
+
+      align-items: flex-end;
+      justify-content: space-between;
+
+      margin-bottom: 50px;
+    }
+
+    .collection-title h2 {
+      font-size: clamp(45px, 6vw, 78px);
+
+      line-height: 0.9;
+    }
+
+    .collection-title > span {
+      color: var(--gold);
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+
+    /* =========================================================
+       PRODUCTS
+       ========================================================= */
+
+    .products {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 18px;
+    }
+
+    .product-image {
+      position: relative;
+
+      overflow: hidden;
+
+      aspect-ratio: 0.78;
+
+      background: #e6e1d7;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: transform 0.8s ease;
+    }
+
+    .product-card:hover
+    .product-image img {
+      transform: scale(1.045);
+    }
+
+    .product-overlay {
+      position: absolute;
+
+      inset: 0;
+
+      display: flex;
+
+      align-items: flex-end;
+      justify-content: center;
+
+      padding: 25px;
+
+      background:
+        linear-gradient(
+          transparent 55%,
+          rgba(0, 0, 0, 0.42)
+        );
+
+      opacity: 0;
+
+      transition: opacity 0.35s ease;
+    }
+
+    .product-card:hover
+    .product-overlay {
+      opacity: 1;
+    }
+
+    .product-add {
+      border: 1px solid white;
+
+      background: white;
+
+      color: var(--green);
+
+      padding: 13px 22px;
+
+      font-size: 9px;
+
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+
+      transition: 0.25s ease;
+    }
+
+    .product-add:hover {
+      background: var(--green);
+
+      color: white;
+
+      border-color: var(--green);
+    }
+
+    .product-info {
+      padding: 19px 2px 0;
+    }
+
+    .product-name {
+      font-size: 25px;
+
+      margin-bottom: 7px;
+    }
+
+    .product-price {
+      color: #706c64;
+
+      font-size: 12px;
+
+      letter-spacing: 0.08em;
+    }
+
+
+    /* =========================================================
+       HOUSE
+       ========================================================= */
+
+    .house {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      min-height: 720px;
+
+      background: var(--green);
+
+      color: var(--cream);
+    }
+
+    .house-image {
+      min-height: 620px;
+
+      background:
+        url("https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1600&q=85")
+        center / cover no-repeat;
+    }
+
+    .house-copy {
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      padding: 90px 10%;
+    }
+
+    .house-copy h2 {
+      font-size: clamp(52px, 6vw, 82px);
+
+      line-height: 0.9;
+
+      margin-bottom: 30px;
+    }
+
+    .house-copy p {
+      max-width: 500px;
+
+      color:
+        rgba(244, 240, 231, 0.72);
+
+      line-height: 2;
+
+      font-size: 14px;
+
+      margin-bottom: 35px;
+    }
+
+
+    /* =========================================================
+       CAMPAIGN
+       ========================================================= */
+
+    .campaign {
+      min-height: 720px;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      padding: 80px 8%;
+
+      color: var(--cream);
+
+      background:
+        linear-gradient(
+          0deg,
+          rgba(10, 15, 13, 0.78),
+          rgba(10, 15, 13, 0.05)
+        ),
+        url("https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=2200&q=85")
+        center / cover no-repeat;
+    }
+
+    .campaign-copy {
+      max-width: 700px;
+    }
+
+    .campaign h2 {
+      font-size: clamp(55px, 7vw, 105px);
+
+      line-height: 0.88;
+
+      margin-bottom: 22px;
+    }
+
+    .campaign p {
+      max-width: 500px;
+
+      line-height: 1.8;
+
+      color:
+        rgba(244, 240, 231, 0.8);
+
+      margin-bottom: 30px;
+    }
+
+
+    /* =========================================================
+       CATEGORIES
+       ========================================================= */
+
+    .categories {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      background: var(--cream-light);
+    }
+
+    .category {
+      position: relative;
+
+      min-height: 520px;
+
+      overflow: hidden;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      padding: 38px;
+
+      color: white;
+    }
+
+    .category::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.68),
+          transparent 60%
+        );
+
+      z-index: 1;
+    }
+
+    .category img {
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: transform 0.8s ease;
+    }
+
+    .category:hover img {
+      transform: scale(1.05);
+    }
+
+    .category-copy {
+      position: relative;
+
+      z-index: 2;
+    }
+
+    .category-copy span {
+      color: var(--gold);
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .category-copy h3 {
+      font-size: 44px;
+
+      margin-top: 10px;
+    }
+
+
+    /* =========================================================
+       STANDARDS
+       ========================================================= */
+
+    .standards {
+      padding: 130px 8%;
+
+      background: var(--cream);
+
+      text-align: center;
+    }
+
+    .standards > h2 {
+      font-size: clamp(45px, 6vw, 75px);
+    }
+
+    .standards-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 40px;
+
+      margin-top: 70px;
+    }
+
+    .standard {
+      padding: 20px;
+    }
+
+    .standard-number {
+      color: var(--gold);
+
+      font-family:
+        "Trillionaire Luxury",
+        Georgia,
+        serif;
+
+      font-size: 32px;
+
+      margin-bottom: 20px;
+    }
+
+    .standard h3 {
+      font-size: 22px;
+
+      margin-bottom: 12px;
+    }
+
+    .standard p {
+      color: #777;
+
+      font-size: 12px;
+
+      line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       NEWSLETTER
+       ========================================================= */
+
+    .newsletter {
+      padding: 120px 8%;
+
+      background: var(--green);
+
+      color: var(--cream);
+
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      font-size: clamp(50px, 6vw, 82px);
+
+      line-height: 0.9;
+
+      margin-bottom: 22px;
+    }
+
+    .newsletter p {
+      max-width: 570px;
+
+      margin:
+        auto auto 35px;
+
+      color:
+        rgba(244, 240, 231, 0.68);
+
+      font-size: 14px;
+
+      line-height: 1.9;
+    }
+
+    .newsletter-form {
+      display: flex;
+
+      max-width: 520px;
+
+      margin: auto;
+
+      border-bottom:
+        1px solid rgba(244, 240, 231, 0.4);
+    }
+
+    .newsletter-form input {
+      flex: 1;
+
+      border: none;
+      outline: none;
+
+      background: transparent;
+
+      color: white;
+
+      padding: 16px 0;
+
+      font-size: 13px;
+    }
+
+    .newsletter-form input::placeholder {
+      color:
+        rgba(255, 255, 255, 0.48);
+    }
+
+    .newsletter-form button {
+      border: none;
+
+      background: transparent;
+
+      color: var(--gold);
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+
+      padding-left: 20px;
+    }
+
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+      padding:
+        65px 7%
+        35px;
+
+      background: #0b1712;
+
+      color: var(--cream);
+    }
+
+    .footer-top {
+      display: grid;
+
+      grid-template-columns:
+        2fr 1fr 1fr 1fr;
+
+      gap: 50px;
+
+      padding-bottom: 60px;
+
+      border-bottom:
+        1px solid rgba(244, 240, 231, 0.1);
+    }
+
+    .footer-brand-text {
+      font-size: 34px;
+
+      line-height: 1;
+
+      margin-bottom: 20px;
+    }
+
+    .footer-description {
+      max-width: 350px;
+
+      color:
+        rgba(244, 240, 231, 0.48);
+
+      font-size: 12px;
+
+      line-height: 1.8;
+    }
+
+    .footer-column h4 {
+      color: var(--gold);
+
+      font-size: 9px;
+
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+
+      margin-bottom: 20px;
+    }
+
+    .footer-column a {
+      display: block;
+
+      color:
+        rgba(244, 240, 231, 0.7);
+
+      font-size: 12px;
+
+      margin-bottom: 13px;
+
+      transition: 0.25s ease;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      display: flex;
+
+      justify-content: space-between;
+
+      padding-top: 28px;
+
+      color:
+        rgba(244, 240, 231, 0.35);
+
+      font-size: 10px;
+    }
+
+
+    /* =========================================================
+       SEARCH
+       ========================================================= */
+
+    .search-overlay {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 3000;
+
+      display: flex;
+
+      align-items: flex-start;
+      justify-content: center;
+
+      padding-top: 20vh;
+
+      background:
+        rgba(13, 33, 26, 0.96);
+
+      color: var(--cream);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition: 0.3s ease;
+    }
+
+    .search-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .search-box {
+      width: min(760px, 90%);
+
+      text-align: center;
+    }
+
+    .search-box span {
+      display: block;
+
+      color: var(--gold);
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+
+      margin-bottom: 25px;
+    }
+
+    .search-box input {
+      width: 100%;
+
+      border: none;
+
+      border-bottom:
+        1px solid rgba(244, 240, 231, 0.5);
+
+      outline: none;
+
+      background: transparent;
+
+      color: var(--cream);
+
+      padding: 15px 0;
+
+      font-family:
+        "Trillionaire Luxury",
+        Georgia,
+        serif;
+
+      font-size:
+        clamp(30px, 5vw, 60px);
+
+      text-align: center;
+    }
+
+    .search-close {
+      position: absolute;
+
+      top: 35px;
+      right: 40px;
+
+      border: none;
+
+      background: transparent;
+
+      color: var(--cream);
+
+      font-size: 30px;
+    }
+
+
+    /* =========================================================
+       CART
+       ========================================================= */
+
+    .cart-overlay {
+      position: fixed;
+
+      inset: 0;
+
+      background: rgba(0, 0, 0, 0.4);
+
+      z-index: 1998;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition: 0.3s ease;
+    }
+
+    .cart-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-drawer {
+      position: fixed;
+
+      top: 0;
+      right: 0;
+
+      width: min(460px, 92vw);
+      height: 100vh;
+
+      z-index: 1999;
+
+      padding: 35px;
+
+      background: var(--cream-light);
+
+      color: var(--green);
+
+      transform:
+        translateX(100%);
+
+      transition: transform 0.35s ease;
+
+      overflow-y: auto;
+    }
+
+    .cart-drawer.open {
+      transform: translateX(0);
+    }
+
+    .cart-head {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: center;
+
+      padding-bottom: 25px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .cart-head h2 {
+      font-size: 38px;
+    }
+
+    .cart-close {
+      border: none;
+
+      background: transparent;
+
+      font-size: 28px;
+
+      color: var(--green);
+    }
+
+    .cart-items {
+      padding-top: 25px;
+    }
+
+    .cart-empty {
+      color: #777;
+
+      font-size: 13px;
+
+      line-height: 1.8;
+    }
+
+    .cart-item {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      padding: 15px 0;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .cart-item-name {
+      font-family:
+        "Trillionaire Luxury",
+        Georgia,
+        serif;
+
+      font-size: 22px;
+    }
+
+    .cart-item-remove {
+      border: none;
+
+      background: transparent;
+
+      color: #999;
+
+      font-size: 11px;
+    }
+
+
+    /* =========================================================
+       HAMBURGER DRAWER
+       ========================================================= */
+
+    .menu-overlay {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 3998;
+
+      background:
+        rgba(0, 0, 0, 0.42);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition: 0.3s ease;
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .menu-drawer {
+      position: fixed;
+
+      top: 0;
+      right: 0;
+
+      width: min(430px, 92vw);
+      height: 100vh;
+
+      z-index: 3999;
+
+      padding: 35px;
+
+      background: var(--cream-light);
+
+      color: var(--green);
+
+      transform:
+        translateX(100%);
+
+      transition:
+        transform 0.35s ease,
+        background-color 0.35s ease,
+        color 0.35s ease;
+
+      overflow-y: auto;
+    }
+
+    .menu-drawer.open {
+      transform: translateX(0);
+    }
+
+    .menu-head {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      padding-bottom: 25px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .menu-head h2 {
+      font-size: 42px;
+    }
+
+    .menu-close {
+      border: none;
+
+      background: transparent;
+
+      color: inherit;
+
+      font-size: 30px;
+    }
+
+    .menu-content {
+      padding-top: 35px;
+    }
+
+    .menu-section {
+      margin-bottom: 42px;
+    }
+
+    .menu-label {
+      display: block;
+
+      color: var(--gold);
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+
+      margin-bottom: 18px;
+    }
+
+    .menu-section > a {
+      display: block;
+
+      padding: 13px 0;
+
+      border-bottom:
+        1px solid var(--line);
+
+      font-family:
+        "Trillionaire Luxury",
+        Georgia,
+        serif;
+
+      font-size: 24px;
+
+      transition: 0.25s ease;
+    }
+
+    .menu-section > a:hover {
+      color: var(--gold);
+
+      padding-left: 8px;
+    }
+
+    .menu-options {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 10px;
+    }
+
+    .menu-option {
+      min-height: 52px;
+
+      border:
+        1px solid var(--line);
+
+      background: transparent;
+
+      color: inherit;
+
+      padding: 12px;
+
+      border-radius: 2px;
+
+      font-size: 11px;
+
+      transition: 0.25s ease;
+    }
+
+    .menu-option:hover {
+      border-color: var(--gold);
+    }
+
+    .menu-option.active {
+      background: var(--green);
+
+      color: var(--cream);
+
+      border-color: var(--green);
+    }
+
+
+    /* =========================================================
+       TOAST
+       ========================================================= */
+
+    .toast {
+      position: fixed;
+
+      left: 50%;
+      bottom: 30px;
+
+      z-index: 5000;
+
+      transform:
+        translate(-50%, 20px);
+
+      padding: 13px 22px;
+
+      background: var(--green);
+
+      color: var(--cream);
+
+      font-size: 11px;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition: 0.3s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      visibility: visible;
+
+      transform:
+        translate(-50%, 0);
+    }
+
+
+    /* =========================================================
+       DARK MODE
+       ========================================================= */
+
+    body.dark-mode {
+      --cream: #e9e5dc;
+      --cream-light: #111814;
+      --green: #e9e5dc;
+      --green-dark: #090d0b;
+      --line: rgba(233, 229, 220, 0.16);
+
+      background: #111814;
+
+      color: #e9e5dc;
+    }
+
+    body.dark-mode header {
+      background:
+        rgba(17, 24, 20, 0.94);
+
+      border-bottom-color:
+        rgba(233, 229, 220, 0.08);
+    }
+
+    body.dark-mode header.scrolled {
+      background:
+        rgba(17, 24, 20, 0.98);
+    }
+
+    body.dark-mode
+    .intro,
+    body.dark-mode
+    .collection-section,
+    body.dark-mode
+    .standards {
+      background: #111814;
+    }
+
+    body.dark-mode .product-price,
+    body.dark-mode .intro p,
+    body.dark-mode .standard p {
+      color: #aaa69d;
+    }
+
+    body.dark-mode
+    .menu-drawer,
+    body.dark-mode
+    .cart-drawer {
+      background: #111814;
+
+      color: #e9e5dc;
+    }
+
+    body.dark-mode
+    .menu-option.active {
+      background: #e9e5dc;
+
+      color: #111814;
+
+      border-color: #e9e5dc;
+    }
+
+
+    /* =========================================================
+       SORANI KURDISH
+       ========================================================= */
+
+    body.kurdish-mode {
+      direction: rtl;
+
+      font-family:
+        "Rabar Kurdish",
+        Arial,
+        sans-serif;
+    }
+
+    body.kurdish-mode h1,
+    body.kurdish-mode h2,
+    body.kurdish-mode h3,
+    body.kurdish-mode p,
+    body.kurdish-mode span,
+    body.kurdish-mode a,
+    body.kurdish-mode button,
+    body.kurdish-mode input,
+    body.kurdish-mode label {
+      font-family:
+        "Rabar Kurdish",
+        Arial,
+        sans-serif !important;
+    }
+
+    body.kurdish-mode .logo,
+    body.kurdish-mode .brand-name {
+      direction: ltr;
+    }
+
+    body.kurdish-mode .hero {
+      text-align: right;
+
+      background:
+        linear-gradient(
+          -90deg,
+          rgba(10, 28, 22, 0.86),
+          rgba(10, 28, 22, 0.52),
+          rgba(10, 28, 22, 0.15)
+        ),
+        url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=2200&q=85")
+        center / cover no-repeat;
+    }
+
+    body.kurdish-mode .hero-content {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    body.kurdish-mode .product-card,
+    body.kurdish-mode .product-info {
+      direction: rtl;
+
+      text-align: right;
+    }
+
+    body.kurdish-mode .house-copy,
+    body.kurdish-mode .campaign {
+      text-align: right;
+    }
+
+    body.kurdish-mode .newsletter-form {
+      direction: rtl;
+    }
+
+    body.kurdish-mode footer {
+      text-align: right;
+    }
+
+    body.kurdish-mode .footer-bottom {
+      direction: rtl;
+    }
+
+    body.kurdish-mode .menu-drawer {
+      right: auto;
+      left: 0;
+
+      direction: rtl;
+
+      transform:
+        translateX(-100%);
+    }
+
+    body.kurdish-mode .menu-drawer.open {
+      transform:
+        translateX(0);
+    }
+
+    body.kurdish-mode .menu-head,
+    body.kurdish-mode .menu-content {
+      text-align: right;
+    }
+
+    body.kurdish-mode .menu-section > a {
+      text-align: right;
+    }
+
+    body.kurdish-mode .menu-option {
+      font-family:
+        "Rabar Kurdish",
+        Arial,
+        sans-serif !important;
+    }
+
+    body.kurdish-mode .cart-drawer {
+      right: auto;
+      left: 0;
+
+      direction: rtl;
+
+      transform:
+        translateX(-100%);
+    }
+
+    body.kurdish-mode .cart-drawer.open {
+      transform:
+        translateX(0);
+    }
+
+    body.kurdish-mode .search-overlay {
+      direction: rtl;
+    }
+
+    body.kurdish-mode
+    .search-box input {
+      font-family:
+        "Rabar Kurdish",
+        Arial,
+        sans-serif;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 1100px) {
+
+      header {
+        padding: 0 25px;
+      }
+
+      .nav {
+        gap: 17px;
+      }
+
+      .products {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .standards-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .footer-top {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+      :root {
+        --header: 68px;
+      }
+
+      header {
+        padding: 0 18px;
+      }
+
+      .brand-name {
+        font-size: 17px;
+      }
+
+      .logo {
+        width: 42px;
+        height: 42px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .header-actions
+      .header-button:first-child {
+        display: none;
+      }
+
+      .hero {
+        min-height: 88vh;
+
+        padding:
+          130px 7%
+          70px;
+      }
+
+      .hero h1 {
+        font-size:
+          clamp(55px, 15vw, 90px);
+      }
+
+      .intro {
+        padding: 100px 8%;
+      }
+
+      .collection-section {
+        padding:
+          70px 5%
+          100px;
+      }
+
+      .collection-title {
+        display: block;
+      }
+
+      .collection-title h2 {
+        margin-bottom: 18px;
+      }
+
+      .house {
+        grid-template-columns: 1fr;
+      }
+
+      .house-image {
+        min-height: 500px;
+      }
+
+      .house-copy {
+        padding:
+          80px 8%;
+      }
+
+      .categories {
+        grid-template-columns: 1fr;
+      }
+
+      .category {
+        min-height: 500px;
+      }
+
+      .campaign {
+        min-height: 620px;
+      }
+
+      .standards,
+      .newsletter {
+        padding:
+          90px 7%;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 560px) {
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .standards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-options {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-drawer,
+      .cart-drawer {
+        width: 100%;
+      }
+
+      .footer-bottom {
+        display: block;
+      }
+
+      .footer-bottom span {
+        display: block;
+
+        margin-bottom: 10px;
+      }
+
+      .header-actions {
+        gap: 10px;
+      }
+
+      .brand-name {
+        display: none;
+      }
+
+      .hero p {
+        font-size: 13px;
+      }
+
+      .newsletter-form {
+        display: block;
+
+        border-bottom: none;
+      }
+
+      .newsletter-form input {
+        width: 100%;
+
+        border-bottom:
+          1px solid rgba(244, 240, 231, 0.4);
+
+        margin-bottom: 15px;
+      }
+
+      .newsletter-form button {
+        padding: 14px 0;
+      }
+
+    }
+
+  </style>
 </head>
+
 
 <body>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
 
-<header class="site-header" id="header">
+  <header id="mainHeader">
 
-  <nav class="nav">
+    <div class="header-left">
 
-    <div class="nav-side left">
-
-      <button
-        class="menu-btn"
-        type="button"
-        onclick="toggleMenu()"
-        aria-label="Open menu"
-      >
-        <span class="menu-lines"></span>
-      </button>
-
-      <a class="nav-link" href="#collections">
-        Collections
-      </a>
-
-      <a class="nav-link" href="#house">
-        The House
-      </a>
-
-    </div>
-
-
-    <a class="brand" href="#top">
-
-      <img
-        src="45DE865A-DD16-4695-BAF6-CED2E1E917A9.png"
-        alt="Trillionaire Collection logo"
-      >
-
-      <div class="brand-name">
-        Trillionaire
-      </div>
-
-      <div class="brand-sub">
-        Collection
-      </div>
-
-    </a>
-
-
-    <div class="nav-side right">
-
-      <button
-        class="header-action"
-        type="button"
-        onclick="openSearch()"
-        aria-label="Search"
-      >
-        <span class="icon">⌕</span>
-        <span>Search</span>
-      </button>
-
-
-      <!-- SETTINGS BUTTON -->
-
-      <button
-        class="header-action"
-        type="button"
-        onclick="openSettings()"
-        aria-label="Settings"
-      >
-        <span class="icon">⚙</span>
-        <span>Settings</span>
-      </button>
-
-
-      <button
-        class="header-action"
-        type="button"
-        onclick="openCart()"
-        aria-label="Shopping bag"
-      >
-        <span class="icon">♧</span>
-        <span>
-          Bag
-          (<span id="bagCount">0</span>)
-        </span>
-      </button>
-
-    </div>
-
-  </nav>
-
-</header>
-
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
-<main id="top">
-
-
-<section class="hero">
-
-  <div class="hero-media"></div>
-
-  <div class="hero-inner">
-
-    <div class="hero-copy">
-
-      <div class="overline">
-        The Signature Collection
-      </div>
-
-      <h1>
-        Luxury<br>
-        lives<br>
-        <span>differently.</span>
-      </h1>
-
-      <p class="hero-description">
-        A modern expression of luxury.
-        Designed with intention, crafted with
-        precision and made for those who
-        choose their own standard.
-      </p>
-
-      <a
-        class="luxury-btn"
-        href="#collections"
-      >
-        Discover the collection
-        <span class="arrow">→</span>
-      </a>
-
-    </div>
-
-
-    <div class="hero-index">
-      <span class="active">01</span>
-      <span>02</span>
-      <span>03</span>
-    </div>
-
-
-    <div class="scroll-note">
-      Scroll to discover
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     INTRO
-===================================================== -->
-
-<section class="intro">
-
-  <div class="overline">
-    Trillionaire Collection
-  </div>
-
-  <h2>
-    The art of<br>
-    becoming.
-  </h2>
-
-  <p>
-    We believe luxury is not simply what you wear.
-    It is the standard you set for yourself.
-    Every Trillionaire Collection piece is created
-    to embody confidence, ambition and timeless style.
-  </p>
-
-</section>
-
-
-<!-- =====================================================
-     PRODUCTS
-===================================================== -->
-
-<section
-  class="collection"
-  id="collections"
->
-
-  <div class="collection-head">
-
-    <div class="collection-title">
-
-      <div class="kicker">
-        New arrivals
-      </div>
-
-      <h2>
-        The signature collection
-      </h2>
-
-    </div>
-
-    <a
-      class="luxury-btn"
-      href="#shop"
-      style="color:var(--ink)"
-    >
-      View all
-      <span class="arrow">→</span>
-    </a>
-
-  </div>
-
-
-  <div class="product-grid">
-
-
-    <article
-      class="product-card"
-      onclick="addToCart('The Atelier Jacket',320)"
-    >
-
-      <div class="product-image">
-
-        <span class="product-badge">
-          New
-        </span>
-
-        <img
-          src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1000&q=90"
-          alt="The Atelier Jacket"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <div>
-
-          <div class="product-name">
-            The Atelier Jacket
-          </div>
-
-          <div class="product-meta">
-            Italian wool blend
-          </div>
-
-        </div>
-
-        <div class="product-price">
-          $320
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <article
-      class="product-card"
-      onclick="addToCart('The Signature Hoodie',280)"
-    >
-
-      <div class="product-image">
-
-        <span class="product-badge">
-          Signature
-        </span>
-
-        <img
-          src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1000&q=90"
-          alt="The Signature Hoodie"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <div>
-
-          <div class="product-name">
-            The Signature Hoodie
-          </div>
-
-          <div class="product-meta">
-            Premium cotton
-          </div>
-
-        </div>
-
-        <div class="product-price">
-          $280
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <article
-      class="product-card"
-      onclick="addToCart('The Essential Tee',150)"
-    >
-
-      <div class="product-image">
-
-        <span class="product-badge">
-          Essential
-        </span>
-
-        <img
-          src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=90"
-          alt="The Essential Tee"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <div>
-
-          <div class="product-name">
-            The Essential Tee
-          </div>
-
-          <div class="product-meta">
-            Heavyweight cotton
-          </div>
-
-        </div>
-
-        <div class="product-price">
-          $150
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <article
-      class="product-card"
-      onclick="addToCart('The Founder Pant',290)"
-    >
-
-      <div class="product-image">
-
-        <span class="product-badge">
-          Tailored
-        </span>
-
-        <img
-          src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=1000&q=90"
-          alt="The Founder Pant"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <div>
-
-          <div class="product-name">
-            The Founder Pant
-          </div>
-
-          <div class="product-meta">
-            Refined trousers
-          </div>
-
-        </div>
-
-        <div class="product-price">
-          $290
-        </div>
-
-      </div>
-
-    </article>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     HOUSE
-===================================================== -->
-
-<section
-  class="house"
-  id="house"
->
-
-  <div class="house-copy">
-
-    <div class="overline">
-      The House
-    </div>
-
-    <h2>
-      Built on<br>
-      a higher<br>
-      standard.
-    </h2>
-
-    <p>
-      Trillionaire Collection is a luxury clothing house
-      focused on craftsmanship, timeless design and the
-      pursuit of a better tomorrow.
-    </p>
-
-    <div>
-
-      <a
-        class="luxury-btn"
-        href="#standard"
-      >
-        Our story
-        <span class="arrow">→</span>
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <div class="house-image"></div>
-
-</section>
-
-
-<!-- =====================================================
-     CAMPAIGN
-===================================================== -->
-
-<section class="campaign">
-
-  <div class="campaign-copy">
-
-    <div class="overline">
-      A more meaningful tomorrow
-    </div>
-
-    <h2>
-      Timeless<br>
-      by design.
-    </h2>
-
-    <p>
-      Style is not about being noticed.
-      It is about being remembered.
-    </p>
-
-    <a
-      class="luxury-btn"
-      href="#shop"
-    >
-      Explore
-      <span class="arrow">→</span>
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     CATEGORIES
-===================================================== -->
-
-<section
-  class="categories"
-  id="shop"
->
-
-  <div class="categories-inner">
-
-    <div class="categories-title">
-
-      <div
-        class="overline"
-        style="justify-content:center"
-      >
-        Explore our collections
-      </div>
-
-      <h2>
-        Find your signature.
-      </h2>
-
-    </div>
-
-
-    <div class="category-grid">
-
-
-      <a
-        class="category-card"
-        href="#collections"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1300&q=90"
-          alt="Outerwear"
-        >
-
-        <div class="category-copy">
-
-          <small>
-            01
-          </small>
-
-          <h3>
-            Outerwear
-          </h3>
-
-          <span>
-            Discover →
-          </span>
-
-        </div>
-
-      </a>
-
-
-      <a
-        class="category-card"
-        href="#collections"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1300&q=90"
-          alt="Essentials"
-        >
-
-        <div class="category-copy">
-
-          <small>
-            02
-          </small>
-
-          <h3>
-            Essentials
-          </h3>
-
-          <span>
-            Discover →
-          </span>
-
-        </div>
-
-      </a>
-
-
-      <a
-        class="category-card"
-        href="#collections"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1300&q=90"
-          alt="Signature"
-        >
-
-        <div class="category-copy">
-
-          <small>
-            03
-          </small>
-
-          <h3>
-            Signature
-          </h3>
-
-          <span>
-            Discover →
-          </span>
-
-        </div>
-
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     STANDARD
-===================================================== -->
-
-<section
-  class="standard"
-  id="standard"
->
-
-  <div class="standard-grid">
-
-    <div class="standard-item">
-
-      <div class="standard-icon">
-        ◇
-      </div>
-
-      <h3>
-        Exceptional quality
-      </h3>
-
-      <p>
-        Premium materials.
-        Lasting performance.
-      </p>
-
-    </div>
-
-
-    <div class="standard-item">
-
-      <div class="standard-icon">
-        ∞
-      </div>
-
-      <h3>
-        Timeless style
-      </h3>
-
-      <p>
-        Designed beyond seasons.
-        Made for a lifetime.
-      </p>
-
-    </div>
-
-
-    <div class="standard-item">
-
-      <div class="standard-icon">
-        ♛
-      </div>
-
-      <h3>
-        A higher purpose
-      </h3>
-
-      <p>
-        More than clothing.
-        A stronger you.
-      </p>
-
-    </div>
-
-
-    <div class="standard-item">
-
-      <div class="standard-icon">
-        ◎
-      </div>
-
-      <h3>
-        A global community
-      </h3>
-
-      <p>
-        United by ambition.
-        Defined by character.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-  <div class="footer-grid">
-
-
-    <div>
-
-      <div class="footer-brand">
+      <a href="#top" class="logo-wrap">
 
         <img
           src="45DE865A-DD16-4695-BAF6-CED2E1E917A9.png"
-          alt="Trillionaire Collection logo"
+          alt="Trillionaire Collection Logo"
+          class="logo"
         >
 
-        <div class="footer-brand-text">
+        <span class="brand-name">
+          TRILLIONAIRE COLLECTION
+        </span>
 
-          TRILLIONAIRE
+      </a>
 
-          <small>
-            COLLECTION
-          </small>
+
+      <nav class="nav">
+
+        <a
+          href="#collection"
+          data-i18n="collections"
+        >
+          Collections
+        </a>
+
+        <a
+          href="#house"
+          data-i18n="house"
+        >
+          The House
+        </a>
+
+        <button
+          onclick="openSearch()"
+          data-i18n="search"
+        >
+          Search
+        </button>
+
+      </nav>
+
+    </div>
+
+
+    <div class="header-actions">
+
+      <button
+        class="header-button"
+        onclick="openSearch()"
+        data-i18n="search"
+      >
+        Search
+      </button>
+
+
+      <button
+        class="header-button bag-button"
+        onclick="openCart()"
+      >
+
+        <span data-i18n="bag">
+          Bag
+        </span>
+
+        <span id="bagCount">
+          0
+        </span>
+
+      </button>
+
+
+      <!-- HAMBURGER -->
+
+      <button
+        class="mobile-menu-button"
+        onclick="openMenu()"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- =======================================================
+       HERO
+       ======================================================= -->
+
+  <main id="top">
+
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <span class="eyebrow">
+          TRILLIONAIRE COLLECTION
+        </span>
+
+        <h1 data-i18n="heroTitle">
+          Luxury lives differently.
+        </h1>
+
+        <p data-i18n="heroText">
+          Trillionaire Collection is a modern luxury house
+          built around timeless design, exceptional quality
+          and a higher standard of living.
+        </p>
+
+        <a
+          href="#collection"
+          class="luxury-button"
+          data-i18n="discover"
+        >
+          Discover the collection
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         INTRO
+         ===================================================== -->
+
+    <section class="intro">
+
+      <div class="intro-inner">
+
+        <span class="eyebrow">
+          THE HOUSE
+        </span>
+
+        <h2 data-i18n="introTitle">
+          The art of becoming.
+        </h2>
+
+        <p data-i18n="introText">
+          Designed for those who move differently.
+          Every piece is created with intention,
+          restraint and an unmistakable sense of luxury.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         COLLECTION
+         ===================================================== -->
+
+    <section
+      class="collection-section"
+      id="collection"
+    >
+
+      <div class="collection-title">
+
+        <div>
+
+          <span class="eyebrow">
+            01 / COLLECTION
+          </span>
+
+          <h2 data-i18n="shopCollection">
+            Shop the collection
+          </h2>
+
+        </div>
+
+        <span>
+          TRILLIONAIRE / 2026
+        </span>
+
+      </div>
+
+
+      <div class="products">
+
+
+        <!-- PRODUCT 1 -->
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1200&q=85"
+              alt="The Atelier Jacket"
+              loading="lazy"
+            >
+
+            <div class="product-overlay">
+
+              <button
+                class="product-add"
+                onclick="addToCart('The Atelier Jacket',320)"
+              >
+                Add to bag
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <h3
+              class="product-name"
+              data-i18n="jacket"
+            >
+              The Atelier Jacket
+            </h3>
+
+            <span class="product-price">
+              $320
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 2 -->
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1200&q=85"
+              alt="The Signature Hoodie"
+              loading="lazy"
+            >
+
+            <div class="product-overlay">
+
+              <button
+                class="product-add"
+                onclick="addToCart('The Signature Hoodie',280)"
+              >
+                Add to bag
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <h3
+              class="product-name"
+              data-i18n="hoodie"
+            >
+              The Signature Hoodie
+            </h3>
+
+            <span class="product-price">
+              $280
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 3 -->
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=85"
+              alt="The Essential Tee"
+              loading="lazy"
+            >
+
+            <div class="product-overlay">
+
+              <button
+                class="product-add"
+                onclick="addToCart('The Essential Tee',150)"
+              >
+                Add to bag
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <h3
+              class="product-name"
+              data-i18n="tee"
+            >
+              The Essential Tee
+            </h3>
+
+            <span class="product-price">
+              $150
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 4 -->
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=1200&q=85"
+              alt="The Founder Pant"
+              loading="lazy"
+            >
+
+            <div class="product-overlay">
+
+              <button
+                class="product-add"
+                onclick="addToCart('The Founder Pant',290)"
+              >
+                Add to bag
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <h3
+              class="product-name"
+              data-i18n="pant"
+            >
+              The Founder Pant
+            </h3>
+
+            <span class="product-price">
+              $290
+            </span>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         HOUSE
+         ===================================================== -->
+
+    <section
+      class="house"
+      id="house"
+    >
+
+      <div class="house-image"></div>
+
+
+      <div class="house-copy">
+
+        <span class="eyebrow">
+          THE TRILLIONAIRE HOUSE
+        </span>
+
+        <h2 data-i18n="houseTitle">
+          Built on a higher standard.
+        </h2>
+
+        <p data-i18n="houseText">
+          Trillionaire Collection represents more than clothing.
+          It is a philosophy of ambition, confidence and timeless style.
+        </p>
+
+        <a
+          href="#standards"
+          class="luxury-button"
+        >
+          Explore the House
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CAMPAIGN
+         ===================================================== -->
+
+    <section class="campaign">
+
+      <div class="campaign-copy">
+
+        <span class="eyebrow">
+          CAMPAIGN 01
+        </span>
+
+        <h2 data-i18n="campaignTitle">
+          Timeless by design.
+        </h2>
+
+        <p data-i18n="campaignText">
+          A collection created to exist beyond seasons and trends.
+        </p>
+
+        <a
+          href="#collection"
+          class="luxury-button"
+        >
+          View campaign
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CATEGORIES
+         ===================================================== -->
+
+    <section class="categories">
+
+
+      <a
+        href="#collection"
+        class="category"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1200&q=85"
+          alt="Outerwear"
+          loading="lazy"
+        >
+
+        <div class="category-copy">
+
+          <span>
+            01
+          </span>
+
+          <h3 data-i18n="outerwear">
+            Outerwear
+          </h3>
+
+        </div>
+
+      </a>
+
+
+      <a
+        href="#collection"
+        class="category"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1200&q=85"
+          alt="Essentials"
+          loading="lazy"
+        >
+
+        <div class="category-copy">
+
+          <span>
+            02
+          </span>
+
+          <h3 data-i18n="essentials">
+            Essentials
+          </h3>
+
+        </div>
+
+      </a>
+
+
+      <a
+        href="#collection"
+        class="category"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85"
+          alt="Signature"
+          loading="lazy"
+        >
+
+        <div class="category-copy">
+
+          <span>
+            03
+          </span>
+
+          <h3 data-i18n="signature">
+            Signature
+          </h3>
+
+        </div>
+
+      </a>
+
+    </section>
+
+
+    <!-- =====================================================
+         STANDARDS
+         ===================================================== -->
+
+    <section
+      class="standards"
+      id="standards"
+    >
+
+      <span class="eyebrow">
+        OUR STANDARD
+      </span>
+
+      <h2>
+        The Trillionaire Standard
+      </h2>
+
+
+      <div class="standards-grid">
+
+
+        <div class="standard">
+
+          <div class="standard-number">
+            I
+          </div>
+
+          <h3 data-i18n="quality">
+            Exceptional quality
+          </h3>
+
+          <p>
+            Every detail matters.
+            Every material is selected with intention.
+          </p>
+
+        </div>
+
+
+        <div class="standard">
+
+          <div class="standard-number">
+            II
+          </div>
+
+          <h3 data-i18n="style">
+            Timeless style
+          </h3>
+
+          <p>
+            Designed to remain relevant
+            beyond temporary trends.
+          </p>
+
+        </div>
+
+
+        <div class="standard">
+
+          <div class="standard-number">
+            III
+          </div>
+
+          <h3 data-i18n="purpose">
+            A higher purpose
+          </h3>
+
+          <p>
+            Luxury should represent something
+            greater than the product itself.
+          </p>
+
+        </div>
+
+
+        <div class="standard">
+
+          <div class="standard-number">
+            IV
+          </div>
+
+          <h3 data-i18n="community">
+            A global community
+          </h3>
+
+          <p>
+            A house created for people
+            who refuse ordinary.
+          </p>
 
         </div>
 
       </div>
 
+    </section>
 
-      <p class="footer-desc">
 
-        Luxury without compromise.
-        A modern clothing house
-        built around craftsmanship,
-        character and timeless design.
+    <!-- =====================================================
+         NEWSLETTER
+         ===================================================== -->
 
+    <section class="newsletter">
+
+      <span class="eyebrow">
+        TRILLIONAIRE PRIVÉ
+      </span>
+
+      <h2 data-i18n="newsletter">
+        Join the collection
+      </h2>
+
+      <p data-i18n="newsletterText">
+        Be the first to discover new collections,
+        private releases and stories from the House.
       </p>
 
-    </div>
-
-
-    <div>
-
-      <h4>
-        Shop
-      </h4>
-
-      <ul>
-
-        <li>
-          <a href="#collections">
-            Men
-          </a>
-        </li>
-
-        <li>
-          <a href="#collections">
-            Women
-          </a>
-        </li>
-
-        <li>
-          <a href="#shop">
-            Collections
-          </a>
-        </li>
-
-        <li>
-          <a href="#collections">
-            New Arrivals
-          </a>
-        </li>
-
-      </ul>
-
-    </div>
-
-
-    <div>
-
-      <h4>
-        The House
-      </h4>
-
-      <ul>
-
-        <li>
-          <a href="#house">
-            Our Story
-          </a>
-        </li>
-
-        <li>
-          <a href="#standard">
-            Craftsmanship
-          </a>
-        </li>
-
-        <li>
-          <a href="#standard">
-            Our Standard
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            Journal
-          </a>
-        </li>
-
-      </ul>
-
-    </div>
-
-
-    <div>
-
-      <h4>
-        Join our world
-      </h4>
-
-      <p
-        class="footer-desc"
-        style="margin-top:0;margin-bottom:18px"
-      >
-        Be the first to know about
-        new collections, exclusive
-        releases and private experiences.
-      </p>
 
       <form
-        class="footer-form"
-        onsubmit="subscribe(event)"
+        class="newsletter-form"
+        onsubmit="subscribeNewsletter(event)"
       >
 
         <input
-          id="email"
           type="email"
-          placeholder="Your email address"
           required
+          data-i18n-placeholder="emailPlaceholder"
+          placeholder="Your email address"
         >
 
         <button
           type="submit"
+          data-i18n="subscribe"
         >
-          →
+          Subscribe
         </button>
 
       </form>
 
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
+  <footer>
+
+    <div class="footer-top">
+
+
+      <div>
+
+        <div class="footer-brand-text">
+          TRILLIONAIRE
+        </div>
+
+        <p class="footer-description">
+          A modern luxury clothing house
+          built around ambition, timeless design
+          and exceptional quality.
+        </p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Collection
+        </h4>
+
+        <a
+          href="#collection"
+          data-i18n="collections"
+        >
+          Collections
+        </a>
+
+        <a href="#collection">
+          New arrivals
+        </a>
+
+        <a href="#collection">
+          Best sellers
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          The House
+        </h4>
+
+        <a
+          href="#house"
+          data-i18n="house"
+        >
+          The House
+        </a>
+
+        <a href="#standards">
+          Standards
+        </a>
+
+        <a href="#top">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Follow
+        </h4>
+
+        <a href="#">
+          Instagram
+        </a>
+
+        <a href="#">
+          TikTok
+        </a>
+
+        <a href="#">
+          Pinterest
+        </a>
+
+      </div>
+
     </div>
 
-  </div>
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 Trillionaire Collection
+      </span>
+
+      <span>
+        Designed for those who move differently.
+      </span>
+
+    </div>
+
+  </footer>
 
 
-  <div class="footer-bottom">
+  <!-- =======================================================
+       SEARCH
+       ======================================================= -->
 
-    <span>
-      © 2026 Trillionaire Collection.
-      All rights reserved.
-    </span>
-
-    <span>
-      Privacy &nbsp;
-      Terms &nbsp;
-      Cookies
-    </span>
-
-  </div>
-
-</footer>
-
-
-<!-- =====================================================
-     SETTINGS DRAWER
-===================================================== -->
-
-<div
-  class="settings-overlay"
-  id="settingsOverlay"
-  onclick="settingsOutside(event)"
->
-
-  <aside
-    class="settings-drawer"
-    aria-label="Settings"
+  <div
+    class="search-overlay"
+    id="searchOverlay"
   >
 
-    <div class="settings-head">
-
-      <h2>
-        Settings
-      </h2>
-
-      <button
-        class="settings-close"
-        type="button"
-        onclick="closeSettings()"
-        aria-label="Close settings"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div class="settings-section">
-
-      <div class="settings-label">
-        Appearance
-      </div>
-
-
-      <div
-        class="appearance-options"
-        role="group"
-        aria-label="Choose appearance"
-      >
-
-
-        <!-- BRIGHT -->
-
-        <button
-          class="appearance-option active"
-          id="brightOption"
-          type="button"
-          onclick="setAppearance('bright')"
-        >
-
-          <span class="appearance-left">
-
-            <span
-              class="appearance-icon"
-              aria-hidden="true"
-            >
-              ☼
-            </span>
-
-            <span>
-
-              <span class="appearance-name">
-                Bright
-              </span>
-
-              <span class="appearance-description">
-                Light luxury appearance
-              </span>
-
-            </span>
-
-          </span>
-
-          <span
-            class="appearance-check"
-            aria-hidden="true"
-          ></span>
-
-        </button>
-
-
-        <!-- DARK -->
-
-        <button
-          class="appearance-option"
-          id="darkOption"
-          type="button"
-          onclick="setAppearance('dark')"
-        >
-
-          <span class="appearance-left">
-
-            <span
-              class="appearance-icon"
-              aria-hidden="true"
-            >
-              ☾
-            </span>
-
-            <span>
-
-              <span class="appearance-name">
-                Dark
-              </span>
-
-              <span class="appearance-description">
-                Deep luxury appearance
-              </span>
-
-            </span>
-
-          </span>
-
-          <span
-            class="appearance-check"
-            aria-hidden="true"
-          ></span>
-
-        </button>
-
-
-      </div>
-
-    </div>
-
-  </aside>
-
-</div>
-
-
-<!-- =====================================================
-     SEARCH
-===================================================== -->
-
-<div
-  class="search-overlay"
-  id="searchOverlay"
->
-
-  <div class="search-box">
-
-    <input
-      id="searchInput"
-      type="search"
-      placeholder="Search the collection..."
-    >
-
     <button
-      type="button"
+      class="search-close"
       onclick="closeSearch()"
-      aria-label="Close search"
     >
       ×
     </button>
 
+    <div class="search-box">
+
+      <span>
+        TRILLIONAIRE SEARCH
+      </span>
+
+      <input
+        id="searchInput"
+        type="text"
+        data-i18n-placeholder="searchPlaceholder"
+        placeholder="Search the collection..."
+        onkeydown="searchKey(event)"
+      >
+
+    </div>
+
   </div>
 
-</div>
+
+  <!-- =======================================================
+       CART
+       ======================================================= -->
+
+  <div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart()"
+  ></div>
 
 
-<!-- =====================================================
-     CART
-===================================================== -->
-
-<div
-  class="cart-overlay"
-  id="cartOverlay"
-  onclick="cartOutside(event)"
->
-
-  <aside class="cart">
+  <aside
+    class="cart-drawer"
+    id="cartDrawer"
+  >
 
     <div class="cart-head">
 
-      <h2>
+      <h2 data-i18n="bagTitle">
         Your Bag
       </h2>
 
       <button
-        class="close"
-        type="button"
+        class="cart-close"
         onclick="closeCart()"
-        aria-label="Close cart"
       >
         ×
       </button>
@@ -2475,450 +2695,1051 @@ footer li a{
 
 
     <div
-      id="cartEmpty"
-      class="cart-empty"
+      class="cart-items"
+      id="cartItems"
     >
-      Your bag is currently empty.
+
+      <p
+        class="cart-empty"
+        data-i18n="emptyBag"
+      >
+        Your bag is currently empty.
+      </p>
+
     </div>
-
-
-    <div
-      id="cartList"
-      class="cart-list"
-    ></div>
 
   </aside>
 
-</div>
 
+  <!-- =======================================================
+       HAMBURGER MENU
+       ======================================================= -->
 
-<!-- =====================================================
-     TOAST
-===================================================== -->
+  <div
+    class="menu-overlay"
+    id="menuOverlay"
+    onclick="menuOutside(event)"
+  ></div>
 
-<div
-  class="toast"
-  id="toast"
-></div>
 
+  <aside
+    class="menu-drawer"
+    id="menuDrawer"
+  >
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+    <div class="menu-head">
 
-<script>
+      <h2 id="menuTitle">
+        Menu
+      </h2>
 
-let cart = [];
+      <button
+        class="menu-close"
+        onclick="closeMenu()"
+      >
+        ×
+      </button>
 
+    </div>
 
-/* =====================================================
-   TOAST
-===================================================== */
 
-function showToast(message){
+    <div class="menu-content">
 
-  const toast =
-    document.getElementById("toast");
 
-  toast.textContent = message;
+      <!-- NAVIGATION -->
 
-  toast.classList.add("show");
+      <div class="menu-section">
 
-  clearTimeout(window.toastTimer);
+        <span class="menu-label">
+          Navigation
+        </span>
 
-  window.toastTimer =
-    setTimeout(function(){
+        <a
+          href="#collection"
+          onclick="closeMenu()"
+          data-i18n="collections"
+        >
+          Collections
+        </a>
 
-      toast.classList.remove("show");
+        <a
+          href="#house"
+          onclick="closeMenu()"
+          data-i18n="house"
+        >
+          The House
+        </a>
 
-    },2600);
+        <a
+          href="#standards"
+          onclick="closeMenu()"
+        >
+          Our Standard
+        </a>
 
-}
+      </div>
 
 
-/* =====================================================
-   SETTINGS
-===================================================== */
+      <!-- LANGUAGE -->
 
-function openSettings(){
+      <div class="menu-section">
 
-  document
-    .getElementById("settingsOverlay")
-    .classList
-    .add("open");
+        <span
+          class="menu-label"
+          id="languageLabel"
+        >
+          Language
+        </span>
 
-  document
-    .body
-    .classList
-    .add("no-scroll");
 
-}
+        <div class="menu-options">
 
-
-function closeSettings(){
-
-  document
-    .getElementById("settingsOverlay")
-    .classList
-    .remove("open");
-
-  document
-    .body
-    .classList
-    .remove("no-scroll");
-
-}
-
-
-function settingsOutside(event){
-
-  if(
-    event.target.id ===
-    "settingsOverlay"
-  ){
-
-    closeSettings();
-
-  }
-
-}
-
-
-function setAppearance(mode){
-
-  const bright =
-    document.getElementById("brightOption");
-
-  const dark =
-    document.getElementById("darkOption");
-
-
-  if(mode === "dark"){
-
-    document.body.classList.add(
-      "dark-mode"
-    );
-
-    dark.classList.add("active");
-
-    bright.classList.remove("active");
-
-    showToast(
-      "Dark appearance selected"
-    );
-
-  }
-
-  else{
-
-    document.body.classList.remove(
-      "dark-mode"
-    );
-
-    bright.classList.add("active");
-
-    dark.classList.remove("active");
-
-    showToast(
-      "Bright appearance selected"
-    );
-
-  }
-
-}
-
-
-/* =====================================================
-   CART
-===================================================== */
-
-function addToCart(name,price){
-
-  cart.push({
-    name:name,
-    price:price
-  });
-
-  updateCart();
-
-  showToast(
-    name + " added to your bag"
-  );
-
-}
-
-
-function updateCart(){
-
-  document
-    .getElementById("bagCount")
-    .textContent = cart.length;
-
-
-  const empty =
-    document.getElementById("cartEmpty");
-
-  const list =
-    document.getElementById("cartList");
-
-
-  if(cart.length === 0){
-
-    empty.style.display = "block";
-
-    list.innerHTML = "";
-
-    return;
-
-  }
-
-
-  empty.style.display = "none";
-
-
-  list.innerHTML =
-    cart.map(function(item,index){
-
-      return `
-
-        <div class="cart-item">
-
-          <div
-            style="
-              width:75px;
-              height:95px;
-              background:#dedbd3;
-              display:grid;
-              place-items:center;
-              font-size:8px;
-              letter-spacing:.1em;
-            "
+          <button
+            class="menu-option active"
+            id="englishLanguage"
+            onclick="changeLanguage('en')"
           >
-            TC
-          </div>
+            English
+          </button>
 
-          <div>
-
-            <h3>
-              ${item.name}
-            </h3>
-
-            <p>
-              $${item.price}
-            </p>
-
-            <button
-              class="cart-remove"
-              type="button"
-              onclick="removeCart(${index})"
-            >
-              Remove
-            </button>
-
-          </div>
+          <button
+            class="menu-option"
+            id="kurdishLanguage"
+            onclick="changeLanguage('ku')"
+          >
+            کوردی
+          </button>
 
         </div>
 
-      `;
-
-    }).join("");
-
-}
+      </div>
 
 
-function removeCart(index){
+      <!-- APPEARANCE -->
 
-  cart.splice(index,1);
+      <div class="menu-section">
 
-  updateCart();
-
-  showToast(
-    "Item removed"
-  );
-
-}
-
-
-function openCart(){
-
-  document
-    .getElementById("cartOverlay")
-    .classList
-    .add("open");
-
-  document
-    .body
-    .classList
-    .add("no-scroll");
-
-}
+        <span
+          class="menu-label"
+          id="appearanceLabel"
+        >
+          Appearance
+        </span>
 
 
-function closeCart(){
+        <div class="menu-options">
 
-  document
-    .getElementById("cartOverlay")
-    .classList
-    .remove("open");
+          <button
+            class="menu-option active"
+            id="brightButton"
+            onclick="setAppearance('bright')"
+          >
+            ☼
 
-  document
-    .body
-    .classList
-    .remove("no-scroll");
+            <span id="brightText">
+              Bright
+            </span>
 
-}
-
-
-function cartOutside(event){
-
-  if(
-    event.target.id ===
-    "cartOverlay"
-  ){
-
-    closeCart();
-
-  }
-
-}
+          </button>
 
 
-/* =====================================================
-   SEARCH
-===================================================== */
+          <button
+            class="menu-option"
+            id="darkButton"
+            onclick="setAppearance('dark')"
+          >
+            ☾
 
-function openSearch(){
+            <span id="darkText">
+              Dark
+            </span>
 
-  document
-    .getElementById("searchOverlay")
-    .classList
-    .add("open");
+          </button>
 
-  document
-    .body
-    .classList
-    .add("no-scroll");
+        </div>
 
+      </div>
 
-  setTimeout(function(){
+    </div>
 
-    document
-      .getElementById("searchInput")
-      .focus();
-
-  },100);
-
-}
+  </aside>
 
 
-function closeSearch(){
+  <!-- =======================================================
+       TOAST
+       ======================================================= -->
 
-  document
-    .getElementById("searchOverlay")
-    .classList
-    .remove("open");
-
-  document
-    .body
-    .classList
-    .remove("no-scroll");
-
-}
+  <div
+    class="toast"
+    id="toast"
+  ></div>
 
 
-/* =====================================================
-   NEWSLETTER
-===================================================== */
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================= -->
 
-function subscribe(event){
+  <script>
 
-  event.preventDefault();
+    /* =======================================================
+       ELEMENTS
+       ======================================================= */
 
-  showToast(
-    "Welcome to Trillionaire Collection"
-  );
+    const menuDrawer =
+      document.getElementById("menuDrawer");
 
-  document
-    .getElementById("email")
-    .value = "";
+    const menuOverlay =
+      document.getElementById("menuOverlay");
 
-}
+    const searchOverlay =
+      document.getElementById("searchOverlay");
 
+    const cartDrawer =
+      document.getElementById("cartDrawer");
 
-/* =====================================================
-   MOBILE MENU
-===================================================== */
+    const cartOverlay =
+      document.getElementById("cartOverlay");
 
-function toggleMenu(){
+    const cartItems =
+      document.getElementById("cartItems");
 
-  showToast(
-    "Mobile navigation ready"
-  );
+    const bagCount =
+      document.getElementById("bagCount");
 
-}
-
-
-/* =====================================================
-   HEADER SCROLL
-===================================================== */
-
-window.addEventListener(
-  "scroll",
-  function(){
-
-    const header =
-      document.getElementById("header");
+    const toast =
+      document.getElementById("toast");
 
 
-    if(window.scrollY > 50){
+    /* =======================================================
+       TRANSLATIONS
+       ======================================================= */
 
-      header
-        .classList
-        .add("scrolled");
+    const translations = {
+
+      en: {
+
+        menu: "Menu",
+
+        language: "Language",
+
+        appearance: "Appearance",
+
+        bright: "Bright",
+
+        dark: "Dark",
+
+        collections: "Collections",
+
+        house: "The House",
+
+        search: "Search",
+
+        bag: "Bag",
+
+        heroTitle:
+          "Luxury lives differently.",
+
+        heroText:
+          "Trillionaire Collection is a modern luxury house built around timeless design, exceptional quality and a higher standard of living.",
+
+        discover:
+          "Discover the collection",
+
+        introTitle:
+          "The art of becoming.",
+
+        introText:
+          "Designed for those who move differently. Every piece is created with intention, restraint and an unmistakable sense of luxury.",
+
+        shopCollection:
+          "Shop the collection",
+
+        jacket:
+          "The Atelier Jacket",
+
+        hoodie:
+          "The Signature Hoodie",
+
+        tee:
+          "The Essential Tee",
+
+        pant:
+          "The Founder Pant",
+
+        houseTitle:
+          "Built on a higher standard.",
+
+        houseText:
+          "Trillionaire Collection represents more than clothing. It is a philosophy of ambition, confidence and timeless style.",
+
+        campaignTitle:
+          "Timeless by design.",
+
+        campaignText:
+          "A collection created to exist beyond seasons and trends.",
+
+        outerwear:
+          "Outerwear",
+
+        essentials:
+          "Essentials",
+
+        signature:
+          "Signature",
+
+        quality:
+          "Exceptional quality",
+
+        style:
+          "Timeless style",
+
+        purpose:
+          "A higher purpose",
+
+        community:
+          "A global community",
+
+        newsletter:
+          "Join the collection",
+
+        newsletterText:
+          "Be the first to discover new collections, private releases and stories from the House.",
+
+        emailPlaceholder:
+          "Your email address",
+
+        subscribe:
+          "Subscribe",
+
+        bagTitle:
+          "Your Bag",
+
+        emptyBag:
+          "Your bag is currently empty.",
+
+        searchPlaceholder:
+          "Search the collection..."
+
+      },
+
+
+      ku: {
+
+        menu:
+          "مێنیو",
+
+        language:
+          "زمان",
+
+        appearance:
+          "ڕووکاری ماڵپەڕ",
+
+        bright:
+          "ڕوون",
+
+        dark:
+          "تاریک",
+
+        collections:
+          "کۆمەڵەکان",
+
+        house:
+          "ماڵی ترلیۆنەر",
+
+        search:
+          "گەڕان",
+
+        bag:
+          "جانتە",
+
+        heroTitle:
+          "لوکس بە شێوەیەکی جیاواز دەژی.",
+
+        heroText:
+          "کۆمەڵەی ترلیۆنەر ماڵێکی نوێی لوکسە کە لەسەر دیزاینی بێکات، کوالێتی بەرز و ستانداردێکی جیاواز دامەزراوە.",
+
+        discover:
+          "کۆمەڵەکە ببینە",
+
+        introTitle:
+          "هونەری بوون بە خۆت.",
+
+        introText:
+          "بۆ ئەوانەی بە شێوەیەکی جیاواز دەجوڵێن. هەر پارچەیەک بە مەبەست، سادەیی و هەستی تایبەتی لوکس دروست کراوە.",
+
+        shopCollection:
+          "کۆمەڵەکە ببینە",
+
+        jacket:
+          "جاکێتی ئەتلیە",
+
+        hoodie:
+          "هودیای سیگنەچەر",
+
+        tee:
+          "تی‌شێرتی بنەڕەتی",
+
+        pant:
+          "پانتۆڵی دامەزرێنەر",
+
+        houseTitle:
+          "لەسەر ستانداردێکی بەرزتر دروستکراوە.",
+
+        houseText:
+          "کۆمەڵەی ترلیۆنەر تەنها جل و بەرگ نییە. بیرۆکەیەکە لەسەر ئامانج، متمانە بەخۆ و ستایلی بێکات.",
+
+        campaignTitle:
+          "بێکات بە دیزاین.",
+
+        campaignText:
+          "کۆمەڵەیەک کە بۆ مانەوە لە دەرەوەی وەرز و مۆدە دروست کراوە.",
+
+        outerwear:
+          "جلە دەرەوەکان",
+
+        essentials:
+          "بنەڕەتییەکان",
+
+        signature:
+          "سیگنەچەر",
+
+        quality:
+          "کوالێتی نایاب",
+
+        style:
+          "ستایلی بێکات",
+
+        purpose:
+          "ئامانجێکی بەرزتر",
+
+        community:
+          "کۆمەڵگەیەکی جیهانی",
+
+        newsletter:
+          "بەشداری کۆمەڵەکە ببە",
+
+        newsletterText:
+          "یەکەم کەس بە کە نوێترین کۆمەڵەکان، بەرهەمە تایبەتەکان و چیرۆکەکانی ماڵەکە دەزانیت.",
+
+        emailPlaceholder:
+          "ئیمەیڵەکەت",
+
+        subscribe:
+          "بەشداربوون",
+
+        bagTitle:
+          "جانتەکەت",
+
+        emptyBag:
+          "جانتەکەت بەتاڵە.",
+
+        searchPlaceholder:
+          "لە کۆمەڵەکەدا بگەڕێ..."
+
+      }
+
+    };
+
+
+    /* =======================================================
+       MENU
+       ======================================================= */
+
+    function openMenu() {
+
+      menuDrawer.classList.add("open");
+
+      menuOverlay.classList.add("open");
 
     }
 
-    else{
 
-      header
-        .classList
-        .remove("scrolled");
+    function closeMenu() {
 
-    }
+      menuDrawer.classList.remove("open");
 
-  }
-);
-
-
-/* =====================================================
-   ESCAPE KEY
-===================================================== */
-
-document.addEventListener(
-  "keydown",
-  function(event){
-
-    if(event.key === "Escape"){
-
-      closeSearch();
-
-      closeCart();
-
-      closeSettings();
+      menuOverlay.classList.remove("open");
 
     }
 
-  }
-);
+
+    function menuOutside(event) {
+
+      if (
+        event.target === menuOverlay
+      ) {
+
+        closeMenu();
+
+      }
+
+    }
 
 
-/* =====================================================
-   INITIALIZE CART
-===================================================== */
+    /* =======================================================
+       APPEARANCE
+       ======================================================= */
 
-updateCart();
+    function setAppearance(mode) {
 
-</script>
+      const brightButton =
+        document.getElementById(
+          "brightButton"
+        );
+
+      const darkButton =
+        document.getElementById(
+          "darkButton"
+        );
+
+
+      if (mode === "dark") {
+
+        document.body.classList.add(
+          "dark-mode"
+        );
+
+        brightButton.classList.remove(
+          "active"
+        );
+
+        darkButton.classList.add(
+          "active"
+        );
+
+        localStorage.setItem(
+          "appearance",
+          "dark"
+        );
+
+      } else {
+
+        document.body.classList.remove(
+          "dark-mode"
+        );
+
+        darkButton.classList.remove(
+          "active"
+        );
+
+        brightButton.classList.add(
+          "active"
+        );
+
+        localStorage.setItem(
+          "appearance",
+          "bright"
+        );
+
+      }
+
+    }
+
+
+    /* =======================================================
+       LANGUAGE
+       ======================================================= */
+
+    function changeLanguage(language) {
+
+      const text =
+        translations[language];
+
+      if (!text) return;
+
+
+      /* Direction */
+
+      if (language === "ku") {
+
+        document.body.classList.add(
+          "kurdish-mode"
+        );
+
+        document.documentElement
+          .setAttribute(
+            "dir",
+            "rtl"
+          );
+
+        document.documentElement
+          .setAttribute(
+            "lang",
+            "ckb"
+          );
+
+      } else {
+
+        document.body.classList.remove(
+          "kurdish-mode"
+        );
+
+        document.documentElement
+          .setAttribute(
+            "dir",
+            "ltr"
+          );
+
+        document.documentElement
+          .setAttribute(
+            "lang",
+            "en"
+          );
+
+      }
+
+
+      /* Translate */
+
+      document
+        .querySelectorAll(
+          "[data-i18n]"
+        )
+        .forEach(element => {
+
+          const key =
+            element.getAttribute(
+              "data-i18n"
+            );
+
+          if (text[key]) {
+
+            element.textContent =
+              text[key];
+
+          }
+
+        });
+
+
+      /* Translate placeholders */
+
+      document
+        .querySelectorAll(
+          "[data-i18n-placeholder]"
+        )
+        .forEach(element => {
+
+          const key =
+            element.getAttribute(
+              "data-i18n-placeholder"
+            );
+
+          if (text[key]) {
+
+            element.placeholder =
+              text[key];
+
+          }
+
+        });
+
+
+      /* Menu */
+
+      document.getElementById(
+        "menuTitle"
+      ).textContent =
+        text.menu;
+
+
+      document.getElementById(
+        "languageLabel"
+      ).textContent =
+        text.language;
+
+
+      document.getElementById(
+        "appearanceLabel"
+      ).textContent =
+        text.appearance;
+
+
+      document.getElementById(
+        "brightText"
+      ).textContent =
+        text.bright;
+
+
+      document.getElementById(
+        "darkText"
+      ).textContent =
+        text.dark;
+
+
+      /* Language buttons */
+
+      document
+        .getElementById(
+          "englishLanguage"
+        )
+        .classList.toggle(
+          "active",
+          language === "en"
+        );
+
+
+      document
+        .getElementById(
+          "kurdishLanguage"
+        )
+        .classList.toggle(
+          "active",
+          language === "ku"
+        );
+
+
+      /* Save */
+
+      localStorage.setItem(
+        "language",
+        language
+      );
+
+    }
+
+
+    /* =======================================================
+       SEARCH
+       ======================================================= */
+
+    function openSearch() {
+
+      searchOverlay.classList.add(
+        "open"
+      );
+
+
+      setTimeout(() => {
+
+        document
+          .getElementById(
+            "searchInput"
+          )
+          .focus();
+
+      }, 150);
+
+    }
+
+
+    function closeSearch() {
+
+      searchOverlay.classList.remove(
+        "open"
+      );
+
+    }
+
+
+    function searchKey(event) {
+
+      if (
+        event.key === "Escape"
+      ) {
+
+        closeSearch();
+
+      }
+
+
+      if (
+        event.key === "Enter"
+      ) {
+
+        const value =
+          event.target.value.trim();
+
+
+        if (value) {
+
+          showToast(
+            "Searching for: " + value
+          );
+
+        }
+
+      }
+
+    }
+
+
+    /* =======================================================
+       CART
+       ======================================================= */
+
+    let cart = [];
+
+
+    function openCart() {
+
+      cartDrawer.classList.add(
+        "open"
+      );
+
+      cartOverlay.classList.add(
+        "open"
+      );
+
+    }
+
+
+    function closeCart() {
+
+      cartDrawer.classList.remove(
+        "open"
+      );
+
+      cartOverlay.classList.remove(
+        "open"
+      );
+
+    }
+
+
+    function addToCart(
+      name,
+      price
+    ) {
+
+      cart.push({
+        name: name,
+        price: price
+      });
+
+
+      updateCart();
+
+
+      showToast(
+        "Added to your bag"
+      );
+
+    }
+
+
+    function removeFromCart(index) {
+
+      cart.splice(
+        index,
+        1
+      );
+
+      updateCart();
+
+    }
+
+
+    function updateCart() {
+
+      bagCount.textContent =
+        cart.length;
+
+
+      if (
+        cart.length === 0
+      ) {
+
+        const language =
+          localStorage.getItem(
+            "language"
+          ) || "en";
+
+
+        cartItems.innerHTML = `
+          <p class="cart-empty">
+            ${translations[language].emptyBag}
+          </p>
+        `;
+
+        return;
+
+      }
+
+
+      cartItems.innerHTML =
+        cart
+          .map(
+            (item, index) => `
+
+              <div class="cart-item">
+
+                <div>
+
+                  <div class="cart-item-name">
+                    ${item.name}
+                  </div>
+
+                  <div>
+                    $${item.price}
+                  </div>
+
+                </div>
+
+                <button
+                  class="cart-item-remove"
+                  onclick="removeFromCart(${index})"
+                >
+                  Remove
+                </button>
+
+              </div>
+
+            `
+          )
+          .join("");
+
+    }
+
+
+    /* =======================================================
+       NEWSLETTER
+       ======================================================= */
+
+    function subscribeNewsletter(event) {
+
+      event.preventDefault();
+
+      showToast(
+        "Welcome to Trillionaire Collection"
+      );
+
+      event.target.reset();
+
+    }
+
+
+    /* =======================================================
+       TOAST
+       ======================================================= */
+
+    let toastTimer;
+
+
+    function showToast(message) {
+
+      toast.textContent =
+        message;
+
+      toast.classList.add(
+        "show"
+      );
+
+
+      clearTimeout(
+        toastTimer
+      );
+
+
+      toastTimer =
+        setTimeout(
+          () => {
+
+            toast.classList.remove(
+              "show"
+            );
+
+          },
+          2600
+        );
+
+    }
+
+
+    /* =======================================================
+       ESCAPE
+       ======================================================= */
+
+    document.addEventListener(
+      "keydown",
+      function(event) {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          closeMenu();
+
+          closeSearch();
+
+          closeCart();
+
+        }
+
+      }
+    );
+
+
+    /* =======================================================
+       HEADER SCROLL
+       ======================================================= */
+
+    window.addEventListener(
+      "scroll",
+      function() {
+
+        const header =
+          document.getElementById(
+            "mainHeader"
+          );
+
+
+        if (
+          window.scrollY > 30
+        ) {
+
+          header.classList.add(
+            "scrolled"
+          );
+
+        } else {
+
+          header.classList.remove(
+            "scrolled"
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =======================================================
+       LOAD SAVED SETTINGS
+       ======================================================= */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function() {
+
+        const savedAppearance =
+          localStorage.getItem(
+            "appearance"
+          ) || "bright";
+
+
+        const savedLanguage =
+          localStorage.getItem(
+            "language"
+          ) || "en";
+
+
+        setAppearance(
+          savedAppearance
+        );
+
+
+        changeLanguage(
+          savedLanguage
+        );
+
+
+        updateCart();
+
+      }
+    );
+
+  </script>
 
 </body>
 </html>
