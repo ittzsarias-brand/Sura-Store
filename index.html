@@ -1,20 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VOLT — Premium mobile phones and accessories.">
 <title>VOLT — Premium Mobile Store</title>
 
 <style>
+@font-face{
+  font-family:Rabar;
+  src:url("Rabar_037_2.ttf") format("truetype");
+  font-weight:100 900;
+  font-display:swap;
+}
+
 :root{
-  --bg:#f6f6f4;
+  --bg:#f4f4f1;
   --surface:#fff;
+  --surface-2:#ecece8;
   --text:#111;
   --muted:#777;
-  --line:#e7e7e3;
+  --line:#deded8;
   --accent:#111;
-  --radius:22px;
-  --shadow:0 18px 50px rgba(0,0,0,.08);
+  --accent-contrast:#fff;
+  --radius:24px;
+  --shadow:0 18px 55px rgba(0,0,0,.08);
+  --max:1280px;
+  --ease:cubic-bezier(.2,.8,.2,1);
 }
 
 *{
@@ -23,14 +35,43 @@
   padding:0;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:var(--bg);
   color:var(--text);
+  line-height:1.45;
+  transition:background .25s,color .25s;
 }
 
-button,a{
+body.dark{
+  --bg:#090909;
+  --surface:#141414;
+  --surface-2:#20201f;
+  --text:#f5f5f2;
+  --muted:#999;
+  --line:#292929;
+  --accent:#f5f5f2;
+  --accent-contrast:#111;
+  --shadow:0 22px 60px rgba(0,0,0,.35);
+}
+
+html[dir="rtl"] body,
+html[dir="rtl"] button,
+html[dir="rtl"] input{
+  font-family:Rabar,Arial,sans-serif;
+}
+
+button,
+input{
   font:inherit;
+}
+
+button{
+  cursor:pointer;
 }
 
 a{
@@ -38,59 +79,78 @@ a{
   color:inherit;
 }
 
+.container{
+  width:min(var(--max),calc(100% - 40px));
+  margin:auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
 header{
-  background:rgba(246,246,244,.94);
-  backdrop-filter:blur(14px);
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:100;
+  background:rgba(244,244,241,.88);
+  backdrop-filter:blur(18px);
   border-bottom:1px solid var(--line);
 }
 
+body.dark header{
+  background:rgba(9,9,9,.88);
+}
+
 .nav{
-  max-width:1250px;
-  margin:auto;
   height:76px;
   display:flex;
   align-items:center;
-  gap:36px;
-  padding:0 22px;
+  gap:28px;
 }
 
 .logo{
-  font-size:24px;
-  font-weight:900;
-  letter-spacing:-.06em;
+  font-size:27px;
+  font-weight:950;
+  letter-spacing:-.07em;
 }
 
 .navlinks{
   display:flex;
   gap:25px;
-  font-size:14px;
   flex:1;
+  font-size:14px;
 }
 
 .navlinks a{
-  color:#555;
+  color:var(--muted);
+  transition:.2s;
 }
 
 .navlinks a:hover{
-  color:#111;
+  color:var(--text);
 }
 
 .actions{
   display:flex;
-  gap:10px;
+  gap:8px;
   align-items:center;
 }
 
 .iconbtn{
-  width:40px;
-  height:40px;
+  width:42px;
+  height:42px;
   border:1px solid var(--line);
-  background:#fff;
   border-radius:50%;
-  cursor:pointer;
+  background:var(--surface);
+  color:var(--text);
+  display:grid;
+  place-items:center;
+  transition:.2s;
+}
+
+.iconbtn:hover{
+  transform:translateY(-2px);
+  border-color:var(--text);
 }
 
 .cart{
@@ -101,154 +161,294 @@ header{
   position:absolute;
   right:-2px;
   top:-2px;
-  background:#111;
-  color:#fff;
-  width:17px;
-  height:17px;
+  width:18px;
+  height:18px;
   border-radius:50%;
+  background:var(--text);
+  color:var(--bg);
   font-size:10px;
   display:grid;
   place-items:center;
+  font-weight:800;
 }
 
-.hero{
-  max-width:1250px;
-  margin:26px auto 0;
-  padding:0 22px;
-}
-
-.hero-card{
-  min-height:510px;
-  border-radius:32px;
-  background:#151515;
-  color:white;
-  overflow:hidden;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  position:relative;
-}
-
-.hero-copy{
-  padding:70px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  z-index:2;
-}
-
-.kicker{
+.menu-btn{
   display:none;
 }
 
-h1{
-  font-size:clamp(48px,6vw,82px);
-  line-height:.91;
-  letter-spacing:-.065em;
-  max-width:620px;
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  padding:26px 0 0;
 }
 
-.hero-copy p{
+.hero-card{
+  min-height:610px;
+  border-radius:34px;
+  background:#101010;
+  color:#fff;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  position:relative;
+  isolation:isolate;
+}
+
+.hero-card:before{
+  content:"";
+  position:absolute;
+  inset:auto -10% -45% 30%;
+  height:500px;
+  background:radial-gradient(
+    circle,
+    #444 0,
+    transparent 62%
+  );
+  opacity:.7;
+  z-index:-1;
+}
+
+.hero-copy{
+  padding:76px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.eyebrow{
+  display:inline-flex;
+  width:max-content;
+  border:1px solid #444;
+  border-radius:999px;
+  padding:7px 11px;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#bbb;
+  margin-bottom:22px;
+}
+
+.hero h1{
+  font-size:clamp(50px,7vw,94px);
+  line-height:.88;
+  letter-spacing:-.075em;
+  max-width:720px;
+}
+
+.hero h1 span{
+  color:#8f8f8f;
+}
+
+.hero p{
   color:#aaa;
-  max-width:450px;
-  margin:26px 0;
+  max-width:500px;
+  margin:28px 0;
   font-size:16px;
-  line-height:1.6;
+  line-height:1.7;
+}
+
+.hero-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
 .btn{
-  border:0;
+  border:1px solid transparent;
+  border-radius:999px;
+  padding:14px 20px;
+  font-weight:800;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:.22s;
+}
+
+.btn-primary{
   background:#fff;
   color:#111;
-  border-radius:999px;
-  padding:14px 22px;
-  cursor:pointer;
-  font-weight:700;
-  width:max-content;
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px #0005;
+}
+
+.btn-ghost{
+  background:#1e1e1e;
+  color:#fff;
+  border-color:#3b3b3b;
+}
+
+.btn-ghost:hover{
+  background:#292929;
 }
 
 .hero-art{
   position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:grid;
+  place-items:center;
+  min-height:560px;
 }
 
-.phone{
-  width:220px;
-  height:390px;
-  border-radius:42px;
-  background:linear-gradient(145deg,#777,#171717 65%);
-  border:6px solid #252525;
-  box-shadow:35px 30px 70px rgba(0,0,0,.55);
+.orb{
+  position:absolute;
+  width:430px;
+  height:430px;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle at 40% 35%,
+      #666,
+      #252525 48%,
+      #111 72%
+    );
+  opacity:.9;
+}
+
+.hero-phone{
+  width:230px;
+  height:455px;
+  border:7px solid #292929;
+  border-radius:44px;
+  background:
+    linear-gradient(
+      145deg,
+      #bcbcbc 0,
+      #4a4a4a 30%,
+      #090909 75%
+    );
+  box-shadow:35px 35px 80px #000b;
   transform:rotate(9deg);
   position:relative;
+  z-index:2;
 }
 
-.phone:before{
+.hero-phone:before{
   content:"";
   position:absolute;
-  inset:9px;
-  border-radius:34px;
+  inset:8px;
+  border-radius:36px;
   background:
-    radial-gradient(circle at 70% 20%,#fff5 0 2%,transparent 22%),
-    linear-gradient(140deg,#d9d9d9,#3b3b3b 48%,#080808);
+    radial-gradient(
+      circle at 65% 20%,
+      #fff5,
+      transparent 18%
+    ),
+    linear-gradient(
+      145deg,
+      #ddd,
+      #777 30%,
+      #101010 72%
+    );
+}
+
+.hero-phone:after{
+  content:"V";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-size:92px;
+  font-weight:900;
+  color:#fff1;
+  z-index:2;
 }
 
 .camera{
   position:absolute;
+  z-index:3;
   top:25px;
-  left:22px;
-  width:82px;
-  height:98px;
-  border-radius:22px;
-  background:#111;
-  z-index:2;
+  left:23px;
+  width:86px;
+  height:103px;
+  border-radius:23px;
+  background:#0c0c0c;
+  border:1px solid #333;
+  padding:10px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
 }
 
 .camera i{
-  display:block;
-  width:25px;
-  height:25px;
   border-radius:50%;
-  background:#333;
-  border:4px solid #777;
-  margin:9px;
+  border:3px solid #555;
+  background:#191919;
 }
 
-.floating{
-  position:absolute;
-  right:35px;
-  bottom:40px;
-  background:#242424;
-  border:1px solid #444;
-  border-radius:18px;
-  padding:14px 18px;
-  color:#ddd;
-  font-size:13px;
+.camera i:last-child{
+  grid-column:span 2;
+  width:29px;
+  height:29px;
 }
+
+.hero-chip{
+  position:absolute;
+  z-index:4;
+  right:35px;
+  bottom:62px;
+  background:#191919;
+  border:1px solid #444;
+  border-radius:20px;
+  padding:15px 17px;
+  box-shadow:0 18px 40px #0007;
+}
+
+.hero-chip small{
+  display:block;
+  color:#888;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
+
+.hero-chip strong{
+  display:block;
+  margin-top:4px;
+  font-size:14px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
 
 .section{
-  max-width:1250px;
-  margin:70px auto 0;
-  padding:0 22px;
+  padding:92px 0 0;
 }
 
 .section-head{
   display:flex;
-  align-items:end;
   justify-content:space-between;
-  margin-bottom:22px;
+  align-items:end;
+  gap:20px;
+  margin-bottom:24px;
+}
+
+.eyebrow-light{
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  margin-bottom:8px;
 }
 
 .section h2{
-  font-size:32px;
-  letter-spacing:-.04em;
+  font-size:clamp(30px,4vw,48px);
+  letter-spacing:-.06em;
+  line-height:1;
 }
 
 .section-head p{
   color:var(--muted);
   font-size:13px;
 }
+
+/* =========================
+   CATEGORIES
+========================= */
 
 .categories{
   display:grid;
@@ -257,60 +457,118 @@ h1{
 }
 
 .cat{
-  background:#fff;
+  background:var(--surface);
   border:1px solid var(--line);
-  border-radius:20px;
-  padding:25px;
-  min-height:145px;
+  border-radius:24px;
+  padding:24px;
+  min-height:175px;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  cursor:pointer;
-  transition:.2s;
+  transition:.25s var(--ease);
+  position:relative;
+  overflow:hidden;
+}
+
+.cat:after{
+  content:"↗";
+  position:absolute;
+  right:20px;
+  top:20px;
+  color:var(--muted);
+  font-size:18px;
 }
 
 .cat:hover{
-  transform:translateY(-3px);
+  transform:translateY(-6px);
   box-shadow:var(--shadow);
+  border-color:#aaa;
 }
 
 .cat-icon{
-  font-size:29px;
+  font-size:34px;
 }
 
 .cat b{
-  font-size:17px;
+  font-size:18px;
 }
 
 .cat span{
-  color:#888;
+  color:var(--muted);
   font-size:12px;
 }
 
-.toolbar{
+/* =========================
+   SHOP TOOLS
+========================= */
+
+.shop-tools{
   display:flex;
-  gap:10px;
+  justify-content:space-between;
   align-items:center;
-  margin:25px 0 18px;
+  gap:15px;
+  margin:28px 0 18px;
+}
+
+.filters{
+  display:flex;
+  gap:8px;
   overflow:auto;
+  scrollbar-width:none;
+}
+
+.filters::-webkit-scrollbar{
+  display:none;
 }
 
 .filter{
   border:1px solid var(--line);
-  background:#fff;
+  background:var(--surface);
+  color:var(--text);
   border-radius:999px;
   padding:10px 15px;
-  cursor:pointer;
   white-space:nowrap;
   font-size:13px;
+  transition:.2s;
 }
 
 .filter.active,
 .filter:hover{
-  background:#111;
-  color:#fff;
-  border-color:#111;
+  background:var(--text);
+  color:var(--bg);
+  border-color:var(--text);
 }
+
+.searchbox{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid var(--line);
+  background:var(--surface);
+  border-radius:999px;
+  padding:0 13px;
+  min-width:240px;
+}
+
+.searchbox input{
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--text);
+  width:100%;
+  padding:10px 0;
+  font-size:13px;
+}
+
+.searchbox button{
+  border:0;
+  background:none;
+  color:var(--muted);
+}
+
+/* =========================
+   PRODUCTS
+========================= */
 
 .products{
   display:grid;
@@ -319,244 +577,413 @@ h1{
 }
 
 .card{
-  background:#fff;
+  background:var(--surface);
   border:1px solid var(--line);
-  border-radius:20px;
+  border-radius:24px;
   overflow:hidden;
   position:relative;
+  transition:.25s var(--ease);
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
 }
 
 .product-img{
-  height:245px;
-  background:#f0f0ed;
+  height:285px;
+  background:
+    linear-gradient(
+      145deg,
+      var(--surface-2),
+      var(--bg)
+    );
   display:grid;
   place-items:center;
   position:relative;
+  overflow:hidden;
 }
 
-.product-img .device{
-  width:100px;
-  height:185px;
-  border-radius:24px;
-  background:linear-gradient(150deg,#c8c8c8,#222);
-  box-shadow:0 15px 35px #0002;
-  transform:rotate(7deg);
+.product-img:after{
+  content:"";
+  position:absolute;
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  background:#fff3;
+  filter:blur(20px);
+}
+
+body.dark .product-img:after{
+  background:#fff1;
+}
+
+.device{
+  position:relative;
+  z-index:1;
+  box-shadow:0 25px 45px #0003;
+}
+
+.product-img.phone .device{
+  width:112px;
+  height:205px;
+  border-radius:27px;
+  background:
+    linear-gradient(
+      150deg,
+      #d8d8d8,
+      #202020
+    );
+  border:4px solid #303030;
+  transform:rotate(8deg);
+}
+
+.product-img.phone .device:before{
+  content:"";
+  position:absolute;
+  top:9px;
+  left:9px;
+  width:38px;
+  height:46px;
+  border-radius:13px;
+  background:#101010;
 }
 
 .product-img.case .device{
-  width:145px;
-  height:180px;
-  border-radius:26px;
-  background:linear-gradient(145deg,#252525,#b6b6b6);
-  border:8px solid #111;
+  width:150px;
+  height:190px;
+  border-radius:28px;
+  background:
+    linear-gradient(
+      145deg,
+      #252525,
+      #a9a9a9
+    );
+  border:9px solid #111;
+  transform:rotate(-6deg);
 }
 
 .product-img.charger .device{
-  width:130px;
-  height:105px;
-  border-radius:20px;
-  background:linear-gradient(145deg,#fff,#ccc);
-  box-shadow:0 18px 30px #0002;
+  width:135px;
+  height:108px;
+  border-radius:22px;
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #bbb
+    );
+  transform:rotate(-4deg);
 }
 
 .product-img.adapter .device{
-  width:90px;
-  height:120px;
-  border-radius:17px;
-  background:linear-gradient(145deg,#f8f8f8,#aaa);
+  width:94px;
+  height:128px;
+  border-radius:18px;
+  background:
+    linear-gradient(
+      145deg,
+      #f7f7f7,
+      #aaa
+    );
+  transform:rotate(5deg);
 }
 
 .badge{
   position:absolute;
-  left:12px;
-  top:12px;
-  background:#111;
-  color:#fff;
+  z-index:3;
+  left:13px;
+  top:13px;
+  background:var(--text);
+  color:var(--bg);
   border-radius:999px;
   padding:6px 9px;
-  font-size:10px;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
+.wish{
+  position:absolute;
+  z-index:3;
+  right:13px;
+  top:13px;
+  width:34px;
+  height:34px;
+  border:1px solid var(--line);
+  background:var(--surface);
+  color:var(--text);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
 }
 
 .info{
-  padding:17px;
+  padding:18px;
 }
 
 .info small{
-  color:#999;
+  color:var(--muted);
+  font-size:11px;
 }
 
 .info h3{
-  font-size:15px;
-  margin:6px 0 11px;
+  font-size:16px;
+  margin:6px 0 13px;
+  letter-spacing:-.02em;
+}
+
+.meta{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:var(--muted);
+  font-size:11px;
+  margin-bottom:14px;
+}
+
+.stars{
+  color:#111;
+  letter-spacing:1px;
+}
+
+.dark .stars{
+  color:#fff;
 }
 
 .row{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:10px;
 }
 
 .price{
-  font-weight:800;
+  font-weight:900;
+  font-size:17px;
 }
 
 .add{
   border:0;
-  background:#111;
-  color:#fff;
-  border-radius:50%;
-  width:36px;
-  height:36px;
-  cursor:pointer;
-  font-size:18px;
+  background:var(--text);
+  color:var(--bg);
+  border-radius:999px;
+  padding:10px 14px;
+  font-weight:800;
+  font-size:12px;
 }
 
-footer{
+.add:hover{
+  opacity:.82;
+}
+
+/* =========================
+   PROMO
+========================= */
+
+.promo{
   margin-top:90px;
-  background:#111;
-  color:#fff;
-  padding:55px 22px;
-}
-
-.footer-inner{
-  max-width:1250px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1fr;
+  border-radius:30px;
+  background:var(--text);
+  color:var(--bg);
+  padding:42px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   gap:30px;
 }
 
+.promo h2{
+  font-size:clamp(30px,4vw,54px);
+  letter-spacing:-.06em;
+  line-height:1;
+}
+
+.promo p{
+  color:var(--muted);
+  margin-top:10px;
+}
+
+.promo .btn{
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  margin-top:90px;
+  background:#0d0d0d;
+  color:#fff;
+  padding:60px 0;
+}
+
+.footer-inner{
+  display:grid;
+  grid-template-columns:2fr repeat(3,1fr);
+  gap:35px;
+}
+
 .footer-logo{
-  font-size:28px;
-  font-weight:900;
+  font-size:30px;
+  font-weight:950;
+  letter-spacing:-.07em;
 }
 
 .footer p,
 .footer a{
-  color:#999;
+  color:#8f8f8f;
   font-size:13px;
-  line-height:1.8;
+  line-height:2;
 }
 
 .footer h4{
-  margin-bottom:14px;
-  font-size:13px;
+  font-size:11px;
+  letter-spacing:.13em;
+  margin-bottom:12px;
 }
+
+/* =========================
+   DRAWERS
+========================= */
 
 .drawer{
   position:fixed;
   inset:0;
-  background:#0006;
-  z-index:50;
-  display:none;
+  background:#0008;
+  z-index:200;
+  opacity:0;
+  visibility:hidden;
+  transition:.25s;
 }
 
 .drawer.open{
-  display:block;
+  opacity:1;
+  visibility:visible;
 }
 
 .panel{
   margin-left:auto;
-  width:min(430px,100%);
+  width:min(460px,100%);
   height:100%;
-  background:#fff;
+  background:var(--surface);
+  color:var(--text);
   padding:25px;
   overflow:auto;
+  transform:translateX(100%);
+  transition:.3s var(--ease);
+}
+
+.drawer.open .panel{
+  transform:translateX(0);
 }
 
 .panel-head{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  margin-bottom:15px;
 }
 
 .close{
   border:0;
-  background:#eee;
+  background:var(--surface-2);
+  color:var(--text);
   border-radius:50%;
   width:36px;
   height:36px;
-  cursor:pointer;
 }
 
+/* =========================
+   CART
+========================= */
+
 .cart-item{
-  display:flex;
+  display:grid;
+  grid-template-columns:62px 1fr auto;
   gap:13px;
   padding:18px 0;
   border-bottom:1px solid var(--line);
+  align-items:start;
 }
 
 .mini{
   width:62px;
   height:62px;
   border-radius:14px;
-  background:#eee;
+  background:var(--surface-2);
+  display:grid;
+  place-items:center;
+}
+
+.cart-name{
+  font-size:14px;
+  font-weight:800;
+}
+
+.cart-price{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:3px;
+}
+
+.qty{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:10px;
+}
+
+.qty button{
+  border:1px solid var(--line);
+  background:var(--surface);
+  color:var(--text);
+  width:27px;
+  height:27px;
+  border-radius:8px;
+}
+
+.qty .remove{
+  width:auto;
+  padding:0 8px;
+  color:#d44;
+}
+
+.cart-total{
+  display:flex;
+  justify-content:space-between;
+  font-size:20px;
+  font-weight:900;
+  padding:25px 0;
+}
+
+.checkout{
+  width:100%;
+  border:0;
+  border-radius:999px;
+  padding:15px;
+  background:var(--text);
+  color:var(--bg);
+  font-weight:900;
 }
 
 .empty{
-  color:#888;
+  color:var(--muted);
   text-align:center;
   padding:80px 0;
 }
 
-/* Kurdish Sorani Font */
-@font-face{
-  font-family:Rabar;
-  src:url("Rabar_037_2.ttf") format("truetype");
-  font-weight:100 900;
-  font-style:normal;
-  font-display:swap;
+.empty-icon{
+  font-size:45px;
+  margin-bottom:15px;
 }
 
-html[dir="rtl"] body,
-html[dir="rtl"] button,
-html[dir="rtl"] a{
-  font-family:Rabar,Arial,sans-serif;
-}
+/* =========================
+   SETTINGS
+========================= */
 
-/* Dark Appearance */
-body.dark{
-  --bg:#0b0b0b;
-  --surface:#151515;
-  --text:#f5f5f2;
-  --muted:#aaa;
-  --line:#2b2b2b;
-}
-
-body.dark header{
-  background:rgba(11,11,11,.94);
-}
-
-body.dark .cat,
-body.dark .card,
-body.dark .filter,
-body.dark .iconbtn{
-  background:#151515;
-  color:#f5f5f2;
-  border-color:#2b2b2b;
-}
-
-body.dark .product-img{
-  background:#20201f;
-}
-
-body.dark .hero-card{
-  background:#1b1b1b;
-}
-
-body.dark .navlinks a{
-  color:#aaa;
-}
-
-body.dark .navlinks a:hover{
-  color:#fff;
-}
-
-body.dark footer{
-  background:#050505;
-}
-
-/* Settings Drawer */
 .settings-panel{
   width:min(390px,100%);
   margin-left:auto;
@@ -565,6 +992,12 @@ body.dark footer{
   color:var(--text);
   padding:28px;
   overflow:auto;
+  transform:translateX(100%);
+  transition:.3s var(--ease);
+}
+
+.drawer.open .settings-panel{
+  transform:translateX(0);
 }
 
 .settings-title{
@@ -624,27 +1057,83 @@ body.dark footer{
   color:var(--muted);
 }
 
-.language-option{
-  width:100%;
-  text-align:center;
-  font-size:17px;
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,20px);
+  background:var(--text);
+  color:var(--bg);
+  padding:12px 18px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:800;
+  opacity:0;
+  pointer-events:none;
+  z-index:500;
+  transition:.25s;
 }
 
-@media(max-width:900px){
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  background:var(--bg);
+  z-index:150;
+  padding:100px 25px 30px;
+  transform:translateX(-100%);
+  transition:.3s var(--ease);
+}
+
+.mobile-menu.open{
+  transform:translateX(0);
+}
+
+.mobile-menu a{
+  display:block;
+  font-size:30px;
+  font-weight:800;
+  letter-spacing:-.05em;
+  padding:15px 0;
+  border-bottom:1px solid var(--line);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
   .navlinks{
     display:none;
+  }
+
+  .menu-btn{
+    display:grid;
   }
 
   .hero-card{
     grid-template-columns:1fr;
   }
 
-  .hero-art{
-    min-height:280px;
+  .hero-copy{
+    padding:55px;
   }
 
-  .hero-copy{
-    padding:45px;
+  .hero-art{
+    min-height:450px;
   }
 
   .categories,
@@ -652,26 +1141,96 @@ body.dark footer{
     grid-template-columns:repeat(2,1fr);
   }
 
+  .shop-tools{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .searchbox{
+    width:100%;
+  }
+
   .footer-inner{
     grid-template-columns:1fr 1fr;
   }
 }
 
-@media(max-width:560px){
+@media(max-width:600px){
+
+  .container{
+    width:min(var(--max),calc(100% - 28px));
+  }
+
   .nav{
     height:65px;
   }
 
+  .logo{
+    font-size:24px;
+    flex:1;
+  }
+
+  .actions{
+    gap:5px;
+  }
+
+  .iconbtn{
+    width:38px;
+    height:38px;
+  }
+
+  .hero{
+    padding-top:14px;
+  }
+
   .hero-card{
-    min-height:610px;
+    min-height:680px;
+    border-radius:25px;
   }
 
   .hero-copy{
-    padding:35px 28px;
+    padding:38px 25px 20px;
+  }
+
+  .hero h1{
+    font-size:clamp(52px,15vw,75px);
+  }
+
+  .hero p{
+    font-size:14px;
   }
 
   .hero-art{
-    min-height:250px;
+    min-height:300px;
+  }
+
+  .orb{
+    width:280px;
+    height:280px;
+  }
+
+  .hero-phone{
+    width:170px;
+    height:330px;
+    border-radius:34px;
+  }
+
+  .camera{
+    transform:scale(.75);
+    transform-origin:top left;
+  }
+
+  .hero-chip{
+    right:18px;
+    bottom:22px;
+  }
+
+  .section{
+    padding-top:65px;
+  }
+
+  .section h2{
+    font-size:34px;
   }
 
   .categories,
@@ -680,24 +1239,78 @@ body.dark footer{
     gap:9px;
   }
 
+  .cat{
+    min-height:145px;
+    padding:17px;
+    border-radius:18px;
+  }
+
+  .cat-icon{
+    font-size:27px;
+  }
+
+  .cat b{
+    font-size:14px;
+  }
+
+  .cat span{
+    font-size:10px;
+  }
+
   .product-img{
-    height:190px;
+    height:205px;
   }
 
-  .product-img .device{
-    transform:scale(.78) rotate(7deg);
+  .product-img.phone .device{
+    transform:scale(.78) rotate(8deg);
   }
 
-  .section{
-    margin-top:48px;
+  .product-img.case .device{
+    transform:scale(.72) rotate(-6deg);
+  }
+
+  .product-img.charger .device{
+    transform:scale(.75) rotate(-4deg);
+  }
+
+  .product-img.adapter .device{
+    transform:scale(.78) rotate(5deg);
+  }
+
+  .info{
+    padding:13px;
+  }
+
+  .info h3{
+    font-size:13px;
+  }
+
+  .price{
+    font-size:15px;
+  }
+
+  .add{
+    padding:9px 10px;
+    font-size:10px;
+  }
+
+  .promo{
+    margin-top:65px;
+    padding:28px 22px;
+    flex-direction:column;
+    align-items:flex-start;
   }
 
   .footer-inner{
     grid-template-columns:1fr;
   }
 
-  .settings-panel{
-    padding:22px;
+  footer{
+    margin-top:65px;
+  }
+
+  .panel{
+    width:100%;
   }
 }
 </style>
@@ -706,16 +1319,23 @@ body.dark footer{
 <body>
 
 <header>
-  <nav class="nav">
+  <nav class="nav container">
+
+    <button
+      class="iconbtn menu-btn"
+      onclick="toggleMenu()"
+      aria-label="Menu">
+      ☰
+    </button>
 
     <div class="logo">VOLT.</div>
 
     <div class="navlinks">
-      <a id="navPhones" href="#phones">Phones</a>
-      <a id="navCases" href="#cases">Cases</a>
-      <a id="navChargers" href="#chargers">Chargers</a>
-      <a id="navAdapters" href="#adapters">Adapters</a>
-      <a id="navDeals" href="#deals">Deals</a>
+      <a href="#phones" id="navPhones">Phones</a>
+      <a href="#cases" id="navCases">Cases</a>
+      <a href="#chargers" id="navChargers">Chargers</a>
+      <a href="#adapters" id="navAdapters">Adapters</a>
+      <a href="#deals" id="navDeals">Deals</a>
     </div>
 
     <div class="actions">
@@ -747,213 +1367,403 @@ body.dark footer{
   </nav>
 </header>
 
+<!-- MOBILE MENU -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+  <a href="#phones" onclick="toggleMenu()">
+    Phones
+  </a>
+
+  <a href="#cases" onclick="toggleMenu()">
+    Cases
+  </a>
+
+  <a href="#chargers" onclick="toggleMenu()">
+    Chargers
+  </a>
+
+  <a href="#adapters" onclick="toggleMenu()">
+    Adapters
+  </a>
+
+  <a href="#deals" onclick="toggleMenu()">
+    Deals
+  </a>
+
+</div>
+
 <main>
 
+<!-- HERO -->
+
 <section class="hero">
+  <div class="container">
 
-  <div class="hero-card">
+    <div class="hero-card">
 
-    <div class="hero-copy">
+      <div class="hero-copy">
 
-      <h1 id="heroTitle">
-        Phones &amp; Accessories
-      </h1>
+        <div class="eyebrow">
+          VOLT / 2026 COLLECTION
+        </div>
 
-      <p id="heroText">
-        Shop phones and the accessories that make them better.
-        Curated hardware, premium cases, fast chargers and reliable adapters.
+        <h1 id="heroTitle">
+          Technology.
+          <br>
+          <span>Refined.</span>
+        </h1>
+
+        <p id="heroText">
+          Premium phones and accessories,
+          carefully selected for everyday life.
+          Clean design, reliable power and
+          hardware that feels right.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            class="btn btn-primary"
+            id="shopPhones"
+            href="#phones">
+            Shop phones →
+          </a>
+
+          <a
+            class="btn btn-ghost"
+            href="#categories">
+            Explore collection
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="hero-art">
+
+        <div class="orb"></div>
+
+        <div class="hero-phone">
+
+          <div class="camera">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+
+        </div>
+
+        <div class="hero-chip">
+          <small>Featured device</small>
+          <strong>Titan Pro · From $899</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+
+<section
+  class="section"
+  id="categories">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+        <div class="eyebrow-light">
+          COLLECTION
+        </div>
+
+        <h2 id="shopHeading">
+          Shop by category
+        </h2>
+
+      </div>
+
+      <p id="shopSub">
+        Everything for your phone,
+        in one place.
       </p>
 
+    </div>
+
+    <div class="categories">
+
       <a
-        class="btn"
-        id="shopPhones"
+        class="cat"
         href="#phones">
-        Shop phones →
+
+        <div class="cat-icon">
+          📱
+        </div>
+
+        <div>
+          <b id="categoryPhones">
+            Phones
+          </b>
+
+          <br>
+
+          <span id="categoryPhonesDesc">
+            Latest smartphones
+          </span>
+        </div>
+
+      </a>
+
+      <a
+        class="cat"
+        href="#cases">
+
+        <div class="cat-icon">
+          ▣
+        </div>
+
+        <div>
+          <b id="categoryCases">
+            Phone Cases
+          </b>
+
+          <br>
+
+          <span id="categoryCasesDesc">
+            Protective & premium
+          </span>
+        </div>
+
+      </a>
+
+      <a
+        class="cat"
+        href="#chargers">
+
+        <div class="cat-icon">
+          ⚡
+        </div>
+
+        <div>
+          <b id="categoryChargers">
+            Chargers
+          </b>
+
+          <br>
+
+          <span id="categoryChargersDesc">
+            Fast charging
+          </span>
+        </div>
+
+      </a>
+
+      <a
+        class="cat"
+        href="#adapters">
+
+        <div class="cat-icon">
+          ⌁
+        </div>
+
+        <div>
+          <b id="categoryAdapters">
+            Adapters
+          </b>
+
+          <br>
+
+          <span id="categoryAdaptersDesc">
+            Power & connectivity
+          </span>
+        </div>
+
       </a>
 
     </div>
 
-    <div class="hero-art">
+  </div>
 
-      <div class="phone">
-        <div class="camera">
-          <i></i>
-          <i></i>
-          <i></i>
+</section>
+
+<!-- PRODUCTS -->
+
+<section
+  class="section"
+  id="phones">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <div class="eyebrow-light">
+          VOLT STORE
         </div>
+
+        <h2 id="bestHeading">
+          Best sellers
+        </h2>
+
       </div>
-
-      <div class="floating">
-        Titan Pro · From $899
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<section class="section" id="categories">
-
-  <div class="section-head">
-
-    <div>
-      <h2 id="shopHeading">
-        Shop by category
-      </h2>
-
-      <p id="shopSub">
-        Everything for your phone, in one place.
-      </p>
-    </div>
-
-  </div>
-
-  <div class="categories">
-
-    <a class="cat" href="#phones">
-      <div class="cat-icon">📱</div>
-
-      <div>
-        <b id="categoryPhones">Phones</b>
-        <br>
-        <span id="categoryPhonesDesc">
-          Latest smartphones
-        </span>
-      </div>
-    </a>
-
-    <a class="cat" href="#cases">
-      <div class="cat-icon">▣</div>
-
-      <div>
-        <b id="categoryCases">Phone Cases</b>
-        <br>
-        <span id="categoryCasesDesc">
-          Protective &amp; premium
-        </span>
-      </div>
-    </a>
-
-    <a class="cat" href="#chargers">
-      <div class="cat-icon">⚡</div>
-
-      <div>
-        <b id="categoryChargers">Chargers</b>
-        <br>
-        <span id="categoryChargersDesc">
-          Fast charging
-        </span>
-      </div>
-    </a>
-
-    <a class="cat" href="#adapters">
-      <div class="cat-icon">⌁</div>
-
-      <div>
-        <b id="categoryAdapters">Adapters</b>
-        <br>
-        <span id="categoryAdaptersDesc">
-          Power &amp; connectivity
-        </span>
-      </div>
-    </a>
-
-  </div>
-
-</section>
-
-<section class="section" id="phones">
-
-  <div class="section-head">
-
-    <div>
-      <h2 id="bestHeading">
-        Best sellers
-      </h2>
 
       <p id="bestSub">
-        Popular picks from the VOLT collection.
+        Popular picks from the
+        VOLT collection.
       </p>
+
+    </div>
+
+    <div class="shop-tools">
+
+      <div class="filters">
+
+        <button
+          id="allFilter"
+          class="filter active"
+          onclick="filterProducts('all',this)">
+          All
+        </button>
+
+        <button
+          class="filter"
+          onclick="filterProducts('phone',this)">
+          Phones
+        </button>
+
+        <button
+          class="filter"
+          onclick="filterProducts('case',this)">
+          Phone Cases
+        </button>
+
+        <button
+          class="filter"
+          onclick="filterProducts('charger',this)">
+          Chargers
+        </button>
+
+        <button
+          class="filter"
+          onclick="filterProducts('adapter',this)">
+          Adapters
+        </button>
+
+      </div>
+
+      <div class="searchbox">
+
+        <span>⌕</span>
+
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Search products..."
+          oninput="searchProducts()">
+
+        <button
+          onclick="document.getElementById('searchInput').value='';searchProducts()">
+          ×
+        </button>
+
+      </div>
+
+    </div>
+
+    <div
+      class="products"
+      id="productGrid">
     </div>
 
   </div>
 
-  <div class="toolbar">
+</section>
 
-    <button
-      id="allFilter"
-      class="filter active"
-      onclick="filterProducts('all',this)">
-      All
-    </button>
+<!-- PROMO -->
 
-    <button
-      class="filter"
-      onclick="filterProducts('phone',this)">
-      Phones
-    </button>
+<section
+  class="container"
+  id="deals">
 
-    <button
-      class="filter"
-      onclick="filterProducts('case',this)">
-      Phone Cases
-    </button>
+  <div class="promo">
 
-    <button
-      class="filter"
-      onclick="filterProducts('charger',this)">
-      Chargers
-    </button>
+    <div>
 
-    <button
-      class="filter"
-      onclick="filterProducts('adapter',this)">
-      Adapters
-    </button>
+      <div class="eyebrow-light">
+        VOLT / DEALS
+      </div>
 
-  </div>
+      <h2>
+        Upgrade your everyday tech.
+      </h2>
 
-  <div
-    class="products"
-    id="productGrid">
+      <p>
+        Premium accessories.
+        Better charging.
+        Cleaner setups.
+      </p>
+
+    </div>
+
+    <a
+      class="btn"
+      href="#phones">
+      Shop collection →
+    </a>
+
   </div>
 
 </section>
 
 </main>
 
+<!-- FOOTER -->
+
 <footer>
 
-  <div class="footer-inner">
+  <div class="footer-inner container">
 
     <div>
+
       <div class="footer-logo">
         VOLT.
       </div>
 
       <p>
-        Premium mobile hardware and accessories.
+        Premium mobile hardware
+        and accessories.
         <br>
         Designed for everyday tech.
       </p>
+
     </div>
 
     <div>
+
       <h4>SHOP</h4>
 
       <p>
         <a href="#phones">Phones</a>
         <br>
+
         <a href="#cases">Cases</a>
         <br>
+
         <a href="#chargers">Chargers</a>
         <br>
+
         <a href="#adapters">Adapters</a>
       </p>
+
     </div>
 
     <div>
+
       <h4>HELP</h4>
 
       <p>
@@ -965,9 +1775,11 @@ body.dark footer{
         <br>
         Contact
       </p>
+
     </div>
 
     <div>
+
       <h4>ABOUT</h4>
 
       <p>
@@ -979,13 +1791,14 @@ body.dark footer{
         <br>
         Terms
       </p>
+
     </div>
 
   </div>
 
 </footer>
 
-<!-- Cart Drawer -->
+<!-- CART DRAWER -->
 
 <div
   class="drawer"
@@ -1016,7 +1829,7 @@ body.dark footer{
 
 </div>
 
-<!-- Settings Drawer -->
+<!-- SETTINGS DRAWER -->
 
 <div
   class="drawer"
@@ -1096,9 +1909,8 @@ body.dark footer{
       </div>
 
       <button
-        type="button"
-        class="setting-option language-option"
-        id="languageOption"
+        class="setting-option"
+        style="width:100%;text-align:center"
         onclick="toggleLanguage()">
 
         <strong id="languageText">
@@ -1117,7 +1929,19 @@ body.dark footer{
 
 </div>
 
+<!-- TOAST -->
+
+<div
+  class="toast"
+  id="toast">
+  Added to cart
+</div>
+
 <script>
+
+/* =========================
+   PRODUCTS
+========================= */
 
 const products = [
 
@@ -1251,12 +2075,15 @@ const products = [
 
 ];
 
-let cart = [];
-let sorani = false;
+
+/* =========================
+   TRANSLATIONS
+========================= */
 
 const translations = {
 
   en:{
+
     phones:'Phones',
     cases:'Phone Cases',
     chargers:'Chargers',
@@ -1264,19 +2091,25 @@ const translations = {
     deals:'Deals',
 
     shop:'Shop by category',
-    shopSub:'Everything for your phone, in one place.',
+
+    shopSub:
+      'Everything for your phone, in one place.',
 
     best:'Best sellers',
-    bestSub:'Popular picks from the VOLT collection.',
+
+    bestSub:
+      'Popular picks from the VOLT collection.',
 
     all:'All',
 
-    heroTitle:'Phones & Accessories',
+    heroTitle:
+      'Technology.<br><span>Refined.</span>',
 
     heroText:
-      'Shop phones and the accessories that make them better. Curated hardware, premium cases, fast chargers and reliable adapters.',
+      'Premium phones and accessories, carefully selected for everyday life. Clean design, reliable power and hardware that feels right.',
 
-    shopPhones:'Shop phones →',
+    shopPhones:
+      'Shop phones →',
 
     settings:'Settings',
 
@@ -1289,27 +2122,46 @@ const translations = {
     blackDesc:'Dark storefront',
 
     language:'Language',
-    languageDesc:'Switch store language',
+
+    languageDesc:
+      'Switch store language',
 
     categoryPhones:'Phones',
-    categoryPhonesDesc:'Latest smartphones',
+
+    categoryPhonesDesc:
+      'Latest smartphones',
 
     categoryCases:'Phone Cases',
-    categoryCasesDesc:'Protective & premium',
+
+    categoryCasesDesc:
+      'Protective & premium',
 
     categoryChargers:'Chargers',
-    categoryChargersDesc:'Fast charging',
+
+    categoryChargersDesc:
+      'Fast charging',
 
     categoryAdapters:'Adapters',
-    categoryAdaptersDesc:'Power & connectivity',
+
+    categoryAdaptersDesc:
+      'Power & connectivity',
 
     cart:'Your cart',
+
     empty:'Your cart is empty.',
+
     total:'Total',
-    checkout:'Checkout'
+
+    checkout:'Checkout',
+
+    added:'Added to cart',
+
+    search:'Search products...'
+
   },
 
   ku:{
+
     phones:'مۆبایل',
 
     cases:'کەیسەکانی مۆبایل',
@@ -1332,52 +2184,675 @@ const translations = {
 
     all:'هەموو',
 
-    heroTitle:'مۆبایل و ئاکسسوارات',
+    heroTitle:
+      'تەکنەلۆجیا.<br><span>بە شێوەیەکی نوێ.</span>',
 
     heroText:
-      'مۆبایل و ئاکسسواراتەکان بکڕە کە تەکنەلۆژیای ڕۆژانەت باشتر دەکەن؛ کەیس، شارژەری خێرا و ئەداپتەری متمانەپێکراو.',
+      'مۆبایل و ئاکسسواراتی پڕیمیۆم، بە وردی هەڵبژێردراو بۆ ژیانی ڕۆژانە. دیزاینی پاک، وزەی متمانەپێکراو و هاردوێری باش.',
 
-    shopPhones:'مۆبایلەکان ببینە ←',
+    shopPhones:
+      'مۆبایلەکان ببینە ←',
 
     settings:'ڕێکخستنەکان',
 
     appearance:'ڕووکار',
 
     white:'سپی',
-    whiteDesc:'ڕووکاری ڕوون',
+
+    whiteDesc:
+      'ڕووکاری ڕوون',
 
     black:'ڕەش',
-    blackDesc:'ڕووکاری تاریک',
+
+    blackDesc:
+      'ڕووکاری تاریک',
 
     language:'زمان',
-    languageDesc:'زمانی کۆگاکە بگۆڕە',
+
+    languageDesc:
+      'زمانی کۆگاکە بگۆڕە',
 
     categoryPhones:'مۆبایل',
-    categoryPhonesDesc:'نوێترین مۆبایلەکان',
+
+    categoryPhonesDesc:
+      'نوێترین مۆبایلەکان',
 
     categoryCases:'کەیسەکانی مۆبایل',
-    categoryCasesDesc:'پارێزەر و پڕیمیۆم',
+
+    categoryCasesDesc:
+      'پارێزەر و پڕیمیۆم',
 
     categoryChargers:'شارژەرەکان',
-    categoryChargersDesc:'شارژکردنی خێرا',
+
+    categoryChargersDesc:
+      'شارژکردنی خێرا',
 
     categoryAdapters:'ئاداپتەرەکان',
-    categoryAdaptersDesc:'وزە و پەیوەندی',
+
+    categoryAdaptersDesc:
+      'وزە و پەیوەندی',
 
     cart:'سەبەتەکەت',
 
-    empty:'سەبەتەکەت بەتاڵە.',
+    empty:
+      'سەبەتەکەت بەتاڵە.',
 
     total:'کۆی گشتی',
 
-    checkout:'پارەدان'
+    checkout:'پارەدان',
+
+    added:
+      'زیادکرا بۆ سەبەتە',
+
+    search:
+      'بگەڕێ بۆ بەرهەم...'
+
   }
 
 };
 
+
+/* =========================
+   STATE
+========================= */
+
+let sorani =
+  localStorage.getItem('volt-language') === 'ku';
+
+let cart =
+  JSON.parse(
+    localStorage.getItem('volt-cart') || '[]'
+  );
+
+let currentFilter = 'all';
+
+let favorites =
+  new Set(
+    JSON.parse(
+      localStorage.getItem('volt-favorites') || '[]'
+    )
+  );
+
+
+/* =========================
+   HELPERS
+========================= */
+
 function t(key){
-  return translations[sorani ? 'ku' : 'en'][key];
+
+  return translations[
+    sorani ? 'ku' : 'en'
+  ][key] || key;
+
 }
+
+
+function save(){
+
+  localStorage.setItem(
+    'volt-cart',
+    JSON.stringify(cart)
+  );
+
+  localStorage.setItem(
+    'volt-favorites',
+    JSON.stringify([...favorites])
+  );
+
+}
+
+
+function productType(product){
+
+  return {
+
+    phone:t('phones'),
+
+    case:t('cases'),
+
+    charger:t('chargers'),
+
+    adapter:t('adapters')
+
+  }[product.type];
+
+}
+
+
+/* =========================
+   RENDER PRODUCTS
+========================= */
+
+function render(list = products){
+
+  const grid =
+    document.getElementById('productGrid');
+
+  if(!list.length){
+
+    grid.innerHTML = `
+      <div
+        class="empty"
+        style="grid-column:1/-1">
+
+        <div class="empty-icon">
+          ⌕
+        </div>
+
+        No products found.
+
+      </div>
+    `;
+
+    return;
+
+  }
+
+  grid.innerHTML = list.map(product => `
+
+    <article class="card">
+
+      <div class="product-img ${product.type}">
+
+        ${
+          product.badge
+          ? `<span class="badge">
+               ${product.badge}
+             </span>`
+          : ''
+        }
+
+        <button
+          class="wish"
+          onclick="toggleFavorite(${product.id})"
+          aria-label="Wishlist">
+
+          ${
+            favorites.has(product.id)
+            ? '♥'
+            : '♡'
+          }
+
+        </button>
+
+        <div class="device"></div>
+
+      </div>
+
+      <div class="info">
+
+        <small>
+          ${productType(product)}
+        </small>
+
+        <h3>
+          ${product.name}
+        </h3>
+
+        <div class="meta">
+
+          <span class="stars">
+            ★★★★★
+          </span>
+
+          <span>
+            4.9
+          </span>
+
+        </div>
+
+        <div class="row">
+
+          <span class="price">
+            $${product.price}
+          </span>
+
+          <button
+            class="add"
+            onclick="addToCart(${product.id})">
+
+            + Add
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  `).join('');
+
+}
+
+
+/* =========================
+   FILTER
+========================= */
+
+function filtered(){
+
+  const input =
+    document.getElementById('searchInput');
+
+  const q =
+    input.value
+      .trim()
+      .toLowerCase();
+
+  return products.filter(product => {
+
+    const matchesType =
+      currentFilter === 'all' ||
+      product.type === currentFilter;
+
+    const matchesSearch =
+      !q ||
+      product.name
+        .toLowerCase()
+        .includes(q) ||
+      product.type
+        .toLowerCase()
+        .includes(q);
+
+    return matchesType && matchesSearch;
+
+  });
+
+}
+
+
+function filterProducts(type,btn){
+
+  currentFilter = type;
+
+  document
+    .querySelectorAll('.filter')
+    .forEach(button =>
+      button.classList.remove('active')
+    );
+
+  if(btn){
+
+    btn.classList.add('active');
+
+  }
+
+  render(filtered());
+
+}
+
+
+function searchProducts(){
+
+  render(filtered());
+
+}
+
+
+function focusSearch(){
+
+  document
+    .getElementById('phones')
+    .scrollIntoView({
+      behavior:'smooth'
+    });
+
+  setTimeout(() => {
+
+    document
+      .getElementById('searchInput')
+      .focus();
+
+  },450);
+
+}
+
+
+/* =========================
+   CART
+========================= */
+
+function addToCart(id){
+
+  const found =
+    cart.find(item => item.id === id);
+
+  if(found){
+
+    found.qty++;
+
+  }else{
+
+    cart.push({
+      id:id,
+      qty:1
+    });
+
+  }
+
+  save();
+
+  updateCart();
+
+  showToast(
+    t('added')
+  );
+
+}
+
+
+function updateCart(){
+
+  document
+    .getElementById('count')
+    .textContent =
+      cart.reduce(
+        (sum,item) =>
+          sum + item.qty,
+        0
+      );
+
+  const box =
+    document.getElementById('cartItems');
+
+  if(!cart.length){
+
+    box.innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          🛒
+        </div>
+
+        ${t('empty')}
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+  let total = 0;
+
+  box.innerHTML =
+    cart.map(item => {
+
+      const product =
+        products.find(
+          p => p.id === item.id
+        );
+
+      const subtotal =
+        product.price * item.qty;
+
+      total += subtotal;
+
+      return `
+
+        <div class="cart-item">
+
+          <div class="mini">
+
+            <div
+              class="device"
+              style="
+                width:24px;
+                height:42px;
+                border-radius:8px;
+                background:
+                linear-gradient(
+                  150deg,
+                  #ddd,
+                  #333
+                )
+              ">
+            </div>
+
+          </div>
+
+          <div>
+
+            <div class="cart-name">
+              ${product.name}
+            </div>
+
+            <div class="cart-price">
+              $${product.price} × ${item.qty}
+            </div>
+
+            <div class="qty">
+
+              <button
+                onclick="changeQty(
+                  ${product.id},
+                  -1
+                )">
+                −
+              </button>
+
+              <b>
+                ${item.qty}
+              </b>
+
+              <button
+                onclick="changeQty(
+                  ${product.id},
+                  1
+                )">
+                +
+              </button>
+
+              <button
+                class="remove"
+                onclick="removeFromCart(
+                  ${product.id}
+                )">
+                Remove
+              </button>
+
+            </div>
+
+          </div>
+
+          <strong>
+            $${subtotal}
+          </strong>
+
+        </div>
+
+      `;
+
+    }).join('') +
+
+    `
+
+      <div class="cart-total">
+
+        <span>
+          ${t('total')}
+        </span>
+
+        <span>
+          $${total}
+        </span>
+
+      </div>
+
+      <button
+        class="checkout"
+        onclick="checkout()">
+
+        ${t('checkout')}
+
+      </button>
+
+    `;
+
+}
+
+
+function changeQty(id,delta){
+
+  const item =
+    cart.find(
+      product => product.id === id
+    );
+
+  if(!item) return;
+
+  item.qty += delta;
+
+  if(item.qty <= 0){
+
+    cart =
+      cart.filter(
+        product => product.id !== id
+      );
+
+  }
+
+  save();
+
+  updateCart();
+
+}
+
+
+function removeFromCart(id){
+
+  cart =
+    cart.filter(
+      item => item.id !== id
+    );
+
+  save();
+
+  updateCart();
+
+}
+
+
+/* =========================
+   CART DRAWER
+========================= */
+
+function openCart(){
+
+  document
+    .getElementById('drawer')
+    .classList.add('open');
+
+  document.body.style.overflow =
+    'hidden';
+
+}
+
+
+function closeCart(event){
+
+  if(
+    !event ||
+    event.target.id === 'drawer'
+  ){
+
+    document
+      .getElementById('drawer')
+      .classList.remove('open');
+
+    document.body.style.overflow =
+      '';
+
+  }
+
+}
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+function openSettings(){
+
+  document
+    .getElementById('settingsDrawer')
+    .classList.add('open');
+
+  document.body.style.overflow =
+    'hidden';
+
+}
+
+
+function closeSettings(event){
+
+  if(
+    !event ||
+    event.target.id ===
+      'settingsDrawer'
+  ){
+
+    document
+      .getElementById('settingsDrawer')
+      .classList.remove('open');
+
+    document.body.style.overflow =
+      '';
+
+  }
+
+}
+
+
+function setAppearance(mode){
+
+  document.body.classList.toggle(
+    'dark',
+    mode === 'black'
+  );
+
+  localStorage.setItem(
+    'volt-theme',
+    mode
+  );
+
+  document
+    .getElementById('whiteOption')
+    .classList.toggle(
+      'active',
+      mode === 'white'
+    );
+
+  document
+    .getElementById('blackOption')
+    .classList.toggle(
+      'active',
+      mode === 'black'
+    );
+
+}
+
+
+/* =========================
+   LANGUAGE
+========================= */
+
+function toggleLanguage(){
+
+  sorani = !sorani;
+
+  localStorage.setItem(
+    'volt-language',
+    sorani ? 'ku' : 'en'
+  );
+
+  applyLanguage();
+
+}
+
 
 function applyLanguage(){
 
@@ -1386,6 +2861,7 @@ function applyLanguage(){
 
   document.documentElement.lang =
     sorani ? 'ckb' : 'en';
+
 
   const map = {
 
@@ -1401,9 +2877,6 @@ function applyLanguage(){
     bestHeading:'best',
     bestSub:'bestSub',
 
-    allFilter:'all',
-
-    heroTitle:'heroTitle',
     heroText:'heroText',
     shopPhones:'shopPhones',
 
@@ -1433,109 +2906,145 @@ function applyLanguage(){
     categoryAdaptersDesc:'categoryAdaptersDesc',
 
     cartHeading:'cart'
+
   };
 
-  Object.entries(map).forEach(([id,key])=>{
 
-    const element =
-      document.getElementById(id);
+  Object
+    .entries(map)
+    .forEach(
+      ([id,key]) => {
 
-    if(element){
-      element.textContent = t(key);
-    }
+        const element =
+          document.getElementById(id);
 
-  });
+        if(element){
 
-  render();
+          element.innerHTML =
+            t(key);
+
+        }
+
+      }
+    );
+
+
+  document
+    .getElementById('heroTitle')
+    .innerHTML =
+      t('heroTitle');
+
+
+  document
+    .getElementById('searchInput')
+    .placeholder =
+      t('search');
+
+
   updateCart();
+
+  render(filtered());
+
 }
 
-function setAppearance(mode){
 
-  document.body.classList.toggle(
-    'dark',
-    mode === 'black'
-  );
+/* =========================
+   WISHLIST
+========================= */
 
-  document
-    .getElementById('whiteOption')
-    .classList.toggle(
-      'active',
-      mode === 'white'
-    );
+function toggleFavorite(id){
 
-  document
-    .getElementById('blackOption')
-    .classList.toggle(
-      'active',
-      mode === 'black'
-    );
-}
+  if(favorites.has(id)){
 
-function toggleLanguage(){
+    favorites.delete(id);
 
-  sorani = !sorani;
+  }else{
 
-  applyLanguage();
-}
-
-function openSettings(){
-
-  document
-    .getElementById('settingsDrawer')
-    .classList.add('open');
-}
-
-function closeSettings(event){
-
-  if(
-    !event ||
-    event.target.id === 'settingsDrawer'
-  ){
-
-    document
-      .getElementById('settingsDrawer')
-      .classList.remove('open');
+    favorites.add(id);
 
   }
 
+  save();
+
+  render(filtered());
+
 }
 
-function render(list = products){
 
-  const grid =
-    document.getElementById('productGrid');
+/* =========================
+   TOAST
+========================= */
 
-  grid.innerHTML = list.map(p => `
+function showToast(text){
 
-    <article
-      class="card"
-      data-type="${p.type}">
+  const toast =
+    document.getElementById('toast');
 
-      <div class="product-img ${p.type}">
+  toast.textContent = text;
 
-        ${
-          p.badge
-          ? `<span class="badge">${p.badge}</span>`
-          : ''
-        }
+  toast.classList.add('show');
 
-        <div class="device"></div>
+  clearTimeout(
+    window.toastTimer
+  );
 
-      </div>
+  window.toastTimer =
+    setTimeout(
+      () =>
+        toast.classList.remove('show'),
+      1800
+    );
 
-      <div class="info">
+}
 
-        <small>
-          ${
-            {
-              phone:t("phones"),
-              case:t("cases"),
-              charger:t("chargers"),
-              adapter:t("adapters")
-            }[p.type]
-          }
-        </small>
 
-        <h3>
-          ${p.name}
+/* =========================
+   MOBILE MENU
+========================= */
+
+function toggleMenu(){
+
+  document
+    .getElementById('mobileMenu')
+    .classList.toggle('open');
+
+}
+
+
+/* =========================
+   CHECKOUT
+========================= */
+
+function checkout(){
+
+  showToast(
+    'Checkout is ready for your payment integration.'
+  );
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+(function init(){
+
+  setAppearance(
+    localStorage.getItem(
+      'volt-theme'
+    ) || 'white'
+  );
+
+  applyLanguage();
+
+  render();
+
+  updateCart();
+
+})();
+
+</script>
+
+</body>
+</html>
